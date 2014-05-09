@@ -106,6 +106,15 @@ public class BoardController {
 		//선택된 공지번호로 부터 공지 내용 취득
 		ModelAndView modelAndView = new ModelAndView();
 		BoardQa boardQa = this.boardQaService.getBoardQaByBdNoQa(bdNoQa);
+		// 테그 합치기
+		String ret1 = boardQa.getTitleQa();
+		try { 
+			ret1 = replace(ret1, "&lt;", "<"); 
+		} catch (NullPointerException e) { 
+			e.printStackTrace(); 
+		}  
+		boardQa.setTitleQa(ret1);
+		// 테그 합치기
 		// 모델 생성
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("boardQa", boardQa);
@@ -160,6 +169,15 @@ public class BoardController {
 				// 여기까지 바인딩 에러 내용보기!
 				return modelAndView;
 			}
+			// 테그 방지
+						String ret1 = bdQaCom.getBdQaCommentsContent();
+						try { 
+							ret1 = replace(ret1, "<", "&lt;"); 
+						} catch (NullPointerException e) { 
+							e.printStackTrace(); 
+						}  
+						bdQaCom.setBdQaCommentsContent(ret1);
+			// 테그 방지
 			this.boardQaCommentsService.setCommentsAtBdNoQa(bdQaCom, adminKey, bdNoQa, userIp);
 			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
 			return new ModelAndView(url);	// 댓글을 쓰고 새로고침
@@ -210,6 +228,20 @@ public class BoardController {
 		return modelAndView;
 	}
 
+	// 리플레이스 메소드
+	public static String replace(String str, String pattern, String replace) { 
+		int s = 0; 
+		int e = 0; 
+		StringBuffer result = new StringBuffer(); 
+
+		while ((e = str.indexOf(pattern, s)) >= 0) { 
+		result.append(str.substring(s, e)); 
+		result.append(replace); 
+		s = e+pattern.length(); 
+		} 
+		result.append(str.substring(s)); 
+		return result.toString(); 
+		}
 	// 자유게시판 내용 쓰기 디비에 저장(제한 : 로그인 한 자)
 	// boardQaWriteBefore()에서 생성한 객체에 내용을 사빕해 새 글을 작성한다
 	@RequestMapping(method = RequestMethod.POST)
@@ -223,7 +255,30 @@ public class BoardController {
 //		boardQa.setUserEmail(userKey.getUserEmail());
 //		String userEmail = (String) boardQa.getUserEmail();
 //		System.out.println(userEmail);
-
+//		public static String encodeContent(String content) { 
+//			String ret = content; 
+//			try { 
+//			ret = replace(ret, "&", "&"); 
+//			ret = replace(ret, "<", "<"); 
+//			ret = replace(ret, ">", ">"); 
+//			} catch (NullPointerException e) { 
+//			e.printStackTrace(); 
+//			} 
+//			return ret; 
+//			} 
+//
+//			public static String decodeContent(String content) { 
+//			String ret = content; 
+//			try { 
+//			ret = replace(ret, "&", "&"); 
+//			ret = replace(ret, "<", "<"); 
+//			ret = replace(ret, ">", ">"); 
+//			} 
+//			catch (NullPointerException e){ 
+//			e.printStackTrace(); 
+//			} 
+//			return ret; 
+//			}
 		
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 		if(userKey != null){
@@ -249,6 +304,18 @@ public class BoardController {
 				return modelAndView;
 			}
 			// 내용을 사빕한다.
+			// 테그 방지
+				String ret1 = boardQa.getTitleQa();
+				String ret2 = boardQa.getContentQa();
+				try { 
+					ret1 = replace(ret1, "<", "&lt;");
+					ret2 = replace(ret2, "<", "&lt;"); 
+				} catch (NullPointerException e) { 
+					e.printStackTrace(); 
+				}  
+				boardQa.setTitleQa(ret1);
+				boardQa.setContentQa(ret2);
+			// 테그 방지
 			this.boardQaService.boardQaWrite(boardQa, userKey, userIp);
 			return new ModelAndView("redirect:boardQa.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 		}else{
@@ -307,6 +374,20 @@ public class BoardController {
 		}
 		String userIp1 = (String)request.getRemoteAddr();
 		String userIp = userIp1.substring(0, 7)+"...";
+		
+		// 테그 방지
+		String ret1 = boardQa.getTitleQa();
+		String ret2 = boardQa.getContentQa();
+		try { 
+			ret1 = replace(ret1, "<", "&lt;");
+			ret2 = replace(ret2, "<", "&lt;"); 
+		} catch (NullPointerException e) { 
+			e.printStackTrace(); 
+		}  
+		boardQa.setTitleQa(ret1);
+		boardQa.setContentQa(ret2);
+		// 테그 방지
+		
 		this.boardQaService.boardQaWriteUpdate(boardQa, userIp);
 		String url="redirect:boardQa.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
@@ -355,6 +436,18 @@ public class BoardController {
 		String userIp = userIp1.substring(0, 7)+"...";
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 //		System.out.println(boardQa.getReStepQa());
+		// 테그 방지
+		String ret1 = boardQa.getTitleQa();
+		String ret2 = boardQa.getContentQa();
+		try { 
+			ret1 = replace(ret1, "<", "&lt;");
+			ret2 = replace(ret2, "<", "&lt;"); 
+		} catch (NullPointerException e) { 
+			e.printStackTrace(); 
+		}  
+		boardQa.setTitleQa(ret1);
+		boardQa.setContentQa(ret2);
+		// 테그 방지
 		this.boardQaService.setBoardQaReplyByBdNoQa(boardQa, bdNoQa, userKey, userIp);
 		String url="redirect:boardQa.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
@@ -393,6 +486,18 @@ public class BoardController {
 		//선택된 공지번호로 부터 공지 내용 취득
 		ModelAndView modelAndView = new ModelAndView();
 		BoardReviews boardReviews = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
+		// 테그 합치기
+		String ret1 = boardReviews.getTitleRev();
+		String ret2 = boardReviews.getContentRev();
+		try { 
+			ret1 = replace(ret1, "&lt;", "<");
+			ret2 = replace(ret2, "&lt;", "<"); 
+		} catch (NullPointerException e) { 
+			e.printStackTrace(); 
+		}  
+		boardReviews.setTitleRev(ret1);
+		boardReviews.setContentRev(ret2);
+		// 테그 합치기
 		// 모델 생성
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("boardReviews", boardReviews);
@@ -461,6 +566,15 @@ public class BoardController {
 				// 여기까지 바인딩 에러 내용보기!
 				return modelAndView;
 			}
+			// 테그 방지
+			String ret1 = bdRevCom.getBdRevCommentsContent();
+			try { 
+				ret1 = replace(ret1, "<", "&lt;"); 
+			} catch (NullPointerException e) { 
+				e.printStackTrace(); 
+			}  
+			bdRevCom.setBdRevCommentsContent(ret1);
+			// 테그 방지
 			this.boardReviewsCommentsService.setCommentsAtBdNoRev(bdRevCom, userKey, bdNoRev, userIp);
 			String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
 			return new ModelAndView(url);	// 댓글을 쓰고 새로고침
@@ -537,6 +651,18 @@ public class BoardController {
 				return modelAndView;
 			}
 			// 내용을 사빕한다.
+			// 테그 방지
+			String ret1 = boardRev.getTitleRev();
+			String ret2 = boardRev.getContentRev();
+			try { 
+				ret1 = replace(ret1, "<", "&lt;"); 
+				ret2 = replace(ret2, "<", "&lt;");
+			} catch (NullPointerException e) { 
+				e.printStackTrace(); 
+			}  
+			boardRev.setTitleRev(ret1);
+			boardRev.setContentRev(ret2);
+			// 테그 방지
 			this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp);
 			return new ModelAndView("redirect:boardReviews.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 		}else{
@@ -608,6 +734,18 @@ public class BoardController {
 		}
 		String userIp1 = (String)request.getRemoteAddr();
 		String userIp = userIp1.substring(0, 7)+"...";
+		// 테그 방지
+		String ret1 = boardRev.getTitleRev();
+		String ret2 = boardRev.getContentRev();
+		try { 
+			ret1 = replace(ret1, "<", "&lt;"); 
+			ret2 = replace(ret2, "<", "&lt;");
+		} catch (NullPointerException e) { 
+			e.printStackTrace(); 
+		}  
+		boardRev.setTitleRev(ret1);
+		boardRev.setContentRev(ret2);
+		// 테그 방지
 		this.boardReviewsService.boardReviewsWriteUpdate(boardRev, userIp);
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
@@ -640,6 +778,18 @@ public class BoardController {
 		String userIp1 = (String)request.getRemoteAddr();
 		String userIp = userIp1.substring(0, 7)+"...";
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
+		// 테그 방지
+		String ret1 = boardRev.getTitleRev();
+		String ret2 = boardRev.getContentRev();
+		try { 
+			ret1 = replace(ret1, "<", "&lt;"); 
+			ret2 = replace(ret2, "<", "&lt;");
+		} catch (NullPointerException e) { 
+			e.printStackTrace(); 
+		}  
+		boardRev.setTitleRev(ret1);
+		boardRev.setContentRev(ret2);
+		// 테그 방지
 		this.boardReviewsService.setBoardReviewsReplyByBdNoRev(boardRev, bdNoRev, userKey, userIp);
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감

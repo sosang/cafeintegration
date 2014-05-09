@@ -184,7 +184,6 @@ public class BoardQaDaoImpl implements BoardQaDao {
 	public void delete(Integer bdNoQa) {
 		// TODO Auto-generated method stub
 		this.jdbcTemplate.update(BoardQaDaoImpl.DELETE_THE_ARTICLE.toString(), bdNoQa);
-		System.out.println("완료");
 	}
 	
 	
