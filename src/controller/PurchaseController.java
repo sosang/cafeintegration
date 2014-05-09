@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,33 @@ public class PurchaseController {
 		ModelAndView modelAndView = new ModelAndView("purchase/purchaseDirect");
 		modelAndView.addObject("purchaseLine", purchaseList);
 		modelAndView.addAllObjects(model2);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/purchase/purchaseDirect2")
+	public ModelAndView purchasedirect2( String[] checkCart, HttpSession session) {
+
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
+
+		List<CartVo> cartList = new ArrayList<CartVo>();
+		try {
+			for (int i = 0; i < checkCart.length; i++) {
+				Integer a = Integer.parseInt(checkCart[i]);
+
+				CartVo cartNo=this.shopService.myCartItem(userEmail, a);
+				cartList.add(cartNo);
+			}
+		} catch (Exception e) {
+
+		}
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("mycartitem", cartList);
+
+		ModelAndView modelAndView = new ModelAndView("purchase/purchaseDirect2");
+		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
 

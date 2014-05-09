@@ -37,4 +37,6 @@ public interface Shop {
 	int getCheckedUserAlias(String userAlias);	//userAlias 중복체크용
 	
 	MemberVo memberInfo(String userEmail);
+	
+	CartVo myCartItem(String userEmail, Integer itemNo);
 }

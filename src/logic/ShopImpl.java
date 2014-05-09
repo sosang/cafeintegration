@@ -215,5 +215,10 @@ public class ShopImpl implements Shop {
 		// TODO Auto-generated method stub
 		return this.memberCatalog.getfindMemberInfo(userEmail);
 	}
+	
+	@Override
+	public CartVo myCartItem(String userEmail, Integer itemNo){
+		return this.cartCatalog.getCart(userEmail, itemNo);
+	}
 
 }
