@@ -14,4 +14,5 @@ public interface CartCatalog {
 	void clearCart(String userEmail);
 	
 	void somedeleteCart(Integer itemNo);
+	CartVo getCart(String userEmail, Integer itemNo);
 }
