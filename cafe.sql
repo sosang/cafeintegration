@@ -88,6 +88,15 @@ create sequence board_faq_seq
 increment by 1
 start with 1;
 
+insert into board_faq values(board_faq_seq.nextval,'연습공지사항 없어서 올림2','아코디언 내용이 보이니까 신기하죠? ㅎ ㅔㅎ ㅔ');
+create table adminstrator(
+	admin_email varchar2(50) primary key,
+	admin_grade number(1) default 0 not null,
+	admin_passwd varchar2(30) not null
+);
+insert into adminstrator values('admin','1','admin');
+
+
 create table board_notice(
 	bd_no_ntc number(4) primary key,
 	title_ntc varchar2(300) not null,
