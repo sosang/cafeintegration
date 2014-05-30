@@ -8,6 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 ¼º°ø
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>

@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import utils.WebConstants;
@@ -32,9 +33,14 @@ public class LoginController {
 		return new MemberVo();
 
 	}
-
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public ModelAndView login(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login/login");
+		return modelAndView;
+	}
 	
-	@RequestMapping("login/login")
+	@RequestMapping(value="login", method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member,
 			BindingResult bindingResult, HttpSession session) {
 
@@ -70,29 +76,5 @@ public class LoginController {
 		return "login/logout";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 
 }

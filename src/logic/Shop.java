@@ -21,7 +21,7 @@ public interface Shop {
 	void mypageCartclear(Integer itemNo);
 	
 	List<PurchaseListVo> mypagePurchase(String userEmail);
-	
+	MemberVo getCheckedUserEmail(String userEmail);	//userEmail 중복체크용
 	// void entryCart(CartVo cart);
 	//
 	// List<CartVo> getCartList(String userEmail);

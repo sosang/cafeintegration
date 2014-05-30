@@ -31,7 +31,6 @@ public class PostcodeController {
 	@RequestMapping("postcode")
 	public ModelAndView searchPostcode(HttpServletRequest request, String eupmyeondong) throws UnsupportedEncodingException {
 
-		System.out.println("어허");
 		request.setCharacterEncoding("UTF-8");
 		System.out.println(eupmyeondong);
 		//입력한 '읍/면/동' 값으로 Postcode List 취득
@@ -44,7 +43,6 @@ public class PostcodeController {
 		//반환값인 ModelAndView 인스턴스 생성
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addAllObjects(model);
-		System.out.println("어허1");
 		return modelAndView;
 	}
 }

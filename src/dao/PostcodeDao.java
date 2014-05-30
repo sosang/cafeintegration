@@ -32,7 +32,6 @@ public class PostcodeDao {
 			//입력한 '읍/면/동' 정보를 통해 Postcode 객체(우편 번호 및 기본주소) 생성
 			RowMapper<Postcode> mapper = new BeanPropertyRowMapper<Postcode>(Postcode.class);
 			eupmyeondong = eupmyeondong + "%";
-			System.out.println(eupmyeondong);
 			List<Postcode> list = null;
 			list = this.template.query(POSTCODE_AND_DEFAULT_ADDRESS, mapper, eupmyeondong);
 			return list;

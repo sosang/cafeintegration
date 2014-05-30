@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<header id="top" class="fluid">
 <%-- <div align="right">
 	<c:choose>
 	<c:when test = "${USER_KEY ne null}">
@@ -70,5 +69,4 @@
 				</span>
 			</nav>
 		</div>
-</header>
 <hr>

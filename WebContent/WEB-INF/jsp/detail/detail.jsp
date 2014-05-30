@@ -8,6 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>상품 상세 화면</h2>
 		<table>

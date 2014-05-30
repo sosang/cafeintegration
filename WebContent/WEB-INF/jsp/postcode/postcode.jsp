@@ -9,8 +9,6 @@
 </head>
 <body>
 <form action="postcode.html" method="get">
-${postcode } 
-${eupmyeondong }
 	<table border="0">
 		<tr>
 			<td colspan="2">찾으려는 '읍/면/동' 주소를 입력하세요.</td>
@@ -33,5 +31,6 @@ ${eupmyeondong }
 		</c:forEach>
 	</table>
 </form>
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

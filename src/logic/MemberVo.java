@@ -3,6 +3,7 @@ package logic;
 import java.io.Serializable;
 
 public class MemberVo implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	private String userEmail;
@@ -11,14 +12,13 @@ public class MemberVo implements Serializable {
 	private String userPhone1;
 	private String userPhone2;
 	private String userPhone3;
-	private String userPostcode1;
-	private String userPostcode2;
+	private String userPostcode;
 	private String userAddress1;
 	private String userAddress2;
 	private int userLevel;
 	private int userPoint;
 	private int userNumOfArticle;
-	private int userNumOfComments;
+	private int userNumOfReply;
 	private int userNumOfPractice;
 	public String getUserEmail() {
 		return userEmail;
@@ -56,17 +56,11 @@ public class MemberVo implements Serializable {
 	public void setUserPhone3(String userPhone3) {
 		this.userPhone3 = userPhone3;
 	}
-	public String getUserPostcode1() {
-		return userPostcode1;
+	public String getUserPostcode() {
+		return userPostcode;
 	}
-	public void setUserPostcode1(String userPostcode1) {
-		this.userPostcode1 = userPostcode1;
-	}
-	public String getUserPostcode2() {
-		return userPostcode2;
-	}
-	public void setUserPostcode2(String userPostcode2) {
-		this.userPostcode2 = userPostcode2;
+	public void setUserPostcode(String userPostcode) {
+		this.userPostcode = userPostcode;
 	}
 	public String getUserAddress1() {
 		return userAddress1;
@@ -98,11 +92,11 @@ public class MemberVo implements Serializable {
 	public void setUserNumOfArticle(int userNumOfArticle) {
 		this.userNumOfArticle = userNumOfArticle;
 	}
-	public int getUserNumOfComments() {
-		return userNumOfComments;
+	public int getUserNumOfReply() {
+		return userNumOfReply;
 	}
-	public void setUserNumOfComments(int userNumOfComments) {
-		this.userNumOfComments = userNumOfComments;
+	public void setUserNumOfReply(int userNumOfReply) {
+		this.userNumOfReply = userNumOfReply;
 	}
 	public int getUserNumOfPractice() {
 		return userNumOfPractice;
@@ -111,5 +105,5 @@ public class MemberVo implements Serializable {
 		this.userNumOfPractice = userNumOfPractice;
 	}
 
-	
+
 }

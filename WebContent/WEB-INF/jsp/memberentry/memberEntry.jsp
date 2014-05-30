@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<%-- <!-- cart header -->
 <%@ include file="" %> --%>
 
@@ -28,7 +28,7 @@
 				<td>회원 email</td>
 				<td><form:input path="userEmail" cssClass="userEmail"
 						maxlength="30" /><input type="button" class="button" value="중복확인"
-					id="emailCheck" onClick="checkEmailDuplication"><span id="emailCheckResult"></span><font
+					id="emailCheck" onClick="checkEmailDuplication"/><span id="emailCheckResult"></span><font
 					color="red"><form:errors path="userEmail" /> </font></td>
 			</tr>
 			<tr height="40px">
@@ -65,14 +65,14 @@
 			<tr height="40px">
 				<td>우편번호</td>
 				<td><form:input path="userPostcode" cssClass="userPostcode" 
-						maxlength="10" size="10" readonly="true" /><input type="button" class="button"
-					value="우편번호 찾기" onclick="openwin()"><font color="red"><form:errors
+						maxlength="10" size="10"  /><input type="button" class="button"
+					value="우편번호 찾기" onclick="openwin()"/><font color="red"><form:errors
 							path="userPostcode" /> </font></td>
 			</tr>
 			<tr height="40px">
 				<td>기본 주소</td>
 				<td><form:input path="userAddress1" cssClass="userAddress1"
-						maxlength="20" size="25" readonly="true"/><font color="red"><form:errors
+						maxlength="20" size="25" /><font color="red"><form:errors
 							path="userAddress1" /> </font></td>
 			</tr>
 			<tr height="40px">

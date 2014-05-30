@@ -2,8 +2,8 @@ package dao;
 
 import logic.MemberVo;
 
-public interface Member_DAO {
+public interface MemberDao {
 	void create(MemberVo member);
 	MemberVo findByUserEmailAndUserPasswd(String userEmail, String userPasswd);
-
+	MemberVo checkUserEmail(String userEmail);
 }

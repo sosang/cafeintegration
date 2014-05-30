@@ -17,7 +17,7 @@
 	<c:otherwise>
 		<h2>로그인 화면</h2>
 		<form:form modelAttribute="memberVo" method="post"
-			action="../login/login.html">
+			action="login.html">
 			<spring:hasBindErrors name="memberVo">
 				<font color="red"> <c:forEach items="${errors.globalErrors }"
 						var="error">

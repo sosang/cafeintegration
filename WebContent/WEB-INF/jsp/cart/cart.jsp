@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<div class="cart">
 
@@ -48,6 +48,6 @@
 		<c:out value="${message }" />
 		<br>
 	</div>
-	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

@@ -1,3 +1,5 @@
+select * from member;
+alter table member rename column user_num_of_reply TO user_num_of_comments;
 create table board_qa(
 	bd_no_qa number(4) primary key,
 	user_email varchar2(50) not null,
@@ -125,3 +127,4 @@ create sequence save_file_path_seq
 increment by 1
 start with 1;
 
+select * from member;

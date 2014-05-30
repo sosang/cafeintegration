@@ -1,27 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¸¶ÀÌÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-	È¸¿øÁ¤º¸
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	íšŒì›ì •ë³´
 
 	<form:form action="../mypage/mypageDelete.html">
 		<table>
 			<tr>
-				<td colspan="2"><font color="green">³» Ä«Æ®</font></td>
+				<td colspan="2"><font color="green">ë‚´ ì¹´íŠ¸</font></td>
 			</tr>
 			<tr>
-				<td>»óÇ°¸í</td>
-				<td>°¡°Ý</td>
-				<td>»óÇ°°¹¼ö</td>
-				<td>¼Ò°è</td>
+				<td>ìƒí’ˆëª…</td>
+				<td>ê°€ê²©</td>
+				<td>ìƒí’ˆê°¯ìˆ˜</td>
+				<td>ì†Œê³„</td>
 			</tr>
 			<c:forEach items="${mycart }" var="cartSet">
 
@@ -31,22 +30,22 @@
 					<td><c:out value="${cartSet.itemName }" /></td>
 					<td><c:out value="${cartSet.price }" /></td>
 					<td><c:out value="${cartSet.cartNumOfProduct }" /></td>
-					<td><c:out value="${cartSet.cartSubTotal }" />¿ø</td>
+					<td><c:out value="${cartSet.cartSubTotal }" />ì›</td>
 				</tr>
 			</c:forEach>
 
 			<tr>
-				<td colspan="2"><font color="green">°áÁ¦³»¿ª</font></td>
+				<td colspan="2"><font color="green">ê²°ì œë‚´ì—­</font></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="¼±ÅÃ»èÁ¦"></td>
-				<td><input type="button" value="¹Ù·Î±¸¸Å"></td>
+				<td><input type="submit" value="ì„ íƒì‚­ì œ"></td>
+				<td><input type="button" value="ë°”ë¡œêµ¬ë§¤"></td>
 			</tr>
 			<tr>
-				<td>»óÇ°¸í</td>
-				<td>°¡°Ý</td>
-				<td>»óÇ°°¹¼ö</td>
-				<td>¼Ò°è</td>
+				<td>ìƒí’ˆëª…</td>
+				<td>ê°€ê²©</td>
+				<td>ìƒí’ˆê°¯ìˆ˜</td>
+				<td>ì†Œê³„</td>
 			</tr>
 			<c:forEach items="${mypurchase }" var="purchaseSet">
 				<tr>
