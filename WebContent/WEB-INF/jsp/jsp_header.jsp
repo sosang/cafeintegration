@@ -2,12 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/boilerplate.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/index_style.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/style2.css">
+
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath() %>/css/il.css">
 <link rel="stylesheet" type="text/css"
@@ -22,7 +17,7 @@
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
 
 <!-- custom css -->
-<link href="../css/style.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet">
 
 <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
 <% 

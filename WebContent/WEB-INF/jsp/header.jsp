@@ -26,7 +26,7 @@
 				</button>
 			</div>
 			<div id="logo">
-				<a href="index.html"><img src="../images/cafe_logo.png"
+				<a href="../index/index.html"><img src="../images/cafe_logo.png"
 					class="logo img-responsive"></a>
 			</div>
 			<nav class="collapse navbar-collapse bs-navbar-collapse"
