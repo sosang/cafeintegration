@@ -85,5 +85,6 @@ a.listtxt:hover {
 </c:if>
 		
 	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

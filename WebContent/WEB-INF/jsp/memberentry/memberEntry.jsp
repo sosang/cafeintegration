@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-
-
 </head>
 <body>
 
@@ -95,5 +90,6 @@
 					name="btnReset" value="다시 입력"></td>
 		</table>
 	</form:form>
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

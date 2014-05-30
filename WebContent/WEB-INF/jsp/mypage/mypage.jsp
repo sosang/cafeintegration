@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>마이페이지</title>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
 	회원정보
@@ -58,5 +59,6 @@
 			</c:forEach>
 		</table>
 	</form:form>
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

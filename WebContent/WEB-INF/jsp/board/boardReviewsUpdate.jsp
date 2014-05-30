@@ -55,5 +55,6 @@ window.onload = function(){
 		<hr>
 		<a href="boardReviews.html?pageNo=${pageNo}">목록으로</a>
 	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

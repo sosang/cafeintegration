@@ -117,5 +117,6 @@ a.listtxt:hover {
 <h1>등록된 게시물이 없습니다.</h1>
 </c:if>
 	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </head>
 <body>
 	<div align="center" class="body">
@@ -47,5 +48,6 @@
 		<c:out value="${message }" />
 		<br>
 	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

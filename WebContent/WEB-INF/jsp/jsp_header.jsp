@@ -10,13 +10,6 @@
 	href="<%=request.getContextPath() %>/css/style2.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath() %>/css/il.css">
-<script type="text/javascript" src="<%=request.getContextPath() %>/java_script/postcode.js"></script>
-<!-- jQuery  -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<!-- Bootstrap CDN js -->
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
