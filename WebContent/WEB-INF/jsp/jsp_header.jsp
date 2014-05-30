@@ -10,6 +10,8 @@
 	href="<%=request.getContextPath() %>/css/style2.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath() %>/css/il.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath() %>/css/faq.css">
 
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
