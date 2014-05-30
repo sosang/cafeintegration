@@ -1,3 +1,5 @@
+
+
 select * from member;
 alter table member rename column user_num_of_reply TO user_num_of_comments;
 create table board_qa(
