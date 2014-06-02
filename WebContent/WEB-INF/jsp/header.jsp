@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>login</title>
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp" %>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 
 <body id="top" class="fluid">
@@ -48,18 +48,23 @@
 
 				<c:choose>
 
-					<c:when test="${USER_KEY == null }">
-						<font color="white">&nbsp;로그인을 해주세요.</font>
-						<a href="../login/login.html" class="btn btn-primary login-button">Login</a>
-						<a href="../memberentry/memberEntry.html"
-							class="btn btn-info member-button">SignUp</a>
+					<c:when test="${USER_KEY == null }" >
+					
+							<font color="white">&nbsp;로그인을 해주세요.</font> <a
+								href="../login/login.html" class="btn btn-primary login-button">Login</a>
+							<a href="../memberentry/memberEntry.html"
+								class="btn btn-info member-button">SignUp</a>
+				
 
 					</c:when>
-
-					<c:when test="${USER_KEY != null }">
-						<span id="loginc"><font color="white">${USER_KEY.userEmail }님이 접속됨</font>	</span>
-								<a href="../login/logout.html" class="btn btn-primary login-button">Logout</a>
-						
+					
+						<c:when test="${USER_KEY != null }">
+				
+							<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
+									접속됨</font> </span>
+							<a href="../login/logout.html"
+								class="btn btn-primary login-button">Logout</a>
+				
 					</c:when>
 
 				</c:choose>
@@ -76,9 +81,9 @@
 
 
 
-<footer>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp" %>
-</footer>
+	<footer>
+	
+	</footer>
 
 </body>
 </html>
