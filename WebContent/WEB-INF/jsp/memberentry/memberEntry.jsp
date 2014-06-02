@@ -28,8 +28,7 @@
 				<td>회원 email</td>
 				<td><form:input path="userEmail" cssClass="userEmail"
 						maxlength="30" type="email" placeholder="이메일을 입력하세요" /><input type="button" class="button" value="중복확인"
-					id="emailCheck" onClick="checkEmailDuplication"/><span id="emailCheckResult"></span><font
-					color="red"><form:errors path="userEmail" /> </font></td>
+					id="emailCheck" /><span id="emailCheckResult"><c:choose> <c:when test ="${res ne null}"> 이미 사용중입니다 <a href="../login/login.html">로그인으로 이동 </a> </c:when><c:otherwise>반갑습니다. 멋진 이메일이네요.</c:otherwise></c:choose></span></td>
 			</tr>
 			<tr height="40px">
 				<td>비밀번호</td>
@@ -41,7 +40,7 @@
 			<tr height="40px">
 				<td>비밀번호 확인</td>
 				<td><input type="password" name="confirmPasswd"
-					id="confirmPasswd" keyup="checkPasswordMatch()" /><span id="validate"></span></td>
+					id="confirmPasswd" /><span id="validate"></span></td>
 			</tr>
 			<tr height="40px">
 				<td>별명</td>

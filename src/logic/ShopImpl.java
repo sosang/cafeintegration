@@ -133,7 +133,7 @@ public class ShopImpl implements Shop {
 
 	
 	@Override
-	public MemberVo getCheckedUserEmail(String userEmail) {
+	public int getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberCatalog.getCheckedUserEmail(userEmail);
 	}

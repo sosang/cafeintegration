@@ -24,7 +24,7 @@ public class MemberDaoImpl implements MemberDao {
 			+ " VALUES(:userEmail, :userPasswd, :userAlias, :userPhone1,:userPhone2,:userPhone3, :userPostcode, :userAddress1, :userAddress2)";
 
 //	이메일 중복 체크용
-	private static final String CHECK_USER_EMAIL = "SELECT user_email from member where user_email=?";
+	private static final String CHECK_USER_EMAIL = "SELECT count(*) from member where user_email=?";
 
 	private SimpleJdbcTemplate template;
 
@@ -50,10 +50,8 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public MemberVo checkUserEmail(String userEmail) {
-		this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
-		System.out.println(this.template.queryForInt(CHECK_USER_EMAIL, userEmail));
-		return new MemberVo();
+	public int checkUserEmail(String userEmail) {
+		return this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
 	}
 
 }

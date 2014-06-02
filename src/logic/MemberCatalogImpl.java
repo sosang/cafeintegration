@@ -29,7 +29,7 @@ public class MemberCatalogImpl implements MemberCatalog {
 	}
 
 	@Override
-	public MemberVo getCheckedUserEmail(String userEmail) {
+	public int getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberDao.checkUserEmail(userEmail);
 	}
