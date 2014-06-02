@@ -67,8 +67,8 @@
 					<button type="submit" class="btn btn-warning">Submit</button>
 
 				</form>
-				<span id="loginButtons"><a href="login/login.html"
-					class="btn btn-primary login-button">로그인</a><a href="memberentry/memberEntry.html"
+				<span id="loginButtons"><a href="../login/login.html"
+					class="btn btn-primary login-button">로그인</a><a href="../memberentry/memberEntry.html"
 					class="btn btn-info member-button">회원가입</a></span>
 			</nav>
 		</div>

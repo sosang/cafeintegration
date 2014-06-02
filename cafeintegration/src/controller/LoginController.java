@@ -33,6 +33,7 @@ public class LoginController {
 
 	}
 
+
 	
 	@RequestMapping("login/login")
 	public ModelAndView onSubmit(MemberVo member,
@@ -69,30 +70,5 @@ public class LoginController {
 		session.invalidate();
 		return "login/logout";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 
 }
