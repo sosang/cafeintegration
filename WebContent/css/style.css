@@ -1,0 +1,60 @@
+.navbar {
+	padding: 0;
+	margin: 0;
+}
+
+#loginButtons {
+	margin: 5px;
+	padding: 5px;
+	float: right;
+}
+
+#top {
+	margin: 0px;
+	padding: 0px;
+}
+
+.member-button {
+	margin: 2px;
+}
+
+.login-button {
+	margin: 2px;
+}
+
+#logo{
+	display:inline;
+}
+.logo {
+	display:inline;
+	margin-left:5px;
+	height: 50px;
+}
+
+
+
+.intro {
+	width: 100%;
+	height: auto;
+}
+
+/* === carousel fade 효과 ==== */
+.carousel-fade .item {
+	-webkit-transition: opacity 2s;
+	-moz-transition: opacity 2s;
+	-ms-transition: opacity 2s;
+	-o-transition: opacity 2s;
+	transition: opacity 2s;
+}
+
+.carousel-fade .active.left {
+	left: 0;
+	opacity: 2;
+	z-index: 2;
+}
+
+.carousel-fade .next {
+	left: 0;
+	opacity: 1;
+	z-index: 1;
+}

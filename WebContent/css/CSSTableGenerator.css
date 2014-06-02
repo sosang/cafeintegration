@@ -1,0 +1,27 @@
+.row {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.block {
+	border: 3px solid white;
+	padding: 10px;
+	height: auto;
+	min-height: 100px;
+	overflow: auto;
+	display: inline-block;
+}
+
+.block:hover {
+	border: 3px solid gray;
+}
+
+.block ul {
+	list-style: none;
+	padding-left: 0px;
+}
+
+.block li {
+	list-style: none;
+	padding-left: 0px;
+}
