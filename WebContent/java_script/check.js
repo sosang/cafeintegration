@@ -6,6 +6,7 @@ function(){
 	$("#emailCheck").onclick(checkEmailDuplication);
 });
 
+/*비밀번호 확인*/
 function checkPasswordMatch() {
 	var password1 = $("#userPasswd").val();
 	var password2 = $("#confirmPasswd").val();
