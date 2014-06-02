@@ -14,8 +14,8 @@ create table board_qa(
 	re_level number(4) default 0,
 	date_qa date default sysdate,
 	user_ip varchar2(15) not null,
-	foreign key (user_email) references member (user_email),
-	foreign key (user_alias) references member (user_alias)
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE,
+	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
 create sequence board_qa_seq
@@ -30,9 +30,9 @@ create table board_qa_comments(
 	bd_qa_comments_content varchar2(4000) not null,
 	bd_qa_comments_date date default sysdate,
 	bd_qa_comments_ip varchar2(15) not null,
-	foreign key (bd_no_qa) references board_qa (bd_no_qa),
-	foreign key (user_email) references member (user_email),
-	foreign key (user_alias) references member (user_alias)
+	foreign key (bd_no_qa) references board_qa (bd_no_qa) ON DELETE CASCADE,
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE,
+	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
 create sequence board_qa_comments_seq
@@ -52,8 +52,8 @@ create table board_reviews(
 	re_level number(4) default 0,
 	date_rev date default sysdate,
 	user_ip varchar2(15) not null,
-	foreign key (user_email) references member (user_email),
-	foreign key (user_alias) references member (user_alias)
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE,
+	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
 create sequence board_reviews_seq
@@ -68,9 +68,9 @@ create table board_reviews_comments(
 	bd_rev_comments_content varchar2(4000) not null,
 	bd_rev_comments_date date default sysdate,
 	bd_rev_comments_ip varchar2(15) not null,
-	foreign key (bd_no_rev) references board_reviews (bd_no_rev),
-	foreign key (user_email) references member (user_email),
-	foreign key (user_alias) references member (user_alias)
+	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE,
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE,
+	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
 create sequence board_reviews_comments_seq
@@ -118,9 +118,9 @@ create table recommend_recorder(
 	user_alias varchar2(30) not null,
 	rec_rec_date date default sysdate,
 	user_ip varchar2(15) not null,
-	foreign key (bd_no_rev) references board_reviews (bd_no_rev),
-	foreign key (user_email) references member (user_email),
-	foreign key (user_alias) references member (user_alias)
+	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE,
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE,
+	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
 create sequence recommend_recorder_seq
@@ -131,7 +131,7 @@ create table save_file_path(
 	save_file_path_no number(4) primary key,
 	bd_no_rev number(4) not null,
 	file_path varchar2(100),
-	foreign key (bd_no_rev) references board_reviews (bd_no_rev)
+	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE
 );
 
 create sequence save_file_path_seq
@@ -139,3 +139,35 @@ increment by 1
 start with 1;
 
 select * from member;
+
+
+drop table reservation;
+drop table experience;
+drop table cart;
+drop table adminstrator;
+drop table post;
+drop table purchase_line;
+drop table purchase;
+drop table item;
+drop table board_notice;
+drop table board_faq;
+
+drop table board_reviews_comments;
+drop table save_file_path;
+drop table recommend_recorder;
+drop table board_reviews CASCADE CONSTRAINTS;
+
+drop table board_qa;
+drop table member;
+
+drop sequence board_faq_seq;
+drop sequence board_notice_seq;
+drop sequence board_qa_seq;
+drop sequence board_revies_seq;
+drop sequence cart_seq;
+drop sequence experience_seq;
+drop sequence item_seq;
+drop sequence pur_line_seq;
+drop sequence purchase_seq;
+drop sequence reservation_seq;
+

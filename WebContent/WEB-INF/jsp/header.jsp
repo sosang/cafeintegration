@@ -69,4 +69,3 @@
 				</span>
 			</nav>
 		</div>
-<hr>

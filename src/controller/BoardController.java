@@ -420,8 +420,7 @@ public class BoardController {
 	public ModelAndView boardReviewsWrite(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request, @RequestParam("filePath")MultipartFile filePath) throws Exception{
 		String originFileName = filePath.getOriginalFilename();
 		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
-//		  System.out.println("file의 확장자 : " + extention);
-		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")){
+		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
 		}else{
 			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
 			// 여기까지 바인딩 에러 내용보기!
