@@ -1,28 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
+<!DOCTYPE>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>로그인완료</title>
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<!-- Bootstrap CDN css -->
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+
+<title></title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
-<%
-	request.getSession().getAttributeNames();
-%>
-<hr>
-
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>로그인 완료 화면</h2>
-		<b>환영해요 ${USER_KEY.userEmail }님! 환영합니다.</b><br>
-		<a href="../mypage">마이페이지</a><br>
-		<a href="../login/logout.html">로그아웃</a>
-		<hr>
-		
-
+		환영해요,${USER_KEY.userEmail }님! 환영합니다.&nbsp;&nbsp;&nbsp;
+		<a href="../mypage">MyPage</a>
+		<a href="../login/logout.html">Logout</a>
+<!-- 		<input type="submit" value="로그아웃"> -->
+	
 	</div>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	
+
+	
+	<footer>
+	${USER_KEY.userEmail } = ${USER_KEY.userEmail }
+<%@ include file="/WEB-INF/jsp/js_footer.jsp" %>
+	
+
+	</footer>
 </body>
 </html>

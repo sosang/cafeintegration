@@ -47,11 +47,14 @@ public class MemberEntryController {
 	}
 	
 	@RequestMapping(value="checkEmail")
-	public MemberVo checkEmail(@RequestParam String userEmail){
+	public ModelAndView checkEmail(@RequestParam String userEmail){
 		System.out.println(userEmail);
-		MemberVo member = this.shopService.getCheckedUserEmail(userEmail);
-		
-		return member;	
+		int res = this.shopService.getCheckedUserEmail(userEmail);
+		ModelAndView mav = new ModelAndView();
+		if(res != 0){
+			mav.addObject("isMember", res);
+		}
+		return mav;
 	}
 
 	@RequestMapping(method=RequestMethod.POST)

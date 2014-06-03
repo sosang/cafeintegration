@@ -31,7 +31,7 @@ public class LoginController {
 	@ModelAttribute
 	public MemberVo setUpForm() { 
 		return new MemberVo();
-
+		
 	}
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public ModelAndView login(){
@@ -54,14 +54,14 @@ public class LoginController {
 		}
 
 		try {
-			//유저 정보 검색
+
 			MemberVo loginMemberVo = this.shopService.getMemberByUserEmailAndUserPasswd(member.getUserEmail(), member.getUserPasswd());
 			session.setAttribute(WebConstants.USER_KEY, loginMemberVo);
-			//유저 확인시
-			modelAndView.setViewName("login/loginSuccess");
+
+			modelAndView.setViewName("index/index");
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
-			//유저 미 확인시
+
 			bindingResult.reject("error.login.memberVo");
 			modelAndView.getModel().putAll(bindingResult.getModel());
 			return modelAndView;

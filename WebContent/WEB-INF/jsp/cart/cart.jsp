@@ -8,11 +8,12 @@
 <title>장바구니</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<div class="cart">
 
-			<table style="font-size: 10pt;">
+			<table cellpadding="5" cellspacing="0" border="1" align="center"
+				style="font:30px;  border-collapse: collapse; border: 1px gray solid;">
 				<tr>
 					<td colspan="2"><font color="green">바구니에는 다음의 상품이 들어있다.</font></td>
 				</tr>
@@ -27,20 +28,21 @@
 
 				<c:forEach items="${cart }" var="itemSet">
 					<tr>
-						<td><c:out value="${itemSet.itemName }"/></td>
-						<td><c:out value="${itemSet.price }"/></td>
+						<td><c:out value="${itemSet.itemName }" /></td>
+						<td><c:out value="${itemSet.price }" /></td>
 						<td><c:out value="${itemSet.cartNumOfProduct }" /></td>
 						<td><c:out value="${itemSet.cartSubTotal}" />원</td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td><input type="submit" value="바로구매"
+				</table>
+				
+					<input type="submit" value="바로구매"
 						onclick="location.href='../purchase/purchaseCart.html?userEmail=cafe4&indirect=indirect'"></td>
-					<td><input type="button" value="상품목록보기"
-						onclick="location.href='../item/item.html'"></td>
-					<td colspan="2"><input type="button" value="장바구니비우기"
-						onclick="location.href='../cart/cartClear.html?userEmail=cafe4'"></td>
-			</table>
+					<input type="button" value="상품목록보기"
+						onclick="location.href='../item/item.html'">
+					<input type="button" value="장바구니비우기"
+						onclick="location.href='../cart/cartClear.html?userEmail=cafe4'">
+			
 		</div>
 		<br>
 

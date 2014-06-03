@@ -11,5 +11,5 @@ public interface PurchaseCatalog {
 	
 	List<PurchaseListVo> userPurchaseList(String userEmail);
 
-	List<NumNo> getNum();
+
 }

@@ -1,6 +1,5 @@
 package logic;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,8 @@ import org.springframework.stereotype.Service;
 public class ShopImpl implements Shop {
 
 	@Autowired
+	private MemberCatalog memberCatalog;
+	@Autowired
 	private ItemCatalog itemCatalog;
 
 	@Autowired
@@ -18,6 +19,19 @@ public class ShopImpl implements Shop {
 	@Autowired
 	private PurchaseCatalog purchaseCatalog;
 
+	@Override
+	public MemberVo getMemberByUserEmailAndUserPasswd(String userEmail,
+			String userPasswd) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.getMemberByUserEmailAndUserPasswd(userEmail, userPasswd);
+	}
+
+	@Override
+	public void entryMember(MemberVo member) {
+		// TODO Auto-generated method stub
+		this.memberCatalog.entryMember(member);
+
+	}
 	public void setItemCatalog(ItemCatalog itemCatalog) {
 		this.itemCatalog = itemCatalog;
 	}
@@ -61,11 +75,6 @@ public class ShopImpl implements Shop {
 		entryPurchase(purchase);
 
 	}
-//	@Override
-//	private int[] number(){
-//		
-//		
-//	}
 
 	private PurchaseVo createPurchase( String userEmail,
 			String receiver, String recphone, String recaddr,
@@ -122,105 +131,11 @@ public class ShopImpl implements Shop {
 		return this.purchaseCatalog.userPurchaseList(userEmail);
 	}
 
+	
 	@Override
-	public List<NumNo> getNum() {
+	public int getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
-		return this.purchaseCatalog.getNum();
+		return this.memberCatalog.getCheckedUserEmail(userEmail);
 	}
-
-
-	
-	//시행착오 주석
-	
-	/*
-	 * @Override public Purchase_VO getPurchaseByPurchaseNo(Integer purchaseNo)
-	 * { // TODO Auto-generated method stub return
-	 * this.purchaseCatalog.getPurchaseByPurchaseNo(purchaseNo); }
-	 */
-
-	// @Override
-	// public List<Purchase_VO> getPurchaseList() {
-	// // TODO Auto-generated method stub
-	// return this.purchaseCatalog.getPurchaseList();
-	// }
-	//
-	// @Override
-	// public Purchase_VO getPurchaseByPurchaseNo(Integer purchaseNo) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-
-	// @Override
-	// public void checkout(UseCart cart,String userEmail) {
-	// // TODO Auto-generated method stub
-	// PurchaseVo purchase = createPurchase(cart,userEmail);
-	// entryPurchase(purchase);
-	//
-	// }
-	//
-	// private PurchaseVo createPurchase(UseCart cart,String userEmail) {
-	// PurchaseVo purchase = new PurchaseVo();
-	// purchase.setPurchaseNo(getNewPurchaseNo());
-	// purchase.setUserEmail(userEmail);
-	//
-	// List<CartVo> itemList = cart.getCartList();
-	// for (int i = 0; i < itemList.size(); i++) {
-	// CartVo itemSet = (CartVo) itemList.get(i);
-	// int purchaseLineNo = i + 1;
-	// PurchaseLineVo purchaseLine = createPurchaseLineVo(purchase,
-	// purchaseLineNo, itemSet);
-	// purchase.addPurchaseLine(purchaseLine);
-	// }
-	// return purchase;
-	//
-	// }
-	//
-
-	// @Override
-	// public void checkout(UseCart cart, String receiver,
-	// String recpostcode, String recphone, String recaddr, String remarks) {
-	// // TODO Auto-generated method stub
-	// PurchaseVo purchase = createPurchase(cart, receiver, recpostcode,
-	// recphone,
-	// recaddr, remarks);
-	// entryPurchase(purchase);
-	//
-	// }
-	//
-	// private PurchaseVo createPurchase(UseCart cart,String receiver,
-	// String recpostcode, String recphone, String recaddr, String remarks) {
-	// PurchaseVo purchase = new PurchaseVo();
-	//
-	// List<CartVo> itemList = cart.getCartList();
-	//
-	//
-	// for (int i = 0; i < itemList.size(); i++) {
-	// CartVo itemSet = (CartVo) itemList.get(i);
-	// int purchaseLineNo = i + 1;
-	// PurchaseLineVo purchaseLine = createPurchaseLineVo(purchase,
-	// purchaseLineNo, itemSet);
-	// purchase.addPurchaseLine(purchaseLine);
-	// }
-	//
-	// purchase.setRecaddr(recaddr);
-	// purchase.setReceiver(receiver);
-	// purchase.setRecphone(recphone);
-	// purchase.setRecpostcode(recpostcode);
-	// purchase.setRemarks(remarks);
-	// return purchase;
-	//
-	// }
-
-	// @Override
-	// public void entryCart(CartVo cart) {
-	// // TODO Auto-generated method stub
-	// this.cartCatalog.entryCart(cart);
-	// }
-	//
-	// @Override
-	// public List<CartVo> getCartList(String userEmail) {
-	// // TODO Auto-generated method stub
-	// return this.cartCatalog.getCartList(userEmail);
-	// }
 
 }

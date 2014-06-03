@@ -3,9 +3,8 @@ package logic;
 import java.util.List;
 
 public interface Shop {
-	
-	List<NumNo> getNum();
-	
+	MemberVo getMemberByUserEmailAndUserPasswd(String userEmail, String userPasswd);
+	void entryMember(MemberVo member);
 	List<ItemVo> getItemList();
 
 	ItemVo getItemByItemNo(Integer itemNo);
@@ -22,7 +21,7 @@ public interface Shop {
 	void mypageCartclear(Integer itemNo);
 	
 	List<PurchaseListVo> mypagePurchase(String userEmail);
-	
+	int getCheckedUserEmail(String userEmail);	//userEmail 중복체크용
 	// void entryCart(CartVo cart);
 	//
 	// List<CartVo> getCartList(String userEmail);

@@ -42,12 +42,6 @@ public class PurchaseCatalogImpl implements PurchaseCatalog {
 		return this.purchaseDao.findList(userEmail);
 	}
 
-	@Override
-	public List<NumNo> getNum() {
-		// TODO Auto-generated method stub
-		return this.purchaseDao.findNum();
-	}
-
 
 	// @Override
 	// public Integer getNewPurchaseNo() {

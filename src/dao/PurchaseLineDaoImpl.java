@@ -14,7 +14,6 @@ public class PurchaseLineDaoImpl implements PurchaseLineDao {
 	private static final String INSERT = "INSERT INTO PURCHASE_LINE(pur_line_no, pur_no, item_no, num_of_product) values(?,?,?,?)";
 
 	
-	private static final String SELECT = "SELECT pur_line_no,item_no,num_of_product from purchase_line where pur_no=?";
 	private SimpleJdbcTemplate template;
 
 	@Autowired

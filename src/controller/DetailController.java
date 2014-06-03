@@ -1,15 +1,11 @@
 package controller;
 
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
-
-
-
-
 import logic.ItemVo;
-import logic.NumNo;
+
 import logic.Shop;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +28,7 @@ public class DetailController {
 		model.put("item", item);
 		ModelAndView modelAndView = new ModelAndView();
 
-		List<NumNo> numNo = this.shopService.getNum();
-		Map<String, Object> model1 = new HashMap<String, Object>();
-		model1.put("numNo",numNo);
 		modelAndView.addAllObjects(model);
-		modelAndView.addAllObjects(model1);
 		return modelAndView;
 	}
 

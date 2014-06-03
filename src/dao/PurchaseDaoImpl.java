@@ -10,8 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import logic.ItemVo;
-import logic.NumNo;
 import logic.PurchaseListVo;
 import logic.PurchaseVo;
 
@@ -19,7 +17,7 @@ import logic.PurchaseVo;
 public class PurchaseDaoImpl implements PurchaseDao {
 
 	private static final String SELECT_MAX_PURCHASENO = "SELECT MAX(pur_no)AS pur_no from purchase";
-	private static final String SELECT_NUM="SELECT * FROM selectoption";
+
 	private static final String INSERT = "INSERT into purchase (pur_no,user_email,receiver,rec_phone,rec_addr,rec_postcode,remarks) values (?,?,?,?,?,?,?)";
 	// private static final String INSERT =
 	// "INSERT INTO PURCHASE (pur_no,user_email) values (?,?)";
@@ -65,14 +63,6 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		RowMapper<PurchaseListVo> mapper = new BeanPropertyRowMapper<PurchaseListVo>(
 				PurchaseListVo.class);
 		return this.template.query(SELECT_FROM_USER_EMAIL, mapper, userEmail);
-	}
-
-	@Override
-	public List<NumNo> findNum() {
-		// TODO Auto-generated method stub
-		RowMapper<NumNo> mapper = new BeanPropertyRowMapper<NumNo>(
-				NumNo.class);
-		return this.template.query(SELECT_NUM, mapper);
 	}
 
 }
