@@ -1,0 +1,87 @@
+.navbar {
+	padding: 0;
+	margin: 0;
+}
+
+#loginButtons {
+	margin: 5px;
+	padding: 5px;
+	float: right;
+}
+
+#top {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.member-button {
+	margin: 2px;
+}
+
+.login-button {
+	margin: 2px;
+}
+
+#logo {
+	display: inline;
+}
+
+
+.logo {
+	display: inline;
+	margin-left: 5px;
+	height: 50px;
+}
+
+.intro {
+	width: 100%;
+	height: auto;
+}
+
+/* === carousel fade 효과 ==== */
+.carousel-fade .item {
+	-webkit-transition: opacity 2s;
+	-moz-transition: opacity 2s;
+	-ms-transition: opacity 2s;
+	-o-transition: opacity 2s;
+	transition: opacity 2s;
+}
+
+.carousel-fade .active.left {
+	left: 0;
+	opacity: 2;
+	z-index: 2;
+}
+
+.carousel-fade .next {
+	left: 0;
+	opacity: 1;
+	z-index: 1;
+}
+
+/* ===== text 반응형으로 변화 ===== */
+h1{
+	font-size: 100%;
+}
+
+h4{
+	font-size: 100%;
+}
+
+/* =======section 꾸미기======== */
+.right-banner{
+  border: 1px solid #ffaaaa;
+  background: #333;
+  background: -moz-linear-gradient(left, #333 0%, #444 100%);
+  background: -webkit-linear-gradient(left, #333 0%, #444 100%);
+  background: -o-linear-gradient(left, #333 0%, #444 100%);
+  background: linear-gradient(to right, #333 0%, #444 100%);
+  float: right;
+  width: 335px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
