@@ -60,6 +60,13 @@
 						<a href="../mypage/mypage.html" class="btn btn-primary login-button">마이페이지</a>
 						<a href="../login/logout.html" class="btn btn-info member-button">로그아웃</a>
 				    </c:when>
+				    <c:when test = "${ADMIN_KEY ne null}">
+				        ${ADMIN_KEY.adminEmail }님! 환영합니다.&nbsp;&nbsp;&nbsp; 
+						<a href="../mypage/mypage.html" class="btn btn-primary login-button">회원현황</a>
+						<a href="../mypage/mypage.html" class="btn btn-primary login-button">상품현황</a>
+						<a href="../mypage/mypage.html" class="btn btn-primary login-button">통계</a>
+						<a href="../login/logout.html" class="btn btn-info member-button">로그아웃</a>
+				    </c:when>
 				    <c:otherwise>
 						<a href="../login/login.html" class="btn btn-primary login-button">로그인</a>
 						<a href="../memberentry/memberEntry.html" class="btn btn-info member-button">회원가입</a>

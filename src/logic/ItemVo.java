@@ -1,10 +1,10 @@
 package logic;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ItemVo {
-
-
+public class ItemVo implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer itemNo;
 	private String itemName;
 	private String origin;

@@ -1,7 +1,10 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import logic.AdminVo;
+import logic.AdminVoService;
 import logic.MemberVo; 
 import logic.Shop;
 
@@ -27,6 +30,9 @@ public class LoginController {
 	
 	@Autowired
 	private Validator loginValidator;
+	
+	@Autowired
+	private AdminVoService adminVoService;
 
 	@ModelAttribute
 	public MemberVo setUpForm() { 
@@ -74,6 +80,27 @@ public class LoginController {
 	public String logout(HttpSession session){
 		session.invalidate();
 		return "login/logout";
+	}
+	
+	@RequestMapping("{admin}/loginSuccess")
+	public ModelAndView loginSuccess(HttpServletRequest request, AdminVo adminVo, BindingResult bindingResult){
+		String adminEmail = adminVo.getAdminEmail();
+		String adminPasswd = adminVo.getAdminPasswd();
+		ModelAndView modelAndView = new ModelAndView();
+		
+		try {
+			//유저 정보 검색
+			AdminVo loginAdminVo = adminVoService.getAdminInfo(adminEmail, adminPasswd);
+			request.getSession().setAttribute("ADMIN_KEY", loginAdminVo);
+			//유저 확인시
+			modelAndView.setViewName("index/index");
+			return modelAndView;
+		} catch (EmptyResultDataAccessException e) {
+			//유저 미 확인시
+			bindingResult.reject("error.login.memberVo");
+			modelAndView.getModel().putAll(bindingResult.getModel());
+			return modelAndView;
+		}
 	}
 	
 

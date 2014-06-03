@@ -22,12 +22,4 @@ public interface Shop {
 	
 	List<PurchaseListVo> mypagePurchase(String userEmail);
 	MemberVo getCheckedUserEmail(String userEmail);	//userEmail 중복체크용
-	// void entryCart(CartVo cart);
-	//
-	// List<CartVo> getCartList(String userEmail);
-
-	// void checkout(UseCart cart, String recevier, String recpostcode,
-	// String recphone, String recaddr, String remakrs);
-
-	// void checkout(UseCart cart,String userEmail);
 }
