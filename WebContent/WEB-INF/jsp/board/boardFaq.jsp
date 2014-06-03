@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>FAQ</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath() %>/css/faq.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/java_script/faq.js"></script>
 <style type="text/css">
 a.listtxt:link {
