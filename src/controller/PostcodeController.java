@@ -32,7 +32,6 @@ public class PostcodeController {
 	public ModelAndView searchPostcode(HttpServletRequest request, String eupmyeondong) throws UnsupportedEncodingException {
 
 		request.setCharacterEncoding("UTF-8");
-		System.out.println(eupmyeondong);
 		//입력한 '읍/면/동' 값으로 Postcode List 취득
 		List<Postcode> postcode = this.postcodeCatalog.getPostcodeByEupmyeondong(eupmyeondong);
 

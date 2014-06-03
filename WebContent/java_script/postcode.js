@@ -8,4 +8,5 @@ function filladd(zip, addr){
 	opener.document.memberVo.userPostcode.value=zip;
 	opener.document.memberVo.userAddress1.value=addr;
 	this.close();
+	
 }

@@ -46,16 +46,16 @@ public class MemberEntryController {
 		return new MemberVo();
 	}
 	
-//	@RequestMapping(value="emailCheck")
-//	public ModelAndView emailCheck(@RequestParam String userEmail, BindingResult bindingResult){
-//			
-//		ModelAndView mav = new ModelAndView();
-//		int res = this.shopService.getCheckedUserEmail(userEmail);
-//		if(res != 0){
-//			mav.addObject("isMember", res);
-//		}
-//		return mav;
-//	}
+	@RequestMapping(value="emailCheck", method=RequestMethod.GET)
+	public ModelAndView emailCheck(@RequestParam String userEmail){
+			
+		ModelAndView mav = new ModelAndView();
+		int res = this.shopService.getCheckedUserEmail(userEmail);
+		if(res != 0){
+			mav.addObject("isMember", res);
+		}
+		return mav;
+	}
 
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member, BindingResult bindingResult, HttpSession session) throws Exception{
