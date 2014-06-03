@@ -2,6 +2,8 @@ package logic;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,15 @@ public class ShopImpl implements Shop {
 	}
 	public void setItemCatalog(ItemCatalog itemCatalog) {
 		this.itemCatalog = itemCatalog;
+	}
+
+	
+	// 어드민에서 회원목록 불러오기
+	@Override
+	public List<MemberVo> getMemberList(HttpServletRequest request,
+			Integer pageNo) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.findAllMember(request,pageNo);
 	}
 
 	@Override

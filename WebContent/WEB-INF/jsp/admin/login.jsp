@@ -30,6 +30,7 @@
 <c:choose>
 	<c:when test="${ADMIN_KEY.adminEmail ne null }">
 	${ADMIN_KEY.adminEmail }님 하이요
+	<%@ include file="/WEB-INF/jsp/admin/member.jsp"%>
     </c:when>
     <c:otherwise>
     

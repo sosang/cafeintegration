@@ -1,7 +1,10 @@
+select * from member where substr(to_char(sysdate,'YYYYMMDD'),1,8) = substr(to_char(join_date,'YYYYMMDD'),1,8) ;
 
 
+select substr(to_char(sysdate,'YYYYMMDD'),1,8) sys from dual;
 select * from member;
 alter table member rename column user_num_of_reply TO user_num_of_comments;
+alter table member add(join_date date default sysdate);
 create table board_qa(
 	bd_no_qa number(4) primary key,
 	user_email varchar2(50) not null,

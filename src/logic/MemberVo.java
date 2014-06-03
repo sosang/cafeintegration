@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class MemberVo implements Serializable {
 
@@ -20,6 +21,13 @@ public class MemberVo implements Serializable {
 	private int userNumOfArticle;
 	private int userNumOfReply;
 	private int userNumOfPractice;
+	private Date userJoinDate;
+	public Date getUserJoinDate() {
+		return userJoinDate;
+	}
+	public void setUserJoinDate(Date userJoinDate) {
+		this.userJoinDate = userJoinDate;
+	}
 	public String getUserEmail() {
 		return userEmail;
 	}

@@ -82,7 +82,7 @@ public class LoginController {
 		return "login/logout";
 	}
 	
-	@RequestMapping("{admin}/loginSuccess")
+	@RequestMapping("admin/loginSuccess")
 	public ModelAndView loginSuccess(HttpServletRequest request, AdminVo adminVo, BindingResult bindingResult){
 		String adminEmail = adminVo.getAdminEmail();
 		String adminPasswd = adminVo.getAdminPasswd();
@@ -93,7 +93,7 @@ public class LoginController {
 			AdminVo loginAdminVo = adminVoService.getAdminInfo(adminEmail, adminPasswd);
 			request.getSession().setAttribute("ADMIN_KEY", loginAdminVo);
 			//유저 확인시
-			modelAndView.setViewName("index/index");
+			modelAndView.setViewName("admin/index");
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
 			//유저 미 확인시

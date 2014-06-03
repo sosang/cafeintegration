@@ -1,5 +1,10 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import logic.MemberVo;
@@ -82,6 +87,24 @@ public class MemberEntryController {
 			modelAndView.getModel().putAll(bindingResult.getModel());
 			return modelAndView;
 		}
+	}
+	
+	// 어드민에서 가입자 목록 보기
+	// 가입자 목록 보기
+	@RequestMapping("admin/member")
+	public ModelAndView member(HttpServletRequest request, Integer pageNo) throws Throwable{
+		// 가입자 목록 취득
+		List<MemberVo> memberList = null;
+		memberList = this.shopService.getMemberList(request, pageNo);
+		// 모델 생성
+		Map<String, Object> model = new HashMap<String,Object>();
+		model.put("memberList", memberList);
+
+		// 반환값인 ModelAndView 인스턴스 생성
+		ModelAndView modelAndView = new ModelAndView("admin/member");
+		modelAndView.addAllObjects(model);
+
+		return modelAndView;
 	}
 
 }

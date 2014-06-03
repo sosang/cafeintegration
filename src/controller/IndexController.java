@@ -16,7 +16,7 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@RequestMapping("{admin}/*")
+	@RequestMapping("admin/*")
 	public String adIndex(){
 		return "admin/login";
 	}

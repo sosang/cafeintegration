@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
-<body>
-<h2>관리자용 로그인 페이지</h2>
-
-<%@ include file="/WEB-INF/jsp/admin/login.jsp"%>
+<body class="bgbg">
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
+<img src="../images/bg/metrix1.jpg" alt="intro"	class="img-responsive intro" />
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>
