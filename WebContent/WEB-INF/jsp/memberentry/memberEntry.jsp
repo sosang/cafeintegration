@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/java_script/postcode.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
@@ -46,7 +48,7 @@
 			<tr height="40px">
 				<td>별명</td>
 				<td><form:input path="userAlias" cssClass="userAlias"
-						maxlength="30" /><font color="red"><form:errors
+						maxlength="30" id="userAlias" /><font color="red"><form:errors
 							path="userAlias" /> </font></td>
 			</tr>
 			<tr height="40px">
@@ -90,6 +92,7 @@
 					name="btnReset" value="다시 입력"></td>
 		</table>
 	</form:form>
+<script type="text/javascript" src="<%=request.getContextPath()%>/java_script/check.js"></script>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

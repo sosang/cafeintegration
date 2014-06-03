@@ -18,6 +18,7 @@ import logic.Shop;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,23 @@ public class ItemController  {
 		model.put("itemList", itemList);
 		
 		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addAllObjects(model);
+		return modelAndView;
+	}
+	
+	// 아이템 목록 불러오기
+	@RequestMapping("admin/itemList")
+	public ModelAndView itemList(HttpSession session) {
+		// TODO Auto-generated method stub
+		List<ItemVo> itemList = this.shopService.getItemList();
+
+		Map<String, Object> model = new HashMap<String,Object>();
+
+		
+		model.put("itemList", itemList);
+		
+		ModelAndView modelAndView = new ModelAndView("admin/itemList");
 
 		modelAndView.addAllObjects(model);
 		return modelAndView;
