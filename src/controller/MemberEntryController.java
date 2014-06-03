@@ -46,16 +46,16 @@ public class MemberEntryController {
 		return new MemberVo();
 	}
 	
-	@RequestMapping(value="checkEmail")
-	public ModelAndView checkEmail(@RequestParam String userEmail){
-		System.out.println(userEmail);
-		int res = this.shopService.getCheckedUserEmail(userEmail);
-		ModelAndView mav = new ModelAndView();
-		if(res != 0){
-			mav.addObject("isMember", res);
-		}
-		return mav;
-	}
+//	@RequestMapping(value="emailCheck")
+//	public ModelAndView emailCheck(@RequestParam String userEmail, BindingResult bindingResult){
+//			
+//		ModelAndView mav = new ModelAndView();
+//		int res = this.shopService.getCheckedUserEmail(userEmail);
+//		if(res != 0){
+//			mav.addObject("isMember", res);
+//		}
+//		return mav;
+//	}
 
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member, BindingResult bindingResult, HttpSession session) throws Exception{
