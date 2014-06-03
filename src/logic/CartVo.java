@@ -6,11 +6,11 @@ public class CartVo {
 	private String userEmail;
 	private Integer itemNo;
 	private String itemName;
+	private String photo;
+
 	private Integer price;
 	private Integer cartNumOfProduct;
 	private Integer cartSubTotal;
-
-
 
 	public Integer getCartNo() {
 		return cartNo;
@@ -44,6 +44,14 @@ public class CartVo {
 		this.itemName = itemName;
 	}
 
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	public Integer getPrice() {
 		return price;
 	}
@@ -68,7 +76,4 @@ public class CartVo {
 		this.cartSubTotal = cartSubTotal;
 	}
 
-	
-	
-	
 }
