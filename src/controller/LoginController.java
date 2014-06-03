@@ -39,14 +39,14 @@ public class LoginController {
 		return new MemberVo();
 
 	}
-	@RequestMapping(value="login", method=RequestMethod.GET)
+	@RequestMapping(value="login/login", method=RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login/login");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="login", method=RequestMethod.POST)
+	@RequestMapping(value="login/login", method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member,
 			BindingResult bindingResult, HttpSession session) {
 
