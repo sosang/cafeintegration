@@ -8,8 +8,8 @@
 <title>공지사항 읽기</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>공지사항 읽기</h2>
 		<table>

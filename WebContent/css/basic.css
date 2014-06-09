@@ -1,57 +1,64 @@
-body{
-	font-family:굴림체
-}
-div.body{
-	overflow-y:auto;
-	scrollbar-face-color:#C9BFED;
-	scrollbar-shadow-color:#EDEDED;
-	margin-top:50px;
-	margin-bottom:50px;
-}
-div.cart{
-	border:1px solid gray;
-	width:320px;
-	height:58px;
-}
-tr.header{
-	background:#C9BFED;
-}
-tr.record{
-	background:#EDEDED;
+body {
+	font-family: 굴림체
 }
 
-input.userEmail{
-	height:20px;
-	width:150px;
-	border-width:1px;
-	border-style:solid;
-}
-input.userPasswd{
-	height:20px;
-	width:150px;
-	border-width:1px;
-	border-style:solid;
+div.body {
+	overflow-y: auto;
+	scrollbar-face-color: #C9BFED;
+	scrollbar-shadow-color: #EDEDED;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
-input.userAlias{
-	height:20px;
-	width:150px;
-	border-width:1px;
-	border-style:solid;
+div.cart {
+	border: 1px solid gray;
+	width: 320px;
+	height: 58px;
 }
 
-input.userPostcode{
-	height:20px;
-	width:80px;
-	border-width:1px;
-	border-style:solid;
+tr.header {
+	background: #C9BFED;
 }
 
-input.userAddress2{
-	height:20px;
-	width:240px;
-	border-width:1px;
-	border-style:solid;
+tr.record {
+	background: #EDEDED;
 }
 
-span{color:red;}
+input.userEmail {
+	height: 20px;
+	width: 150px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+input.userPasswd {
+	height: 20px;
+	width: 150px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+input.userAlias {
+	height: 20px;
+	width: 150px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+input.userPostcode {
+	height: 20px;
+	width: 80px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+input.userAddress2 {
+	height: 20px;
+	width: 240px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+span {
+	color: red;
+}

@@ -20,5 +20,11 @@ public class IndexController {
 	public String adIndex(){
 		return "admin/login";
 	}
+	
+	
+	@RequestMapping("ckfinder/ckfinder")
+	public String ckfinder(){
+		return "../../ckfinder/ckfinder";
+	}
 
 }

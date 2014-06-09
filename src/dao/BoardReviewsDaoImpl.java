@@ -30,7 +30,7 @@ public class BoardReviewsDaoImpl implements BoardReviewsDao {
 		this.jdbcTemplate=new JdbcTemplate(dataSource);
 	}
 	
-	// 후기게시판의 총 게시물 수
+	// 후기게시판의 최근 게시물 번호
 	private static final StringBuffer GET_RECENT_NO = new StringBuffer("SELECT max(bd_no_rev) FROM board_reviews");
 	@Override
 	public Integer getRecentNo() {
@@ -203,7 +203,7 @@ public class BoardReviewsDaoImpl implements BoardReviewsDao {
 	}
 	
 	// 파일경로 쓰기
-	private static final StringBuffer SFPFN = new StringBuffer("INSERT INTO save_file_path VALUES(save_file_path_seq.nextval,?,?)");
+	private static final StringBuffer SFPFN = new StringBuffer("INSERT INTO save_file_path(save_file_path_no, bd_no_rev, file_path) VALUES(save_file_path_seq.nextval,?,?)");
 	@Override
 	public void setFilePathForNew(int newBdNoRev, String forDb) {
 		// TODO Auto-generated method stub

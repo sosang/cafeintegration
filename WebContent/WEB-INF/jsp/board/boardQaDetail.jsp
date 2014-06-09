@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판 읽기</h2>
 		<table>
@@ -37,23 +37,28 @@
 			<input type="hidden" value="${boardQa.refQa }" name="refQa">
 			<input type="hidden" value="${boardQa.reStep }" name="reStepQa">
 			<input type="hidden" value="${boardQa.reLevel }" name="reLevelQa">
-			<input type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하긔">
-			<input type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
-			<form name="form" method="post" action="boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}">
-				<input type="button" onclick="delConfirm()" value="삭제허기"> 
+			<input type="button"
+				onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'"
+				value="수정하긔">
+			<input type="button"
+				onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'"
+				value="답글달긔">
+			<form name="form" method="post"
+				action="boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}">
+				<input type="button" onclick="delConfirm()" value="삭제허기">
 			</form>
 			<%-- <input type="button" onclick="location.href='boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="삭제하긔"> --%>
 		</c:if>
-<%-- 여기부터 댓글관련 --%>
-<hr>
-<%@ include file="/WEB-INF/jsp/board/boardQaDetailComments.jsp"%>
-<hr>
+		<%-- 여기부터 댓글관련 --%>
+		<hr>
+		<%@ include file="/WEB-INF/jsp/board/boardQaDetailComments.jsp"%>
+		<hr>
 
-<%-- 여기까지 댓글관련 --%>
+		<%-- 여기까지 댓글관련 --%>
 		<a href="boardQa.html?pageNo=${pageNo}">목록으로</a>
 	</div>
-<%-- 삭제확인폼 --%>
-<script type="text/javascript">
+	<%-- 삭제확인폼 --%>
+	<script type="text/javascript">
 function delConfirm(){
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 		    document.form.submit();
@@ -70,6 +75,6 @@ function really(bdNoQaComments){
 }
 <%--삭제 확인폼 --%>
 </script>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

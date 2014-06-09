@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	회원정보
 
 	<form:form action="../mypage/mypageDelete.html">
@@ -53,11 +53,11 @@
 					<td><c:out value="${purchaseSet.itemName }" /></td>
 					<td><c:out value="${purchaseSet.price }" /></td>
 					<td><c:out value="${purchaseSet.numOfProduct }" /></td>
-				
+
 				</tr>
 			</c:forEach>
 		</table>
 	</form:form>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

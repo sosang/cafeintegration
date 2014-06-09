@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>상품 목록 화면</h2>
 		<table border="1">
@@ -20,12 +20,13 @@
 			<c:forEach items="${itemList}" var="item">
 				<tr class="record">
 					<td align="center">${item.itemNo}</td>
-					<td align="left"><a href="../detail/detail.html?itemNo=${item.itemNo}">${item.itemName}</a></td>
+					<td align="left"><a
+						href="../detail/detail.html?itemNo=${item.itemNo}">${item.itemName}</a></td>
 					<td align="right">${item.price}원</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

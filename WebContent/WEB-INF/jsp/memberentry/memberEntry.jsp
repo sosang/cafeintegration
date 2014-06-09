@@ -10,7 +10,7 @@
 	src="<%=request.getContextPath()%>/java_script/postcode.js"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<%-- <!-- cart header -->
 <%@ include file="" %> --%>
 
@@ -18,7 +18,7 @@
 
 	<form:form modelAttribute="memberVo" method="post"
 		action="../memberentry/memberEntry.html" name="memberVo">
-		
+
 		<spring:hasBindErrors name="memberVo">
 			<font color="red"><c:forEach items="${errors.globalErrors }"
 					var="error">
@@ -30,8 +30,9 @@
 				<td>회원 email</td>
 				<td><form:input path="userEmail" cssClass="userEmail"
 						maxlength="30" /><input type="button" class="button" value="중복확인"
-					id="emailCheck" onClick="checkEmailDuplication"/><span id="emailCheckResult"></span><font
-					color="red"><form:errors path="userEmail" /> </font></td>
+					id="emailCheck" onClick="checkEmailDuplication" /><span
+					id="emailCheckResult"></span><font color="red"><form:errors
+							path="userEmail" /> </font></td>
 			</tr>
 			<tr height="40px">
 				<td>비밀번호</td>
@@ -58,17 +59,18 @@
 						<form:option value="011" label="011" />
 						<form:option value="016" label="016" />
 						<form:option value="019" lable="019" />
-					</form:select> - <form:input path="userPhone2" cssClass="userPhone" maxlength="5" size="5"/>
-					- <form:input path="userPhone3" cssClass="userPhone" maxlength="5" size="5"/><font
-					color="red"><form:errors path="userPhone3" /> </font></td>
+					</form:select> - <form:input path="userPhone2" cssClass="userPhone" maxlength="5"
+						size="5" /> - <form:input path="userPhone3" cssClass="userPhone"
+						maxlength="5" size="5" /><font color="red"><form:errors
+							path="userPhone3" /> </font></td>
 			</tr>
 
 
 			<tr height="40px">
 				<td>우편번호</td>
-				<td><form:input path="userPostcode" cssClass="userPostcode" 
-						maxlength="10" size="10"  /><input type="button" class="button"
-					value="우편번호 찾기" onclick="openwin()"/><font color="red"><form:errors
+				<td><form:input path="userPostcode" cssClass="userPostcode"
+						maxlength="10" size="10" /><input type="button" class="button"
+					value="우편번호 찾기" onclick="openwin()" /><font color="red"><form:errors
 							path="userPostcode" /> </font></td>
 			</tr>
 			<tr height="40px">
@@ -92,7 +94,8 @@
 					name="btnReset" value="다시 입력"></td>
 		</table>
 	</form:form>
-<script type="text/javascript" src="<%=request.getContextPath()%>/java_script/check.js"></script>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/java_script/check.js"></script>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

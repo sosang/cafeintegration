@@ -8,12 +8,12 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
-<%--헤더파일 추가 후, INCLUDING
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%--헤더파일 추가 후, INCLUDING
 <%@ include file=" " %>
- --%>	
- 
- <div align="center" class="body">
+ --%>
+
+	<div align="center" class="body">
 		<h2>회원등록 완료 화면</h2>
 		<b><font color="red">회원등록이 완료되었습니다.</font></b><br>
 		<table>
@@ -30,8 +30,8 @@
 				<td>${member.userAlias }</td>
 			</tr>
 			<tr height="40px">
-			<td>전화번호</td>
-			<td>${member.userPhone1 }-${member.userPhone2 }-${member.userPhone3 }</td>
+				<td>전화번호</td>
+				<td>${member.userPhone1 }-${member.userPhone2 }-${member.userPhone3 }</td>
 			<tr height="40px">
 				<td>우편번호</td>
 				<td>${member.userPostcode }</td>
@@ -47,9 +47,8 @@
 
 
 		</table>
-		<br>
-<a href="../index/index.html">■ 목록으로</a><br>
+		<br> <a href="../index/index.html">■ 목록으로</a><br>
 	</div>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

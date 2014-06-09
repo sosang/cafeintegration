@@ -8,21 +8,24 @@
 
 	<!-- Bean Validation -->
 	<mvc:annotation-driven />
-	
-	
+
+
 	<!-- @Component 를 스캔할 수 있도록 설정 -->
 	<bean id="sessionContextFactory"
 		class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
 		<property name="targetBeanName" value="sessionContext" />
 	</bean>
 
-
-	<context:component-scan base-package="controller,dao,logic" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	<context:component-scan base-package="controller,dao,logic"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
-	
+
 	<!-- HandlerMapping -->
 	<bean
 		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
@@ -49,15 +52,8 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	<!-- <bean id="exceptionHandler"
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="exceptionMappings">
-			<value>
-				org.springframework.dao.DataRetrievalFailureException=dataNotFound
-
-			</value>
-		</property>
-
-	</bean> -->
+	<!-- <bean id="exceptionHandler" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<property name="exceptionMappings"> <value> org.springframework.dao.DataRetrievalFailureException=dataNotFound 
+		</value> </property> </bean> -->
 
 </beans>

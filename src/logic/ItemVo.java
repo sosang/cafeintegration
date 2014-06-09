@@ -13,7 +13,6 @@ public class ItemVo implements Serializable {
 	private Date roastingDate;
 	private String roastingLevel;
 	private String itemInfo;
-	private String photo;
 	private Integer price;
 	private Integer totalProduct;
 	private Integer defExchange;
@@ -81,14 +80,6 @@ public class ItemVo implements Serializable {
 
 	public void setItemInfo(String itemInfo) {
 		this.itemInfo = itemInfo;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public Integer getPrice() {

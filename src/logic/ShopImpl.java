@@ -149,4 +149,56 @@ public class ShopImpl implements Shop {
 		return this.memberCatalog.getCheckedUserEmail(userEmail);
 	}
 
+	// 아이템 등록하기
+	@Override
+	public void itemReg(ItemVo itemVo) {
+		// TODO Auto-generated method stub
+		this.itemCatalog.setNewItem(itemVo);
+	}
+
+	// 상품 새 번호 얻기
+	@Override
+	public int getNewItemNo() {
+		// TODO Auto-generated method stub
+		return this.itemCatalog.getNewItemNo();
+	}
+
+	// 상품 이미지 경로 저장
+	@Override
+	public void setFilePath(int newItemNo, String forDb) {
+		// TODO Auto-generated method stub
+		this.itemCatalog.setFilePath(newItemNo, forDb);
+		
+	}
+
+	// 상품내용 수정
+	@Override
+	public void itemUpdate(ItemVo itemVo, Integer itemNo) {
+		// TODO Auto-generated method stub
+		this.itemCatalog.itemUpdate(itemVo, itemNo);
+	}
+	
+	// 수정된 상품 내용의 이미지파일 경로 갱신
+	@Override
+	public void updateFilePath(Integer itemNo, String forDb) {
+		// TODO Auto-generated method stub
+		this.itemCatalog.updateFilePath(itemNo, forDb);
+	}
+
+	// 상품 세부내용을 위한 파일경로 불르기
+	@Override
+	public String getFilePathTo(Integer itemNo) {
+		// TODO Auto-generated method stub
+		return this.itemCatalog.getFilePathTo(itemNo);
+	}
+
+	// 상품 삭제
+	@Override
+	public void deleteBoth(Integer itemNo) {
+		// TODO Auto-generated method stub
+		this.itemCatalog.delete(itemNo);
+	}
+	
+
+	
 }

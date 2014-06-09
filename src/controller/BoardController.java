@@ -434,12 +434,12 @@ public class BoardController {
 		
 		// WAR파일로 뿌렷을 때
 //		String uploadPath = "C:/Tomcat7/webapps/cafe/"+todayForDir+"userImage";
-		String uploadPath = "C:/Tomcat7/webapps/cafe/images/userImage";
+		String uploadPath = "C:/Tomcat7/webapps/cafeintegration/img";
 		// TEst용
 //		String uploadPath = "E:/springtest/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/cafe/userImage";
 		// DB저장하기
 //		String forDb = "../"+todayForDir+"userImage/"+originFileName;
-		String forDb = "../images/userImage/"+originFileName;
+		String forDb = "../img/"+originFileName;
 		
 		// 시작
 		File saveDir = new File(uploadPath);
@@ -530,9 +530,9 @@ public class BoardController {
 	public ModelAndView boardReviewsReplyBefore(Integer pageNo, Integer bdNoRev, HttpServletRequest request){
 		ModelAndView modelAndView = new ModelAndView("board/boardReviewsReply");
 		// 여기는 실험정신
-		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
-		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
-		request.setAttribute("boardRevContent", boardRev.getContentRev());
+//		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
+//		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
+//		request.setAttribute("boardRevContent", boardRev.getContentRev());
 		// 여기까지 실험정신
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("bdNoRev", bdNoRev);

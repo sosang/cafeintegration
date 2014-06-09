@@ -1,32 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>후기게시판 쓰기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<%// CLEditor 적용 %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/cleditor/jquery.cleditor.css" >
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery.cleditor.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquerytable.min.js"></script>
+<script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
+<script type="text/javascript" src="<c:url value="/ckeditor/adapters/jquery.js" />"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	$("#content").cleditor({
-		width:960,//에디타 넓이
-		height:400,//에디타 높이
-	});
-});
-function resets(){
-	var editor = $("#content").cleditor()[0];
-	var f = document.form;
-	f.titleRev.value="";
-	f.contentRev.value="";
-	editor.focus().clear();
-}
-window.onload = function(){
-	document.form.titleRev.focus();
+
+window.onload=function(){
+	 CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3'});
 };
 </script>
 </head>
@@ -42,17 +28,16 @@ window.onload = function(){
 				</tr>
 				<tr height="40px">
 					<td>내  용</td>
-					<td><textarea id="content" name="contentRev" ></textarea></td>
+					<td><textarea id="contents" style="width:750px; height:500px; resize:none;" name="contentRev" ></textarea></td>
 				</tr>
 				<tr>
 				<td>
 				</td>
-				<td colspan="2"><font color="red">*사진파일만 등록가능</font></td>
+				<td colspan="2"><font color="red">*사진파일만 등록가능(확장자가 .jpg 등)</font></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td colspan="2">사진 : <input type="file" name="filePath">
-					</td>
+					<td colspan="2"><input type="file" name="filePath"></td>
 				</tr>
 				<!-- <tr>
 					<td></td>

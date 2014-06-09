@@ -45,39 +45,42 @@
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
 				<button type="submit" class="btn btn-warning">Submit</button>
-</form>
-<form class="navbar-form navbar-right">
+			</form>
+			<form class="navbar-form navbar-right">
 				<c:choose>
 
-						<c:when test="${USER_KEY ne null}">
+					<c:when test="${USER_KEY ne null}">
 
-							<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
-									접속됨</font> </span>
-							<a href="../login/logout.html"
-								class="btn btn-primary login-button">Logout</a>
+						<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
+								접속됨</font> </span>
+						<a href="../login/logout.html"
+							class="btn btn-primary login-button">Logout</a>
 
 					</c:when>
-					 <c:when test = "${ADMIN_KEY ne null}">
+					<c:when test="${ADMIN_KEY ne null}">
 				        ${ADMIN_KEY.adminEmail }님! 환영합니다.&nbsp;&nbsp;&nbsp; 
-						<a href="../admin/member.html?pageNo=1" class="btn btn-primary login-button">회원현황</a>
-						<a href="../admin/itemList.html" class="btn btn-primary login-button">상품현황</a>
-						<a href="../mypage/mypage.html" class="btn btn-primary login-button">통계</a>
+						<a href="../admin/member.html?pageNo=1"
+							class="btn btn-primary login-button">회원현황</a>
+						<a href="../admin/itemList.html"
+							class="btn btn-primary login-button">상품현황</a>
+						<a href="../mypage/mypage.html"
+							class="btn btn-primary login-button">통계</a>
 						<a href="../login/logout.html" class="btn btn-info member-button">로그아웃</a>
-				    </c:when>
-				    <c:otherwise >
+					</c:when>
+					<c:otherwise>
 
-							<font color="white">&nbsp;로그인을 해주세요.</font> <a
-								href="../login/login.html" class="btn btn-primary login-button">Login</a>
-							<a href="../memberentry/memberEntry.html"
-								class="btn btn-info member-button">SignUp</a>
+						<font color="white">&nbsp;로그인을 해주세요.</font>
+						<a href="../login/login.html" class="btn btn-primary login-button">Login</a>
+						<a href="../memberentry/memberEntry.html"
+							class="btn btn-info member-button">SignUp</a>
 
 
 					</c:otherwise>
 
 				</c:choose>
 
-</form>
-			
+			</form>
+
 
 			<!-- <span id="loginButtons"><a href="../login/login.html"
 					class="btn btn-primary login-button">로그인</a>
@@ -88,9 +91,7 @@
 
 
 
-	<footer>
-
-	</footer>
+	<footer> </footer>
 
 </body>
 </html>

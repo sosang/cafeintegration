@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>상품 상세 화면</h2>
 		<table>
@@ -50,7 +50,7 @@
 									<input type="hidden" name="itemNo" value="${item.itemNo }">
 									<input type="hidden" name="price" value="${item.price }">
 									<input type="hidden" name="userEmail" value="cafe4">
-									
+
 									<table>
 										<tr>
 											<td><select name="cartNumOfProduct">
@@ -80,6 +80,6 @@
 			</tr>
 		</table>
 	</div>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

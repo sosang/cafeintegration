@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<div class="cart">
 
@@ -27,8 +27,8 @@
 
 				<c:forEach items="${cart }" var="itemSet">
 					<tr>
-						<td><c:out value="${itemSet.itemName }"/></td>
-						<td><c:out value="${itemSet.price }"/></td>
+						<td><c:out value="${itemSet.itemName }" /></td>
+						<td><c:out value="${itemSet.price }" /></td>
 						<td><c:out value="${itemSet.cartNumOfProduct }" /></td>
 						<td><c:out value="${itemSet.cartSubTotal}" />원</td>
 					</tr>
@@ -48,6 +48,6 @@
 		<c:out value="${message }" />
 		<br>
 	</div>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +14,8 @@
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <body>
-<header id="top" class="navbar ">
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<header id="top" class="navbar ">
+		<%@ include file="/WEB-INF/jsp/header.jsp"%>
 		<div class="content" id="content" role="main">
 
 			<!-- =================== carousel(이미지 슬라이딩 효과 시작) ======================= -->
@@ -99,6 +99,6 @@
 
 
 	<section></section>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

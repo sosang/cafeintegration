@@ -10,6 +10,6 @@
 <!-- Bootstrap CDN css -->
 <link rel="stylesheet"
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
-	<!-- Bootstrap CDN js -->
+<!-- Bootstrap CDN js -->
 <script type="text/javascript"
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
