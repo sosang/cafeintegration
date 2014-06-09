@@ -1,32 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>후기게시판 답글</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<%// CLEditor 적용 %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/cleditor/jquery.cleditor.css" >
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery.cleditor.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquerytable.min.js"></script>
+<script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	$("#content").cleditor({
-		width:960,//에디타 넓이
-		height:400,//에디타 높이
-	});
-});
-function resets(){
-	var editor = $("#content").cleditor()[0];
-	var f = document.form;
-	f.titleRev.value="";
-	f.contentRev.value="";
-	editor.focus().clear();
-}
-window.onload = function(){
-	document.form.titleRev.focus();
+window.onload=function(){
+    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',customConfig: '/cafeintegration/ckeditor/ckwriter.js'});
 };
 </script>
 </head>
@@ -43,7 +27,7 @@ window.onload = function(){
 				</tr>
 				<tr height="40px">
 					<td>내  용</td>
-					<td><textarea id="content" name="contentRev" >${boardRevContent}</textarea></td>
+					<td><textarea id="contents" name="contentRev" rows="10" cols="100" >${boardRevContent}</textarea></td>
 				</tr>
 			</table>
 			<br>

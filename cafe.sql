@@ -1,7 +1,28 @@
+SELECT file_path from save_file_path WHERE item_no = 50
+select * from SAVE_FILE_PATH
+select * from item
 select * from member where substr(to_char(sysdate,'YYYYMMDD'),1,8) = substr(to_char(join_date,'YYYYMMDD'),1,8) ;
-
+create table member(
+	user_email varchar2(50) primary key,
+	user_passwd varchar2(30) not null,
+	user_alias varchar2(30)  unique not null ,
+	user_phone1 varchar2(6) not null,
+	user_phone2 varchar2(8) not null,
+	user_phone3 varchar2(8) not null,
+	user_postcode varchar2(7) not null,
+	user_address1 varchar2(200) not null,
+	user_address2 varchar2(200) not null,
+	user_level number(2) default 0,
+	user_point number(6) default 0,
+	user_num_of_article number(5) default 0,
+	user_num_of_comments number(8) default 0,
+	user_num_of_practice number(4) default 0,
+	join_date date default sysdate
+);
+INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, sysdate);
 
 select substr(to_char(sysdate,'YYYYMMDD'),1,8) sys from dual;
+drop table member cascade constraint;
 select * from member;
 alter table member rename column user_num_of_reply TO user_num_of_comments;
 alter table member add(join_date date default sysdate);
@@ -129,19 +150,38 @@ create table recommend_recorder(
 create sequence recommend_recorder_seq
 increment by 1
 start with 1;
-
+drop table save_file_path;
 create table save_file_path(
 	save_file_path_no number(4) primary key,
-	bd_no_rev number(4) not null,
 	file_path varchar2(100),
-	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE
+	file_size number(8),
+	bd_no_rev number(4),
+	item_no number(4),
+	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE,
+	foreign key (item_no) references item (item_no) ON DELETE CASCADE
 );
 
 create sequence save_file_path_seq
 increment by 1
 start with 1;
 
-select * from member;
+create table item(
+	item_no number(4) primary key,
+	item_name varchar2(40) not null,
+	origin varchar2(20) not null,
+	grade varchar2(15) not null,
+	processing varchar2(15) not null,
+	roasting_date date not null,
+	roasting_level varchar2(15) not null,
+	item_info varchar2(4000) not null,
+	price number(7) not null,
+	total_product number(4) not null,
+	def_exchange number(3) default 0,
+	def_refund number(3) default 0
+);
+
+drop table item cascade constraint;
+select * from save_file_path ;
 
 
 drop table reservation;
