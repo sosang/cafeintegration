@@ -30,20 +30,20 @@ a.listtxt:hover {
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-<div align="center" class="body">
+<div align="center">
 	<h2>회원목록 테스트</h2>
 	<h4>이달의 가입자는 총 ${thisMonth} 명 입니다.</h4>
 	<c:if test="${memberList ne null }">
 			<table border="1">
 			<tr>
-				<th>회원 아이디</th>
-				<th>회원 별명</th>
-				<th>화원 연락처</th>
-				<th>우편번호</th>
-				<th>주&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;소</th>
-				<th>등급</th>
-				<th>포인트</th>
-				<th>회원 가입일</th>
+				<td align="center">회원 아이디</td>
+				<td align="center">회원 별명</td>
+				<td align="center">화원 연락처</td>
+				<td align="center">우편번호</td>
+				<td align="center">주&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;소</td>
+				<td align="center">등급</td>
+				<td align="center">포인트</td>
+				<td align="center">회원 가입일</td>
 			</tr>
 				<c:forEach items="${memberList}" var="member">
 					<tr class="record">

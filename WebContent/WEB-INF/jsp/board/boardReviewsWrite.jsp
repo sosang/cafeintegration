@@ -13,13 +13,13 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquerytable.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#content").cleditor({
+	$("#content1").cleditor({
 		width:960,//에디타 넓이
 		height:400,//에디타 높이
 	});
 });
 function resets(){
-	var editor = $("#content").cleditor()[0];
+	var editor = $("#content1").cleditor()[0];
 	var f = document.form;
 	f.titleRev.value="";
 	f.contentRev.value="";
@@ -42,7 +42,7 @@ window.onload = function(){
 				</tr>
 				<tr height="40px">
 					<td>내  용</td>
-					<td><textarea id="content" name="contentRev" ></textarea></td>
+					<td><textarea id="content1" name="contentRev" ></textarea></td>
 				</tr>
 				<tr>
 				<td>

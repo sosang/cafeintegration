@@ -530,9 +530,9 @@ public class BoardController {
 	public ModelAndView boardReviewsReplyBefore(Integer pageNo, Integer bdNoRev, HttpServletRequest request){
 		ModelAndView modelAndView = new ModelAndView("board/boardReviewsReply");
 		// 여기는 실험정신
-		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
-		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
-		request.setAttribute("boardRevContent", boardRev.getContentRev());
+//		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
+//		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
+//		request.setAttribute("boardRevContent", boardRev.getContentRev());
 		// 여기까지 실험정신
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("bdNoRev", bdNoRev);
