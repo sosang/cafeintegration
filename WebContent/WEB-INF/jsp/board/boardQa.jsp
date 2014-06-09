@@ -44,11 +44,11 @@ table.tableType tr td title{
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판</h2>
-		<c:if test="${!empty USER_KEY}"  >
-	<a href="boardQaWriteBefore.html">글쓰기</a>
-</c:if>
-<c:if test="${empty USER_KEY}">
+		<c:if test="${empty USER_KEY}">
 	<br><b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
+</c:if>
+		<c:if test="${!empty USER_KEY}">
+	<a style="text-align:right;" href="boardQaWriteBefore.html">글쓰기</a>
 </c:if>
 <c:if test="${!empty articleListQa}">
 		<table border="1" class="tableType">
@@ -122,7 +122,6 @@ table.tableType tr td title{
 		<input type="hidden" value="${pageNo }" name="pageNo">
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 </c:if>
-
 
 
 		<hr>
