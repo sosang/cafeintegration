@@ -9,11 +9,13 @@
 	<!-- Bean Validation -->
 	<mvc:annotation-driven />
 	
+	
 	<!-- @Component 를 스캔할 수 있도록 설정 -->
 	<bean id="sessionContextFactory"
 		class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
 		<property name="targetBeanName" value="sessionContext" />
 	</bean>
+
 
 	<context:component-scan base-package="controller,dao,logic" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
@@ -47,7 +49,7 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	<bean id="exceptionHandler"
+	<!-- <bean id="exceptionHandler"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<value>
@@ -56,6 +58,6 @@
 			</value>
 		</property>
 
-	</bean>
+	</bean> -->
 
 </beans>

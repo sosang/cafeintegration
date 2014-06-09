@@ -11,26 +11,35 @@
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>후기게시판 읽기</h2>
-		<table>
+		<table class="tableType">
+		
 			<tr>
-				<td height="40px" width="80">제목</td>
-				<td width="600">${boardReviews.titleRev}</td>
-				<td align="right">${boardReviews.dateRev }</td>
+				<th height="40px" width="10%">제목</th>
+				<td width="60%">${boardReviews.titleRev}</td>
+				<th height="40px" width="10%">작성일</th>
+				<td align="right" colspan="3">${boardReviews.dateRev }</td>
 			</tr>
+			
 			<tr>
-				<td height="40px" width="80">글쓴이</td>
+				<th height="40px" width="80">글쓴이</th>
 				<td>${boardReviews.userEmail}</td>
-				<td align="right">조회수 : ${boardReviews.countRev } / 추천수 : ${boardReviews.recommendRev }</td>
+				<th>조회/추천수</th>
+				<td width="20%" align="right" colspan="3">조회수 : ${boardReviews.countRev } / 추천수 : ${boardReviews.recommendRev }</td>		
 			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr style="border-top: 1px solid #d2d2d2; ">
+				<th height="40px" width="80">내용</th>
+				<td width="800" colspan="5"><img src="${SFPT.filePath}"><br>
+				<pre style="background-color: #fff; border: 0px">${boardReviews.contentRev}</pre></td>
+			</tr>
+			
 			<tr>
-				<td height="40px" width="80">내용</td>
-				<td width="800" colspan="2"><img src="${SFPT.filePath}"><br>
-				${boardReviews.contentRev}</td>
+				<td colspan="6" align="center" style="text-align: right;">글쓴이IP : ${boardReviews.userIp }</td>
 			</tr>
-			<tr>
-				<td colspan="3" align="right">글쓴이IP : ${boardReviews.userIp }</td>
-			</tr>
+			
 		</table>
+		
+		
 		<c:if test="${writer == USER_KEY.userEmail }">
 			<input type="hidden" value="${boardReviews }" name="boardQa">
 			<input type="hidden" value="${pageNo }" name="pageNo">
@@ -39,26 +48,32 @@
 			<input type="hidden" value="${boardReviews.reStep }" name="reStepRev">
 			<input type="hidden" value="${boardReviews.reLevel }" name="reLevelRev">
 			
-			<input type="button" onclick="location.href='boardReviewsEdit.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="수정하긔">
-			<input type="button" onclick="location.href='boardReviewsReplyBefore.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="답글달긔">
+			<input  class="btn " type="button" onclick="location.href='boardReviewsEdit.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="수정하긔">
+			<input class="btn " type="button" onclick="location.href='boardReviewsReplyBefore.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="답글달긔">
 			
 			<form name="form" method="post" action="boardReviewsDeleteBefore.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}">
-				<input type="button" onclick="delConfirm()" value="삭제허기"> 
+				<input class="btn " type="button" onclick="delConfirm()" value="삭제허기"> 
 			</form>
 			<%-- <input type="button" onclick="location.href='boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="삭제하긔"> --%>
 		</c:if>
+		
 		<c:if test="${!empty USER_KEY}">
-			<input type="button" onclick="location.href='boardReviewsRecommend.html?pageNo=${pageNo}&bdNoRev=${boardReviews.bdNoRev}'" value="추천하긔">
+			<input class="btn " type="button" onclick="location.href='boardReviewsRecommend.html?pageNo=${pageNo}&bdNoRev=${boardReviews.bdNoRev}'" value="추천하긔">
 		</c:if>
+		
 <%-- 여기부터 댓글관련 --%>
-<hr>
+
+<hr style="visibility: hidden;">
 <%@ include file="/WEB-INF/jsp/board/boardReviewsDetailComments.jsp"%>
-<hr>
+<hr style="visibility: hidden;">
 
 <%-- 여기까지 댓글관련 --%>
 		<a href="boardReviews.html?pageNo=${pageNo}">목록으로</a>
 	</div>
+	
+	
 <%-- 삭제확인폼 --%>
+
 <script type="text/javascript">
 function delConfirm(){
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
@@ -67,6 +82,7 @@ function delConfirm(){
 		    return;
 	}
 }
+
 function reallyRev(bdNoRevComments){
 	if (confirm("댓글을 삭제하시겠습니까?") == true){    //확인
 		location.href='boardRevDelCom.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}&bdNoRevComments='+bdNoRevComments;

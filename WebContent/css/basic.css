@@ -1,5 +1,5 @@
 body{
-	font-family:援대┝泥�
+	font-family:굴림체
 }
 div.body{
 	overflow-y:auto;
@@ -55,3 +55,82 @@ input.userAddress2{
 }
 
 span{color:red;}
+
+/**********************테이블*****************/
+.tableType,.tableType th,.tableType td {
+	border: 0
+}
+
+.tableType a {
+	color: #383838;
+	text-decoration: none
+}
+
+.tableType {
+	font-family: "맑은 고딕";
+	width: 70%;
+	/* border-bottom: 1px solid #999; */
+	color: #666;
+	
+	font-size: 12px;
+	table-layout: fixed
+}
+
+.tableType .frm label {
+	display: none
+}
+
+.tableType th {
+	padding: 5px 0 4px;
+	/* border-top: solid 1px #999;*/
+		border-bottom: solid 1px #d2d2d2; 
+	text-align : center;
+	background-color: #e1e1e1;             /* #e1e1e1; 회색 */
+	font-weight: bold;
+	line-height: 5px; /* 높이 */
+	vertical-align: middle;
+}
+
+.tableType td {
+	padding: 8px 10px 5px;
+	border-bottom: solid 1px #d2d2d2;         /* #d2d2d2; 회색 */
+	text-align: /* center */ left;
+}
+
+.tableType .frm {
+	padding: 0;
+	text-align: center
+}
+
+.tableType .frm input {
+	margin: 0
+}
+
+.tableType .num,.tableType .date,.tableType .hit {
+	padding: 0;
+	font-family: Tahoma;
+	font-size: 11px;
+	line-height: normal
+}
+
+.tableType .title {
+	text-align: left
+}
+
+.tableType .title .pic,.tableType .title .new {
+	margin: 0 0 2px;
+	vertical-align: middle
+}
+
+.tableType tr.reply .title a {
+	padding-left: 12px;
+	background: url(img/ic_reply.gif) 0 1px no-repeat
+}
+
+.tableType tr.reply td a.comment {
+	padding: 0;
+	background: none;
+	color: #f00;
+	font-size: 12px;
+	font-weight: bold
+}

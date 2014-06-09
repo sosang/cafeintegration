@@ -19,7 +19,7 @@
 	<p>Coffee Bean</p>
 	</div>
 	<div align="center" class="row">
-		<c:forEach items="${itemList }" var="item">
+		<c:forEach items="${loginItemVo.userEmail }" var="item">
 			<div class="block"
 				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"
 				style='cursor: pointer;'>

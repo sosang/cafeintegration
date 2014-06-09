@@ -24,7 +24,15 @@ a.listtxt:hover {
 
 .listtxt {
 	color: #535353;
-} /*text default*/
+}
+table.tableType tr td {
+	text-align: center;
+}
+table.tableType  td title{
+	text-align: left;
+}
+
+ /*text default*/
 </style>
 </head>
 <body>
@@ -38,22 +46,25 @@ a.listtxt:hover {
 			<b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
 		</c:if>
 <c:if test="${!empty articleListRev}">
-		<table>
-			<tr class="header">
-				<th align="center" width="80">번호</th>
-				<th align="center" width="620">제 목</th>
-				<th align="center" width="100">글쓴이</th>
-				<th align="center" width="80">글쓴날</th>
-				<th align="center" width="80">조회/추천</th>
+		<table class="tableType">
+			<tr>
+				<th align="center" width="5%">번호</th>
+				<th align="center" width="60%">제 목</th>
+				<th align="center" width="10%">글쓴이</th>
+				<th align="center" width="15%">글쓴날</th>
+				<th align="center" width="10%">조회/추천수</th>
 			</tr>
 
 			<c:forEach items="${articleListRev}" var="reviews">
-				<tr class="record">
-					<td align="center" class="listtxt">
+				<tr>
+					<td align="left" class="listtxt">
 						<c:out value="${reviews.bdNoRev}" />
 					</td>
-					<td align="left" class="listtxt">
+					
+					<!-- 게시판 타이틀 영역 -->
+					<td align="left" class="listtxt title">
 					<c:choose>
+					
 						<c:when test="${reviews.reStep == 0}">
 							<a	href="<c:url value="boardReviewsDetail.html">
 											<c:param name="pageNo" value="${pageNo}"/>
@@ -62,6 +73,7 @@ a.listtxt:hover {
 								<c:out value="${reviews.titleRev}" />
 							</a>
 						</c:when>
+						
 						<c:otherwise>
 							<c:forEach begin="0" end="${reviews.reStep}" var="i">
 								&nbsp;&nbsp;
@@ -75,6 +87,7 @@ a.listtxt:hover {
 						</c:otherwise>
 					</c:choose>
 					</td>
+					
 					<td align="center" class="listtxt">
 						<c:out value="${reviews.userAlias}" />
 					</td>
@@ -107,7 +120,7 @@ a.listtxt:hover {
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 </c:if>
 <c:if test="${!empty USER_KEY}">
-	<a href="boardReviewsWriteBefore.html">글쓰기</a>
+	<div align="right"><a href="boardReviewsWriteBefore.html">글쓰기</a></div>
 </c:if>
 <c:if test="${empty USER_KEY}">
 	<br><b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>

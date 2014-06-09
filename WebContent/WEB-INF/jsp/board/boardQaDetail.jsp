@@ -7,40 +7,43 @@
 <title>자유게시판 읽기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
-<body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판 읽기</h2>
-		<table>
+		<table class="tableType">
 			<tr>
-				<td height="40px" width="80">제목</td>
-				<td width="600">${boardQa.titleQa}</td>
-				<td align="right">${boardQa.dateQa }</td>
+			
+				<th height="40px" width="10%">제목</th>
+				<td width="60%">${boardQa.titleQa}</td>
+				<th align="right" width="10%">조회수</th>
+				<td width="20%">${boardQa.countQa }</td>
 			</tr>
 			<tr>
-				<td height="40px" width="80">글쓴이</td>
+				<th height="40px">글쓴이</th>
 				<td>${boardQa.userEmail}</td>
-				<td align="right">조회수 : ${boardQa.countQa }</td>
+				<th>작성일</th>
+				<td>${boardQa.dateQa }</td>
+			</tr>
+	
+			<tr style="border-top: 1px solid #F5CB43; ">
+				<th height="40px" width="80">내용</th>
+				<td width="30%" colspan="3"><pre style="background-color: #fff; border: 0px">${boardQa.contentQa}</pre></td>
 			</tr>
 			<tr>
-				<td height="40px" width="80">내용</td>
-				<td width="800" colspan="2">${boardQa.contentQa}</td>
+				<td colspan="4" style="text-align: right;">글쓴이IP : ${boardQa.userIp }</td>
 			</tr>
-			<tr>
-				<td colspan="3" align="right">글쓴이IP : ${boardQa.userIp }</td>
-			</tr>
-		</table>
+		</table><p>
 		<c:if test="${writer == USER_KEY.userEmail }">
-			<input type="hidden" value="${boardQa }" name="boardQa">
-			<input type="hidden" value="${pageNo }" name="pageNo">
-			<input type="hidden" value="${boardQa.bdNoQa }" name="bdNoQa">
-			<input type="hidden" value="${boardQa.refQa }" name="refQa">
-			<input type="hidden" value="${boardQa.reStep }" name="reStepQa">
-			<input type="hidden" value="${boardQa.reLevel }" name="reLevelQa">
-			<input type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하긔">
-			<input type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
 			<form name="form" method="post" action="boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}">
-				<input type="button" onclick="delConfirm()" value="삭제허기"> 
+				<input type="hidden" value="${boardQa }" name="boardQa">
+				<input type="hidden" value="${pageNo }" name="pageNo">
+				<input type="hidden" value="${boardQa.bdNoQa }" name="bdNoQa">
+				<input type="hidden" value="${boardQa.refQa }" name="refQa">
+				<input type="hidden" value="${boardQa.reStep }" name="reStepQa">
+				<input type="hidden" value="${boardQa.reLevel }" name="reLevelQa">
+				<input class="btn" type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하긔">
+				<input class="btn" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
+				<input class="btn" type="button" onclick="delConfirm()" value="삭제허기"> 
 			</form>
 			<%-- <input type="button" onclick="location.href='boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="삭제하긔"> --%>
 		</c:if>

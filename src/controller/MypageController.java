@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 
 
-import logic.CartVo;
 
+
+import logic.CartVo;
+import logic.MemberVo;
 import logic.PurchaseListVo;
 import logic.Shop;
 
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import utils.WebConstants;
+
 @Controller
 public class MypageController {
 
@@ -27,7 +30,9 @@ public class MypageController {
 	private Shop shopService;
 
 	@RequestMapping(value = "/mypage/mypage")
-	public ModelAndView mypage(HttpSession session, String userEmail) {
+	public ModelAndView mypage(HttpSession session) {
+		MemberVo userKey = (MemberVo) session.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
 
 		List<PurchaseListVo> myPurchase = this.shopService
 				.mypagePurchase(userEmail);
