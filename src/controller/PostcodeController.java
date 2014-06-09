@@ -22,18 +22,15 @@ public class PostcodeController {
 
 	@Autowired
 	private PostcodeCatalog postcodeCatalog;
-
-	@RequestMapping
-	public void postcode_test(){
-
-	}
-
-	@RequestMapping("postcode")
+	
+		@RequestMapping(value="postcode")
 	public ModelAndView searchPostcode(HttpServletRequest request, String eupmyeondong) throws UnsupportedEncodingException {
 
 		request.setCharacterEncoding("UTF-8");
 		//입력한 '읍/면/동' 값으로 Postcode List 취득
+		
 		List<Postcode> postcode = this.postcodeCatalog.getPostcodeByEupmyeondong(eupmyeondong);
+			
 
 		//모델 생성
 		Map<String, Object> model = new HashMap<String, Object>();

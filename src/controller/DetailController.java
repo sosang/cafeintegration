@@ -20,12 +20,25 @@ public class DetailController {
 
 
 
-	@RequestMapping
+	@RequestMapping("detail/detail")
 	public ModelAndView detailItem(Integer itemNo) {
 		ItemVo item = this.shopService.getItemByItemNo(itemNo);
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("item", item);
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addAllObjects(model);
+		return modelAndView;
+	}
+	
+	@RequestMapping("admin/detail")
+	public ModelAndView adminDetailItem(Integer itemNo) {
+		ItemVo item = this.shopService.getItemByItemNo(itemNo);
+		String filePathForJsp = this.shopService.getFilePathTo(itemNo);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("item", item);
+		model.put("toViewImage",filePathForJsp);
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addAllObjects(model);

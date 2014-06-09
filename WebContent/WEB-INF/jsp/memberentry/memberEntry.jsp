@@ -12,7 +12,7 @@
 	<%-- <!-- cart header -->
 <%@ include file="" %> --%>
 	<div id="memberEntryBox">
-		<h2 class="bg-info text-center">회원 가입</h2>
+		<h2 class="bg-info text-center" color="white">회원 가입</h2>
 
 		<form:form modelAttribute="memberVo" method="post"
 			action="../memberentry/memberEntry.html" name="memberVo"
@@ -24,16 +24,18 @@
 					</c:forEach> </font>
 			</spring:hasBindErrors>
 			<div class="form-horizontal input-size">
-				<font>사용자 Email</font>
+				<label>사용자 Email</label>
 				<form:input path="userEmail" type="email" cssClass="form-control"
-					id="userEmail" placeholder="email을 입력하세요." />
+					id="userEmail" placeholder="email을 입력하세요."  />
 				<input type="button" class="button" value="중복확인" id="emailCheck" />
-				<span id="emailCheckResult"><c:choose>
-						<c:when test="${isMember ne null}"> 이미 사용중입니다 <a
+				<span id="emailCheckResult">
+				<%-- 	<c:choose>
+						<c:when test="${isMember ne null}"> 이미 가입한 이메일입니다 <a
 								href="../login/login.html">로그인으로 이동 </a>
 						</c:when>
 						<c:otherwise>반갑습니다. 멋진 이메일이네요.</c:otherwise>
-					</c:choose></span>
+					</c:choose> --%>
+				</span>
 			</div>
 			<div id = "pwdDiv" class="form-horizontal input-size">
 				<label>Password</label> 
@@ -43,7 +45,7 @@
 			</div>
 			<div id="confirmDiv" class="form-horizontal input-size">
 				<label>Password 확인</label> <input
-					type="password" class="form-control" id="confirmPasswd" keyup="checkPasswordMatch()"
+					type="password" class="form-control" id="confirmPasswd" onkeyup="checkPasswordMatch()"
 					placeholder="Password를 한 번 더 입력하세요."><span id="validate"></span>
 			</div>
 			<div class="form-horizontal input-size">
@@ -64,7 +66,7 @@
 						<form:option value="016" label="016" />
 						<form:option value="019" lable="019" />
 					</form:select> - <form:input path="userPhone2" cssClass="userPhone span12"
-						maxlength="5" size="5" /> - <form:input path="userPhone3" 
+						maxlength="5" size="5" id="userPhone2" onkeyup="moveFocus" /> - <form:input path="userPhone3" 
 						cssClass="userPhone span12" maxlength="5" size="5"/><font
 					color="red"><form:errors path="userPhone3" /></font>
 					</div>
@@ -75,7 +77,7 @@
 			<label>우편번호</label>
 				<div id="userPostcode"><form:input path="userPostcode"
 						cssClass="userPostcode col-xs-2" maxlength="10"
-						size="10" readonly="readonly"/>&nbsp;<input type="button" class="button" value="우편번호 찾기"
+						size="10" readonly="readonly"/>&nbsp;<input type="button" class="button" id="postcodeBtn" value="우편번호 찾기"
 					onclick="openwin()" /><font color="red"><form:errors
 							path="userPostcode" /> </font></div>
 			</div>

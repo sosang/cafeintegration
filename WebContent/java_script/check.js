@@ -1,6 +1,7 @@
 //비밀번호 확인 이벤트(jQuery사용)
 $(document).ready(function () {
-	   $("#confirmPasswd").keyup(checkPasswordMatch);
+	   $("#confirmPasswd").onkeyup(checkPasswordMatch);
+	   $("#userPhone2").onkeyup(moveFocus);
 	});
 
 
@@ -15,9 +16,11 @@ function checkPasswordMatch() {
     }
 }
 
-function addr2Focus(){
-	var addr1 = $("#userAddress1").val();
-	if (addr1 != null){
-		$("#userAddress2").focus();
+function moveFocus(){
+	var phone1 =$("#userPhone1").val();
+	var phone2 =$("#userPhone2").val();
+	var phone3 =$("#userPhone3").val();
+	if(phone2.length ==4){
+		$("#userPhone3").focus;
 	}
 }
