@@ -26,7 +26,7 @@
 			<div class="form-horizontal input-size">
 				<label>사용자 Email</label>
 				<form:input path="userEmail" type="email" cssClass="form-control"
-					id="userEmail" placeholder="email을 입력하세요."  />
+					id="userEmail" placeholder="email을 입력하세요."  autofocus="true"/>
 				<a href="checkEmail.html"><input type="button" class="button" value="중복확인" onclick="emailCheckAjax()"/></a>
 				<span id="emailCheckResult">
 				 	<c:choose>
@@ -79,7 +79,7 @@
 			<label>우편번호</label>
 				<div id="userPostcode"><form:input path="userPostcode"
 						cssClass="userPostcode col-xs-2" maxlength="10"
-						size="10" readonly="readonly"/>&nbsp;<input type="button" class="button" id="postcodeBtn" value="우편번호 찾기"
+						size="10" readonly="true"/>&nbsp;<input type="button" class="button" id="postcodeBtn" value="우편번호 찾기"
 					onclick="openwin()" /><font color="red"><form:errors
 							path="userPostcode" /> </font></div>
 			</div>
