@@ -59,48 +59,6 @@
 				</div>
 
 			</div>
-<%-- 		</c:when> --%>
 
-<%-- 		<c:when test="${cart.userEmail==null }"> --%>
-
-
-<!-- 			<div align="center" class="body"> -->
-<%-- 				<form:form modelAttribute="memberVo" class="signin" method="post" --%>
-<%-- 					action="../login/login.html"> --%>
-<%-- 					<spring:hasBindErrors name="memberVo"> --%>
-<%-- 						<font color="red"> <c:forEach --%>
-<%-- 								items="${errors.globalErrors }" var="error"> --%>
-<%-- 								<spring:message code="${error.code}" /> --%>
-<%-- 							</c:forEach> --%>
-<!-- 						</font> -->
-<%-- 					</spring:hasBindErrors> --%>
-
-<!-- 					<table> -->
-
-<!-- 						<tr height="40px"> -->
-
-<%-- 							<td width="255px"><form:input path="userEmail" --%>
-<%-- 									class="form-control" placeholder="Email address" /> <font --%>
-<%-- 								color="red"><form:errors path="userEmail" /></font></td> --%>
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-
-<%-- 							<td><form:password path="userPasswd" class="form-control" --%>
-<%-- 									placeholder="Password" /> <font color="red"><form:errors --%>
-<%-- 										path="userPasswd" /></font></td> --%>
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td width="150px"><input type="submit" value="Login" -->
-<!-- 								class="btn btn-primary login-button form-control"></td> -->
-
-<!-- 						</tr> -->
-
-<!-- 					</table> -->
-
-<%-- 				</form:form> --%>
-<!-- 			</div> -->
-
-<%-- 		</c:when> --%>
-<%-- 	</c:choose> --%>
 </body>
 </html>

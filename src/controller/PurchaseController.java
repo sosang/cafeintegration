@@ -52,6 +52,7 @@ public class PurchaseController {
 		purchaseList.setItemName(item.getItemName());
 		purchaseList.setNumOfProduct(cartNumOfProduct);
 		purchaseList.setPrice(price);
+		purchaseList.setPhoto(item.getPhoto());
 
 		ModelAndView modelAndView = new ModelAndView("purchase/purchaseDirect");
 		modelAndView.addObject("purchaseLine", purchaseList);
