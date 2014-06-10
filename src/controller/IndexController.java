@@ -26,12 +26,4 @@ public class IndexController {
 	}
 	
 	
-	
-	@RequestMapping("connectorServlet")
-	public String connector(){
-		System.out.println("여기");
-		return "/WEB-INF/classes/com/ckfinder/connector/ConnectorServlet.java?command=QuickUpload&type=Images";
-	}
-
-	
 }

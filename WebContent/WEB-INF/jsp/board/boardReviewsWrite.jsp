@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
+<%@ taglib uri="http://cksource.com/ckfinder" prefix="ckfinder" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
-    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',customConfig: 'WebContent/ckeditor/ckwriter.js'});
+    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3'});
 };
 </script>
 </head>

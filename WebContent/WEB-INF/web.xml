@@ -19,24 +19,23 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <servlet>
-		<servlet-name>ConnectorServlet</servlet-name>
-		<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
-		<init-param>
-			<param-name>XMLConfig</param-name>
-			<param-value>/WEB-INF/config.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>debug</param-name>
-			<param-value>false</param-value>
-		</init-param>
-	</servlet>
-  <servlet-mapping>
-		<servlet-name>ConnectorServlet</servlet-name>
-		<url-pattern>
-			/cafeintegration/ckfinder/core/connector/java/connector.java
-		</url-pattern>
-  </servlet-mapping>
+<!-- 여기 -->
+<servlet>
+	<servlet-name>ConnectorServlet</servlet-name>
+	<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+	<init-param>
+		<param-name>XMLConfig</param-name>
+		<param-value>/WEB-INF/config.xml</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+	<servlet-name>ConnectorServlet</servlet-name>
+	<url-pattern>
+		/ckfinder/core/connector/java/connector.java
+	</url-pattern>
+</servlet-mapping>
+
   <filter>
 		<filter-name>FileUploadFilter</filter-name>
 		<filter-class>com.ckfinder.connector.FileUploadFilter</filter-class>
@@ -52,7 +51,7 @@
 	<filter-mapping>
 		<filter-name>FileUploadFilter</filter-name>
 		<url-pattern>
-			/cafeintegration/ckfinder/core/connector/java/connector.java
+			 /cafeintegration/ckfinder/core/connector/java/connector.java
      	 </url-pattern>
 	</filter-mapping>
 	<session-config>
@@ -61,6 +60,7 @@
 	<welcome-file-list>
 		<welcome-file>welcome.html</welcome-file>
 	</welcome-file-list>
+<!-- 여기 -->
   <servlet>
     <servlet-name>cafeintegration</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

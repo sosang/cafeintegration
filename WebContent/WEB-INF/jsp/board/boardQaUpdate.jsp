@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
+<%@ taglib uri="http://cksource.com/ckfinder" prefix="ckfinder" %>
 <!DOCTYPE html>
 <html>
 <head>
