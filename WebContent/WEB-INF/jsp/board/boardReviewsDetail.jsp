@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td height="40px" width="80">내용</td>
-				<td width="800" colspan="2"><img src="${SFPT.filePath}"><br>
+				<td width="800" colspan="2"><br>
 				${boardReviews.contentRev}</td>
 			</tr>
 			<tr>

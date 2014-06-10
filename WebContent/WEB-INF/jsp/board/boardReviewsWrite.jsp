@@ -29,24 +29,6 @@ window.onload=function(){
 					<td>내  용</td>
 					<td><textarea id="contents" name="contentRev" rows="10" cols="100" ></textarea></td>
 				</tr>
-				<tr>
-				<td>
-				</td>
-				<td colspan="2"><font color="red">*사진파일만 등록가능</font></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td colspan="2">사진 : <input type="file" name="filePath">
-					</td>
-				</tr>
-				<!-- <tr>
-					<td></td>
-					<td colspan="2">사진2 : <input type="file" name="filePath2"></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td colspan="2">사진3 : <input type="file" name="filePath3"></td>
-				</tr> -->
 			</table>
 			<br>
  
