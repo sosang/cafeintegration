@@ -23,30 +23,18 @@
 						<td>상품갯수</td>
 						<td>소계</td>
 					</tr>
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${indirect=='indirect'}"> --%>
-							<c:forEach items="${purchaseLine }" var="itemSet">
-								<tr>
-									<td><c:out value="${itemSet.itemName }" /></td>
-									<td><c:out value="${itemSet.price }" /></td>
-									<td><c:out value="${itemSet.cartNumOfProduct }" /></td>
-									<td><c:out
-											value="${itemSet.price*itemSet.cartNumOfProduct}" />원</td>
-								</tr>
-							</c:forEach>
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 							<tr> -->
-<%-- 								<td>${purchaseLine.itemName }</td> --%>
-<%-- 								<td>${purchaseLine.price }</td> --%>
-<%-- 								<td>${purchaseLine.numOfProduct }</td> --%>
-<%-- 								<td>${purchaseLine.price*purchaseLine.numOfProduct }</td> --%>
-<!-- 							</tr> -->
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
+
+					<c:forEach items="${purchaseLine }" var="itemSet">
+						<tr>
+							<td><c:out value="${itemSet.itemName }" /></td>
+							<td><c:out value="${itemSet.price }" /></td>
+							<td><c:out value="${itemSet.cartNumOfProduct }" /></td>
+							<td><c:out value="${itemSet.price*itemSet.cartNumOfProduct}" />원</td>
+						</tr>
+					</c:forEach>
+
 					<tr>
-						<td><br> <input type="hidden" name="userEmail"
-							value="cafe4"><br></td>
+						<td><br> <br></td>
 					<tr>
 					<tr>
 						<td colspan="4">2.주문자정보</td>

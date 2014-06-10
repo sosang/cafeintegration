@@ -1,109 +1,137 @@
 package logic;
 
-import java.io.Serializable;
-
-public class MemberVo implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class MemberVo {
 
 	private String userEmail;
 	private String userPasswd;
 	private String userAlias;
-	private String userPhone1;
-	private String userPhone2;
-	private String userPhone3;
+
+	private String userFirstPhone;
+	private String userMidPhone;
+	private String userLastPhone;
+
 	private String userPostcode;
-	private String userAddress1;
-	private String userAddress2;
+
+	private String userBasicAddress;
+	private String userDetailAddress;
+
 	private int userLevel;
 	private int userPoint;
+
 	private int userNumOfArticle;
 	private int userNumOfReply;
 	private int userNumOfPractice;
+
 	public String getUserEmail() {
 		return userEmail;
 	}
+
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+
 	public String getUserPasswd() {
 		return userPasswd;
 	}
+
 	public void setUserPasswd(String userPasswd) {
 		this.userPasswd = userPasswd;
 	}
+
 	public String getUserAlias() {
 		return userAlias;
 	}
+
 	public void setUserAlias(String userAlias) {
 		this.userAlias = userAlias;
 	}
-	public String getUserPhone1() {
-		return userPhone1;
+
+	public String getUserFirstPhone() {
+		return userFirstPhone;
 	}
-	public void setUserPhone1(String userPhone1) {
-		this.userPhone1 = userPhone1;
+
+	public void setUserFirstPhone(String userFirstPhone) {
+		this.userFirstPhone = userFirstPhone;
 	}
-	public String getUserPhone2() {
-		return userPhone2;
+
+	public String getUserMidPhone() {
+		return userMidPhone;
 	}
-	public void setUserPhone2(String userPhone2) {
-		this.userPhone2 = userPhone2;
+
+	public void setUserMidPhone(String userMidPhone) {
+		this.userMidPhone = userMidPhone;
 	}
-	public String getUserPhone3() {
-		return userPhone3;
+
+	public String getUserLastPhone() {
+		return userLastPhone;
 	}
-	public void setUserPhone3(String userPhone3) {
-		this.userPhone3 = userPhone3;
+
+	public void setUserLastPhone(String userLastPhone) {
+		this.userLastPhone = userLastPhone;
 	}
+
 	public String getUserPostcode() {
 		return userPostcode;
 	}
+
 	public void setUserPostcode(String userPostcode) {
 		this.userPostcode = userPostcode;
 	}
-	public String getUserAddress1() {
-		return userAddress1;
+
+	public String getUserBasicAddress() {
+		return userBasicAddress;
 	}
-	public void setUserAddress1(String userAddress1) {
-		this.userAddress1 = userAddress1;
+
+	public void setUserBasicAddress(String userBasicAddress) {
+		this.userBasicAddress = userBasicAddress;
 	}
-	public String getUserAddress2() {
-		return userAddress2;
+
+	public String getUserDetailAddress() {
+		return userDetailAddress;
 	}
-	public void setUserAddress2(String userAddress2) {
-		this.userAddress2 = userAddress2;
+
+	public void setUserDetailAddress(String userDetailAddress) {
+		this.userDetailAddress = userDetailAddress;
 	}
+
 	public int getUserLevel() {
 		return userLevel;
 	}
+
 	public void setUserLevel(int userLevel) {
 		this.userLevel = userLevel;
 	}
+
 	public int getUserPoint() {
 		return userPoint;
 	}
+
 	public void setUserPoint(int userPoint) {
 		this.userPoint = userPoint;
 	}
+
 	public int getUserNumOfArticle() {
 		return userNumOfArticle;
 	}
+
 	public void setUserNumOfArticle(int userNumOfArticle) {
 		this.userNumOfArticle = userNumOfArticle;
 	}
+
 	public int getUserNumOfReply() {
 		return userNumOfReply;
 	}
+
 	public void setUserNumOfReply(int userNumOfReply) {
 		this.userNumOfReply = userNumOfReply;
 	}
+
 	public int getUserNumOfPractice() {
 		return userNumOfPractice;
 	}
+
 	public void setUserNumOfPractice(int userNumOfPractice) {
 		this.userNumOfPractice = userNumOfPractice;
 	}
-
 
 }

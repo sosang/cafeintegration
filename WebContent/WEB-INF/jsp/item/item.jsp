@@ -18,7 +18,7 @@
 	<div class="topblock">
 	<p>Coffee Bean</p>
 	</div>
-	<div align="center" class="row">
+	<div align="center" id="rownew">
 		<c:forEach items="${itemList }" var="item">
 			<div class="block"
 				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"

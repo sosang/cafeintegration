@@ -1,6 +1,7 @@
-.row {
-	width: 100%;
+#rownew {
+	width: 70%;
 	margin: 0 auto;
+	height: 400px;
 }
 .topblock{
 	height: 100px;

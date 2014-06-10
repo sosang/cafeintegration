@@ -63,6 +63,8 @@
 
 						<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
 								접속됨</font> </span>
+								<a href="../mypage/mypage.html"
+							class="btn btn-warning ">MyPage</a>
 						<a href="../login/logout.html"
 							class="btn btn-primary login-button">Logout</a>
 

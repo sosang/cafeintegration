@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import logic.CartVo;
 import logic.ItemVo;
+import logic.MemberVo;
 import logic.PurchaseListVo;
 import logic.Shop;
 
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import utils.WebConstants;
+
 @Controller
 public class PurchaseController {
 
@@ -23,8 +26,12 @@ public class PurchaseController {
 	private Shop shopService;
 
 	@RequestMapping(value = "/purchase/purchaseCart")
-	public ModelAndView purchase(HttpSession session, String userEmail) {
-
+	public ModelAndView purchase(HttpSession session) {
+		
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
+		
 		List<CartVo> cartVo = this.shopService.getCartList(userEmail);
 
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -38,7 +45,7 @@ public class PurchaseController {
 
 	@RequestMapping(value = "/purchase/purchaseDirect")
 	public ModelAndView purchasedirect(Integer itemNo, Integer price,
-			Integer cartNumOfProduct, String userEmail, HttpSession session) {
+			Integer cartNumOfProduct,  HttpSession session) {
 		ItemVo item = this.shopService.getItemByItemNo(itemNo);
 
 		PurchaseListVo purchaseList = new PurchaseListVo();

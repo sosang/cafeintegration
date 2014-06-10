@@ -4,6 +4,8 @@ import javax.sql.DataSource;
 
 
 
+
+
 import logic.MemberVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +18,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MemberDaoImpl implements MemberDao {
 
-//	사용자 이메일 및 비밀번호 체크
+
 	private static final String SELECT_BY_USEREMAIL_PASSWD = "SELECT * from member where user_email=? AND user_passwd=?";
 
-//	신규 사용자 계정 생성
+
 	private static final String INSERT = "INSERT INTO member (user_email, user_passwd, user_alias, user_phone1,user_phone2,user_phone3, user_postcode, user_address1, user_address2)"
 			+ " VALUES(:userEmail, :userPasswd, :userAlias, :userPhone1,:userPhone2,:userPhone3, :userPostcode, :userAddress1, :userAddress2)";
 
-//	이메일 중복 체크용
+
+	
+	
 	private static final String CHECK_USER_EMAIL = "SELECT count(*) from member where user_email=?";
 
 	private SimpleJdbcTemplate template;
@@ -53,5 +57,13 @@ public class MemberDaoImpl implements MemberDao {
 	public int checkUserEmail(String userEmail) {
 		return this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
 	}
+
+
+	@Override
+	public MemberVo findmember(String userEmail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

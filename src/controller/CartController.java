@@ -8,12 +8,16 @@ import javax.servlet.http.HttpSession;
 
 import logic.CartVo;
 import logic.ItemVo;
+import logic.MemberVo;
 import logic.Shop;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import utils.WebConstants;
 
 @Controller
 public class CartController {
@@ -22,9 +26,13 @@ public class CartController {
 
 	@RequestMapping(value = "/cart/cartAdd")
 	public ModelAndView add(Integer itemNo, Integer price,
-			Integer cartNumOfProduct, String userEmail, HttpSession session) {
+			Integer cartNumOfProduct, HttpSession session) {
 		ItemVo selectedItem = this.shopService.getItemByItemNo(itemNo);
 
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		
+		String userEmail = userKey.getUserEmail();
 		Integer cartSubTotal = price * cartNumOfProduct;
 
 		CartVo cart = new CartVo();
@@ -42,15 +50,17 @@ public class CartController {
 		model.put("cart", cartVo);
 
 		ModelAndView modelAndView = new ModelAndView("cart/cart");
-		modelAndView.addObject("message", selectedItem.getItemName() + "을(를)"
-				+ cartNumOfProduct + "개 카트에 추가했습니다.");
+
 		modelAndView.addAllObjects(model);
 		return modelAndView;
+
 	}
 
 	@RequestMapping(value = "/cart/cartClear")
-	public ModelAndView clear(HttpSession session, String userEmail) {
-
+	public ModelAndView clear(HttpSession session) {
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
 		this.shopService.clearCart(userEmail);
 
 		ModelAndView modelAndView = new ModelAndView("cart/cart");

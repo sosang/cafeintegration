@@ -23,80 +23,156 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<div class="body">
+	<c:choose>
 
-		<table class="tblock">
-			<tr>
-				<td><img src="../img/${item.photo}"></td>
-				<td align="center">
-					<table>
-						<tr height="50">
+		<c:when test="${userEmail ne null }">
+			<%@ include file="/WEB-INF/jsp/header.jsp"%>
+			<div class="body">
 
-							<td width="160">${item.itemName}</td>
-						</tr>
-						<tr height="50">
+				<table class="tblock">
+					<tr>
+						<td><img src="../img/${item.photo}"></td>
+						<td align="center">
+							<table>
+								<tr height="50">
 
-							<td width="160">${item.origin }</td>
-						</tr>
-						<tr height="50">
+									<td width="160">${item.itemName}</td>
+								</tr>
+								<tr height="50">
 
-							<td width="160">${item.price}원</td>
-						</tr>
-						<tr height="50">
+									<td width="160">${item.origin }</td>
+								</tr>
+								<tr height="50">
 
-							<td width="160">${item.itemInfo}</td>
-						</tr>
-						<tr height="50">
+									<td width="160">${item.price}원</td>
+								</tr>
+								<tr height="50">
 
-							<td width="160">${item.roastingLevel }</td>
-						</tr>
-						<tr height="50">
+									<td width="160">${item.itemInfo}</td>
+								</tr>
+								<tr height="50">
 
-							<td width="160"><fmt:formatDate value="${item.roastingDate}"
-									pattern="yyyy-MM-dd" /></td>
-						</tr>
-						<tr height="50">
+									<td width="160">${item.roastingLevel }</td>
+								</tr>
+								<tr height="50">
 
-							<td width="160">${item.processing}</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center" width="230">
-								<form name="test_form">
-									<input type="hidden" name="itemNo" value="${item.itemNo }">
-									<input type="hidden" name="price" value="${item.price }">
-									<input type="hidden" name="userEmail" value="cafe4">
+									<td width="160"><fmt:formatDate
+											value="${item.roastingDate}" pattern="yyyy-MM-dd" /></td>
+								</tr>
+								<tr height="50">
 
-									<table>
-										<tr>
-											<td><select name="cartNumOfProduct">
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
-													<option value="7">7</option>
-													<option value="8">8</option>
-													<option value="9">9</option>
-											</select>&nbsp;개</td>
-											<td><input type="button" value="장바구니"
-												class="btn btn-primary" onclick="submitForm1()"> <input
-												type="button" class="btn btn-primary" value="바로구매"
-												onclick="submitForm2()"></td>
-										</tr>
-									</table>
-								</form>
-						</tr>
-						<tr>
-							<td colspan="2" align="center" width="240"><a
-								href="../item/item.html">ㅁ 상품목록으로 돌아가기</a></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+									<td width="160">${item.processing}</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" width="230">
+										<form name="test_form">
+											<input type="hidden" name="itemNo" value="${item.itemNo }">
+											<input type="hidden" name="price" value="${item.price }">
+											<!-- 									<input type="hidden" name="userEmail" value="cafe4"> -->
+
+											<table>
+												<tr>
+													<td><select name="cartNumOfProduct">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+															<option value="6">6</option>
+															<option value="7">7</option>
+															<option value="8">8</option>
+															<option value="9">9</option>
+													</select>&nbsp;개</td>
+													<td width="150px"><input type="button" value="장바구니"
+														class="btn btn-warning" onclick="submitForm1()"> <input
+														type="button" class="btn btn-danger" value="바로구매"
+														onclick="submitForm2()"><input type="button"
+														value="상품목록" class="btn btn-link"
+														onclick="location.href='../item/item.html'"></td>
+												</tr>
+											</table>
+										</form>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		</c:when>
+		<c:when  test="${userEmail == null }">
+		<%@ include file="/WEB-INF/jsp/header.jsp"%>
+			<div class="body">
+
+				<table class="tblock">
+					<tr>
+						<td><img src="../img/${item.photo}"></td>
+						<td align="center">
+							<table>
+								<tr height="50">
+
+									<td width="160">${item.itemName}</td>
+								</tr>
+								<tr height="50">
+
+									<td width="160">${item.origin }</td>
+								</tr>
+								<tr height="50">
+
+									<td width="160">${item.price}원</td>
+								</tr>
+								<tr height="50">
+
+									<td width="160">${item.itemInfo}</td>
+								</tr>
+								<tr height="50">
+
+									<td width="160">${item.roastingLevel }</td>
+								</tr>
+								<tr height="50">
+
+									<td width="160"><fmt:formatDate
+											value="${item.roastingDate}" pattern="yyyy-MM-dd" /></td>
+								</tr>
+								<tr height="50">
+
+									<td width="160">${item.processing}</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" width="230">
+										<form name="test_form">
+											<input type="hidden" name="itemNo" value="${item.itemNo }">
+											<input type="hidden" name="price" value="${item.price }">
+											<!-- 									<input type="hidden" name="userEmail" value="cafe4"> -->
+
+											<table>
+												<tr>
+													<td><select name="cartNumOfProduct">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+															<option value="6">6</option>
+															<option value="7">7</option>
+															<option value="8">8</option>
+															<option value="9">9</option>
+													</select>&nbsp;개</td>
+													<td width="150px"><input type="button" value="로그인"
+														class="btn btn-warning" onclick="location.href='../login/login.html'"> </td>
+												</tr>
+											</table>
+										</form>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		</c:when>
+	</c:choose>
 </body>
 </html>

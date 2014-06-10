@@ -1,0 +1,28 @@
+
+.carttable {
+	counter-reset: number 0;
+
+}
+
+.carttable td {
+
+	padding: 10px;
+	margin: 5px;
+}
+
+.carttable #centerid{
+	text-align: center;
+}
+
+.carttable th {
+	height: 50px;
+	text-align: center;
+	padding: 10px;
+	margin:5px;
+	border-bottom: 1px solid black;
+}
+
+.carttable h5:before {
+	counter-increment: number;
+	content: counter(number) "";
+}

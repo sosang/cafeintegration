@@ -34,6 +34,12 @@ public class MemberCatalogImpl implements MemberCatalog {
 		return this.memberDao.checkUserEmail(userEmail);
 	}
 
+	@Override
+	public MemberVo getMember(String userEmail) {
+		// TODO Auto-generated method stub
+		return this.memberDao.findmember(userEmail);
+	}
+
 
 
 
