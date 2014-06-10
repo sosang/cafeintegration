@@ -47,7 +47,7 @@
 		<p style="text-align: center">------------------------------</p>
 
 		<p style="text-align: center">
-			<input type="button" value="정보 수정" class="btn btn-primary">
+				<input type="button" value="정보 수정" class="btn btn-primary" onclick="location.href='../memberentrychange/memberEntryChange.html'">
 		</p>
 	</div>
 

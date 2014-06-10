@@ -39,4 +39,6 @@ public interface Shop {
 	MemberVo memberInfo(String userEmail);
 	MemberVo lookingForPwdByInquiry(String userEmail, String passwdInquiry,
 			String passwdAnswer);// 비번찾긔
+	
+	void updateMember(MemberVo memberVo, String userEmail);
 }

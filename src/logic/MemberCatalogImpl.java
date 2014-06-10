@@ -68,4 +68,11 @@ public class MemberCatalogImpl implements MemberCatalog {
 		return this.memberDao.lookingForPwd(userEmail, passwdInquiry, passwdAnswer);
 	}
 
+	@Override
+	public void updateMember(MemberVo memberVo, String userEmail) {
+		// TODO Auto-generated method stub
+		this.memberDao.changeInfo(memberVo, userEmail);
+		
+	}
+
 }

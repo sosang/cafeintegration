@@ -81,6 +81,8 @@ public class PurchaseController {
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
 		String userEmail = userKey.getUserEmail();
+		
+		
 
 		List<CartVo> cartList = new ArrayList<CartVo>();
 		try {
@@ -94,11 +96,17 @@ public class PurchaseController {
 
 		}
 
+		
+		MemberVo user = this.shopService.memberInfo(userEmail);
+		Map<String, Object> model2 = new HashMap<String, Object>();
+		model2.put("myinfo", user);
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("mycartitem", cartList);
 
 		ModelAndView modelAndView = new ModelAndView("purchase/purchaseDirect2");
 		modelAndView.addAllObjects(model);
+		modelAndView.addAllObjects(model2);
 		return modelAndView;
 	}
 
