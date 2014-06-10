@@ -10,7 +10,7 @@
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
-    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',customConfig: '/cafeintegration/ckeditor/ckwriter.js'});
+    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',customConfig: 'WebContent/ckeditor/ckwriter.js'});
 };
 </script>
 </head>

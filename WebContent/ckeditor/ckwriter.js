@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-	config.language = 'kr';
+	config.language = 'ko';
 
 // Remove some buttons, provided by the standard plugins, which we don't
 	// need to have in the Standard(s) toolbar.
@@ -40,82 +40,6 @@ CKEDITOR.editorConfig = function( config ) {
 ];
 
 config.toolbar = 'WriteToolBar';
-
-CKEDITOR.on( 'dialogDefinition', function( ev ) {
-  var tab, field, dialogName = ev.data.name,
-      dialogDefinition = ev.data.definition;
-  var timerVal = null;
-  var defaultImageSize = 550;
-
-  var infoTab; 
-  
-  
-  function timeoutHander()
-	{
-	  	//������ ���� info�̸� 
-		var dialog = CKEDITOR.dialog.getCurrent();
-		var img = new Image();
-		//var img1 = new Image();
-		var url = dialog.getValueOf('info','txtUrl');			
-	  	img.src = url; // �̹��� ����
-	  	//alert(img.src);
-	  	if(img.width > 0 && img.height > 0)
-	  	{
-	  		var width = dialog.getValueOf('info','txtWidth');
-	  		var height = dialog.getValueOf('info','txtHeight');
-	  		clearInterval(timerVal);
-	  			  		
-	  		if(defaultImageSize > img.width)
-	  			dialog.setValueOf('info','txtWidth',img.width);
-	  		if(defaultImageSize <= img.width)
-	  		{
-	  		  var ratio = defaultImageSize/img.width;	  		
-	  		  dialog.setValueOf('info','txtWidth',parseInt(img.width*ratio));
-	  		  dialog.setValueOf('info','txtHeight',parseInt(img.height*ratio));
-	  		}
-	  		
-	  		img = null;
-	  	}
-	  	else	  		
-	  	img = null;
-  	
-	}
-
-  if( dialogName == 'image' )
-  { 
-
-	
-	infoTab = dialogDefinition.getContents( 'info' );
-	txtWidth = infoTab.get( 'txtWidth' );
-    txtWidth['default'] = defaultImageSize;
-    //link tab remove
-    dialogDefinition.removeContents('link');
-    //advanced tab remove
-    dialogDefinition.removeContents('advanced');
- 
-	
-	dialogDefinition.onLoad = function()
-	{
-			
-		 this.selectPage('Upload');
-		
-		var dialog = CKEDITOR.dialog.getCurrent();		
-		
-		dialog.on( 'selectPage', function( ev ) {
-			
-			//alert(ev.data.page);
-			if(ev.data.page =='info')
-			{				
-	        	timerVal = setInterval(timeoutHander,100);        				       	
-			}			
-		});	
-	}
-  }  //if( dialogName == 'image' )
-	
-	
-  
-});
-
 };
 
 
