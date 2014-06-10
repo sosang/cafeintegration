@@ -32,8 +32,7 @@
 					</tr>
 
 					<tr>
-						<td><br> <input type="hidden" name="userEmail"
-							value="cafe4"><br></td>
+						<td><br> <br>	</td>
 					<tr>
 					<tr>
 						<td colspan="4">2.주문자정보</td>

@@ -36,10 +36,11 @@
 				<td width="10%">
 					<input type="hidden" name="bdNoRevComments"
 						value="${comments.bdNoRevComments}" />
-					<img id="checkPass"
-						src="<%=request.getContextPath() %>/images/icon/x.png"
+					<%-- <img id="checkPass"
+						src="<%=request.getContextPath() %>/images/icon/xIcon.png"
 						onclick="reallyRev(${comments.bdNoRevComments})" class="pointer"
-						width="30" height="30">
+						width="20" height="20"> --%>
+						<button class="btn" onclick="reallyRev(${comments.bdNoRevComments})">Delete</button>
 				</td></c:if>
 		</tr>
 		

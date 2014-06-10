@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +20,11 @@ import logic.Shop;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import utils.WebConstants;
 
 
 @Controller
@@ -36,10 +36,9 @@ public class ItemController  {
 	@RequestMapping
 	public ModelAndView item(HttpSession session) {
 		// TODO Auto-generated method stub
-		
-		
+	
 		List<ItemVo> itemList = this.shopService.getItemList();
-		
+
 		Map<String, Object> model = new HashMap<String,Object>();
 
 		

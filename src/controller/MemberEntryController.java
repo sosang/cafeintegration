@@ -29,9 +29,6 @@ public class MemberEntryController {
 	@Autowired
 	private PostcodeCatalog postcodeCatalog;
 
-	/*@Autowired
-	private MemberEntryValidator memberEntryValidator;
-	*/
 	@Autowired
 	private MessageSource messageSource;
 
@@ -80,7 +77,7 @@ public class MemberEntryController {
 
 		}
 		catch(DataIntegrityViolationException e){
-			//유저 Email 중복 시, 폼을 송신한 곳으로 이동
+
 			bindingResult.reject("error.duplicate.memberVo");
 			modelAndView.getModel().putAll(bindingResult.getModel());
 			return modelAndView;

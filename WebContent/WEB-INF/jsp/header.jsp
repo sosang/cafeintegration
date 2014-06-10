@@ -20,17 +20,18 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<div id="logo">
+		<!-- <div id="logo">
 			<a href="../index/index.html"><img src="../images/cafe_logo.png"
 				class="logo img-responsive"></a>
-		</div>
+		</div> -->
 		<nav class="collapse navbar-collapse bs-navbar-collapse"
 			role="navigation">
 
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="../index/index.html">홈으로</a></li>
+				<li ><a href="../index/index.html" style="padding: 5px"><img  src="../images/cafe_logo.png"
+				class="logo img-responsive" width="70" height="70"></a></li>
 				<li><a href="#">about</a></li>
-				<li><a href="../cart/cart.html">구매</a></li>
+				<li><a href="../item/item.html">구매</a></li>
 				<li><a href="#">체험</a></li>
 				<li class="dropdown"><a href="" class="dropdown-toggle"
 					data-toggle="dropdown">게시판 <b class="caret"></b></a>
@@ -54,6 +55,7 @@
 
 							<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
 									접속됨</font> </span>
+									<a href="../mypage/mypage.html" class="btn btn-warning" >MyPage</a>
 							<a href="../login/logout.html"
 								class="btn btn-primary login-button">Logout</a>
 

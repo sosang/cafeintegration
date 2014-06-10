@@ -13,7 +13,7 @@
 		<table class="tableType">
 			<tr>
 			
-				<th height="40px" width="10%">제목</th>
+				<th height="40px"  width="10%">제목</th>
 				<td width="60%">${boardQa.titleQa}</td>
 				<th align="right" width="10%">조회수</th>
 				<td width="20%">${boardQa.countQa }</td>

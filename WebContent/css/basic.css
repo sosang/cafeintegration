@@ -87,7 +87,7 @@ span{color:red;}
 	text-align : center;
 	background-color: #e1e1e1;             /* #e1e1e1; 회색 */
 	font-weight: bold;
-	line-height: 5px; /* 높이 */
+								/* 	line-height: 5px; 높이  : 이걸 널경우 반응형 특히 모바일로 갈수록 글자가 겹치는 현상이 나타남 */
 	vertical-align: middle;
 }
 

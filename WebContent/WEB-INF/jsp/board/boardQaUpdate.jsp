@@ -36,11 +36,11 @@ window.onload = function(){
 		<h2>자유게시판 수정</h2>
 		<form name="form" method="post" action="boardQaUpdateForm.html?pageNo=${pageNo}">
 			<table>
-				<tr height="40px">
+				<tr height="40px" style="width: 10%">
 					<td>제  목</td>
-					<td><input type="text" name="titleQa" size="115" value="${boardQa.titleQa}"></td>
+					<td><input type="text" name="titleQa" size="80%" value="${boardQa.titleQa}"></td>
 				</tr>
-				<tr height="40px">
+				<tr height="40px" tyle="width: 60%">
 					<td>내  용</td>
 					<td><textarea id="content" name="contentQa" >${boardQa.contentQa}</textarea></td>
 				</tr>

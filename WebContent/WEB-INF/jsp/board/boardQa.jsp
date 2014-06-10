@@ -45,7 +45,7 @@ table.tableType tr td title{
 	<div align="center" class="body">
 		<h2>자유게시판</h2>
 		<c:if test="${empty USER_KEY}">
-	<br><b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
+	<b>To write --> <a href="../login/login.html">로그인</a></b>
 </c:if>
 		<c:if test="${!empty USER_KEY}">
 	<a style="text-align:right;" href="boardQaWriteBefore.html">글쓰기</a>
@@ -54,7 +54,7 @@ table.tableType tr td title{
 		<table border="1" class="tableType">
 			<tr>
 				<th align="center" width="5%">번호</th>
-				<th align="center" width="60%">제 목</th>
+				<th align="center" style="text-align: left;" width="60%">제 목</th>
 				<th align="center" width="10%">글쓴이</th>
 				<th align="center" width="15%">글쓴날</th>
 				<th align="center" width="10%">조회수</th>

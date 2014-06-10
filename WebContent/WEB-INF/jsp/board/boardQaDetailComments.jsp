@@ -28,7 +28,8 @@
 				<c:if test="${USER_KEY.userEmail == comments.userEmail }">
 			<td width="10%">
 					<input type="hidden" name="bdNoQaComments" value="${comments.bdNoQaComments}"/>
-					<img id="checkPass" src="<%=request.getContextPath() %>/images/icon/x.png" onclick="really(${comments.bdNoQaComments})" class="pointer" width="30" height="30">
+					<%-- <img id="checkPass" src="<%=request.getContextPath() %>/images/icon/xIcon.png" onclick="really(${comments.bdNoQaComments})" class="pointer" width="30" height="30"> --%>
+					<button class="btn" onclick="really(${comments.bdNoQaComments})">Delete</button>			
 			</td>
 				</c:if>
 		</tr>

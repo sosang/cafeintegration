@@ -6,11 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-
-
-
-
-
 import logic.CartVo;
 import logic.MemberVo;
 import logic.PurchaseListVo;
@@ -31,44 +26,53 @@ public class MypageController {
 
 	@RequestMapping(value = "/mypage/mypage")
 	public ModelAndView mypage(HttpSession session) {
-		MemberVo userKey = (MemberVo) session.getAttribute(WebConstants.USER_KEY);
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
 		String userEmail = userKey.getUserEmail();
+		String userPasswd = userKey.getUserPasswd();
 
 		List<PurchaseListVo> myPurchase = this.shopService
 				.mypagePurchase(userEmail);
 
-
+		MemberVo user = this.shopService.getMemberByUserEmailAndUserPasswd(
+				userEmail, userPasswd);
 
 		List<CartVo> myCart = this.shopService.getCartList(userEmail);
 
-		
-
 		Map<String, Object> model = new HashMap<String, Object>();
-	
+
 		Map<String, Object> model2 = new HashMap<String, Object>();
+
+		Map<String, Object> model3 = new HashMap<String, Object>();
+
+		model3.put("user", user);
 
 		model.put("mycart", myCart);
 
 		model2.put("mypurchase", myPurchase);
+
 		ModelAndView modelAndView = new ModelAndView("mypage/mypage");
 
 		modelAndView.addAllObjects(model);
 
 		modelAndView.addAllObjects(model2);
 
+		modelAndView.addAllObjects(model3);
 		return modelAndView;
 
 	}
 
 	@RequestMapping(value = "/mypage/mypageDelete")
 	public ModelAndView mypagedelete(HttpSession session, String[] checkCart) {
-
-		for (int i = 0; i < checkCart.length; i++) {
-			Integer a = Integer.parseInt(checkCart[i]);
-			System.out.println(a);
-			this.shopService.mypageCartclear(a);
+		try {
+			for (int i = 0; i < checkCart.length; i++) {
+				Integer a = Integer.parseInt(checkCart[i]);
+		
+				this.shopService.mypageCartclear(a);
+			}
+		} catch (Exception e) {
+			
 		}
-
 		ModelAndView modelAndView = new ModelAndView("mypage/mypage");
 
 		return modelAndView;

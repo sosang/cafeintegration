@@ -4,14 +4,61 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript">
+	function submitForm1() {
+		var form = document.forms['test_form'];
+		form.action = '../mypage/mypageDelete.html';
+		form.submit();
+	}
+	function submitForm2() {
+		var form = document.forms['test_form'];
+		form.action = '../purchase/purchaseDirect.html';
+		form.submit();
+	}
+</script>
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	회원정보
+	<table>
+		<tr height="40px">
+			<td>별명:</td>
+			<td><input type="text" value="${user.userAlias }"></td>
+		</tr>
+		<tr height="40px">
+			<td>전화번호</td>
+			<td><select name="userPhone">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="019">019</option>
+			</select> - <input type="text" maxlength="5" size="5"
+				value="${user.userPhone2 }" /> - <input type="text" maxlength="5"
+				size="5" value="${user.userPhone3 }" /></td>
+		</tr>
 
-	<form:form action="../mypage/mypageDelete.html">
+		<tr height="40px">
+			<td>우편번호:</td>
+			<td><input type="text" value="${user.userPostcode }"></td>
+		</tr>
+		<tr height="40px">
+			<td>기본주소:</td>
+			<td><input type="text" value="${user.userAddress1 }"></td>
+		</tr>
+		<tr height="40px">
+			<td>상세주소:</td>
+			<td><input type="text" value="${user.userAddress2 }"></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="정보변경"></td>
+		</tr>
+
+	</table>
+
+
+	<form name="test_form">
 		<table>
 			<tr>
 				<td colspan="2"><font color="green">내 카트</font></td>
@@ -38,8 +85,9 @@
 				<td colspan="2"><font color="green">결제내역</font></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="선택삭제"></td>
-				<td><input type="button" value="바로구매"></td>
+				<td><input type="button" value="선택삭제" class="btn btn-warning"
+					onclick="submitForm1()"> <input type="button"
+					class="btn btn-danger" value="바로구매" onclick="submitForm2()"></td>
 			</tr>
 			<tr>
 				<td>상품명</td>
@@ -53,11 +101,12 @@
 					<td><c:out value="${purchaseSet.itemName }" /></td>
 					<td><c:out value="${purchaseSet.price }" /></td>
 					<td><c:out value="${purchaseSet.numOfProduct }" /></td>
-				
+					<td><c:out
+							value="${purchaseSet.price*purchaseSet.numOfProduct }" /></td>
 				</tr>
 			</c:forEach>
 		</table>
-	</form:form>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	</form>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

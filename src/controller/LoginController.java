@@ -60,6 +60,7 @@ public class LoginController {
 
 			modelAndView.setViewName("index/index");
 			return modelAndView;
+			
 		} catch (EmptyResultDataAccessException e) {
 
 			bindingResult.reject("error.login.memberVo");

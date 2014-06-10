@@ -6,72 +6,101 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니</title>
-<style>
-.carttable {
-	counter-reset: number 0;
-	table-layout: auto;
-}
-
-.carttable td {
-	border: 1px solid black;
-	padding: 5px;
-}
-
-.carttable th {
-	height: 50px;
-	text-align: center;
-	padding: 5px;
-}
-.carttable h5:before{
-	counter-increment: number;
-        content: counter(number) "";
-}
-</style>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/CSScart.css">
 
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<div align="center" class="body">
-		<div class="cart">
+<%-- 	<c:choose> --%>
+<%-- 		<c:when test="${cart.userEmail!=null }"> --%>
+			<div align="center" class="body">
+				<div class="cart" style="height: 100%; width: 80%;  border: 0px;" >
 
-			<table  class="carttable" style="font: 30px;">
-				<tr>
-					<th colspan="2"><font color="green" size="20px">장바구니 상품 목록</font></th>
-				</tr>
-				<tr>
-					<th>번호</th>
-					<th>상품명</th>
-					<th>판매가</th>
-					<th>수량</th>
-					<th>소계</th>
-				</tr>
-
-
-				<c:forEach items="${cart }" var="itemSet">
-					<tr>
-					<td width="10"><h5></h5></td>
-						<td><img width="100px" height="50px" src="../img/${itemSet.photo }"> <c:out
-								value="${itemSet.itemName }" /></td>
-						<td><c:out value="${itemSet.price }" /></td>
-						<td><c:out value="${itemSet.cartNumOfProduct }" /></td>
-						<td><c:out value="${itemSet.cartSubTotal}" />원</td>
-					</tr>
-				</c:forEach>
-			</table>
-
-			<input type="submit" value="바로구매"
-				onclick="location.href='../purchase/purchaseCart.html?userEmail=cafe4&indirect=indirect'">
-			<input type="button" value="상품목록보기"
-				onclick="location.href='../item/item.html'"> <input
-				type="button" value="장바구니비우기"
-				onclick="location.href='../cart/cartClear.html?userEmail=cafe4'">
-
-		</div>
-		<br>
+					<table class="carttable" style="font: 30px;">
+						<tr>
+							<th colspan="7"><font color="green" size="14px">장바구니
+									상품 목록</font></th>
+						</tr>
+						<tr>
+							<th width=30></th>
+							<th>번호</th>
+							<th width="300">상품명</th>
+							<th width="150">판매가</th>
+							<th>수량</th>
+							<th width="150">소계</th>
+							<th width=30></th>
+						</tr>
 
 
-		<c:out value="${message }" />
-		<br>
-	</div>
+						<c:forEach items="${cart }" var="itemSet">
+							<tr>
+								<td></td>
+								<td id="centerid"><h5></h5></td>
+								<td><img width="80px" height="50px"
+									src="../img/${itemSet.photo }"> &nbsp;&nbsp;&nbsp;<c:out
+										value="${itemSet.itemName }" /></td>
+								<td id="centerid"><c:out value="${itemSet.price }" /></td>
+								<td id="centerid"><c:out
+										value="${itemSet.cartNumOfProduct }" /></td>
+								<td id="centerid"><c:out value="${itemSet.cartSubTotal}" />원</td>
+								<td></td>
+							</tr>
+						</c:forEach>
+					</table>
+
+					<input type="submit" value="바로구매" class="btn btn-danger"
+						onclick="location.href='../purchase/purchaseCart.html?indirect=indirect'">
+					<input type="button" value="장바구니비우기" class="btn btn-default"
+						onclick="location.href='../cart/cartClear.html'">
+					<input type="button" value="상품목록" class="btn btn-link"
+						onclick="location.href='../item/item.html'">
+
+				</div>
+
+			</div>
+<%-- 		</c:when> --%>
+
+<%-- 		<c:when test="${cart.userEmail==null }"> --%>
+
+
+<!-- 			<div align="center" class="body"> -->
+<%-- 				<form:form modelAttribute="memberVo" class="signin" method="post" --%>
+<%-- 					action="../login/login.html"> --%>
+<%-- 					<spring:hasBindErrors name="memberVo"> --%>
+<%-- 						<font color="red"> <c:forEach --%>
+<%-- 								items="${errors.globalErrors }" var="error"> --%>
+<%-- 								<spring:message code="${error.code}" /> --%>
+<%-- 							</c:forEach> --%>
+<!-- 						</font> -->
+<%-- 					</spring:hasBindErrors> --%>
+
+<!-- 					<table> -->
+
+<!-- 						<tr height="40px"> -->
+
+<%-- 							<td width="255px"><form:input path="userEmail" --%>
+<%-- 									class="form-control" placeholder="Email address" /> <font --%>
+<%-- 								color="red"><form:errors path="userEmail" /></font></td> --%>
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+
+<%-- 							<td><form:password path="userPasswd" class="form-control" --%>
+<%-- 									placeholder="Password" /> <font color="red"><form:errors --%>
+<%-- 										path="userPasswd" /></font></td> --%>
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td width="150px"><input type="submit" value="Login" -->
+<!-- 								class="btn btn-primary login-button form-control"></td> -->
+
+<!-- 						</tr> -->
+
+<!-- 					</table> -->
+
+<%-- 				</form:form> --%>
+<!-- 			</div> -->
+
+<%-- 		</c:when> --%>
+<%-- 	</c:choose> --%>
 </body>
 </html>

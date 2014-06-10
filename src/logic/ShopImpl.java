@@ -138,4 +138,10 @@ public class ShopImpl implements Shop {
 		return this.memberCatalog.getCheckedUserEmail(userEmail);
 	}
 
+	@Override
+	public MemberVo getMember(String userEmail) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.getMember(userEmail);
+	}
+
 }

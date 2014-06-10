@@ -11,6 +11,7 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery.cleditor.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquerytable.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#content").cleditor({
@@ -56,5 +57,6 @@ window.onload = function(){
 		<a href="boardQa.html?pageNo=1">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	
 </body>
 </html>

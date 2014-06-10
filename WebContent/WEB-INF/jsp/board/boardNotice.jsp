@@ -32,11 +32,11 @@ a.listtxt:hover {
 	<div align="center" class="body">
 		<h2>공지사항 테스트</h2>
 <c:if test="${articleList ne null }">
-		<table  border="1">
+		<table class="tableType"  border="1">
 			
 			<tr class="header">
 				<th align="center" width="15%">번호</th>
-				<th align="center" width="60%">제 목</th>
+				<th align="center" style="text-align: left;" width="60%">제 목</th>
 				<th align="center" width="15%">글쓴날</th>
 				<th align="center" width="10%">조회수</th>
 			</tr>
