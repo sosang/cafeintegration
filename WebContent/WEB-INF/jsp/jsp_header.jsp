@@ -15,6 +15,9 @@
 <!-- Bootstrap CDN css -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
+<!-- Font Awesome -->
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet"> 
+
 <!-- custom css -->
 
 <link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet">

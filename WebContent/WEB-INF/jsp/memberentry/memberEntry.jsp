@@ -27,14 +27,16 @@
 				<label>사용자 Email</label>
 				<form:input path="userEmail" type="email" cssClass="form-control"
 					id="userEmail" placeholder="email을 입력하세요."  />
-				<input type="button" class="button" value="중복확인" id="emailCheck" />
+				<a href="checkEmail.html"><input type="button" class="button" value="중복확인" onclick="emailCheckAjax()"/></a>
 				<span id="emailCheckResult">
-				<%-- 	<c:choose>
-						<c:when test="${isMember ne null}"> 이미 가입한 이메일입니다 <a
+				 	<c:choose>
+						<c:when test="${not empty userEmail}"> 이미 가입한 이메일입니다 <a
 								href="../login/login.html">로그인으로 이동 </a>
 						</c:when>
+						<c:when test = "${empty param.userEmail }">
+						</c:when>
 						<c:otherwise>반갑습니다. 멋진 이메일이네요.</c:otherwise>
-					</c:choose> --%>
+					</c:choose> 
 				</span>
 			</div>
 			<div id = "pwdDiv" class="form-horizontal input-size">
@@ -66,8 +68,8 @@
 						<form:option value="016" label="016" />
 						<form:option value="019" lable="019" />
 					</form:select> - <form:input path="userPhone2" cssClass="userPhone span12"
-						maxlength="5" size="5" id="userPhone2" onkeyup="moveFocus" /> - <form:input path="userPhone3" 
-						cssClass="userPhone span12" maxlength="5" size="5"/><font
+						maxlength="4" size="5" id="userPhone2" onkeyup="moveFocus" /> - <form:input path="userPhone3" 
+						cssClass="userPhone span12" maxlength="4" size="5"/><font
 					color="red"><form:errors path="userPhone3" /></font>
 					</div>
 			</div>

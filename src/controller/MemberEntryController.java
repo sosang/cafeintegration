@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import utils.WebConstants;
@@ -51,12 +52,20 @@ public class MemberEntryController {
 		return new MemberVo();
 	}
 	
-	@RequestMapping(value="checkEmail")
-	public MemberVo checkEmail(@RequestParam String userEmail){
+	@RequestMapping(value="checkEmailJson")
+	public @ResponseBody ModelAndView checkEmailJson(@RequestParam String userEmail){
 		System.out.println(userEmail);
-		MemberVo member = this.shopService.getCheckedUserEmail(userEmail);
 		
-		return member;	
+		
+		//userEmail 확인용 Json 파일생성
+		List<MemberVo> user = this.shopService.getCheckedUserEmail(userEmail);
+		
+		//모델 생성
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		ModelAndView mav = new ModelAndView();
+		model.put("userEmail", user);
+		return mav;	
 	}
 
 	@RequestMapping(method=RequestMethod.POST)

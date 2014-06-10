@@ -1,3 +1,30 @@
+ body
+    {
+        font-size: 15px; 
+    }
+    h1
+    {
+       font-size:25px;
+    }
+    h4
+    {
+    	font-size:15px;
+    }
+
+    @media (max-width: 768)
+    {
+       body
+       {
+           font-size: 10px; 
+       }
+       h1
+       {
+           font-size:12px;
+       }
+       h4{
+       		font-size:7px;
+       }
+    }
 .navbar {
 	padding: 0;
 	margin: 0;
@@ -41,34 +68,35 @@
 
 /* === carousel fade 효과 ==== */
 .carousel-fade .item {
-	-webkit-transition: opacity 2s;
-	-moz-transition: opacity 2s;
-	-ms-transition: opacity 2s;
-	-o-transition: opacity 2s;
-	transition: opacity 2s;
+	-webkit-transition: opacity 4s;
+	-moz-transition: opacity 4s;
+	-ms-transition: opacity 4s;
+	-o-transition: opacity 4s;
+	transition: opacity 4s;
 }
 
 .carousel-fade .active.left {
 	left: 0;
-	opacity: 2;
+	opacity: 0.5;
 	z-index: 2;
 }
 
 .carousel-fade .next {
 	left: 0;
-	opacity: 1;
+	opacity: 0.5;
 	z-index: 1;
 }
 
 /* ===== text 반응형으로 변화 ===== */
-h1{
-	font-size: 100%;
-}
 
-h4{
-	font-size: 100%;
-}
+ /*    h1 {
+        font-size: 1.0em;
+    }
 
+    h4 {
+        font-size: 0.6em;
+    }
+ */
 /* =======section 꾸미기======== */
 .right-banner{
   border: 1px solid #ffaaaa;

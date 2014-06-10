@@ -144,7 +144,7 @@ public class ShopImpl implements Shop {
 
 	
 	@Override
-	public MemberVo getCheckedUserEmail(String userEmail) {
+	public List<MemberVo> getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberCatalog.getCheckedUserEmail(userEmail);
 	}

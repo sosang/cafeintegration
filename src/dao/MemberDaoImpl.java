@@ -60,11 +60,12 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public MemberVo checkUserEmail(String userEmail) {
+	public List<MemberVo> checkUserEmail(String userEmail) {
 		RowMapper<MemberVo> mapper = new BeanPropertyRowMapper<MemberVo>(MemberVo.class);
-		
-		System.out.println(this.template.queryForObject(CHECK_USER_EMAIL,mapper, userEmail));
-		return this.template.queryForObject(CHECK_USER_EMAIL,mapper, userEmail);
+		List<MemberVo> user = null;
+		System.out.println(this.template.query(CHECK_USER_EMAIL,mapper, userEmail));
+		user = this.template.query(CHECK_USER_EMAIL,mapper, userEmail);
+		return user;
 	}
 
 
