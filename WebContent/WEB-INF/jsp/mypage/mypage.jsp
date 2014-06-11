@@ -37,6 +37,7 @@
 
 	<div id="myInfo"
 		style="width: 280px; height: 210px; border: solid 2px; margin: 50px; padding: 5px; float: left">
+<<<<<<< HEAD
 		<form name="out_form">
 			<p>
 				<img
@@ -55,6 +56,25 @@
 			</p>
 			<br>
 			<p style="text-align: center">------------------------------</p>
+=======
+		<p>
+			<img
+				src="http://th06.deviantart.net/fs71/PRE/f/2011/310/5/a/giant_nyan_cat_by_daieny-d4fc8u1.png"
+				width="40px" height="30px" style="float: left; margin: 5px"> <font
+				size="2">${user.userAlias }님</font><br> <font size="2">
+				cafe4.0에 오신것을 환영합니다.</font>
+		</p>
+		<p>
+			<i class="fa fa-mobile"></i> <font
+				size="2">${user.userPhone1 }-${user.userPhone2 }-${user.userPhone3 }</font>
+		</p>
+		<p>
+			<i class="fa fa-envelope-o"></i><font
+				size="2">${user.userEmail }</font>
+		</p>
+		<br>
+		<p style="text-align: center">------------------------------</p>
+>>>>>>> branch 'int' of https://github.com/sosang/cafeintegration.git
 
 			<p style="text-align: center">
 				<input type="button" value="정보 수정" class="btn btn-primary"
