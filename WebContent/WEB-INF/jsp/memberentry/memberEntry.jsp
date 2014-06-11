@@ -9,8 +9,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<%-- <!-- cart header -->
-<%@ include file="" %> --%>
+
 	<div id="memberEntryBox">
 		<h2 class="bg-info text-center" color="white">회원 가입</h2>
 

@@ -9,6 +9,7 @@
 <link href="<%=request.getContextPath()%>/css/post.css"
 	rel="stylesheet">
 </head>
+
 <body>
 	<div class="content" id="postTable">
 		<form action="postcode.html" method="post">

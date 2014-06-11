@@ -10,6 +10,7 @@
 <title>카페테스트</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <link href="<%=request.getContextPath() %>/css/index_style.css" rel="stylesheet">
+
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
