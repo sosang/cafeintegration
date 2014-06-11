@@ -60,6 +60,7 @@
 
 	<form name="test_form">
 		<table>
+		<tr><td colspan="4"><hr></td></tr>
 			<tr>
 				<td colspan="2"><font color="green">내 카트</font></td>
 			</tr>
@@ -81,14 +82,19 @@
 				</tr>
 			</c:forEach>
 
-			<tr>
-				<td colspan="2"><font color="green">결제내역</font></td>
-			</tr>
+
 			<tr>
 				<td><input type="button" value="선택삭제" class="btn btn-warning"
 					onclick="submitForm1()"> <input type="button"
 					class="btn btn-danger" value="바로구매" onclick="submitForm2()"></td>
 			</tr>
+		
+		<tr><td colspan="4"><hr></td></tr>
+		
+			<tr>
+				<td colspan="2"><font color="green">결제내역</font></td>
+			</tr>
+
 			<tr>
 				<td>상품명</td>
 				<td>가격</td>

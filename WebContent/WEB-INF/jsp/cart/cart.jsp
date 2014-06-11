@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니</title>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">
 
@@ -102,5 +103,6 @@
 
 <%-- 		</c:when> --%>
 <%-- 	</c:choose> --%>
+<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>
