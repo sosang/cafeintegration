@@ -45,7 +45,7 @@
 					<div class="alert alert-danger">
 						<h4>앗, 별에서 오신 고갱님???</h4>
 						</div>
-						<p>찾으시는 동네(<strong><c:out value="${param.eupmyeondong}"/></strong>)가 없나봐요. <br/>확인해보시고 다시 한 번 도전~!</p>
+						<p>찾으시는 "<strong><u><c:out value="${param.eupmyeondong}"/>동</u></strong>"은 없나봐요. <br/>확인해보시고 다시 한 번 도전~!</p>
 					
 				</c:otherwise>
 			</c:choose>
