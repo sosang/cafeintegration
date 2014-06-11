@@ -29,8 +29,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="../index/index.html">홈으로</a></li>
 				<li><a href="#">about</a></li>
-				<li><a href="../cart/cart.html">구매</a></li>
-				<li><a href="#">체험</a></li>
+				<li><a href="../item/item.html">구매</a></li>
 				<li class="dropdown"><a href="" class="dropdown-toggle"
 					data-toggle="dropdown">게시판 <b class="caret"></b></a>
 					<ul class="dropdown-menu">

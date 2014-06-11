@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 
 
+
 import logic.MemberVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,24 +61,26 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public MemberVo checkUserEmail(String userEmail) {
-		this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
-		System.out.println(this.template.queryForInt(CHECK_USER_EMAIL, userEmail));
-		return new MemberVo();
+	public List<MemberVo> checkUserEmail(String userEmail) {
+		RowMapper<MemberVo> mapper = new BeanPropertyRowMapper<MemberVo>(MemberVo.class);
+		List<MemberVo> user = null;
+		System.out.println(this.template.query(CHECK_USER_EMAIL,mapper, userEmail));
+		user = this.template.query(CHECK_USER_EMAIL,mapper, userEmail);
+		return user;
 	}
 
 
 	// 어드민용 총 가입자 수
 	private static final StringBuffer GET_TOTAL_COUNT = new StringBuffer("select count(*) from member");
-	
+
 	private Integer getTotalCount() {
 		// TODO Auto-generated method stub
 		return this.template.queryForInt(GET_TOTAL_COUNT.toString());
 	}
-	
+
 	// 어드민용 이달의 가입자 수
 	private static final StringBuffer GET_TOTAL_COUNT_BY_THIS_MONTH = new StringBuffer("select count(*) from member where substr(to_char(sysdate,'YYYYMMDD'),1,6) = substr(to_char(join_date,'YYYYMMDD'),1,6)");
-	
+
 	private Integer getTotalCountByThisMonth() {
 		// TODO Auto-generated method stub
 		return this.template.queryForInt(GET_TOTAL_COUNT_BY_THIS_MONTH.toString());
@@ -124,6 +127,13 @@ public class MemberDaoImpl implements MemberDao {
 
 		return memberList;
 	}
-	
+
+
+	@Override
+	public MemberVo findmember(String userEmail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

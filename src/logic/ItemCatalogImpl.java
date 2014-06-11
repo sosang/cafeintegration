@@ -17,7 +17,7 @@ import dao.ItemDao;
 
 @Service
 public class ItemCatalogImpl implements ItemCatalog {
-	
+
 	@Autowired
 	private ItemDao itemDao;
 
@@ -57,7 +57,7 @@ public class ItemCatalogImpl implements ItemCatalog {
 		// TODO Auto-generated method stub
 		this.itemDao.setItemImageFilePath(newItemNo, forDb);
 	}
-	
+
 	// 상품 내용 수정
 
 	@Override
@@ -86,7 +86,4 @@ public class ItemCatalogImpl implements ItemCatalog {
 		// TODO Auto-generated method stub
 		this.itemDao.deleteItem(itemNo);
 	}
-
-	
-
 }

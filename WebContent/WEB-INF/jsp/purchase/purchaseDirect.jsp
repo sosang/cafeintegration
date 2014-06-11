@@ -14,13 +14,15 @@
 	<div align="center" class="body">
 		<div class="purchase">
 			<form action="../end/end.html">
+
+
 				<table class="carttable" style="font: 30px;">
 					<tr>
 						<th colspan="7"><font color="green" size="14px">장바구니
 								상품 목록</font></th>
 					</tr>
 					<tr>
-
+						
 						<th>번호</th>
 						<th width="300">상품명</th>
 						<th width="150">판매가</th>
@@ -30,32 +32,25 @@
 					</tr>
 
 
-					<c:forEach items="${purchaseLine }" var="itemSet">
-						<tr>
 
-							<td id="centerid"><h5></h5></td>
-							<td><img width="80px" height="50px"
-								src="../img/${itemSet.photo }"> &nbsp;&nbsp;&nbsp;<c:out
-									value="${itemSet.itemName }" /></td>
-							<td id="centerid"><c:out value="${itemSet.price }" /></td>
-							<td id="centerid"><c:out
-									value="${itemSet.cartNumOfProduct }" /></td>
-							<td id="centerid"><c:out value="${itemSet.cartSubTotal}" />원</td>
-							<td></td>
-						</tr>
-					</c:forEach>
+					<tr>
+					
+						<td id="centerid"><h5></h5></td>
+						<td><img width="80px" height="50px"
+							src="../img/${purchaseLine .photo }"> &nbsp;&nbsp;&nbsp;<c:out
+								value="${purchaseLine.itemName }" /></td>
+						<td id="centerid"><c:out value="${purchaseLine.price }" /></td>
+						<td id="centerid"><c:out
+								value="${purchaseLine.numOfProduct }" /></td>
+						<td id="centerid"><c:out
+								value="${purchaseLine.price*purchaseLine.numOfProduct}" />원</td>
+						<td></td>
+					</tr>
 
 
 					<tr>
 						<td><br> <br></td>
 					<tr>
-					<tr>
-						<td colspan="4">주문합계</td>
-
-					</tr>
-					<tr>
-						<td><c:out value="${itemSet.cartSubTotal }" /></td>
-					</tr>
 					<tr>
 						<td colspan="4">1.주문자정보</td>
 					</tr>
@@ -102,14 +97,12 @@
 						<td>핸드폰번호</td>
 						<td><input type="text" name="recphone"></td>
 					</tr>
-
 					<tr>
 						<td>주소</td>
 						<td><input type="text" width="50pt" name="recaddr"></td>
 						<td colspan="2"><input type="text" width="50pt"
 							name="recaddr2"></td>
 					</tr>
-
 					<tr>
 						<td>배송메시지</td>
 						<td colspan="3"><textarea rows="5" cols="50"

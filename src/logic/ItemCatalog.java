@@ -20,5 +20,6 @@ public interface ItemCatalog {
 	String getFilePathTo(Integer itemNo);	// 상품 세부를 위한 파일경로
 
 	void delete(Integer itemNo);	// 상품 삭제
+
 	
 }

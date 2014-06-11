@@ -24,7 +24,8 @@ public interface Shop {
 	void mypageCartclear(Integer itemNo);
 	
 	List<PurchaseListVo> mypagePurchase(String userEmail);
-	MemberVo getCheckedUserEmail(String userEmail);	//userEmail 중복체크용
+	List<MemberVo> getCheckedUserEmail(String userEmail);	//userEmail 중복체크용
+	MemberVo getMember(String userEmail);
 	void itemReg(ItemVo itemVo);	// 아이템 등록
 	int getNewItemNo();	// 최신상품번호 얻기
 	void setFilePath(int newItemNo, String forDb);	// 상품 이미지 등록

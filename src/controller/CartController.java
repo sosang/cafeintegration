@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
@@ -11,15 +10,21 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
 import logic.CartVo;
-import logic.ItemVo;
+import logic.MemberVo;
 import logic.Shop;
+
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import utils.WebConstants;
 
 @Controller
 public class CartController {
@@ -28,48 +33,46 @@ public class CartController {
 
 	@RequestMapping(value = "/cart/cartAdd")
 	public ModelAndView add(Integer itemNo, Integer price,
-			Integer cartNumOfProduct, String userEmail, HttpSession session) {
-		ItemVo selectedItem = this.shopService.getItemByItemNo(itemNo);
-		
+			Integer cartNumOfProduct, HttpSession session) {
+
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+
+		String userEmail = userKey.getUserEmail();
 		Integer cartSubTotal = price * cartNumOfProduct;
-		
+
 		CartVo cart = new CartVo();
-		
+
 		cart.setCartNumOfProduct(cartNumOfProduct);
 		cart.setItemNo(itemNo);
 		cart.setUserEmail(userEmail);
 		cart.setCartSubTotal(cartSubTotal);
-		
+
 		this.shopService.entryCart(cart);
-		
+
 		List<CartVo> cartVo = this.shopService.getCartList(userEmail);
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("cart", cartVo);
 
-
-
-
-
 		ModelAndView modelAndView = new ModelAndView("cart/cart");
-		modelAndView.addObject("message", selectedItem.getItemName() + "¿ª(∏¶)"
-				+ cartNumOfProduct + "∞≥ ƒ´∆Æø° √ﬂ∞°«ﬂΩ¿¥œ¥Ÿ.");
+
 		modelAndView.addAllObjects(model);
 		return modelAndView;
+
 	}
 
 	@RequestMapping(value = "/cart/cartClear")
-	public ModelAndView clear(HttpSession session, String userEmail) {
-
+	public ModelAndView clear(HttpSession session) {
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
 		this.shopService.clearCart(userEmail);
 
 		ModelAndView modelAndView = new ModelAndView("cart/cart");
-		modelAndView.addObject("message", "ƒ´∆Æ∏¶ ∫Òø¸Ω¿¥œ¥Ÿ");
+		modelAndView.addObject("message", "√Ñ¬´√Ü¬Æ¬∏¬¶ ¬∫√±¬ø√º¬Ω√Ä¬¥√è¬¥√ô");
 
 		return modelAndView;
 	}
-	// this.shopService.entryCart(new CartItem(selectedItem,
-	// cartNumOfProduct,
-	// userEmail, cartSubTotal));
 
 }

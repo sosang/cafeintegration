@@ -1,31 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/CSSitem.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>구매목록</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<div align="center" class="body">
-		<h2>상품 목록 화면</h2>
-		<table border="1">
-			<tr class="header">
-				<th align="center" width="80">상품ID</th>
-				<th align="center" width="320">상품명</th>
-				<th align="center" width="100">가격</th>
-			</tr>
-			<c:forEach items="${itemList}" var="item">
-				<tr class="record">
-					<td align="center">${item.itemNo}</td>
-					<td align="left"><a href="../detail/detail.html?itemNo=${item.itemNo}">${item.itemName}</a></td>
-					<td align="right">${item.price}원</td>
-				</tr>
-			</c:forEach>
-		</table>
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	
+	<div class="topblock">
+	<p>Coffee Bean</p>
 	</div>
-<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<div align="center" id="rownew">
+		<c:forEach items="${itemList }" var="item">
+			<div class="block"
+				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"
+				style='cursor: pointer;'>
+				<ul>
+					<li><img src="../img/${item.photo }"></li>
+					<li><p>${item.itemName }</p></li>
+					<li><p>${item.price }</p></li>
+					<li><p>
+							<fmt:formatDate value="${item.roastingDate}" pattern="yyyy-MM-dd" /></li>
+				</ul>
+			</div>
+		</c:forEach>
+	</div>
 </body>
 </html>

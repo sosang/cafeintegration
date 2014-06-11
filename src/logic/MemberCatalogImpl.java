@@ -33,7 +33,7 @@ public class MemberCatalogImpl implements MemberCatalog {
 	}
 
 	@Override
-	public MemberVo getCheckedUserEmail(String userEmail) {
+	public List<MemberVo> getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberDao.checkUserEmail(userEmail);
 	}
@@ -45,7 +45,11 @@ public class MemberCatalogImpl implements MemberCatalog {
 		return this.memberDao.findAllMemberList(request, pageNo);
 	}
 
-
+	@Override
+	public MemberVo getMember(String userEmail) {
+		// TODO Auto-generated method stub
+		return this.memberDao.findmember(userEmail);
+	}
 
 
 

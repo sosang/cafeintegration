@@ -1,0 +1,11 @@
+.body img {
+	height: 600px;
+	width: 800px;
+	border: double 3px gray;
+	margin: 100px;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+	border-top-left-radius: 12px;
+}

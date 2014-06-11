@@ -5,8 +5,6 @@ import java.io.FileOutputStream;
 import java.util.HashMap;
 
 
-
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,7 +40,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ItemController  {
 	@Autowired
 	private Shop shopService;
-	
+
 	private FileOutputStream fos;
 
 
@@ -51,19 +48,20 @@ public class ItemController  {
 	@RequestMapping
 	public ModelAndView item(HttpSession session) {
 		// TODO Auto-generated method stub
+
 		List<ItemVo> itemList = this.shopService.getItemList();
 
 		Map<String, Object> model = new HashMap<String,Object>();
 
-		
+
 		model.put("itemList", itemList);
-		
+
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// 아이템 목록 불러오기
 	@RequestMapping("admin/itemList")
 	public ModelAndView itemList(HttpSession session) {
@@ -72,15 +70,15 @@ public class ItemController  {
 
 		Map<String, Object> model = new HashMap<String,Object>();
 
-		
+
 		model.put("itemList", itemList);
-		
+
 		ModelAndView modelAndView = new ModelAndView("admin/itemList");
 
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// 아이템 추가 객체 생성(제한 : 로그인 한 자)
 	@RequestMapping("/admin/itemRegBefore")
 	public ModelAndView itemRegBefore(HttpServletRequest request){
@@ -89,7 +87,7 @@ public class ItemController  {
 		modelAndView.addObject(new SaveFilePathTo());
 		return modelAndView;
 	}
-	
+
 //	// 후기게시판 파일 저장을 위한 페이지 생성
 	@RequestMapping("/admin/itemReg")
 	public ModelAndView boardReviewsWrite(@Valid ItemVo itemVo, BindingResult bindingResult, 
@@ -101,12 +99,12 @@ public class ItemController  {
 			ModelAndView modelAndView = new ModelAndView("admin/itemReg");
 			return modelAndView;
 		}
-		
+
 		// WAR파일로 뿌렷을 때
 		String uploadPath = "C:/Tomcat7/webapps/cafe/img";
 		// DB저장하기
 		String forDb = "../img/"+originFileName;
-		
+
 		// 시작
 		File saveDir = new File(uploadPath);
 		if(!saveDir.exists()) saveDir.mkdirs();
@@ -135,7 +133,7 @@ public class ItemController  {
 //		this.boardReviewsService.setFilePath(newBdNoRev,forDb);
 		int newItemNo = this.shopService.getNewItemNo();
 		this.shopService.setFilePath(newItemNo, forDb);
-		
+
 		return new ModelAndView("redirect:itemList.html");	// 상품 등록 후 리스트로 돌아감
 	}
 	// 파일을 쓰기위한 메소드
@@ -155,7 +153,7 @@ public class ItemController  {
 	                }
 	        }// try end;
 	    }// wirteFile() end;
-	 
+
 	// 상품 내용 수정을 위해 상품번호로 조회 후 객체 저장
 	@RequestMapping("admin/itemEdit")
 	public ModelAndView itemEdit(Integer itemNo){
@@ -167,7 +165,7 @@ public class ItemController  {
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// 읽어온 상품의 내용을 수정한다.
 	@RequestMapping(value="admin/itemUpdate")
 	public ModelAndView itemUpdate(@Valid ItemVo itemVo, BindingResult bindingResult, HttpServletRequest request, Integer itemNo, @RequestParam("filePath")MultipartFile filePath){
@@ -191,12 +189,12 @@ public class ItemController  {
 				ModelAndView modelAndView = new ModelAndView("admin/itemList");
 				return modelAndView;
 			}
-			
+
 			// WAR파일로 뿌렷을 때
 			String uploadPath = "C:/Tomcat7/webapps/cafe/img";
 			// DB저장하기
 			String forDb = "../img/"+originFileName;
-			
+
 			// 시작
 			File saveDir = new File(uploadPath);
 			if(!saveDir.exists()) saveDir.mkdirs();
@@ -224,13 +222,13 @@ public class ItemController  {
 //			int newBdNoRev = this.boardReviewsService.getRecentNo();
 //			this.boardReviewsService.setFilePath(newBdNoRev,forDb);
 			this.shopService.updateFilePath(itemVo.getItemNo(), forDb);
-			
+
 			String url="redirect:itemList.html";
 			return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
 		}
-		
+
 	}
-	
+
 	// 삭제하기 (제한 : 로긴한자 + 게시자)
 	@RequestMapping("admin/delete")
 	public ModelAndView adminDelete(HttpServletRequest request, Integer itemNo){
