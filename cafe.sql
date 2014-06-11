@@ -1,6 +1,6 @@
 SELECT file_path from save_file_path WHERE item_no = 50
 select * from SAVE_FILE_PATH
-select * from item
+select * from item 
 select * from member where substr(to_char(sysdate,'YYYYMMDD'),1,8) = substr(to_char(join_date,'YYYYMMDD'),1,8) ;
 create table member(
 	user_email varchar2(50) primary key,

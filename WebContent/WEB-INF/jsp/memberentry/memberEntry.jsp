@@ -104,6 +104,7 @@
 	</div>
 		<script type="text/javascript"
 		src="<%=request.getContextPath()%>/java_script/check.js"></script>
+	
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

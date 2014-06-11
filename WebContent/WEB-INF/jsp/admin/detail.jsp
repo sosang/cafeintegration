@@ -13,7 +13,7 @@
 		<h2>상품 상세 화면</h2>
 		<table>
 			<tr>
-				<td><img src="${toViewImage }"></td>
+				<td><img src="${item.photo }"></td>
 				<td align="center">
 					<table>
 						<tr height="50">

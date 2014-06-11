@@ -14,9 +14,9 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	
+
 	<div class="topblock">
-	<p>Coffee Bean</p>
+		<p>Coffee Bean</p>
 	</div>
 	<div align="center" id="rownew">
 		<c:forEach items="${itemList }" var="item">
@@ -24,7 +24,7 @@
 				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"
 				style='cursor: pointer;'>
 				<ul>
-					<li><img src="../img/${item.photo }"></li>
+					<li><img src="${toViewImage }"></li>
 					<li><p>${item.itemName }</p></li>
 					<li><p>${item.price }</p></li>
 					<li><p>

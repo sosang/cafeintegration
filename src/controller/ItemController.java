@@ -27,6 +27,7 @@ import logic.Shop;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -52,12 +53,23 @@ public class ItemController  {
 		List<ItemVo> itemList = this.shopService.getItemList();
 
 		Map<String, Object> model = new HashMap<String,Object>();
-
+		
+		
+		
+		List<SaveFilePathTo> photo = this.shopService.getitemAll_photo();
+		
+		Map<String , Object>model2 = new HashMap<String,Object>();
 
 		model.put("itemList", itemList);
-
+		model2.put("toViewImage", photo);
+		
+		System.out.println(photo.get(0).getFilePath());
+		System.out.println(photo.get(0).getSaveFilePathNo());
+		
+		
 		ModelAndView modelAndView = new ModelAndView();
-
+		
+		modelAndView.addAllObjects(model2);
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
@@ -93,17 +105,18 @@ public class ItemController  {
 	public ModelAndView boardReviewsWrite(@Valid ItemVo itemVo, BindingResult bindingResult, 
 			HttpServletRequest request, @RequestParam("filePath")MultipartFile filePath) throws Exception{
 		String originFileName = filePath.getOriginalFilename();
+		String forDb = "";
 		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
 		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
+			//디비 저장용
+			forDb = "../img/"+originFileName;
 		}else{
 			ModelAndView modelAndView = new ModelAndView("admin/itemReg");
 			return modelAndView;
 		}
 
 		// WAR파일로 뿌렷을 때
-		String uploadPath = "C:/Tomcat7/webapps/cafe/img";
-		// DB저장하기
-		String forDb = "../img/"+originFileName;
+		String uploadPath = "C:/Tomcat 7/webapps/cafeintegration/img";
 
 		// 시작
 		File saveDir = new File(uploadPath);
@@ -125,7 +138,7 @@ public class ItemController  {
 			return modelAndView;
 		}
 		// 내용을 사빕한다.
-		this.shopService.itemReg(itemVo);
+		this.shopService.itemReg(itemVo, forDb);
 		// 업로드 파일 저장
 		writeFile(filePath, uploadPath, originFileName);
 		// 파일경로 쓰기
@@ -191,7 +204,7 @@ public class ItemController  {
 			}
 
 			// WAR파일로 뿌렷을 때
-			String uploadPath = "C:/Tomcat7/webapps/cafe/img";
+			String uploadPath = "C:/Tomcat 7/webapps/cafeintegration/img";
 			// DB저장하기
 			String forDb = "../img/"+originFileName;
 

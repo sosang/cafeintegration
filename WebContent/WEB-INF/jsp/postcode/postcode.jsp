@@ -53,10 +53,10 @@
 
 	</div>
 
-	<!-- 우편번호 넘기기 -->
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	
+		<!-- 우편번호 넘기기 -->
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/java_script/postcode.js"></script>
-
-	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

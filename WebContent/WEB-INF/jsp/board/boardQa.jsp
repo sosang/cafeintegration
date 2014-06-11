@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>자유게시판</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 <style type="text/css">
 a.listtxt:link {
 	font-size: 12px;
@@ -25,34 +26,48 @@ a.listtxt:hover {
 .listtxt {
 	color: #535353;
 } /*text default*/
+table.tableType tr td {
+	text-align: center;
+}
+table.tableType tr td title{
+	text-align: left;
+}
+
+
 </style>
+
+
+
+
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판</h2>
-		<c:if test="${!empty USER_KEY}">
-			<a href="boardQaWriteBefore.html">글쓰기</a>
-		</c:if>
 		<c:if test="${empty USER_KEY}">
-			<b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
-		</c:if>
+	<b>To write --> <a href="../login/login.html">로그인</a></b>
+</c:if>
+		<c:if test="${!empty USER_KEY}">
+	<a style="text-align:right;" href="boardQaWriteBefore.html">글쓰기</a>
+</c:if>
 <c:if test="${!empty articleListQa}">
-		<table border="1">
-			<tr class="header">
-				<th align="center" width="80">번호</th>
-				<th align="center" width="620">제 목</th>
-				<th align="center" width="100">글쓴이</th>
-				<th align="center" width="100">글쓴날</th>
-				<th align="center" width="60">조회수</th>
+		<table border="1" class="tableType">
+			<tr>
+				<th align="center" width="5%">번호</th>
+				<th align="center" style="text-align: left;" width="60%">제 목</th>
+				<th align="center" width="10%">글쓴이</th>
+				<th align="center" width="15%">글쓴날</th>
+				<th align="center" width="10%">조회수</th>
 			</tr>
 
 			<c:forEach items="${articleListQa}" var="article">
-				<tr class="record">
+				<tr>
 					<td align="center" class="listtxt">
 						<c:out value="${article.bdNoQa}" />
 					</td>
-					<td align="left" class="listtxt">
+					
+					
+					<td align="left" class="listtxt title" >
 					<c:choose>
 						<c:when test="${article.reStep == 0}">
 							<a	href="<c:url value="boardQaDetail.html">
@@ -75,11 +90,13 @@ a.listtxt:hover {
 						</c:otherwise>
 					</c:choose>
 					</td>
+					
+					
 					<td align="center" class="listtxt">
 						<c:out value="${article.userAlias}" />
 					</td>
 					<td align="center" class="listtxt">
-						<font size="0.1"><c:out value="${article.dateQa}" /></font>
+						<font><c:out value="${article.dateQa}" /></font>
 					</td>
 					<td align="center" class="listtxt">
 						<c:out value="${article.countQa}" />
@@ -105,12 +122,8 @@ a.listtxt:hover {
 		<input type="hidden" value="${pageNo }" name="pageNo">
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 </c:if>
-<c:if test="${!empty USER_KEY}">
-	<a href="boardQaWriteBefore.html">글쓰기</a>
-</c:if>
-<c:if test="${empty USER_KEY}">
-	<br><b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
-</c:if>
+
+
 		<hr>
 <c:if test="${empty articleListQa}">
 <h1>등록된 게시물이 없습니다.</h1>

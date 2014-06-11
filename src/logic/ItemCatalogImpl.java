@@ -39,9 +39,9 @@ public class ItemCatalogImpl implements ItemCatalog {
 
 	// 새로운 아이템 등록 
 	@Override
-	public void setNewItem(ItemVo itemVo) {
+	public void setNewItem(ItemVo itemVo, String forDb) {
 		// TODO Auto-generated method stub
-		this.itemDao.regNewItem(itemVo);
+		this.itemDao.regNewItem(itemVo, forDb);
 	}
 
 	//	새로운 아이템 번호 얻기
@@ -85,5 +85,11 @@ public class ItemCatalogImpl implements ItemCatalog {
 	public void delete(Integer itemNo) {
 		// TODO Auto-generated method stub
 		this.itemDao.deleteItem(itemNo);
+	}
+
+	@Override
+	public List<SaveFilePathTo> findAll_photo() {
+		// TODO Auto-generated method stub
+		return this.itemDao.findAll_photo();
 	}
 }

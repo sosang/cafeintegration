@@ -151,9 +151,9 @@ public class ShopImpl implements Shop {
 
 	// 아이템 등록하기
 	@Override
-	public void itemReg(ItemVo itemVo) {
+	public void itemReg(ItemVo itemVo, String forDb) {
 		// TODO Auto-generated method stub
-		this.itemCatalog.setNewItem(itemVo);
+		this.itemCatalog.setNewItem(itemVo, forDb);
 	}
 
 	// 상품 새 번호 얻기
@@ -203,6 +203,12 @@ public class ShopImpl implements Shop {
 	public MemberVo getMember(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberCatalog.getMember(userEmail);
+	}
+
+	@Override
+	public List<SaveFilePathTo> getitemAll_photo() {
+		// TODO Auto-generated method stub
+		return this.itemCatalog.findAll_photo();
 	}
 
 

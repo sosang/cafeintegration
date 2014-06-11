@@ -1,115 +1,169 @@
- body
-    {
-        font-size: 15px; 
-    }
-    h1
-    {
-       font-size:25px;
-    }
-    h4
-    {
-    	font-size:15px;
-    }
-
-    @media (max-width: 768)
-    {
-       body
-       {
-           font-size: 10px; 
-       }
-       h1
-       {
-           font-size:12px;
-       }
-       h4{
-       		font-size:7px;
-       }
-    }
-.navbar {
-	padding: 0;
-	margin: 0;
+@charset "utf-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+img,object,embed,video {
+	max-width: 100%;
 }
 
-#loginButtons {
-	margin: 5px;
-	padding: 5px;
-	float: right;
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+	width: 100%;
+}
+
+/*
+	Dreamweaver Fluid Grid Properties
+	----------------------------------
+	dw-num-cols-mobile:		4;
+	dw-num-cols-tablet:		8;
+	dw-num-cols-desktop:	12;
+	dw-gutter-percentage:	25;
+	
+	Inspiration from "Responsive Web Design" by Ethan Marcotte 
+	http://www.alistapart.com/articles/responsive-web-design
+	
+	and Golden Grid System by Joni Korpi
+	http://goldengridsystem.com/
+*/
+.fluid {
+	clear: both;
+	margin-left: 0;
+	width: 100%;
+	float: left;
+	display: block;
+}
+
+.fluidList {
+	list-style: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Mobile Layout: 480px and below. */
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 86.45%;
+	padding-left: 2.275%;
+	padding-right: 2.275%;
+	clear: none;
+	float: none;
 }
 
 #top {
-	margin: 0px;
-	padding: 0px;
+	margin-bottom: 10px;
 }
 
-
-.member-button {
-	margin: 2px;
+#menuNav {
+	
 }
 
-.login-button {
-	margin: 2px;
+#menu {
+	
 }
 
-#logo {
-	display: inline;
-}
-
-
-.logo {
-	display: inline;
-	margin-left: 5px;
-	height: 50px;
-}
-
-.intro {
+.menuItem {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	text-align: center;
+	color: #660000;
+	background-color: #CCCCCC;
+	border-radius: 5px;
 	width: 100%;
-	height: auto;
+	clear: both;
+	margin-left: 0;
+	font-weight: bold;
 }
 
-/* === carousel fade 효과 ==== */
-.carousel-fade .item {
-	-webkit-transition: opacity 4s;
-	-moz-transition: opacity 4s;
-	-ms-transition: opacity 4s;
-	-o-transition: opacity 4s;
-	transition: opacity 4s;
+.menuItem:hover {
+	background-color: #FF0000;
+	color: #FFFFFF;
 }
 
-.carousel-fade .active.left {
-	left: 0;
-	opacity: 0.5;
-	z-index: 2;
+#bgFrame {
+	
 }
 
-.carousel-fade .next {
-	left: 0;
-	opacity: 0.5;
-	z-index: 1;
+.zeroMargin_mobile {
+	margin-left: 0;
 }
 
-/* ===== text 반응형으로 변화 ===== */
+.hide_mobile {
+	display: none;
+}
 
- /*    h1 {
-        font-size: 1.0em;
-    }
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+@media only screen and (min-width:481px) {
+	.gridContainer {
+		width: 90.675%;
+		padding-left: 1.1625%;
+		padding-right: 1.1625%;
+		clear: none;
+		float: none;
+		margin-left: auto;
+	}
+	#top {
+		
+	}
+	#menuNav {
+		
+	}
+	#menu {
+		
+	}
+	.menuItem {
+		width: 23.0769%;
+		margin-left: 2.5641%;
+		clear: none;
+	}
+	#bgFrame {
+		
+	}
+	.hide_tablet {
+		display: none;
+	}
+	.zeroMargin_tablet {
+		margin-left: 0;
+	}
+}
 
-    h4 {
-        font-size: 0.6em;
-    }
- */
-/* =======section 꾸미기======== */
-.right-banner{
-  border: 1px solid #ffaaaa;
-  background: #333;
-  background: -moz-linear-gradient(left, #333 0%, #444 100%);
-  background: -webkit-linear-gradient(left, #333 0%, #444 100%);
-  background: -o-linear-gradient(left, #333 0%, #444 100%);
-  background: linear-gradient(to right, #333 0%, #444 100%);
-  float: right;
-  width: 335px;
-  text-align: center;
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+@media only screen and (min-width: 769px) {
+	.gridContainer {
+		width: 88.5%;
+		max-width: 1232px;
+		padding-left: 0.75%;
+		padding-right: 0.75%;
+		margin: auto;
+		clear: none;
+		float: none;
+		margin-left: auto;
+	}
+	#top {
+		
+	}
+	#menuNav {
+		
+	}
+	#menu {
+		
+	}
+	.menuItem {
+		width: 23.7288%;
+		clear: none;
+		margin-left: 1.6949%;
+	}
+	#bgFrame {
+		
+	}
+	.zeroMargin_desktop {
+		margin-left: 0;
+	}
+	.hide_desktop {
+		display: none;
+	}
 }

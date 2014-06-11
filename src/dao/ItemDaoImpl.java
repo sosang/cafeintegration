@@ -34,7 +34,7 @@ public class ItemDaoImpl implements ItemDao {
 		return this.template.query(ItemDaoImpl.SELECT_ALL, mapper);
 	}
 
-	private static final String SELECT_BY_PRIMARY_KEY = "SELECT item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, price, total_product, def_exchange, def_refund FROM item WHERE item_no = ?";
+	private static final String SELECT_BY_PRIMARY_KEY = "SELECT item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, photo, price, total_product, def_exchange, def_refund FROM item WHERE item_no = ?";
 
 	@Override
 	public ItemVo findByPromaryKey(Integer itemNo) {
@@ -48,11 +48,11 @@ public class ItemDaoImpl implements ItemDao {
 	
 	
 	// 새로운 아이템 등록
-	private static final StringBuffer REG_NEW_ITEM = new StringBuffer("INSERT INTO item(item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, price, total_product, def_exchange, def_refund) VALUES(item_seq.nextval,?,?,?,?,sysdate,?,?,?,?,?,?)");
+	private static final StringBuffer REG_NEW_ITEM = new StringBuffer("INSERT INTO item(item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, photo, price, total_product, def_exchange, def_refund) VALUES(item_seq.nextval,?,?,?,?,sysdate,?,?,?,?,?,?,?)");
 	@Override
-	public void regNewItem(ItemVo itemVo) {
+	public void regNewItem(ItemVo itemVo, String forDb) {
 		// TODO Auto-generated method stub
-		this.template.update(ItemDaoImpl.REG_NEW_ITEM.toString(), itemVo.getItemName(), itemVo.getOrigin(), itemVo.getGrade(), itemVo.getProcessing(), itemVo.getRoastingLevel(), itemVo.getItemInfo(), itemVo.getPrice(), itemVo.getTotalProduct(), 0,0);
+		this.template.update(ItemDaoImpl.REG_NEW_ITEM.toString(), itemVo.getItemName(), itemVo.getOrigin(), itemVo.getGrade(), itemVo.getProcessing(), itemVo.getRoastingLevel(), itemVo.getItemInfo(),forDb, itemVo.getPrice(), itemVo.getTotalProduct(), 0,0);
 		
 	}
 	
@@ -112,6 +112,13 @@ public class ItemDaoImpl implements ItemDao {
 		this.template.update(ItemDaoImpl.DELETE_THE_FILE_PATH.toString(), itemNo);
 	}
 	
-	
+	private static final StringBuffer LOOK_FOR_THE_FILE_PATH_ALL = new StringBuffer("SELECT file_path from save_file_path");
+	public List<SaveFilePathTo> findAll_photo() {
+		// TODO Auto-generated method stub
+		RowMapper<SaveFilePathTo> mapper = new BeanPropertyRowMapper<SaveFilePathTo>(
+				SaveFilePathTo.class);
 
+		return this.template.query(ItemDaoImpl.LOOK_FOR_THE_FILE_PATH_ALL.toString(), mapper);
+	}
+	
 }

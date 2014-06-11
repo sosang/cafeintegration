@@ -31,7 +31,7 @@
 
 				<table class="tblock">
 					<tr>
-						<td><img src="../img/${item.photo}"></td>
+						
 						<td align="center">
 							<table>
 								<tr height="50">

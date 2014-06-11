@@ -38,7 +38,8 @@ public class DetailController {
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("item", item);
-
+		String filePathForJsp = this.shopService.getFilePathTo(itemNo);
+		model.put("toViewImage",filePathForJsp);
 		model.put("userEmail", userEmail);
 		ModelAndView modelAndView = new ModelAndView();
 
