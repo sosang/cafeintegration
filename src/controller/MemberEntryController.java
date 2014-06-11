@@ -57,21 +57,7 @@ public class MemberEntryController {
 		
 	}
 	
-//	@RequestMapping(value="checkEmailJson")
-//	public @ResponseBody ModelAndView checkEmailJson(@RequestParam String userEmail){
-//		System.out.println(userEmail);
-//		
-//		
-//		//userEmail 확인용 Json 파일생성
-//		List<MemberVo> user = this.shopService.getCheckedUserEmail(userEmail);
-//		
-//		//모델 생성
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		
-//		ModelAndView mav = new ModelAndView();
-//		model.put("userEmail", user);
-//		return mav;	
-//	}
+
 
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member, BindingResult bindingResult, HttpSession session) throws Exception{
