@@ -19,10 +19,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import utils.MemberEntryValidator;
 import utils.WebConstants;
 
 
@@ -35,9 +37,16 @@ public class MemberEntryController {
 	@Autowired
 	private PostcodeCatalog postcodeCatalog;
 
-	/*@Autowired
+	@Autowired
 	private MemberEntryValidator memberEntryValidator;
-	*/
+	
+	
+	@RequestMapping(value="termsAndCoditions")
+	public String termsAndConditions(){
+		return "memberentry/termsAndCoditions";
+		
+	}
+	
 	@Autowired
 	private MessageSource messageSource;
 
@@ -48,16 +57,20 @@ public class MemberEntryController {
 
 	@ModelAttribute
 	public MemberVo setUpForm(){
-
 		return new MemberVo();
 	}
-	
-	@RequestMapping(value="termsAndConditions")
-	public void termsAndConditions(){
+
+	@RequestMapping(value="emailCheck")
+	public ModelAndView emailCheck(ModelAndView modelAndView, @RequestParam String userEmail ){
 		
+		int result = this.shopService.getCheckedUserEmail(userEmail);
+	
+		modelAndView.setViewName("memberentry/emailCheck");
+		modelAndView.addObject("result", result);
+		
+		return modelAndView;
 	}
 	
-
 
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member, BindingResult bindingResult, HttpSession session) throws Exception{

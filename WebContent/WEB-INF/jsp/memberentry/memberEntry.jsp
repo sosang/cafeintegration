@@ -26,16 +26,16 @@
 				<label>사용자 Email</label>
 				<form:input path="userEmail" type="email" cssClass="form-control"
 					id="userEmail" placeholder="email을 입력하세요."  autofocus="true"/>
-				<a href="checkEmail.html"><input type="button" class="button" value="중복확인" onclick="emailCheckAjax()"/></a>
+				<input type="button" class="button" value="중복확인" onclick="emailCheckAjax()"/>
 				<span id="emailCheckResult">
-				 	<c:choose>
+				 	<%-- <c:choose>
 						<c:when test="${not empty userEmail}"> 이미 가입한 이메일입니다 <a
 								href="../login/login.html">로그인으로 이동 </a>
 						</c:when>
 						<c:when test = "${empty param.userEmail }">
 						</c:when>
 						<c:otherwise>반갑습니다. 멋진 이메일이네요.</c:otherwise>
-					</c:choose> 
+					</c:choose>  --%>
 				</span>
 			</div>
 			<div id = "pwdDiv" class="form-horizontal input-size">
