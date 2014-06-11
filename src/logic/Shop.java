@@ -41,4 +41,6 @@ public interface Shop {
 			String passwdAnswer);// 비번찾긔
 	
 	void updateMember(MemberVo memberVo, String userEmail);
+	
+	void getoutMycafe(String userEmail);
 }

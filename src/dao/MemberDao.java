@@ -18,4 +18,6 @@ public interface MemberDao {
 			String passwdAnswer);	// 비번찾긔
 	
 	void changeInfo(MemberVo memberVo, String userEmail);
+	
+	void outMember(String userEmail);
 }

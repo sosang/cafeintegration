@@ -233,5 +233,12 @@ public class ShopImpl implements Shop {
 		this.memberCatalog.updateMember(memberVo, userEmail);
 		
 	}
+
+	@Override
+	public void getoutMycafe(String userEmail) {
+		// TODO Auto-generated method stub
+		this.memberCatalog.getoutMember(userEmail);
+		
+	}
 	
 }

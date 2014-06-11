@@ -75,4 +75,10 @@ public class MemberCatalogImpl implements MemberCatalog {
 		
 	}
 
+	@Override
+	public void getoutMember(String userEmail) {
+		this.memberDao.outMember(userEmail);
+		
+	}
+
 }

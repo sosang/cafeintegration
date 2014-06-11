@@ -7,7 +7,7 @@ SELECT  DBMS_LOB.SUBSTR(content_rev, 1000, 1) AS CONT_SUB   -- 1000 개까지 �
   where bd_no_rev = 2;
   WHERE DBMS_LOB.INSTR(content_rev, 'test', 1, 1) > 0             -- 검색 문구가 존재할때
 ;
-
+UPDATE member set  user_level=0 WHERE user_email = 'as@as.com'
 UPDATE member set  user_passwd='asas', user_alias='네이드',user_phone1='010', user_phone2='4444', user_phone3='4444', user_postcode='123123', user_address1='서울', user_address2='본부' WHERE user_email = 'as@as.com'; 
 select * from member;
 select * from board_reviews

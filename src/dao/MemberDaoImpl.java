@@ -21,13 +21,14 @@ import org.springframework.stereotype.Repository;
 public class MemberDaoImpl implements MemberDao {
 
 	// 사용자 이메일 및 비밀번호 체크
-	private static final String SELECT_BY_USEREMAIL_PASSWD = "SELECT * from member where user_email=? AND user_passwd=?";
+	private static final String SELECT_BY_USEREMAIL_PASSWD = "SELECT * from member where user_email=? AND user_passwd=? and user_level=0";
 
 	// 신규 사용자 계정 생성
 	private static final String INSERT = "INSERT INTO member (user_email, user_passwd, passwd_inquiry, passwd_answer, user_alias, user_phone1,user_phone2,user_phone3, user_postcode, user_address1, user_address2)"
 			+ " VALUES(:userEmail, :userPasswd, :passwdInquiry, :passwdAnswer, :userAlias, :userPhone1,:userPhone2,:userPhone3, :userPostcode, :userAddress1, :userAddress2)";
 
 	private static final String CHANGE_INFO = "UPDATE member set  user_passwd=?, user_phone1=?, user_phone2=?, user_phone3=?, user_postcode=?, user_address1=?, user_address2=? WHERE user_email = ? ";
+	private static final String OUT_MEMBER = "UPDATE member set  user_level=1 WHERE user_email = ? ";
 	// 이메일 중복 체크용
 	private static final String CHECK_USER_EMAIL = "SELECT count(*) from member where user_email=?";
 
@@ -180,6 +181,12 @@ public class MemberDaoImpl implements MemberDao {
 				memberVo.getUserPhone3(), memberVo.getUserPostcode(),
 				memberVo.getUserAddress1(), memberVo.getUserAddress2(),
 				userEmail);
+	}
+
+	@Override
+	public void outMember(String userEmail) {
+		this.template.update(OUT_MEMBER, userEmail);
+		
 	}
 
 }

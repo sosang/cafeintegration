@@ -15,4 +15,6 @@ public interface MemberCatalog {
 			String passwdAnswer);
 	
 	void updateMember(MemberVo memberVo , String userEmail);
+	
+	void getoutMember(String userEmail);
 }
