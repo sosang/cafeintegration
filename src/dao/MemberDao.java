@@ -11,5 +11,5 @@ public interface MemberDao {
 	MemberVo findByUserEmailAndUserPasswd(String userEmail, String userPasswd);
 	List<MemberVo> checkUserEmail(String userEmail);
 	List<MemberVo> findAllMemberList(HttpServletRequest request, Integer pageNo);
-	MemberVo findmember(String userEmail);
+	MemberVo findmemberinfo(String userEmail);
 }

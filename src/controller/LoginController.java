@@ -63,6 +63,8 @@ public class LoginController {
 			//유저 정보 검색
 			MemberVo loginMemberVo = this.shopService.getMemberByUserEmailAndUserPasswd(member.getUserEmail(), member.getUserPasswd());
 			session.setAttribute(WebConstants.USER_KEY, loginMemberVo);
+			
+	
 			//유저 확인시
 			modelAndView.setViewName("login/loginSuccess");
 			return modelAndView;

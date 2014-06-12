@@ -199,16 +199,17 @@ public class ShopImpl implements Shop {
 		this.itemCatalog.delete(itemNo);
 	}
 
-	@Override
-	public MemberVo getMember(String userEmail) {
-		// TODO Auto-generated method stub
-		return this.memberCatalog.getMember(userEmail);
-	}
 
 	@Override
 	public List<SaveFilePathTo> getitemAll_photo() {
 		// TODO Auto-generated method stub
 		return this.itemCatalog.findAll_photo();
+	}
+
+	@Override
+	public MemberVo memberInfo(String userEmail) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.getfindMemberInfo(userEmail);
 	}
 
 

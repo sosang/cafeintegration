@@ -1,11 +1,10 @@
 package logic;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class MemberVo implements Serializable {
+public class MemberVo  {
 
-	private static final long serialVersionUID = 1L;
+
 
 	private String userEmail;
 	private String userPasswd;

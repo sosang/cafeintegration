@@ -35,8 +35,8 @@
 					<option value="016">016</option>
 					<option value="019">019</option>
 			</select> - <input type="text" maxlength="5" size="5"
-				value="${user.userMidPhone }" /> - <input type="text" maxlength="5"
-				size="5" value="${user.userLastPhone }" /></td>
+				value="${user.userPhone2 }" /> - <input type="text" maxlength="5"
+				size="5" value="${user.userPhone3 }" /></td>
 		</tr>
 
 		<tr height="40px">
@@ -45,11 +45,11 @@
 		</tr>
 		<tr height="40px">
 			<td>기본주소:</td>
-			<td><input type="text" value="${user.userBasicAddress }"></td>
+			<td><input type="text" value="${user.userAddress1 }"></td>
 		</tr>
 		<tr height="40px">
 			<td>상세주소:</td>
-			<td><input type="text" value="${user.userDetailAddress }"></td>
+			<td><input type="text" value="${user.userAddress2 }"></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="정보변경"></td>
@@ -64,6 +64,7 @@
 				<td colspan="2"><font color="green">내 카트</font></td>
 			</tr>
 			<tr>
+				<td></td>
 				<td>상품명</td>
 				<td>가격</td>
 				<td>상품갯수</td>
@@ -80,15 +81,15 @@
 					<td><c:out value="${cartSet.cartSubTotal }" />원</td>
 				</tr>
 			</c:forEach>
-
-			<tr>
-				<td colspan="2"><font color="green">결제내역</font></td>
-			</tr>
 			<tr>
 				<td><input type="button" value="선택삭제" class="btn btn-warning"
 					onclick="submitForm1()"> <input type="button"
 					class="btn btn-danger" value="바로구매" onclick="submitForm2()"></td>
 			</tr>
+			<tr>
+				<td colspan="2"><font color="green">결제내역</font></td>
+			</tr>
+
 			<tr>
 				<td>상품명</td>
 				<td>가격</td>

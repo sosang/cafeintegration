@@ -29,13 +29,15 @@ public class MypageController {
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
 		String userEmail = userKey.getUserEmail();
-		String userPasswd = userKey.getUserPasswd();
-
+		
 		List<PurchaseListVo> myPurchase = this.shopService
 				.mypagePurchase(userEmail);
+		
 
-		MemberVo user = this.shopService.getMemberByUserEmailAndUserPasswd(
-				userEmail, userPasswd);
+		MemberVo user = this.shopService.memberInfo(userEmail);
+
+		
+	
 
 		List<CartVo> myCart = this.shopService.getCartList(userEmail);
 

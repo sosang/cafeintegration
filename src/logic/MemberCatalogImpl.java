@@ -46,10 +46,11 @@ public class MemberCatalogImpl implements MemberCatalog {
 	}
 
 	@Override
-	public MemberVo getMember(String userEmail) {
+	public MemberVo getfindMemberInfo(String userEmail) {
 		// TODO Auto-generated method stub
-		return this.memberDao.findmember(userEmail);
+		return this.memberDao.findmemberinfo(userEmail);
 	}
+
 
 
 

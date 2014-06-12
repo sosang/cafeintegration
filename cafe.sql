@@ -151,3 +151,5 @@ create table member(
 	user_facebook_email varchar2(50) default null,
 	join_date date default sysdate
 );
+
+select user_email userEmail,user_passwd userPasswd, user_alias userAlias, user_phone1 userPhone1, user_phone2 userPhone2, user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2 from member where user_email = 'cafe4'; 
