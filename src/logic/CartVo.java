@@ -9,6 +9,7 @@ public class CartVo {
 	private String photo;
 
 	private Integer price;
+
 	private Integer cartNumOfProduct;
 	private Integer cartSubTotal;
 

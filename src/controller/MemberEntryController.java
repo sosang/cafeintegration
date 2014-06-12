@@ -1,5 +1,10 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import logic.MemberVo;
@@ -14,7 +19,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import utils.WebConstants;
@@ -28,7 +32,7 @@ public class MemberEntryController {
 
 	@Autowired
 	private PostcodeCatalog postcodeCatalog;
-
+	
 	@Autowired
 	private MessageSource messageSource;
 
@@ -42,16 +46,10 @@ public class MemberEntryController {
 
 		return new MemberVo();
 	}
-	
-	@RequestMapping(value="checkEmail")
-	public ModelAndView checkEmail(@RequestParam String userEmail){
-		System.out.println(userEmail);
-		int res = this.shopService.getCheckedUserEmail(userEmail);
-		ModelAndView mav = new ModelAndView();
-		if(res != 0){
-			mav.addObject("isMember", res);
-		}
-		return mav;
+
+	@RequestMapping(value="termsAndConditions")
+	public void termsAndConditions(){
+
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
@@ -77,11 +75,29 @@ public class MemberEntryController {
 
 		}
 		catch(DataIntegrityViolationException e){
-
+			//유저 Email 중복 시, 폼을 송신한 곳으로 이동
 			bindingResult.reject("error.duplicate.memberVo");
 			modelAndView.getModel().putAll(bindingResult.getModel());
 			return modelAndView;
 		}
+	}
+
+	// 어드민에서 가입자 목록 보기
+	// 가입자 목록 보기
+	@RequestMapping("admin/member")
+	public ModelAndView member(HttpServletRequest request, Integer pageNo) throws Throwable{
+		// 가입자 목록 취득
+		List<MemberVo> memberList = null;
+		memberList = this.shopService.getMemberList(request, pageNo);
+		// 모델 생성
+		Map<String, Object> model = new HashMap<String,Object>();
+		model.put("memberList", memberList);
+
+		// 반환값인 ModelAndView 인스턴스 생성
+		ModelAndView modelAndView = new ModelAndView("admin/member");
+		modelAndView.addAllObjects(model);
+
+		return modelAndView;
 	}
 
 }

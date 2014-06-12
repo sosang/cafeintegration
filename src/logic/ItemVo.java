@@ -1,10 +1,10 @@
 package logic;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ItemVo {
-
-
+public class ItemVo implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer itemNo;
 	private String itemName;
 	private String origin;
@@ -22,6 +22,17 @@ public class ItemVo {
 	public Integer getItemNo() {
 		return itemNo;
 	}
+	
+
+	public String getPhoto() {
+		return photo;
+	}
+
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 
 	public void setItemNo(Integer itemNo) {
 		this.itemNo = itemNo;
@@ -81,14 +92,6 @@ public class ItemVo {
 
 	public void setItemInfo(String itemInfo) {
 		this.itemInfo = itemInfo;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public Integer getPrice() {

@@ -1,3 +1,5 @@
+select * from item;
+
 select * from member;
 alter table member rename column user_num_of_reply TO user_num_of_comments;
 create table board_qa(
@@ -127,4 +129,25 @@ create sequence save_file_path_seq
 increment by 1
 start with 1;
 
+select * from item;
+
 select * from member;
+
+create table member(
+	user_email varchar2(50) primary key,
+	user_passwd varchar2(30),
+	user_alias varchar2(30)  unique,
+	user_phone1 varchar2(6) ,
+	user_phone2 varchar2(8),
+	user_phone3 varchar2(8),
+	user_postcode varchar2(7),
+	user_address1 varchar2(200),
+	user_address2 varchar2(200),
+	user_level number(2) default 0,
+	user_point number(6) default 0,
+	user_num_of_article number(5) default 0,
+	user_num_of_comments number(8) default 0,
+	user_num_of_practice number(4) default 0,
+	user_facebook_email varchar2(50) default null,
+	join_date date default sysdate
+);

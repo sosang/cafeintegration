@@ -2,7 +2,6 @@ package controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -38,7 +37,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BoardController {
-	
+
 	@Autowired
 	BoardNoticeService boardNoticeService;
 	@Autowired
@@ -51,7 +50,7 @@ public class BoardController {
 	BoardReviewsCommentsService boardReviewsCommentsService;
 	@Autowired
 	BoardFaqService boardFaqService;
-	
+
 	private FileOutputStream fos;
 
 	// 공지사항 목록 보기
@@ -70,7 +69,7 @@ public class BoardController {
 
 		return modelAndView;
 	}
-	
+
 	// 공지사항 내용 보기
 	@RequestMapping
 	public ModelAndView boardNoticeDetail(Integer pageNo, Integer bdNoNtc){
@@ -82,11 +81,11 @@ public class BoardController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("boardNotice", boardNotice);
 		model.put("pageNo", pageNo);
-		
+
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// 자유게시판 목록 보기
 	@RequestMapping
 	public ModelAndView boardQa(HttpServletRequest request, Integer pageNo) throws Throwable{
@@ -116,7 +115,7 @@ public class BoardController {
 		model.put("writer", boardQa.getUserEmail());
 		this.boardQaService.countUpForBdNoQa(bdNoQa);
 		modelAndView.addAllObjects(model);
-		
+
 		// 해당 게시물의 댓글들을 화면에 뿌려주고싶다.
 		// Q&A 목록 취득
 			List<BoardQaComments> boardQaCommentsList = null;
@@ -125,14 +124,14 @@ public class BoardController {
 			model.put("boardQaCommentsList", boardQaCommentsList);
 			// 반환값인 ModelAndView 인스턴스 생성
 			modelAndView.addAllObjects(model);
-		
+
 
 //		System.out.println(boardQa.getUserEmail());
 //		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 //		System.out.println(userKey.getUserEmail());
 		return modelAndView;
 	}
-	
+
 	// 댓글 쓰기(게시물 읽기 아래쪽에 달린거)
 	@RequestMapping("boardQaWriCom")
 	public ModelAndView boardQaWriCom(HttpServletRequest request, @Valid BoardQaComments bdQaCom, BindingResult bindingResult, Integer pageNo, Integer bdNoQa){
@@ -160,7 +159,7 @@ public class BoardController {
 		String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
 		return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 	}
-	
+
 	// 댓글삭제(게시물 읽기 아래쪽에 달린거)
 	@RequestMapping("boardQaDelCom")
 	public ModelAndView boardQaDelCom(HttpServletRequest request, Integer pageNo, Integer bdNoQa, Integer bdNoQaComments){
@@ -172,7 +171,7 @@ public class BoardController {
 		String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
 		return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 	}
-	
+
 	// 자유게시판 내용 쓰기 객체 생성(제한 : 로그인 한 자)
 	@RequestMapping
 	public ModelAndView boardQaWriteBefore(){
@@ -180,13 +179,13 @@ public class BoardController {
 		modelAndView.addObject(new BoardQa());
 		return modelAndView;
 	}
-	
+
 	// 자유게시판 내용 쓰기 디비에 저장(제한 : 로그인 한 자)
 	// boardQaWriteBefore()에서 생성한 객체에 내용을 사빕해 새 글을 작성한다
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView boardQaWrite(@Valid BoardQa boardQa, BindingResult bindingResult, HttpServletRequest request) throws Throwable{
 		// 로그인된 USER_KEY를 이용해 userEmail을 추출한다
-		
+
 		// 하지만 boardQaWrite.jsp 에서 
 		// <input type="hidden" value="${USER_KEY.userEmail }" name="userEmail">
 		// 한줄로 끝냈다... 주석처리...ㅡ.ㅜ
@@ -198,7 +197,7 @@ public class BoardController {
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 		String userIp1 = (String)request.getRemoteAddr();
 		String userIp = userIp1.substring(0, 7)+"...";
-		
+
 		// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
 		// ip의 경우 request를 이용해 얻어온 것을 억지로 넘겨줬다. 뭔가 방법이 있을것 같다.
 		if(bindingResult.hasErrors()){
@@ -220,8 +219,8 @@ public class BoardController {
 		this.boardQaService.boardQaWrite(boardQa, userKey, userIp);
 		return new ModelAndView("redirect:boardQa.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
-	
-	
+
+
 	// 자유게시판 내용 수정을 위해 boardQadetail 에서 읽어온 게시물을 불러옴 (제한 : 자신이 작성한 글만 jsp 상에서 수정버튼이 보이게 해놓음)
 	@RequestMapping
 	public ModelAndView boardQaEdit(Integer pageNo, Integer bdNoQa){
@@ -234,7 +233,7 @@ public class BoardController {
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// boardQaEdit(Integer pageNo, Integer bdNoQa)에서 읽어온 게시물을 수정한다.
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView boardQaUpdateForm(@Valid BoardQa boardQa, BindingResult bindingResult, HttpServletRequest request, Integer pageNo){
@@ -249,7 +248,7 @@ public class BoardController {
 		String url="redirect:boardQa.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
-	
+
 	// 답글쓰기 (제한 : 로그인한 사람만)
 	// boardQaDetail 에서 읽어온 게시물을 저장해서 화면에 뿌려주기 위한 코드가 있음
 	@RequestMapping
@@ -278,7 +277,7 @@ public class BoardController {
 //		modelAndView.addObject(model);
 //		return modelAndView;
 	}
-	
+
 	// boardQaReply(Integer pageNo, Integer bdNoQa)를 실행 -> // bdNoQa로 ref 설정한 후 새 게시물 작성
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView boardQaReplyForm(@Valid BoardQa boardQa, BindingResult bindingResult, HttpServletRequest request, Integer pageNo, Integer bdNoQa){
@@ -297,7 +296,7 @@ public class BoardController {
 		String url="redirect:boardQa.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
-	
+
 	// 삭제하기 (제한 : 로긴한자 + 게시자)
 	@RequestMapping(value="boardQaDeleteBefore",method = RequestMethod.POST)
 	public ModelAndView boardQaDeleteBefore(HttpServletRequest request, Integer pageNo, Integer bdNoQa){
@@ -308,7 +307,7 @@ public class BoardController {
 		String url="redirect:boardQa.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 해당 페이지로 돌아감
 	}
-	
+
 	// 후기게시판 목록 불러오기
 	@RequestMapping
 	public ModelAndView boardReviews(HttpServletRequest request, Integer pageNo) throws Throwable{
@@ -339,7 +338,7 @@ public class BoardController {
 		model.put("writer", boardReviews.getUserEmail());
 		this.boardReviewsService.countUpForBdNoRev(bdNoRev);
 		modelAndView.addAllObjects(model);
-		
+
 		// 해당 게시물의 댓글들을 화면에 뿌려주고싶다.
 		// 후기 댓글 목록 취득
 			List<BoardReviewsComments> boardReviewsCommentsList = null;
@@ -347,14 +346,14 @@ public class BoardController {
 			// 모델 생성
 			model.put("boardReviewsCommentsList", boardReviewsCommentsList);
 			// 반환값인 ModelAndView 인스턴스 생성
-		
+
 		// 파일경로 부르기
 		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
 		model.put("SFPT",sfpt);
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// 후기게시판 게시물 추천수 올리기, 같은사람은 추천 못한다! 경고한다! 경고했다!
 	// TODO Auto-generated method stub
 	@RequestMapping(value="boardReviewsRecommend", method = RequestMethod.GET)
@@ -367,7 +366,7 @@ public class BoardController {
 		String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
 		return new ModelAndView(url);
 	}
-	
+
 	// 댓글 쓰기(게시물 읽기 아래쪽에 달린거)
 	@RequestMapping("boardRevWriCom")
 	public ModelAndView boardRevWriCom(HttpServletRequest request, @Valid BoardReviewsComments bdRevCom, BindingResult bindingResult, Integer pageNo, Integer bdNoRev){
@@ -395,7 +394,7 @@ public class BoardController {
 		String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
 		return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 	}
-	
+
 	// 댓글삭제(게시물 읽기 아래쪽에 달린거)
 	@RequestMapping("boardRevDelCom")
 	public ModelAndView boardRevDelCom(HttpServletRequest request, Integer pageNo, Integer bdNoRev, Integer bdNoRevComments){
@@ -405,7 +404,7 @@ public class BoardController {
 		String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
 		return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 	}
-	
+
 	// 후기게시판 내용 쓰기 객체 생성(제한 : 로그인 한 자)
 	@RequestMapping
 	public ModelAndView boardReviewsWriteBefore(HttpServletRequest request){
@@ -414,25 +413,24 @@ public class BoardController {
 		modelAndView.addObject(new SaveFilePathTo());
 		return modelAndView;
 	}
-	
+
 	// 후기게시판 파일 저장을 위한 페이지 생성
 	@RequestMapping("boardReviewsWrite")
 	public ModelAndView boardReviewsWrite(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request, @RequestParam("filePath")MultipartFile filePath) throws Exception{
 		String originFileName = filePath.getOriginalFilename();
 		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
-//		  System.out.println("file의 확장자 : " + extention);
-		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")){
+		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
 		}else{
 			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
 			// 여기까지 바인딩 에러 내용보기!
 			return modelAndView;
 		}
-		GregorianCalendar today = new GregorianCalendar ( );
-		int year = today.get ( today.YEAR ); 
-		int month = today.get ( today.MONTH ) + 1; 
-		int yoil = today.get ( today.DAY_OF_MONTH );
-		String todayForDir = year+"-"+month+"-"+yoil+"-";
-		
+//		GregorianCalendar today = new GregorianCalendar ( );
+//		int year = today.get ( today.YEAR ); 
+//		int month = today.get ( today.MONTH ) + 1; 
+//		int yoil = today.get ( today.DAY_OF_MONTH );
+//		String todayForDir = year+"-"+month+"-"+yoil+"-";
+
 		// WAR파일로 뿌렷을 때
 //		String uploadPath = "C:/Tomcat7/webapps/cafe/"+todayForDir+"userImage";
 		String uploadPath = "C:/Tomcat7/webapps/cafe/images/userImage";
@@ -441,7 +439,7 @@ public class BoardController {
 		// DB저장하기
 //		String forDb = "../"+todayForDir+"userImage/"+originFileName;
 		String forDb = "../images/userImage/"+originFileName;
-		
+
 		// 시작
 		File saveDir = new File(uploadPath);
 		if(!saveDir.exists()) saveDir.mkdirs();
@@ -495,8 +493,8 @@ public class BoardController {
 	                }
 	        }// try end;
 	    }// wirteFile() end;
-	
-	
+
+
 	// 후기게시판 내용 수정을 위해 boardReviewsdetail 에서 읽어온 게시물을 불러옴 (제한 : 자신이 작성한 글만 jsp 상에서 수정버튼이 보이게 해놓음)
 	@RequestMapping
 	public ModelAndView boardReviewsEdit(Integer pageNo, Integer bdNoRev){
@@ -509,7 +507,7 @@ public class BoardController {
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
-	
+
 	// boardReviewsEdit(Integer pageNo, Integer bdNoRev)에서 읽어온 게시물을 수정한다.
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView boardReviewsUpdateForm(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request, Integer pageNo){
@@ -524,23 +522,23 @@ public class BoardController {
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
-	
+
 	// 후기 답글쓰기 (제한 : 로그인한 사람만)
 		// boardReviewsDetail 에서 읽어온 게시물을 저장해서 화면에 뿌려주기 위한 코드가 있음
 	@RequestMapping
 	public ModelAndView boardReviewsReplyBefore(Integer pageNo, Integer bdNoRev, HttpServletRequest request){
 		ModelAndView modelAndView = new ModelAndView("board/boardReviewsReply");
 		// 여기는 실험정신
-		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
-		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
-		request.setAttribute("boardRevContent", boardRev.getContentRev());
+//		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
+//		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
+//		request.setAttribute("boardRevContent", boardRev.getContentRev());
 		// 여기까지 실험정신
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("bdNoRev", bdNoRev);
 		modelAndView.addObject(new BoardReviews());
 		return modelAndView;
 	}
-	
+
 	// boardQaReply(Integer pageNo, Integer bdNoRev)를 실행 -> // bdNoRev로 ref 설정한 후 새 게시물 작성
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView boardReviewsReplyForm(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request, Integer pageNo, Integer bdNoRev){
@@ -556,7 +554,7 @@ public class BoardController {
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
-	
+
 	// 삭제하기 (제한 : 로긴한자 + 게시자)
 	@RequestMapping(value="boardReviewsDeleteBefore",method = RequestMethod.POST)
 	public ModelAndView boardRevDeleteBefore(HttpServletRequest request, Integer pageNo, Integer bdNoRev){
@@ -566,7 +564,7 @@ public class BoardController {
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
 		return new ModelAndView(url);	// 글을 쓰고 목록 해당 페이지로 돌아감
 	}
-	
+
 	// FAQ 목록 싸그리 불러오기
 	@RequestMapping
 	public ModelAndView boardFaq(HttpServletRequest request, Integer pageNo) throws Throwable{
@@ -583,5 +581,5 @@ public class BoardController {
 
 		return modelAndView;
 	}
-	
+
 }

@@ -67,11 +67,11 @@ public class MypageController {
 		try {
 			for (int i = 0; i < checkCart.length; i++) {
 				Integer a = Integer.parseInt(checkCart[i]);
-		
+
 				this.shopService.mypageCartclear(a);
 			}
 		} catch (Exception e) {
-			
+
 		}
 		ModelAndView modelAndView = new ModelAndView("mypage/mypage");
 
@@ -79,11 +79,4 @@ public class MypageController {
 
 	}
 
-	// List<ItemVo> item = new ArrayList<ItemVo>();
-	// for (int i = 0; i < myCart.size(); i++) {
-	// item.add(this.shopService
-	// .getItemByItemNo(myCart.get(i).getItemNo()));
-	// }
-
-	// List<CartVo> myCart = this.shopSerivce.getCartList(userEmail);
 }

@@ -1,11 +1,24 @@
 package logic;
 
 public class SaveFilePathTo {
-
 	private Integer saveFilePathNo;
-	private Integer bdNoRev;
+	private Integer fileSize;
 	private String filePath;
-	
+	private Integer bdNoRev;
+	private Integer itemNo;
+
+	public Integer getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(Integer fileSize) {
+		this.fileSize = fileSize;
+	}
+	public Integer getItemNo() {
+		return itemNo;
+	}
+	public void setItemNo(Integer itemNo) {
+		this.itemNo = itemNo;
+	}
 	public Integer getSaveFilePathNo() {
 		return saveFilePathNo;
 	}
@@ -24,5 +37,6 @@ public class SaveFilePathTo {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
+
 	
 }

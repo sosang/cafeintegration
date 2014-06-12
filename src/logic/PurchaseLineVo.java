@@ -1,6 +1,7 @@
 package logic;
 
 public class PurchaseLineVo {
+
 	private PurchaseVo purchase;
 	private Integer purchaseLineNo;
 	private Integer itemNo;
@@ -45,7 +46,7 @@ public class PurchaseLineVo {
 	public void setItemNo(Integer itemNo) {
 		this.itemNo = itemNo;
 	}
-	
+
 	public Integer getNumOfProduct() {
 		return numOfProduct;
 	}

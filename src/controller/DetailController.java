@@ -21,6 +21,8 @@ public class DetailController {
 	@Autowired
 	private Shop shopService;
 
+
+
 	@RequestMapping
 	public ModelAndView detailItem(HttpSession session, Integer itemNo) {
 
@@ -36,8 +38,22 @@ public class DetailController {
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("item", item);
-
+		String filePathForJsp = this.shopService.getFilePathTo(itemNo);
+		model.put("toViewImage",filePathForJsp);
 		model.put("userEmail", userEmail);
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addAllObjects(model);
+		return modelAndView;
+	}
+
+	@RequestMapping("admin/detail")
+	public ModelAndView adminDetailItem(Integer itemNo) {
+		ItemVo item = this.shopService.getItemByItemNo(itemNo);
+		String filePathForJsp = this.shopService.getFilePathTo(itemNo);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("item", item);
+		model.put("toViewImage",filePathForJsp);
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addAllObjects(model);

@@ -39,7 +39,7 @@ a.listtxt:hover {
 		</c:if>
 <c:if test="${!empty articleListRev}">
 		<table>
-			<tr class="header">
+			<tr>
 				<th align="center" width="80">번호</th>
 				<th align="center" width="620">제 목</th>
 				<th align="center" width="100">글쓴이</th>
@@ -49,7 +49,7 @@ a.listtxt:hover {
 
 			<c:forEach items="${articleListRev}" var="reviews">
 				<tr class="record">
-					<td align="center" class="listtxt">
+					<td align="left" class="listtxt">
 						<c:out value="${reviews.bdNoRev}" />
 					</td>
 					<td align="left" class="listtxt">

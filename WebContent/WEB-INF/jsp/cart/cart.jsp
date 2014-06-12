@@ -38,7 +38,7 @@
 								<td></td>
 								<td id="centerid"><h5></h5></td>
 								<td><img width="80px" height="50px"
-									src="../img/${itemSet.photo }"> &nbsp;&nbsp;&nbsp;<c:out
+									src="${itemSet.photo }"> &nbsp;&nbsp;&nbsp;<c:out
 										value="${itemSet.itemName }" /></td>
 								<td id="centerid"><c:out value="${itemSet.price }" /></td>
 								<td id="centerid"><c:out

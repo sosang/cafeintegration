@@ -1,5 +1,9 @@
 package logic;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +33,16 @@ public class MemberCatalogImpl implements MemberCatalog {
 	}
 
 	@Override
-	public int getCheckedUserEmail(String userEmail) {
+	public List<MemberVo> getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberDao.checkUserEmail(userEmail);
+	}
+
+	@Override
+	public List<MemberVo> findAllMember(HttpServletRequest request,
+			Integer pageNo) {
+		// TODO Auto-generated method stub
+		return this.memberDao.findAllMemberList(request, pageNo);
 	}
 
 	@Override
@@ -39,8 +50,6 @@ public class MemberCatalogImpl implements MemberCatalog {
 		// TODO Auto-generated method stub
 		return this.memberDao.findmember(userEmail);
 	}
-
-
 
 
 

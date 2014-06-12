@@ -6,13 +6,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+
+
+
+
+
+
 import logic.CartVo;
-import logic.ItemVo;
 import logic.MemberVo;
 import logic.Shop;
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,11 +34,10 @@ public class CartController {
 	@RequestMapping(value = "/cart/cartAdd")
 	public ModelAndView add(Integer itemNo, Integer price,
 			Integer cartNumOfProduct, HttpSession session) {
-		ItemVo selectedItem = this.shopService.getItemByItemNo(itemNo);
 
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
-		
+
 		String userEmail = userKey.getUserEmail();
 		Integer cartSubTotal = price * cartNumOfProduct;
 
@@ -64,12 +70,9 @@ public class CartController {
 		this.shopService.clearCart(userEmail);
 
 		ModelAndView modelAndView = new ModelAndView("cart/cart");
-		modelAndView.addObject("message", "īƮ�� ������ϴ�");
+		modelAndView.addObject("message", "Ä«Æ®¸¦ ºñ¿ü½À´Ï´Ù");
 
 		return modelAndView;
 	}
-	// this.shopService.entryCart(new CartItem(selectedItem,
-	// cartNumOfProduct,
-	// userEmail, cartSubTotal));
 
 }

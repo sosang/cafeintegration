@@ -2,12 +2,8 @@ package controller;
 
 import javax.servlet.http.HttpSession;
 
-
-
 import logic.MemberVo;
 import logic.Shop;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import logic.ItemVo;
+import logic.SaveFilePathTo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -44,5 +45,78 @@ public class ItemDaoImpl implements ItemDao {
 		return this.template.queryForObject(SELECT_BY_PRIMARY_KEY, mapper,
 				itemNo);
 	}
+	
 
+	private static final StringBuffer REG_NEW_ITEM = new StringBuffer("INSERT INTO item(item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, photo, price, total_product, def_exchange, def_refund) VALUES(item_seq.nextval,?,?,?,?,sysdate,?,?,?,?,?,?,?)");
+	@Override
+	public void regNewItem(ItemVo itemVo, String forDb) {
+		// TODO Auto-generated method stub
+		this.template.update(ItemDaoImpl.REG_NEW_ITEM.toString(), itemVo.getItemName(), itemVo.getOrigin(), itemVo.getGrade(), itemVo.getProcessing(), itemVo.getRoastingLevel(), itemVo.getItemInfo(),forDb, itemVo.getPrice(), itemVo.getTotalProduct(), 0,0);
+		
+	}
+	
+
+	private static final StringBuffer GET_RECENT_NO = new StringBuffer("SELECT max(item_no) FROM item");
+	@Override
+	public int getNewItemNo() {
+		// TODO Auto-generated method stub
+		return this.template.queryForInt(GET_RECENT_NO.toString());
+	}
+	
+
+	private static final StringBuffer SFPFN = new StringBuffer("INSERT INTO save_file_path(save_file_path_no, item_no, file_path) VALUES(save_file_path_seq.nextval,?,?)");
+	@Override
+	public void setItemImageFilePath(int newItemNo, String forDb) {
+		// TODO Auto-generated method stub
+		this.template.update(SFPFN.toString(),newItemNo,forDb);
+
+	}
+	
+
+	private static final StringBuffer UPDATE_THE_ITEM = new StringBuffer("UPDATE item set item_name=?, origin=?, grade=?, processing=?, roasting_level=?, item_info=?, price=?, total_product=? WHERE item_no = ?");
+	@Override
+	public void itemUpdate(ItemVo itemVo, Integer itemNo) {
+		// TODO Auto-generated method stub
+		this.template.update(ItemDaoImpl.UPDATE_THE_ITEM.toString(), itemVo.getItemName(), itemVo.getOrigin(), itemVo.getGrade(), itemVo.getProcessing(), itemVo.getRoastingLevel(), itemVo.getItemInfo(), itemVo.getPrice(), itemVo.getTotalProduct(), itemNo);
+	}
+	
+
+	private static final StringBuffer UPDATE_THE_FILE_PATH = new StringBuffer("UPDATE save_file_path set file_path=? WHERE item_no = ?");
+	@Override
+	public void updateFilePath(Integer itemNo, String forDb) {
+		// TODO Auto-generated method stub
+		System.out.println(forDb);
+		this.template.update(ItemDaoImpl.UPDATE_THE_FILE_PATH.toString(), forDb, itemNo);
+	}
+	
+
+	private static final StringBuffer LOOK_FOR_THE_FILE_PATH = new StringBuffer("SELECT file_path from save_file_path WHERE item_no = ?");
+	@Override
+	public String getFilePathTo(Integer itemNo) {
+		// TODO Auto-generated method stub
+		RowMapper<SaveFilePathTo> mapper = new BeanPropertyRowMapper<SaveFilePathTo>(
+				SaveFilePathTo.class);
+		SaveFilePathTo find = this.template.queryForObject(ItemDaoImpl.LOOK_FOR_THE_FILE_PATH.toString(), mapper ,itemNo);
+		return find.getFilePath();
+	}
+	
+
+	private static final StringBuffer DELETE_THE_ITEM = new StringBuffer("DELETE item WHERE item_no = ?");
+	private static final StringBuffer DELETE_THE_FILE_PATH = new StringBuffer("DELETE save_file_path WHERE item_no = ?");
+	@Override
+	public void deleteItem(Integer itemNo) {
+		// TODO Auto-generated method stub
+		this.template.update(ItemDaoImpl.DELETE_THE_ITEM.toString(), itemNo);
+		this.template.update(ItemDaoImpl.DELETE_THE_FILE_PATH.toString(), itemNo);
+	}
+	
+	private static final StringBuffer LOOK_FOR_THE_FILE_PATH_ALL = new StringBuffer("SELECT file_path from save_file_path");
+	public List<SaveFilePathTo> findAll_photo() {
+		// TODO Auto-generated method stub
+		RowMapper<SaveFilePathTo> mapper = new BeanPropertyRowMapper<SaveFilePathTo>(
+				SaveFilePathTo.class);
+
+		return this.template.query(ItemDaoImpl.LOOK_FOR_THE_FILE_PATH_ALL.toString(), mapper);
+	}
+	
 }

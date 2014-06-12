@@ -27,11 +27,11 @@ public class PurchaseController {
 
 	@RequestMapping(value = "/purchase/purchaseCart")
 	public ModelAndView purchase(HttpSession session) {
-		
+
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
 		String userEmail = userKey.getUserEmail();
-		
+
 		List<CartVo> cartVo = this.shopService.getCartList(userEmail);
 
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -59,5 +59,6 @@ public class PurchaseController {
 
 		return modelAndView;
 	}
-
+	
+	
 }
