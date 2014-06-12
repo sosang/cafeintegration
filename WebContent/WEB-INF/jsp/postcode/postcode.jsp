@@ -46,7 +46,7 @@
 					<div class="alert alert-danger">
 						<h4>앗, 별에서 오신 고갱님???</h4>
 						</div>
-						<p>찾으시는 "<kbd></kbd><c:out value="${param.eupmyeondong}"/>동</kbd>"은 죄송스럽게도 우리 데이터베이스에는 없습니다. <br/>확인해보시고 다시 한 번 도전~!</p>
+						<p>찾으시는 <kbd>"<c:out value="${param.eupmyeondong}"/>동"</kbd>은 죄송스럽게도 우리 데이터베이스에는 없습니다. <br/>확인해보시고 다시 한 번 도전~!</p>
 					
 				</c:otherwise>
 			</c:choose>
