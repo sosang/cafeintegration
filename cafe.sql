@@ -1,37 +1,22 @@
-SELECT file_path from save_file_path WHERE item_no = 50
-select * from SAVE_FILE_PATH
-select * from item 
-desc member;
-drop table member cascade ;
-select * from member where user_email='cafe4' and user_passwd='cafe4';
-alter table member add(user_facebook_key number(30));
- alter table member modify(user_passwd varchar2(30));
-select * from member where substr(to_char(sysdate,'YYYYMMDD'),1,8) = substr(to_char(join_date,'YYYYMMDD'),1,8) ;
 create table member(
 	user_email varchar2(50) primary key,
-	user_passwd varchar2(30) ,
+	user_passwd varchar2(30),
 	user_alias varchar2(30)  unique,
 	user_phone1 varchar2(6) ,
-	user_phone2 varchar2(8) ,
-	user_phone3 varchar2(8) ,
-	user_postcode varchar2(7) ,
-	user_address1 varchar2(200) ,
-	user_address2 varchar2(200) ,
+	user_phone2 varchar2(8),
+	user_phone3 varchar2(8),
+	user_postcode varchar2(7),
+	user_address1 varchar2(200),
+	user_address2 varchar2(200),
 	user_level number(2) default 0,
 	user_point number(6) default 0,
 	user_num_of_article number(5) default 0,
 	user_num_of_comments number(8) default 0,
 	user_num_of_practice number(4) default 0,
-	user_facebook_key number(30),
+	user_facebook_email varchar2(50) default null,
 	join_date date default sysdate
 );
-INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, sysdate);
 
-select substr(to_char(sysdate,'YYYYMMDD'),1,8) sys from dual;
-drop table member cascade constraint;
-select * from member;
-alter table member rename column user_num_of_reply TO user_num_of_comments;
-alter table member add(join_date date default sysdate);
 create table board_qa(
 	bd_no_qa number(4) primary key,
 	user_email varchar2(50) not null,
@@ -48,9 +33,13 @@ create table board_qa(
 	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
+
 create sequence board_qa_seq
 increment by 1
 start with 1;
+
+
+
 
 create table board_qa_comments(
 	bd_no_qa_comments number(4) primary key,
@@ -64,6 +53,7 @@ create table board_qa_comments(
 	foreign key (user_email) references member (user_email) ON DELETE CASCADE,
 	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
+
 
 create sequence board_qa_comments_seq
 increment by 1
@@ -86,6 +76,7 @@ create table board_reviews(
 	foreign key (user_alias) references member (user_alias) ON DELETE CASCADE
 );
 
+
 create sequence board_reviews_seq
 increment by 1
 start with 1;
@@ -107,40 +98,6 @@ create sequence board_reviews_comments_seq
 increment by 1
 start with 1;
 
-
-create table board_faq(
-	bd_no_faq number(4) primary key,
-	title_faq varchar2(300) not null,
-	content_faq varchar2(4000) not null
-);
-
-create sequence board_faq_seq
-increment by 1
-start with 1;
-
-insert into board_faq values(board_faq_seq.nextval,'연습공지사항 없어서 올림2','아코디언 내용이 보이니까 신기하죠? ㅎ ㅔㅎ ㅔ');
-create table adminstrator(
-	admin_email varchar2(50) primary key,
-	admin_grade number(1) default 0 not null,
-	admin_passwd varchar2(30) not null
-);
-insert into adminstrator values('admin','1','admin');
-
-
-create table board_notice(
-	bd_no_ntc number(4) primary key,
-	title_ntc varchar2(300) not null,
-	content_ntc varchar2(4000) not null,
-	date_ntc date default sysdate not null,
-	count_ntc number(4) default 0
-);
-
-create sequence board_notice_seq
-increment by 1
-start with 1;
-
-
-
 create table recommend_recorder(
 	rec_rec_no number(4) primary key,
 	bd_no_rev number(4) not null,
@@ -156,18 +113,27 @@ create table recommend_recorder(
 create sequence recommend_recorder_seq
 increment by 1
 start with 1;
-drop table save_file_path;
-create table save_file_path(
-	save_file_path_no number(4) primary key,
-	file_path varchar2(100),
-	file_size number(8),
-	bd_no_rev number(4),
-	item_no number(4),
-	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE,
-	foreign key (item_no) references item (item_no) ON DELETE CASCADE
+
+
+create table board_faq(
+	bd_no_faq number(4) primary key,
+	title_faq varchar2(300) not null,
+	content_faq varchar2(4000) not null
 );
 
-create sequence save_file_path_seq
+create sequence board_faq_seq
+increment by 1
+start with 1;
+
+create table board_notice(
+	bd_no_ntc number(4) primary key,
+	title_ntc varchar2(300) not null,
+	content_ntc varchar2(300) not null,
+	date_ntc date default sysdate not null,
+	count_ntc number(4) default 0
+);
+
+create sequence board_notice_seq
 increment by 1
 start with 1;
 
@@ -186,39 +152,47 @@ create table item(
 	def_refund number(3) default 0
 );
 
-drop table item cascade constraint;
-select * from save_file_path ;
+
+create sequence item_seq
+increment by 1
+start with 1;
 
 
-drop table reservation;
-drop table experience;
-drop table cart;
-drop table adminstrator;
-drop table post;
-drop table purchase_line;
-drop table purchase;
-drop table item;
-drop table board_notice;
-drop table board_faq;
 
-drop table board_reviews_comments;
-drop table save_file_path;
-drop table recommend_recorder;
-drop table board_reviews CASCADE CONSTRAINTS;
 
-drop table board_qa;
-drop table member;
+create table purchase(
+	pur_no number(4) primary key,
+	user_email varchar2(50) not null,
+	time_of_purchase date default sysdate,
+	pur_canceltime date default sysdate,
+	pur_sent number(1) default 0,
+	receiver varchar2(50) not null,
+	rec_phone varchar2(50) not null,
+	rec_addr varchar2(200) not null,
+	rec_postcode varchar2(6) not null,
+	remarks varchar2(300),
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE
 
-drop sequence board_faq_seq;
-drop sequence board_notice_seq;
-drop sequence board_qa_seq;
-drop sequence board_revies_seq;
-drop sequence cart_seq;
-drop sequence experience_seq;
-drop sequence item_seq;
-drop sequence pur_line_seq;
-drop sequence purchase_seq;
-drop sequence reservation_seq;
+);
+
+create sequence purchase_seq
+increment by 1
+start with 1;
+
+create table purchase_line(
+	pur_line_no number(4),
+	pur_no number(4) not null,
+	item_no number(4) not null,
+	num_of_product number(3) not null,
+	
+	foreign key (pur_no) references purchase (pur_no) ON DELETE CASCADE,
+	foreign key (item_no) references item (item_no) ON DELETE CASCADE
+	);
+
+	create sequence pur_line_seq
+	increment by 1
+	start with 1;
+
 
 CREATE TABLE postcode
 (
@@ -231,4 +205,142 @@ Beonji varchar2(30),
 Bldg varchar2(100)
 );
 
-select * from postcode;
+create table cart(
+	cart_num number(4) primary key,
+	user_email varchar(50) not null,
+	item_no number(4) not null,
+	cart_num_of_product number(4),
+	cart_sub_total number(8),
+	foreign key (item_no) references item (item_no) ON DELETE CASCADE,
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE
+);
+
+create sequence cart_seq
+increment by 1
+start with 1;
+
+create table experience(
+	exp_no number(4) primary key,
+	exp_title varchar2(100) not null,
+	exp_target_applicant number(3) not null,
+	exp_date date default sysdate,
+	exp_fee number(7) not null,
+	pay_check number(1) default 0 not null
+);
+
+create sequence experience_seq
+increment by 1
+start with 1;
+
+create table reservation(
+	res_no number(4) primary key,
+	user_email varchar2(50) not null,
+	exp_no number(4) not null,
+	res_table_num varchar2(3) not null,
+	res_time date default sysdate not null,
+	res_cancel_time date default sysdate not null,
+	res_current_applicant number(3),
+	res_max_applicant number(3),
+	res_flag number(1) default 0,
+	res_index_detail varchar2(2000) not null,
+	foreign key (exp_no) references experience (exp_no) ON DELETE CASCADE,
+	foreign key (user_email) references member (user_email) ON DELETE CASCADE
+);
+
+
+create table save_file_path(
+	save_file_path_no number(4) primary key,
+	file_path varchar2(100),
+	file_size number(8),
+	bd_no_rev number(4),
+	item_no number(4),
+	foreign key (bd_no_rev) references board_reviews (bd_no_rev) ON DELETE CASCADE,
+	foreign key (item_no) references item (item_no) ON DELETE CASCADE
+);
+
+
+create sequence save_file_path_seq
+increment by 1
+start with 1;
+
+
+
+create table adminstrator(
+
+	admin_email varchar2(50) primary key,
+
+	admin_grade number(1) default 0 not null,
+
+	admin_passwd varchar2(30) not null
+
+);
+
+--테스트용 
+insert into adminstrator values('admin','1','admin');
+
+INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, ‘facebook’ ,sysdate);
+insert into ITEM values(item_seq.nextval,'루티나','에티오피아',2,'연하게',sysdate,'시나몬','연하고 시나몬 맛 나는 커피','bean.jpg',4000,10,0,0);
+insert into ITEM values(item_seq.nextval,'시다모','에티오피아',2,'연하게',sysdate,'과일향','연한 꽃내음 나는 커피','bean.jpg',7000,10,0,0);
+
+
+
+
+
+
+
+
+
+
+select * from user_sequences;
+select * from user_tables;
+select * from purchase;
+select * from purchase_seq;
+select * from purchase_line;
+select * from member;
+
+
+drop table adminstrator;
+drop table cart;
+drop table purchase_line;
+drop table purchase;
+drop table save_file_path;
+drop table item;
+drop table board_notice;
+drop table board_faq;
+drop table board_reviews_comments;
+drop table board_reviews CASCADE CONSTRAINTS;
+drop table BOARD_QA_COMMENTS;
+drop table board_qa;
+drop table recommend_recorder;
+drop table reservation;
+drop table experience;
+drop table member;
+
+
+
+drop sequence board_faq_seq;
+drop sequence board_notice_seq;
+drop sequence board_qa_comments_seq;
+drop sequence board_qa_seq;
+drop sequence board_reviews_comments_seq;
+drop sequence board_reviews_seq;
+drop sequence recommend_recorder_seq;
+drop sequence save_file_path_seq;
+drop sequence cart_seq;
+drop sequence item_seq;
+drop sequence purchase_seq;
+drop sequence experience_seq;
+drop sequence pur_line_seq;
+drop sequence reservation_seq;
+
+
+
+--member테이블 test명 
+
+--새로 생성시 기본 테스트용 추가 테이블 꼭 추가 시킬것!
+
+INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, ‘facebook’ ,sysdate);insert into ITEM values(item_seq.nextval,'루티나','에티오피아',2,'연하게',sysdate,'시나몬','연하고 시나몬 맛 나는 커피','bean.jpg',4000,10,0,0);
+insert into ITEM values(item_seq.nextval,'시다모','에티오피아',2,'연하게',sysdate,'과일향','연한 꽃내음 나는 커피','bean.jpg',7000,10,0,0);
+
+********************************************************************************************************
+
