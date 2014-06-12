@@ -1,10 +1,11 @@
-//비밀번호 확인 이벤트(jQuery사용)
+
 $(document).ready(function () {
+		/*	비밀번호 확인 이벤트(jQuery사용)*/
 	   $("#confirmPasswd").onkeyup(checkPasswordMatch);
-//	   $("#userPhone2").onkeyup(moveFocus);
+	   	
 	});
 
-
+//비밀번호 활성화
 function checkPasswordMatch() {
     var password1 = $("#userPasswd").val();
     var password2 = $("#confirmPasswd").val();
@@ -16,6 +17,7 @@ function checkPasswordMatch() {
     }
 }
 
+//비밀번호 확인 및 동일성 확인시 다음 input으로 focus 자동이동
 function moveFocus(){
 	
 	var phone2 =$("#userPhone2").val();
@@ -27,7 +29,7 @@ function moveFocus(){
 	}
 }
 
-//ajax 이메일 중복 검사
+/* ======== ajax 활용 이메일 중복성 검사 ==========*/
 function getXMLHttpRequest() {
 	if (window.ActiveXObject) {
 		try {
@@ -63,7 +65,6 @@ function sendRequest(url, params, callback, method) {
 	httpRequest.send(httpMethod == 'POST' ? httpParams : null);
 }
 
-//Email check
 
 function emailCheckAjax() {
 	var lastKeywordEmail = '';
@@ -90,7 +91,6 @@ function displayLoginResult() {
 		if (httpRequest.status == 200) {
 			var resultText = httpRequest.responseText;
 			var listView = document.getElementById('emailCheckResult');
-			alert(resultText);
 			if (resultText == 0) {
 				listView.innerHTML = "멋진 이메일입니다. 반갑습니다.";
 				listView.style.color = "blue";
@@ -103,3 +103,18 @@ function displayLoginResult() {
 		}
 	}
 }
+
+
+
+/*회원가입시 약관 동의한 경우 submit 버튼 활성화*/
+	$("#terms_check").change(function () {
+	   $("#EntryBtn").attr("disabled", !this.checked);
+	});
+	
+	   /*회원 가입시 약관보기 modal*/
+
+	   	$("#terms_modal").clicked(function(){
+	   	    $( "#dialog" ).dialog();
+	   	});
+
+

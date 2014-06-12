@@ -65,7 +65,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="../login/login.html" class="btn btn-primary login-button">로그인</a>
-						<a href="../memberentry/termsAndCoditions.html"
+						<a href="../memberentry/memberEntry.html"
 							class="btn btn-info member-button">회원가입</a>
 					</c:otherwise>
 				</c:choose>

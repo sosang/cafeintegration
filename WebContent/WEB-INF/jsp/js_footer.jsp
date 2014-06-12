@@ -14,10 +14,14 @@
 <!-- Bootstrap CDN js -->
 	<script
 		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+
+<!-- 회원가입 체크용 check.js -->
+	<script type="text/javascript" src="<%=request.getContextPath()%>/java_script/check.js"></script>
+		
 <!-- 우편번호 넘기기 -->
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/java_script/postcode.js"></script>
-<!-- 우편번호 넘기기 -->
+<!-- faq.js -->
 <script type="text/javascript" src="<%=request.getContextPath() %>/java_script/faq.js"></script>
 </body>
 </html>
