@@ -48,7 +48,7 @@
 
 		</table>
 		<br>
-<a href="../index/index.html">■ 목록으로</a><br>
+<a href="../index/index.html" class="btn btn-default btn-lg">홈으로</a><br>
 	</div>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>

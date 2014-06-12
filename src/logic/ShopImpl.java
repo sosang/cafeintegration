@@ -211,6 +211,11 @@ public class ShopImpl implements Shop {
 		return this.itemCatalog.findAll_photo();
 	}
 
-
+	// userAlias 중복체크
+	 		@Override
+	 		public int getCheckedUserAlias(String userAlias) {
+	 			// TODO Auto-generated method stub
+	 			return this.memberCatalog.getCheckedUserAlias(userAlias);
+	 		}
 	
 }

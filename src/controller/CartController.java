@@ -69,8 +69,7 @@ public class CartController {
 		String userEmail = userKey.getUserEmail();
 		this.shopService.clearCart(userEmail);
 
-		ModelAndView modelAndView = new ModelAndView("cart/cart");
-		modelAndView.addObject("message", "Ä«Æ®¸¦ ºñ¿ü½À´Ï´Ù");
+		ModelAndView modelAndView = new ModelAndView("cart/cartClear");
 
 		return modelAndView;
 	}

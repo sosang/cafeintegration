@@ -1,31 +1,20 @@
-jQuery(function($){
-	// Frequently Asked Question
-	var article = $('.body>.faq>.faqBody>.article');
-	article.addClass('hide');
-	article.find('.a').hide();
-	article.eq(0).removeClass('hide');
-	article.eq(0).find('.a').show();
-	$('.faq>.faqBody>.article>.q>a').click(function(){
-		var myArticle = $(this).parents('.article:first');
-		if(myArticle.hasClass('hide')){
-			article.addClass('hide').removeClass('show');
-			article.find('.a').slideUp(100);
-			myArticle.removeClass('hide').addClass('show');
-			myArticle.find('.a').slideDown(100);
-		} else {
-			myArticle.removeClass('show').addClass('hide');
-			myArticle.find('.a').slideUp(100);
-		}
-		return false;
-	});
-	$('.faq>.faqHeader>.showAll').click(function(){
-		var hidden = $('.faq>.faqBody>.article.hide').length;
-		if(hidden > 0){
-			article.removeClass('hide').addClass('show');
-			article.find('.a').slideDown(100);
-		} else {
-			article.removeClass('show').addClass('hide');
-			article.find('.a').slideUp(100);
+$(function(){
+
+	// 모든 패널이 펼쳐져있는 상태이기 때문에 dd의 첫번재를 제외한곳은 안보이게 설정합니다.
+	$("dd").css("display","none");
+
+	//dl 의 dt 를 클릭했을때
+	$("dl dt").click(function(){
+
+		$("dd").slideUp("slow");
+		// 만약 클릭한 태그 다음에 있는 dd 태그의 속성이 none 이면
+		if($("+dd",this).css("display")=="none"){
+
+			// dd 태그에 대해서 슬라이드업을 합니다. 즉 패널이 닫히는겁니다.
+			$("dd").slideUp("slow");
+
+			// 이어서 이접한 dd 에 슬라이드 다운을 합니다.
+			$("+dd",this).slideDown("slow");
 		}
 	});
 });

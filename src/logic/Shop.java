@@ -34,4 +34,5 @@ public interface Shop {
 	String getFilePathTo(Integer itemNo);	// 세부내용 보기를 위한 파일경로 불르기
 	void deleteBoth(Integer itemNo);	// 상품 삭제
 	List<SaveFilePathTo> getitemAll_photo();
+	int getCheckedUserAlias(String userAlias);	//userAlias 중복체크용
 }

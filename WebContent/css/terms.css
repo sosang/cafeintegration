@@ -1,0 +1,24 @@
+.terms
+    {
+     font-size: 10px;
+      width:80%; 
+    }
+
+    @media (max-width: 768)
+    {
+       .terms
+       {
+           font-size: 7px; 
+       }
+       
+    }
+    
+ .hang{
+ text-indent:8px; 
+ }
+ 
+ .ho{
+ text-indent:12px;
+ 
+ }
+ 

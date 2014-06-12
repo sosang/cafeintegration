@@ -34,7 +34,11 @@ public class MemberDaoImpl implements MemberDao {
 
 //	이메일 중복 체크용
 	private static final String CHECK_USER_EMAIL = "SELECT user_email from member where user_email=?";
-
+	
+//	별명 중복 체크용
+	private static final String CHECK_USER_ALIAS = "SELECT count(*) from member where user_alias=?";
+	
+	
 	private SimpleJdbcTemplate template;
 	private JdbcTemplate jdbcTemplate;
 
@@ -133,5 +137,12 @@ public class MemberDaoImpl implements MemberDao {
 		return null;
 	}
 
+	
+	//회원가입시 별명 중복 체크
+	 	@Override
+	 	public int checkUserAlias(String userAlias) {
+	 		int result = this.template.queryForInt(CHECK_USER_ALIAS, userAlias);
+	 		return result;
+	 	}
 
 }

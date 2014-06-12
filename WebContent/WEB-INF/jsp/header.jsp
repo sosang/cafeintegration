@@ -30,7 +30,7 @@
 			<ul class="nav navbar-nav">
 				<li ><a href="../index/index.html" style="padding: 5px"><img  src="../images/cafe_logo.png"
 				class="logo img-responsive" width="70" height="70"></a></li>
-				<li><a href="#">about</a></li>
+				<li><a href="../aboutUs/aboutUs.html">about</a></li>
 				<li><a href="../item/item.html">구매</a></li>
 				<li><a href="#">체험</a></li>
 				<li class="dropdown"><a href="" class="dropdown-toggle"
