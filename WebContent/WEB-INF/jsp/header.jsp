@@ -30,7 +30,7 @@
 			<ul class="nav navbar-nav">
 				<li ><a href="../index/index.html" style="padding: 5px"><img  src="../images/cafe_logo.png"
 				class="logo img-responsive" width="70" height="70"></a></li>
-				<li><a href="#">about</a></li>
+				<li><a href="../aboutUs/aboutUs.html">about</a></li>
 				<li><a href="../item/item.html">구매</a></li>
 				<li><a href="#">체험</a></li>
 				<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -42,12 +42,16 @@
 						<li><a href="../board/boardReviews.html?pageNo=1">체험후기</a></li>
 					</ul></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search">
+			
+			<!-- *******************************search 기능 추후 구현 예정******************************* -->
+ 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
 				<button type="submit" class="btn btn-warning ">Submit</button>
-</form>
+</form> 
+			<!-- *******************************search 기능 추후 구현 예정******************************* -->
+			
 <form class="navbar-form navbar-right">
 				<c:choose>
 
