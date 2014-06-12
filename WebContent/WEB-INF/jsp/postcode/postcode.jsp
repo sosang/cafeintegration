@@ -52,8 +52,12 @@
 
 
 	</div>
+	
+	<!-- jQuery  -->
+ 	<script
+ 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+<%-- 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%> --%>
 	
 		<!-- 우편번호 넘기기 -->
 	<script type="text/javascript"

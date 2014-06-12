@@ -1,22 +1,28 @@
 SELECT file_path from save_file_path WHERE item_no = 50
 select * from SAVE_FILE_PATH
 select * from item 
+desc member;
+drop table member cascade ;
+select * from member where user_email='cafe4' and user_passwd='cafe4';
+alter table member add(user_facebook_key number(30));
+ alter table member modify(user_passwd varchar2(30));
 select * from member where substr(to_char(sysdate,'YYYYMMDD'),1,8) = substr(to_char(join_date,'YYYYMMDD'),1,8) ;
 create table member(
 	user_email varchar2(50) primary key,
-	user_passwd varchar2(30) not null,
-	user_alias varchar2(30)  unique not null ,
-	user_phone1 varchar2(6) not null,
-	user_phone2 varchar2(8) not null,
-	user_phone3 varchar2(8) not null,
-	user_postcode varchar2(7) not null,
-	user_address1 varchar2(200) not null,
-	user_address2 varchar2(200) not null,
+	user_passwd varchar2(30) ,
+	user_alias varchar2(30)  unique,
+	user_phone1 varchar2(6) ,
+	user_phone2 varchar2(8) ,
+	user_phone3 varchar2(8) ,
+	user_postcode varchar2(7) ,
+	user_address1 varchar2(200) ,
+	user_address2 varchar2(200) ,
 	user_level number(2) default 0,
 	user_point number(6) default 0,
 	user_num_of_article number(5) default 0,
 	user_num_of_comments number(8) default 0,
 	user_num_of_practice number(4) default 0,
+	user_facebook_key number(30),
 	join_date date default sysdate
 );
 INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, sysdate);
@@ -214,3 +220,15 @@ drop sequence pur_line_seq;
 drop sequence purchase_seq;
 drop sequence reservation_seq;
 
+CREATE TABLE postcode
+(
+zipcode varchar2(20),
+SiDo varchar2(30),
+SiGunGu varchar2(30),
+eupMyeonDong varchar2(30),
+Ri varchar2(30),
+Beonji varchar2(30),
+Bldg varchar2(100)
+);
+
+select * from postcode;

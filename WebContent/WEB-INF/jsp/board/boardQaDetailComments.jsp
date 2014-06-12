@@ -1,37 +1,135 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>후기게시판</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<table>
-	<c:forEach items="${commentsListQa}" var="comments">
-		<tr>
-			<td width="100">${comments.userAlias}</td>
-			<td width="600">${comments.bdQaCommentsContent}</td>
-			<td width="100">${comments.bdQaCommentsDate}</td>
-			<td width="100">${comments.bdQaCommentsIp}</td>
-			<td width="60">
-				<c:if test="${USER_KEY.userEmail == comments.userEmail }">
-					<input type="hidden" name="bdNoQaComments" value="${comments.bdNoQaComments}"/>
-					<img id="checkPass" src="<%=request.getContextPath() %>/images/icon/x.png" onclick="really(${comments.bdNoQaComments})" class="pointer" width="30" height="30">
-				</c:if>
-			</td>
-		</tr>
-		<tr height="1">
-			<td colspan="5"><hr></td>
-		</tr>
-	</c:forEach>
-	<c:if test="${!empty USER_KEY}">
-		<table width="960" border="0">
+<style type="text/css">
+a.listtxt:link {
+	font-size: 12px;
+	color: #535353;
+	text-decoration: none;
+} /*lisk link*/
+a.listtxt:visited {
+	color: #535353;
+	text-decoration: none;
+}
+
+a.listtxt:hover {
+	color: #4A86B6;
+	text-decoration: underline;
+}
+
+.listtxt {
+	color: #535353;
+}
+table.tableType tr td {
+	text-align: center;
+}
+table.tableType  td title{
+	text-align: left;
+}
+
+ /*text default*/
+</style>
+</head>
+<body>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<div align="center" class="body">
+		<h2>후기게시판</h2>
+		<c:if test="${!empty USER_KEY}">
+			<a href="boardReviewsWriteBefore.html">글쓰기</a>
+		</c:if>
+		<c:if test="${empty USER_KEY}">
+			<b>To write --> <a href="../login/login.html">로그인</a></b>
+		</c:if>
+<c:if test="${!empty articleListRev}">
+		<table class="tableType">
 			<tr>
-				<td>
-				<form method="post" action='boardQaWriCom.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'>
-					<input type="hidden" name="bdNoQa" value="${boardQa.bdNoQa }"/>
-					<input type="hidden" name="pageNo" value="${pageNo }"/>
-					<textarea rows="3" cols="100" name="bdQaCommentsContent" draggable="false"></textarea>
-					<input type="submit" value="comments" />
-				</form>
-				</td>
+				<th align="center" width="5%">번호</th>
+				<th align="center" style="text-align: left;" width="60%">제 목</th>
+				<th align="center" width="10%">글쓴이</th>
+				<th align="center" width="15%">글쓴날</th>
+				<th align="center" width="10%">조회/추천수</th>
 			</tr>
+
+			<c:forEach items="${articleListRev}" var="reviews">
+				<tr>
+					<td align="left" class="listtxt">
+						<c:out value="${reviews.bdNoRev}" />
+					</td>
+					
+					<!-- 게시판 타이틀 영역 -->
+					<td align="left" class="listtxt title">
+					<c:choose>
+					
+						<c:when test="${reviews.reStep == 0}">
+							<a	href="<c:url value="boardReviewsDetail.html">
+											<c:param name="pageNo" value="${pageNo}"/>
+											<c:param name="bdNoRev" value="${reviews.bdNoRev}"/>
+										</c:url>">
+								<c:out value="${reviews.titleRev}" />
+							</a>
+						</c:when>
+						
+						<c:otherwise>
+							<c:forEach begin="0" end="${reviews.reStep}" var="i">
+								&nbsp;&nbsp;
+							</c:forEach>
+							<a	href="<c:url value="boardReviewsDetail.html">
+											<c:param name="pageNo" value="${pageNo}"/>
+											<c:param name="bdNoRev" value="${reviews.bdNoRev}"/>
+										</c:url>">
+								<c:out value="▷답글 : ${reviews.titleRev}" />
+							</a>
+						</c:otherwise>
+					</c:choose>
+					</td>
+					
+					<td align="center" class="listtxt">
+						<c:out value="${reviews.userAlias}" />
+					</td>
+					<td align="center" class="listtxt">
+						<font size="0.1"><c:out value="${reviews.dateRev}" /></font>
+					</td>
+					<td align="center" class="listtxt">
+						<c:out value="${reviews.countRev}" />/
+						<c:out value="${reviews.recommendRev}" />
+					</td>
+				</tr>
+			</c:forEach>
 		</table>
-	</c:if>
-</table>
-<c:if test="${empty USER_KEY}">
-	<b>To write --> <a href="../login/login.html">Login</a></b>
+		<!-- 하단부 페이지 이동버튼 만들기 -->
+		<c:if test="${listCountRev>0 }">
+			<c:set var="maxPageRev" value="${requestScope.maxPageRev }" />
+			<c:set var="startPageRev" value="${requestScope.startPageRev }" />
+			<c:set var="endPageRev" value="${requestScope.endPageRev }" />
+			<c:if test="${startPageRev>10 }">
+				<a href="boardReviews.html?pageNo=${startPageRev -10 }">이전</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPageRev }" end="${endPageRev }">
+				<a href="boardReviews.html?pageNo=${i }">[${i }]</a>
+			</c:forEach>
+			<c:if test="${endPageRev<maxPageRev }">
+				<a href="boardReviews.html?pageNo=${startPageRev+10 }">다음</a>
+			</c:if>
+		</c:if>
+		<input type="hidden" value="${pageNo }" name="pageNo">
+		<!-- 하단부 페이지 이동버튼 만들기 -->
 </c:if>
+<%-- <c:if test="${!empty USER_KEY}">
+	<div align="right"><a href="boardReviewsWriteBefore.html">글쓰기</a></div>
+</c:if>
+<c:if test="${empty USER_KEY}">
+	<br><b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
+</c:if>
+		<hr> --%>
+<c:if test="${empty articleListRev}">
+<h1>등록된 게시물이 없습니다.</h1>
+</c:if>
+	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+</body>
+</html>

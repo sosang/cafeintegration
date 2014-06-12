@@ -71,7 +71,7 @@
 
 							<font color="white">&nbsp;로그인을 해주세요.</font> <a
 								href="../login/login.html" class="btn btn-primary login-button">Login</a>
-							<a href="../memberentry/memberEntry.html"
+							<a href="../memberentry/termsAndCoditions.html"
 								class="btn btn-info member-button">SignUp</a>
 
 

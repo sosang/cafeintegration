@@ -11,7 +11,11 @@
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
-    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3'});
+    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',language:'ko',
+    	
+    	toolbar:[['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-','Find','Replace','SelectAll','RemoveFormat','-','Image','Flash','Table','SpecialChar'],'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']]
+    
+    });
 };
 </script>
 </head>

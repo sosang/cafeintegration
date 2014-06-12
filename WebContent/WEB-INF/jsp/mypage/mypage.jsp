@@ -35,8 +35,8 @@
 					<option value="016">016</option>
 					<option value="019">019</option>
 			</select> - <input type="text" maxlength="5" size="5"
-				value="${user.userMidPhone }" /> - <input type="text" maxlength="5"
-				size="5" value="${user.userLastPhone }" /></td>
+				value="${user.userPhone2 }" /> - <input type="text" maxlength="5"
+				size="5" value="${user.userPhone3 }" /></td>
 		</tr>
 
 		<tr height="40px">
@@ -45,11 +45,11 @@
 		</tr>
 		<tr height="40px">
 			<td>기본주소:</td>
-			<td><input type="text" value="${user.userBasicAddress }"></td>
+			<td><input type="text" value="${user.userAddress1 }"></td>
 		</tr>
 		<tr height="40px">
 			<td>상세주소:</td>
-			<td><input type="text" value="${user.userDetailAddress }"></td>
+			<td><input type="text" value="${user.userAddress2 }"></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="정보변경"></td>

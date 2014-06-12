@@ -19,8 +19,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import utils.MemberEntryValidator;
 import utils.WebConstants;
 
 
@@ -32,6 +34,9 @@ public class MemberEntryController {
 
 	@Autowired
 	private PostcodeCatalog postcodeCatalog;
+	
+	@Autowired
+  	private MemberEntryValidator memberEntryValidator;
 	
 	@Autowired
 	private MessageSource messageSource;
@@ -46,10 +51,22 @@ public class MemberEntryController {
 
 		return new MemberVo();
 	}
+	
+	@RequestMapping(value="emailCheck")
+	 	public ModelAndView emailCheck(ModelAndView modelAndView, @RequestParam String userEmail ){
+	 		
+	 		int result = this.shopService.getCheckedUserEmail(userEmail);
 
+	 		modelAndView.setViewName("memberentry/emailCheck");
+	 		 		modelAndView.addObject("result", result);
+	 		  		
+	 		 		return modelAndView;
+	 		  	}
+	
 	@RequestMapping(value="termsAndConditions")
-	public void termsAndConditions(){
+	public String termsAndConditions(){
 
+		return "memberentry/termsAndCoditions";
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
@@ -80,7 +97,7 @@ public class MemberEntryController {
 			modelAndView.getModel().putAll(bindingResult.getModel());
 			return modelAndView;
 		}
-	}
+	} 
 
 	// 어드민에서 가입자 목록 보기
 	// 가입자 목록 보기

@@ -348,8 +348,8 @@ public class BoardController {
 			// 반환값인 ModelAndView 인스턴스 생성
 
 		// 파일경로 부르기
-		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
-		model.put("SFPT",sfpt);
+//		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
+//		model.put("SFPT",sfpt);
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
@@ -419,12 +419,7 @@ public class BoardController {
 	public ModelAndView boardReviewsWrite(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request, @RequestParam("filePath")MultipartFile filePath) throws Exception{
 		String originFileName = filePath.getOriginalFilename();
 		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
-		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
-		}else{
-			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
-			// 여기까지 바인딩 에러 내용보기!
-			return modelAndView;
-		}
+		
 //		GregorianCalendar today = new GregorianCalendar ( );
 //		int year = today.get ( today.YEAR ); 
 //		int month = today.get ( today.MONTH ) + 1; 
@@ -433,12 +428,12 @@ public class BoardController {
 
 		// WAR파일로 뿌렷을 때
 //		String uploadPath = "C:/Tomcat7/webapps/cafe/"+todayForDir+"userImage";
-		String uploadPath = "C:/Tomcat7/webapps/cafe/images/userImage";
+		String uploadPath = "C:/Tomcat 7/webapps/cafeintegration/img/";
 		// TEst용
 //		String uploadPath = "E:/springtest/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/cafe/userImage";
 		// DB저장하기
 //		String forDb = "../"+todayForDir+"userImage/"+originFileName;
-		String forDb = "../images/userImage/"+originFileName;
+		String forDb = "../img/"+originFileName;
 
 		// 시작
 		File saveDir = new File(uploadPath);
@@ -465,13 +460,19 @@ public class BoardController {
 			// 여기까지 바인딩 에러 내용보기!
 			return modelAndView;
 		}
-		// 내용을 사빕한다.
-		this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp, forDb);
+		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
+			// 내용을 사빕한다.
+			this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp, forDb);
+		}else{
+			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
+			// 여기까지 바인딩 에러 내용보기!
+			return modelAndView;
+		}
 		// 업로드 파일 저장
-		writeFile(filePath, uploadPath, originFileName);
+//		writeFile(filePath, uploadPath, originFileName);
 		// 파일경로 쓰기
-		int newBdNoRev = this.boardReviewsService.getRecentNo();
-		this.boardReviewsService.setFilePath(newBdNoRev,forDb);
+//		int newBdNoRev = this.boardReviewsService.getRecentNo();
+//		this.boardReviewsService.setFilePath(newBdNoRev,forDb);
 //		sfpt.setBdNoRev(newBdNoRev);
 //		sfpt.setFilePath(forDb);
 		return new ModelAndView("redirect:boardReviews.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감

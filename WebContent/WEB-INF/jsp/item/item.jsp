@@ -19,6 +19,9 @@
 		<p>Coffee Bean</p>
 	</div>
 	<div align="center" id="rownew">
+		<c:forEach items="${toViewImage }" var="photo">
+			<img src="${photo.filePath }">
+		</c:forEach>
 		<c:forEach items="${itemList }" var="item">
 			<div class="block"
 				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"
@@ -33,5 +36,6 @@
 			</div>
 		</c:forEach>
 	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

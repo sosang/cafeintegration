@@ -82,4 +82,3 @@ a.listtxt:hover {
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </body>
-</html>

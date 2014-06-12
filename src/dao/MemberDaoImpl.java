@@ -61,13 +61,11 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public List<MemberVo> checkUserEmail(String userEmail) {
-		RowMapper<MemberVo> mapper = new BeanPropertyRowMapper<MemberVo>(MemberVo.class);
-		List<MemberVo> user = null;
-		System.out.println(this.template.query(CHECK_USER_EMAIL,mapper, userEmail));
-		user = this.template.query(CHECK_USER_EMAIL,mapper, userEmail);
-		return user;
-	}
+	public int checkUserEmail(String userEmail) {
+		 
+		 	int result = this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
+		 		return result;
+		  	}
 
 
 	// 어드민용 총 가입자 수

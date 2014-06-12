@@ -44,7 +44,8 @@ public class MypageController {
 		Map<String, Object> model2 = new HashMap<String, Object>();
 
 		Map<String, Object> model3 = new HashMap<String, Object>();
-
+	
+		
 		model3.put("user", user);
 
 		model.put("mycart", myCart);

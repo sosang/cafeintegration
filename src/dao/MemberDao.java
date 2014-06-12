@@ -9,7 +9,7 @@ import logic.MemberVo;
 public interface MemberDao {
 	void create(MemberVo member);
 	MemberVo findByUserEmailAndUserPasswd(String userEmail, String userPasswd);
-	List<MemberVo> checkUserEmail(String userEmail);
+	int checkUserEmail(String userEmail);
 	List<MemberVo> findAllMemberList(HttpServletRequest request, Integer pageNo);
 	MemberVo findmember(String userEmail);
 }

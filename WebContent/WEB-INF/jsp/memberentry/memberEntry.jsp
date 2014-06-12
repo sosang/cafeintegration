@@ -9,8 +9,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<%-- <!-- cart header -->
-<%@ include file="" %> --%>
+
 	<div id="memberEntryBox">
 		<h2 class="bg-info text-center" color="white">회원 가입</h2>
 
@@ -27,16 +26,16 @@
 				<label>사용자 Email</label>
 				<form:input path="userEmail" type="email" cssClass="form-control"
 					id="userEmail" placeholder="email을 입력하세요."  autofocus="true"/>
-				<a href="checkEmail.html"><input type="button" class="button" value="중복확인" onclick="emailCheckAjax()"/></a>
+				<input type="button" class="button" value="중복확인" onclick="emailCheckAjax()"/>
 				<span id="emailCheckResult">
-				 	<c:choose>
+				 	<%-- <c:choose>
 						<c:when test="${not empty userEmail}"> 이미 가입한 이메일입니다 <a
 								href="../login/login.html">로그인으로 이동 </a>
 						</c:when>
 						<c:when test = "${empty param.userEmail }">
 						</c:when>
 						<c:otherwise>반갑습니다. 멋진 이메일이네요.</c:otherwise>
-					</c:choose> 
+					</c:choose>  --%>
 				</span>
 			</div>
 			<div id = "pwdDiv" class="form-horizontal input-size">
@@ -57,8 +56,8 @@
 				<font color="red"><form:errors path="userAlias" /></font>
 			</div>
 
-
-
+			
+				
 			<div class="form-horizontal input-size">
 			<label>전화번호</label>
 			 	<div id="userPhone1"><form:select path="userPhone1"
@@ -73,8 +72,8 @@
 					color="red"><form:errors path="userPhone3" /></font>
 					</div>
 			</div>
-
-
+			
+			
 			<div class="form-horizontal input-size">
 			<label>우편번호</label>
 				<div id="userPostcode"><form:input path="userPostcode"
@@ -83,7 +82,7 @@
 					onclick="openwin()" /><font color="red"><form:errors
 							path="userPostcode" /> </font></div>
 			</div>
-
+			
 			<div class="form-horizontal input-size">
 			<label>기본 주소</label>
 			<form:input path="userAddress1"
@@ -96,15 +95,17 @@
 						cssClass="userAddress2 form-control" id="userAddress2" /><font
 					color="red"><form:errors path="userAddress2" /> </font>
 			</div>
-
+			
 			<button type="submit" class="btn btn-primary">회원 가입</button>
 			<button type="reset" class="btn btn-default">다시 입력</button>
-
+	
 	</form:form>
 	</div>
-		<script type="text/javascript"
-		src="<%=request.getContextPath()%>/java_script/check.js"></script>
-	
+	<!-- jQuery  -->
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+
 </body>
 </html>

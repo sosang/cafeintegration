@@ -7,3 +7,6 @@
 
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/java_script/check.js"></script>
+	
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/java_script/postcode.js"></script>
