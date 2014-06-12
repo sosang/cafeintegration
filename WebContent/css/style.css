@@ -55,25 +55,24 @@ label{
 
 /* === carousel fade 효과 ==== */
 .carousel-fade .item {
-	-webkit-transition: opacity 2s;
-	-moz-transition: opacity 2s;
-	-ms-transition: opacity 2s;
-	-o-transition: opacity 2s;
-	transition: opacity 2s;
+	-webkit-transition: opacity 5s;
+	-moz-transition: opacity 5s;
+	-ms-transition: opacity 5s;
+	-o-transition: opacity 5s;
+	transition: opacity 5s;
 }
 
 .carousel-fade .active.left {
 	left: 0;
-	opacity: 2;
+	opacity: 0.5;
 	z-index: 2;
 }
 
 .carousel-fade .next {
 	left: 0;
-	opacity: 1;
+	opacity: 0.5;
 	z-index: 1;
 }
-
 /* ===== 회원가입 Modal ====== */
  .terms
     {
