@@ -142,12 +142,19 @@ public class ShopImpl implements Shop {
 		return this.purchaseCatalog.userPurchaseList(userEmail);
 	}
 
-	
+	// userEmail 중복체크
 	@Override
 	public int getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberCatalog.getCheckedUserEmail(userEmail);
 	}
+	
+	// userAlias 중복체크
+		@Override
+		public int getCheckedUserAlias(String userAlias) {
+			// TODO Auto-generated method stub
+			return this.memberCatalog.getCheckedUserAlias(userAlias);
+		}
 
 	// 아이템 등록하기
 	@Override

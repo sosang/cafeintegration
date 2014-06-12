@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 
 
+
 import logic.MemberVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class MemberDaoImpl implements MemberDao {
 
 //	이메일 중복 체크용
 	private static final String CHECK_USER_EMAIL = "SELECT count(*) from member where user_email=?";
+	
+//	별명 중복 체크용
+	private static final String CHECK_USER_ALIAS = "SELECT count(*) from member where user_alias=?";
 
 	private SimpleJdbcTemplate template;
 	private JdbcTemplate jdbcTemplate;
@@ -59,13 +63,20 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
+	// userEmail 중복 체크
 	@Override
 	public int checkUserEmail(String userEmail) {
 	
 		int result = this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
 		return result;
 	}
-
+	
+	//회원가입시 별명 중복 체크
+	@Override
+	public int checkUserAlias(String userAlias) {
+		int result = this.template.queryForInt(CHECK_USER_ALIAS, userAlias);
+		return result;
+	}
 
 	// 어드민용 총 가입자 수
 	private static final StringBuffer GET_TOTAL_COUNT = new StringBuffer("select count(*) from member");
@@ -124,6 +135,7 @@ public class MemberDaoImpl implements MemberDao {
 
 		return memberList;
 	}
-	
+
+
 
 }

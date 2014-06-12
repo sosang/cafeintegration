@@ -48,6 +48,8 @@
 				<label for="userAlias">사용자 별명</label>
 				<form:input path="userAlias" id="userAlias"
 					cssClass="userAlias form-control" maxlength="30" />
+					<input type="button" class="button" value="중복확인" onclick="aliasCheckAjax()" />
+				<span id="aliasCheckResult"></span>
 				<font color="red"><form:errors path="userAlias" /></font>
 			</div>
 

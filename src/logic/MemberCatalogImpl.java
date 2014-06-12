@@ -32,11 +32,19 @@ public class MemberCatalogImpl implements MemberCatalog {
 
 	}
 
+	// userEmail 중복체크
 	@Override
 	public int getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
 		return this.memberDao.checkUserEmail(userEmail);
 	}
+	
+	// userAlias 중복체크
+		@Override
+		public int getCheckedUserAlias(String userAlias) {
+			// TODO Auto-generated method stub
+			return this.memberDao.checkUserAlias(userAlias);
+		}
 
 	@Override
 	public List<MemberVo> findAllMember(HttpServletRequest request,

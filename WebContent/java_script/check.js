@@ -65,7 +65,7 @@ function sendRequest(url, params, callback, method) {
 	httpRequest.send(httpMethod == 'POST' ? httpParams : null);
 }
 
-
+// userEmailCheck java script
 function emailCheckAjax() {
 	var lastKeywordEmail = '';
 	var keywordEmail = document.getElementById("userEmail").value;
@@ -80,13 +80,13 @@ function emailCheckAjax() {
 		if (keywordEmail != '' ) {
 			var params = "userEmail=" + encodeURIComponent(keywordEmail);
 			sendRequest("../memberentry/emailCheck.html", params,
-					displayLoginResult, 'POST');
+					displayEmailResult, 'POST');
 		} else {
 		}
 	}
 }
 
-function displayLoginResult() {
+function displayEmailResult() {
 	if (httpRequest.readyState == 4) {
 		if (httpRequest.status == 200) {
 			var resultText = httpRequest.responseText;
@@ -104,7 +104,44 @@ function displayLoginResult() {
 	}
 }
 
+//userEmailCheck java script
+function aliasCheckAjax() {
+	var lastKeywordAlias = '';
+	var keywordAlias = document.getElementById("userAlias").value;
+	var aliasView = document.getElementById('aliasCheckResult');
 
+	if (keywordAlias == '') {
+		lastKeywordAlias = '';
+		aliasView.innerHTML = "별명을 입력해주세요.";
+		aliasView.style.color = "red";
+	} else if (keywordAlias != lastKeywordAlias) {
+		lastKeywordAlias = keywordAlias;
+		if (keywordAlias != '' ) {
+			var params = "userAlias=" + encodeURIComponent(keywordAlias);
+			sendRequest("../memberentry/aliasCheck.html", params,
+					displayAliasResult, 'POST');
+		} else {
+		}
+	}
+}
+
+function displayAliasResult() {
+	if (httpRequest.readyState == 4) {
+		if (httpRequest.status == 200) {
+			var resultText = httpRequest.responseText;
+			var aliasView = document.getElementById('aliasCheckResult');
+			if (resultText == 0) {
+				aliasView.innerHTML = "와~ 멋진데요? 맘껏 사용하셔도 되겠습니다.";
+				aliasView.style.color = "blue";
+			} else {
+				aliasView.innerHTML = "<strong>아뿔싸, 누가 쓰고 있네요. 다른 멋진 이름을 찾아볼까요?</strong>";
+				aliasView.style.color = "red";
+			}
+		} else {
+			alert("에러 발생: " + httpRequest.status);
+		}
+	}
+}
 
 /*회원가입시 약관 동의한 경우 submit 버튼 활성화*/
 	$("#terms_check").change(function () {

@@ -71,6 +71,17 @@ public class MemberEntryController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="aliasCheck")
+	public ModelAndView aliasCheck(ModelAndView modelAndView, @RequestParam String userAlias ){
+		
+		int result = this.shopService.getCheckedUserAlias(userAlias);
+	
+		modelAndView.setViewName("memberentry/aliasCheck");
+		modelAndView.addObject("result", result);
+		
+		return modelAndView;
+	}
+	
 
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member, BindingResult bindingResult, HttpSession session) throws Exception{
