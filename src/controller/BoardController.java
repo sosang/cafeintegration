@@ -348,8 +348,8 @@ public class BoardController {
 			// 반환값인 ModelAndView 인스턴스 생성
 
 		// 파일경로 부르기
-		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
-		model.put("SFPT",sfpt);
+//		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
+//		model.put("SFPT",sfpt);
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}

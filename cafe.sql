@@ -1,22 +1,35 @@
 SELECT file_path from save_file_path WHERE item_no = 50
 select * from SAVE_FILE_PATH
-select * from item
+select constraint_name from user_constraints where table_name='MEMBER';
+alter table member drop constraint SYS_C0011855;
+alter table member drop constraint SYS_C0011856;
+alter table member drop constraint SYS_C0011857;
+alter table member drop constraint SYS_C0011858;
+alter table member drop constraint SYS_C0011859;
+alter table member drop constraint SYS_C0011860;
+alter table member drop constraint SYS_C0011861;
+alter table member drop constraint SYS_C0011862;
+
+
+
+select * from member
 select * from member where substr(to_char(sysdate,'YYYYMMDD'),1,8) = substr(to_char(join_date,'YYYYMMDD'),1,8) ;
 create table member(
 	user_email varchar2(50) primary key,
-	user_passwd varchar2(30) not null,
+	user_passwd varchar2(30) ,
 	user_alias varchar2(30)  unique not null ,
-	user_phone1 varchar2(6) not null,
-	user_phone2 varchar2(8) not null,
-	user_phone3 varchar2(8) not null,
-	user_postcode varchar2(7) not null,
-	user_address1 varchar2(200) not null,
-	user_address2 varchar2(200) not null,
+	user_phone1 varchar2(6) ,
+	user_phone2 varchar2(8) ,
+	user_phone3 varchar2(8) ,
+	user_postcode varchar2(7) ,
+	user_address1 varchar2(200) ,
+	user_address2 varchar2(200) ,
 	user_level number(2) default 0,
 	user_point number(6) default 0,
 	user_num_of_article number(5) default 0,
 	user_num_of_comments number(8) default 0,
 	user_num_of_practice number(4) default 0,
+	user_facebook_key varchar2(30),
 	join_date date default sysdate
 );
 INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, sysdate);
@@ -112,7 +125,7 @@ create sequence board_faq_seq
 increment by 1
 start with 1;
 
-insert into board_faq values(board_faq_seq.nextval,'연습공지사항 없어서 올림2','아코디언 내용이 보이니까 신기하죠? ㅎ ㅔㅎ ㅔ');
+insert into board_faq values(board_faq_seq.nextval,'연습공지사항 없어서 올림4','아코디언 내용이 보이니까 신기하죠? ㅎ ㅔㅎ ㅔ');
 create table adminstrator(
 	admin_email varchar2(50) primary key,
 	admin_grade number(1) default 0 not null,

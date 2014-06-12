@@ -9,6 +9,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
+
 	<div align="center" class="body">
 	<c:choose>
 	<c:when test="${USER_KEY.userEmail ne null}">
@@ -41,7 +42,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="로그인"></td>
+					<td align="center"><input type="submit" value="로그인"></td>
+					<td></td>
 				</tr>
 
 				<tr height="40px">
@@ -54,6 +56,20 @@
 	</c:otherwise>
 	</c:choose>
 	</div>
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+	
+	
+	
+	
+<div class="wel" align="left">
+    <img class="nono" id="image" />
+    <input class="nono" type="text" value="" id="name">
+    <input class="nono" type="text" value="" id="id">
+    <input class="nono" type="text" value="" id="email">
+</div>
+
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

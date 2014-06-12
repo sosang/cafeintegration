@@ -96,8 +96,6 @@
 
 		</div>
 	</header>
-
-
 	<section></section>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>

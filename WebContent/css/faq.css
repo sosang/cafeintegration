@@ -1,12 +1,8 @@
 @charset "utf-8";
 /* FAQ */
-.body>.faq{width:960px}
-.faq{border-bottom:1px solid #ddd;margin:1em 0}
-.faq .faqHeader{position:relative;zoom:1}
-.faq .faqHeader .showAll{position:absolute;bottom:0;right:0;border:0;padding:0;overflow:visible;background:none;cursor:pointer}
-.faq .faqBody{margin:0;padding:0}
-.faq .faqBody .article{list-style:none}
-.faq .q{margin:0;border-top:1px solid #ddd}
-.faq .q a{display:block;padding:.5em 1em;text-align:left;font-weight:bold;background:#fafafa;color:#000;text-decoration:none !important}
-.faq .q a:hover, .faq .q a:active, .faq .q a:focus{background:#f8f8f8}
-.faq .a{margin:0;padding:1em;line-height:1.5}
+dl{border-bottom:1px solid #ddd;margin:1em 0}
+dl{list-style:none}
+dl dt{margin:0;border-top:1px solid #ddd}
+dl dt{display:block;padding:.5em 1em;text-align:center;font-weight:bold;background:#fafafa;color:#000;text-decoration:none !important}
+dl dt:hover, dl dt:active, dl dt:focus{background:#f8f8f8}
+dl dd{margin:0;padding:1em;line-height:1.5}

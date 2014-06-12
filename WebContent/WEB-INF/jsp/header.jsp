@@ -9,6 +9,75 @@
 </head>
 
 <body id="top" class="fluid">
+
+<div id="fb-root"></div>
+
+
+<div id="fb-root"></div>
+
+      <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '662631310479429', // 앱 ID
+              status     : true,          // 로그인 상태를 확인
+              cookie     : true,          // 쿠키허용
+              xfbml      : true           // parse XFBML
+            });
+            FB.Event.subscribe('auth.logout', function(response) {
+                document.location.reload();
+            });
+           
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    
+                    FB.api('/me', function(user) {
+                        if (user) {
+                            var image = document.getElementById('image');
+                            image.src = 'http://graph.facebook.com/' + user.id + '/picture';
+                            var name = document.getElementById('name');
+                            /* name.innerHTML = user.name */
+                            name.value = user.name
+                            var id = document.getElementById('id');
+                            id.value = user.id
+                            email = document.getElementById('email');
+                            email.value = user.email
+                            
+                        }
+                        
+                    });    
+                     
+                } else if (response.status === 'not_authorized') {
+
+                } else {
+                    
+                }
+            });
+
+
+            FB.Event.subscribe('auth.login', function(response) {
+                document.location.reload();
+            });
+          };
+        
+          // Load the SDK Asynchronously
+          (function(d){
+             var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement('script'); js.id = id; js.async = true;
+             js.src = "//connect.facebook.net/ko_KR/all.js";
+             ref.parentNode.insertBefore(js, ref);
+           }(document));
+          
+          (function(d, s, id) {
+        	  var js, fjs = d.getElementsByTagName(s)[0];
+        	  if (d.getElementById(id)) return;
+        	  js = d.createElement(s); js.id = id;
+        	  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=662631310479429&version=v2.0";
+        	  fjs.parentNode.insertBefore(js, fjs);
+        	}(document, 'script', 'facebook-jssdk'));
+        
+
+</script>
 	<div class=" navbar-inverse " role="navigation">
 
 		<div class="navbar-header">
@@ -52,6 +121,7 @@
 
 							<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
 									접속됨</font> </span>
+									<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 							<a href="../login/logout.html"
 								class="btn btn-primary login-button">Logout</a>
 
@@ -69,6 +139,7 @@
 								href="../login/login.html" class="btn btn-primary login-button">Login</a>
 							<a href="../memberentry/memberEntry.html"
 								class="btn btn-info member-button">SignUp</a>
+								<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 
 
 					</c:otherwise>
