@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 </head>
 
 <body>

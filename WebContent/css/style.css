@@ -44,6 +44,14 @@
 	width:40%;
 	margin:0 auto;
 }
+@media(max-width: 768px ) {
+	#memberEntryBox{
+	width: 100%;
+	margin: 0 auto;
+	font-size: smaller;
+	font-family: -webkit-pictograph;
+ }
+}
 .input-size{
 	padding-bottom:10px;
 }
@@ -74,7 +82,18 @@ label{
 	z-index: 1;
 }
 
+.carousel-caption{
+	
+}
+
 /* ===== 회원가입 Modal ====== */
+
+ 
+ .lowpart{
+ padding:10px;
+ margin:10px;
+ }
+
  .terms
     {
      font-size: 11px;
@@ -82,7 +101,7 @@ label{
       margin: 0 auto;
     }
 
-    @media (max-width: 768)
+    @media (max-width: 768px)
     {
        .terms
        {
@@ -97,8 +116,21 @@ label{
  .ho{
  text-indent:12px;
  }
+
  
- .lowpart{
- padding:10px;
- margin:10px;
- }
+/*  ====== 회원가입 결과 창 ========  */ 
+
+.memberResult{
+	width:40%;
+	margin:0 auto;
+	padding-top:50px;
+}
+@media(max-width: 768px ) {
+	.memberResult{
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 5px;
+	font-size: smaller;
+	font-family: -webkit-pictograph;
+	}
+}

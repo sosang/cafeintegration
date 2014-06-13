@@ -3,11 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%-- <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/il.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/faq.css">
- --%>
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -21,7 +16,6 @@
 <!-- custom css -->
 <link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet">
 
-<!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
 <% 
  response.setHeader("Cache-Control","no-cache");
  response.setHeader("Pragma","no-cache"); 
