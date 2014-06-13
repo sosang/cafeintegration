@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <link rel="stylesheet" href="../css/basic.css" />
 </head>
@@ -30,7 +29,7 @@
 			<ul class="nav navbar-nav">
 				<li ><a href="../index/index.html" style="padding: 5px"><img  src="../images/cafe_logo.png"
 				class="logo img-responsive" width="70" height="70"></a></li>
-				<li><a href="../aboutUs/aboutUs.html">about</a></li>
+				<li><a href="../aboutUs/aboutUs.html">카페 4.0 소개</a></li>
 				<li><a href="../item/item.html">구매</a></li>
 				<li><a href="#">체험</a></li>
 				<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -46,17 +45,16 @@
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
-				<button type="submit" class="btn btn-warning ">Submit</button>
+				<button type="submit" class="btn btn-warning ">검색</button>
 </form>
 <form class="navbar-form navbar-right">
 				<c:choose>
-
 						<c:when test="${USER_KEY ne null}">
 
-							<span id="loginc"><font color="white"><strong>${USER_KEY.userAlias }</strong>님		접속중</font> </span>
-									<a href="../mypage/mypage.html" class="btn btn-warning" >MyPage</a>
+							<span id="loginc"><font color="white"><strong>${USER_KEY.userAlias }</strong>님 접속중</font> </span>
+									<a href="../mypage/mypage.html" class="btn btn-warning" >마이 페이지</a>
 							<a href="../login/logout.html"
-								class="btn btn-primary login-button">Logout</a>
+								class="btn btn-primary login-button">로그아웃</a>
 
 					</c:when>
 					 <c:when test = "${ADMIN_KEY ne null}">
@@ -67,19 +65,12 @@
 						<a href="../login/logout.html" class="btn btn-info member-button">로그아웃</a>
 				    </c:when>
 				    <c:otherwise >
-
-							<font color="white">&nbsp;로그인을 해주세요.</font> <a
-								href="../login/login.html" class="btn btn-primary login-button">Login</a>
+							<a href="../login/login.html" class="btn btn-primary login-button">로그 인</a>
 							<a href="../memberentry/memberEntry.html"
-								class="btn btn-info member-button">SignUp</a>
-
-
+								class="btn btn-info member-button">회원가입</a>
 					</c:otherwise>
-
 				</c:choose>
-
 </form>
-			
 
 			<!-- <span id="loginButtons"><a href="../login/login.html"
 					class="btn btn-primary login-button">로그인</a>
@@ -87,8 +78,6 @@
 		</nav>
 
 	</div>
-
-
 
 	<footer>
 
