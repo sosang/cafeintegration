@@ -54,7 +54,7 @@ table.tableType tr td title{
 		<table border="1" class="tableType">
 			<tr>
 				<th align="center" width="5%">번호</th>
-				<th align="center"  width="60%">제 목</th>
+				<th align="center" width="60%">제 목</th>
 				<th align="center" width="10%">글쓴이</th>
 				<th align="center" width="15%">글쓴날</th>
 				<th align="center" width="10%">조회수</th>

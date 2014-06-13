@@ -25,10 +25,10 @@
 
 		<c:when test="${loginMemberVo.userEmail == null }">
 
-			<div align="center" class="body">
+			<div style="margin-top: 150px" align="center" class="body">
 				<form:form modelAttribute="memberVo" class="signin" method="post"
 					action="../login/login.html">
-					<spring:hasBindErrors name="memberVo">
+					<spring:hasBindErrors name="memberVo" >
 						<font color="red"> <c:forEach
 								items="${errors.globalErrors }" var="error">
 								<spring:message code="${error.code}" />
@@ -36,7 +36,7 @@
 						</font>
 					</spring:hasBindErrors>
 
-					<table style="margin-top: 150px">
+					<table >
 
 						<tr height="40px">
 
