@@ -102,6 +102,35 @@ label{
  margin:10px;
  }
  
+  
+/*  ====== 회원가입 결과 창 ========  */ 
+
+.memberResult{
+	width:40%;
+	margin:0 auto;
+	padding-top:50px;
+}
+@media(max-width: 768px ) {
+	.memberResult{
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 5px;
+	font-size: smaller;
+	font-family: -webkit-pictograph;
+	}
+}
+
+.memberSuccessFont{
+	font-size:12px;
+	font-color:green;
+}
+@media(max-width: 768px ) {
+	.memberSuccessFont{
+	font-size:12px;
+	font-color:green;
+	}
+}
+ 
  
  /**********************테이블*****************/
 .tableType,.tableType th,.tableType td {

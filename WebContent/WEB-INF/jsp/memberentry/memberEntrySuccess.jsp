@@ -6,50 +6,30 @@
 <meta charset="UTF-8">
 <title>회원등록 완료 화면</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-<%--헤더파일 추가 후, INCLUDING
-<%@ include file=" " %>
- --%>	
- 
- <div align="center" class="body">
-		<h2>회원등록 완료 화면</h2>
-		<b><font color="red">회원등록이 완료되었습니다.</font></b><br>
-		<table>
-			<tr height="40px">
-				<td>회원 email</td>
-				<td>${member.userEmail }</td>
-			</tr>
-			<tr height="40px">
-				<td>비밀번호</td>
-				<td>${member.userPasswd }</td>
-			</tr>
-			<tr height="40px">
-				<td>별명</td>
-				<td>${member.userAlias }</td>
-			</tr>
-			<tr height="40px">
-			<td>전화번호</td>
-			<td>${member.userPhone1 }-${member.userPhone2 }-${member.userPhone3 }</td>
-			<tr height="40px">
-				<td>우편번호</td>
-				<td>${member.userPostcode }</td>
-			</tr>
-			<tr height="40px">
-				<td>기본 주소</td>
-				<td>${member.userAddress1 }</td>
-			</tr>
-			<tr height="40px">
-				<td>상세 주소</td>
-				<td>${member.userAddress2 }</td>
-			</tr>
 
+ <div class="memberResult">
+		<div class="panel panel-default">
 
-		</table>
-		<br>
-<a href="../index/index.html" class="btn btn-default btn-lg">홈으로</a><br>
-	</div>
+			  <div class="panel-heading"><b><font color="red">회원등록이 완료되었습니다.</font></b></div>
+
+			  <!-- 가입 회원 정보 -->
+			  <ul class="list-group">
+			    <li class="list-group-item"><label>회원 email: </label>&nbsp;<font class="memberSuccessFont">${member.userEmail }</font></li>
+			    <li class="list-group-item"><label>비밀번호: </label>&nbsp;<font class="memberSuccessFont">${member.userPasswd }</font></li>
+			    <li class="list-group-item"><label>별명: </label>&nbsp;<font class="memberSuccessFont">${member.userAlias }</font></li>
+			    <li class="list-group-item"><label>전화번호: </label>&nbsp;<font class="memberSuccessFont">${member.userPhone1 }-${member.userPhone2 }-${member.userPhone3 }</font></li>
+			    <li class="list-group-item"><label>우편번호: </label>&nbsp;<font class="memberSuccessFont">${member.userPostcode }</font></li>
+			    <li class="list-group-item"><label>주소: </label>&nbsp;<font class="memberSuccessFont">${member.userAddress1 }  ${member.userAddress2 }</font></li>
+			  </ul>
+		</div>
+
+<a href="../index/index.html" class="btn btn-default btn-sm">홈으로</a><br>
+</div>
+
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

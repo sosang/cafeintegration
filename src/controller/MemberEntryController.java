@@ -53,22 +53,30 @@ public class MemberEntryController {
 	}
 	
 	@RequestMapping(value="emailCheck")
-	 	public ModelAndView emailCheck(ModelAndView modelAndView, @RequestParam String userEmail ){
-	 		
-	 		int result = this.shopService.getCheckedUserEmail(userEmail);
-
-	 		modelAndView.setViewName("memberentry/emailCheck");
-	 		 		modelAndView.addObject("result", result);
-	 		  		
-	 		 		return modelAndView;
-	 		  	}
+	public ModelAndView emailCheck(ModelAndView modelAndView, @RequestParam String userEmail ){
+			
+		int result = this.shopService.getCheckedUserEmail(userEmail);
 	
-	@RequestMapping(value="termsAndConditions")
-	public String termsAndConditions(){
-
-		return "memberentry/termsAndCoditions";
+		modelAndView.setViewName("memberentry/emailCheck");
+		modelAndView.addObject("result", result);
+		 		  		
+		return modelAndView;
 	}
+	
 
+	@RequestMapping(value="aliasCheck")
+	public ModelAndView aliasCheck(ModelAndView modelAndView, @RequestParam String userAlias ){
+ 		
+ 		int result = this.shopService.getCheckedUserAlias(userAlias);
+ 	
+ 		modelAndView.setViewName("memberentry/aliasCheck");
+ 		modelAndView.addObject("result", result);
+ 		
+ 		return modelAndView;
+ 	}
+ 	
+
+	
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member, BindingResult bindingResult, HttpSession session) throws Exception{
 
@@ -117,16 +125,5 @@ public class MemberEntryController {
 		return modelAndView;
 	}
 	
-		@RequestMapping(value="aliasCheck")
-		public ModelAndView aliasCheck(ModelAndView modelAndView, @RequestParam String userAlias ){
-	 		
-	 		int result = this.shopService.getCheckedUserAlias(userAlias);
-	 	
-	 		modelAndView.setViewName("memberentry/aliasCheck");
-	 		modelAndView.addObject("result", result);
-	 		
-	 		return modelAndView;
-	 	}
-	 	
-
+	
 }

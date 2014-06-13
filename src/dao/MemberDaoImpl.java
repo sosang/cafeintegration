@@ -28,7 +28,7 @@ public class MemberDaoImpl implements MemberDao {
 			+ " VALUES(:userEmail, :userPasswd, :userAlias, :userPhone1,:userPhone2,:userPhone3, :userPostcode, :userAddress1, :userAddress2)";
 
 	// 이메일 중복 체크용
-	private static final String CHECK_USER_EMAIL = "SELECT user_email from member where user_email=?";
+	private static final String CHECK_USER_EMAIL = "SELECT count(*) from member where user_email=?";
 
 	// 별명 중복 체크용
 	private static final String CHECK_USER_ALIAS = "SELECT count(*) from member where user_alias=?";
@@ -42,6 +42,7 @@ public class MemberDaoImpl implements MemberDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	//email과 비밀번호로 유저 클래스 생성
 	@Override
 	public MemberVo findByUserEmailAndUserPasswd(String userEmail,
 			String userPasswd) {
@@ -51,17 +52,26 @@ public class MemberDaoImpl implements MemberDao {
 				userEmail, userPasswd);
 	}
 
+	//회원가입
 	@Override
 	public void create(MemberVo member) {
 		SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(
 				member);
 		this.template.update(MemberDaoImpl.INSERT, parameterSource);
 	}
-
+	
+	//회원 email 중복 체크
 	@Override
 	public int checkUserEmail(String userEmail) {
 
 		int result = this.template.queryForInt(CHECK_USER_EMAIL, userEmail);
+		return result;
+	}
+
+	// 회원가입시 별명 중복 체크
+	@Override
+	public int checkUserAlias(String userAlias) {
+		int result = this.template.queryForInt(CHECK_USER_ALIAS, userAlias);
 		return result;
 	}
 
@@ -132,14 +142,6 @@ public class MemberDaoImpl implements MemberDao {
 		return memberList;
 	}
 
-	
-
-	// 회원가입시 별명 중복 체크
-	@Override
-	public int checkUserAlias(String userAlias) {
-		int result = this.template.queryForInt(CHECK_USER_ALIAS, userAlias);
-		return result;
-	}
 	private static final StringBuffer SELECT_ALL_BY_USEREMAIL = new StringBuffer(
 			"select user_email userEmail,user_passwd userPasswd, user_alias userAlias, user_phone1 userPhone1, user_phone2 userPhone2, user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2 from member where user_email=?");
 

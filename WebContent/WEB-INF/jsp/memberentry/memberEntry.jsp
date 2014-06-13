@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 </head>
 
 <body>
@@ -49,7 +50,7 @@
 				<form:input path="userAlias" id="userAlias"
 					cssClass="userAlias form-control" maxlength="30" />
 					<input type="button" class="button" value="중복확인" onclick="aliasCheckAjax()" />
- 				<span id="aliasCheckResult"></span>
+				<span id="aliasCheckResult"></span>
 				<font color="red"><form:errors path="userAlias" /></font>
 			</div>
 

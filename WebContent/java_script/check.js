@@ -28,7 +28,7 @@ function moveFocus(){
 	}
 }
 
-/* ======== ajax 활용 이메일 중복성 검사 ==========*/
+/* ======== ajax 활용 이메일/별명 중복성 검사 ==========*/
 function getXMLHttpRequest() {
 	if (window.ActiveXObject) {
 		try {
@@ -103,7 +103,7 @@ function displayEmailResult() {
 	}
 }
 
-//userEmailCheck java script
+//userAliasCheck java script
 function aliasCheckAjax() {
 	var lastKeywordAlias = '';
 	var keywordAlias = document.getElementById("userAlias").value;
@@ -147,8 +147,8 @@ function displayAliasResult() {
 	   $("#EntryBtn").attr("disabled", !this.checked);
 	});
 
-	   /*회원 가입시 약관보기 modal*/
+/*회원 가입시 약관보기 modal*/
 
-	   	$("#terms_modal").clicked(function(){
+   	$("#terms_modal").clicked(function(){
 	   	    $( "#dialog" ).dialog();
-	   	});
+   	});

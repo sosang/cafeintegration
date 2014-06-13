@@ -53,8 +53,7 @@
 
 						<c:when test="${USER_KEY ne null}">
 
-							<span id="loginc"><font color="white">${USER_KEY.userEmail }님이
-									접속됨</font> </span>
+							<span id="loginc"><font color="white"><strong>${USER_KEY.userAlias }</strong>님		접속중</font> </span>
 									<a href="../mypage/mypage.html" class="btn btn-warning" >MyPage</a>
 							<a href="../login/logout.html"
 								class="btn btn-primary login-button">Logout</a>
