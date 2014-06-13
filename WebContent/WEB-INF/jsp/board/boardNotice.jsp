@@ -36,7 +36,7 @@ a.listtxt:hover {
 			
 			<tr class="header">
 				<th align="center" width="15%">번호</th>
-				<th align="center" style="text-align: left;" width="60%">제 목</th>
+				<th align="center" width="60%">제 목</th>
 				<th align="center" width="15%">글쓴날</th>
 				<th align="center" width="10%">조회수</th>
 			</tr>
