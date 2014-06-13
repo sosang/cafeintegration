@@ -24,6 +24,7 @@ public interface Shop {
 	void mypageCartclear(Integer itemNo);
 	
 	List<PurchaseListVo> mypagePurchase(String userEmail);
+	
 	List<MemberVo> getCheckedUserEmail(String userEmail);	//userEmail 중복체크용
 
 	void itemReg(ItemVo itemVo, String forDb);	// 아이템 등록

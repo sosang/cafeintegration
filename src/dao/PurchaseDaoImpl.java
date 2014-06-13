@@ -22,8 +22,8 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	// private static final String INSERT =
 	// "INSERT INTO PURCHASE (pur_no,user_email) values (?,?)";
 
-	private static final String SELECT_FROM_USER_EMAIL = "select b.num_of_product,c.item_name,c.price from PURCHASE a , PURCHASE_LINE b , item c where a.user_email=? and b.item_no=c.item_no and a.pur_no=b.pur_no order by a.pur_no, b.pur_line_no";
-
+	private static final String SELECT_FROM_USER_EMAIL = "select b.num_of_product, a.time_of_purchase, c.item_name, c.price from PURCHASE a , PURCHASE_LINE b , item c where a.user_email=? and b.item_no=c.item_no and a.pur_no=b.pur_no order by a.pur_no, b.pur_line_no";
+ 
 	private SimpleJdbcTemplate template;
 
 	@Autowired

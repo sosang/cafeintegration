@@ -1,9 +1,11 @@
 package logic;
 
+import java.util.Date;
+
 public class PurchaseListVo {
 
 	private Integer numOfProduct;
-
+	private Date timeOfPurchase;
 	private String itemName;
 	private String photo;
 	private Integer price;
@@ -14,6 +16,14 @@ public class PurchaseListVo {
 
 	public void setNumOfProduct(Integer numOfProduct) {
 		this.numOfProduct = numOfProduct;
+	}
+
+	public Date getTimeOfPurchase() {
+		return timeOfPurchase;
+	}
+
+	public void setTimeOfPurchase(Date timeOfPurchase) {
+		this.timeOfPurchase = timeOfPurchase;
 	}
 
 	public String getItemName() {

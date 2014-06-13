@@ -18,6 +18,7 @@
 </script>
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
@@ -95,6 +96,7 @@
 				<td>가격</td>
 				<td>상품갯수</td>
 				<td>소계</td>
+				<td>주문일자</td>
 			</tr>
 			<c:forEach items="${mypurchase }" var="purchaseSet">
 				<tr>
@@ -104,6 +106,7 @@
 					<td><c:out value="${purchaseSet.numOfProduct }" /></td>
 					<td><c:out
 							value="${purchaseSet.price*purchaseSet.numOfProduct }" /></td>
+					<td><fmt:formatDate value="${purchaseSet.timeOfPurchase}" pattern="yyyy.MM.dd" /></td>
 				</tr>
 			</c:forEach>
 		</table>

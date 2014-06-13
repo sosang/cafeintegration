@@ -55,9 +55,7 @@ public class ItemController  {
 		Map<String, Object> model = new HashMap<String,Object>();
 		
 		
-		System.out.println(itemList.get(0).getItemName());
-		System.out.println(itemList.get(0).getPhoto());
-		
+
 
 
 		model.put("itemList", itemList);
@@ -129,7 +127,7 @@ public class ItemController  {
 			while(it.hasNext()) {
 			Object key = it.next();
 			Object val = map.get(key);
-			System.out.println("¿¡·¯ :: "+val);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ :: "+val);
 			}
 
 			return modelAndView;
@@ -216,7 +214,7 @@ public class ItemController  {
 				while(it.hasNext()) {
 				Object key = it.next();
 				Object val = map.get(key);
-				System.out.println("¿¡·¯ :: "+val);
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ :: "+val);
 				}
 				
 				return modelAndView;

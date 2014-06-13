@@ -70,18 +70,18 @@ function checkId(){
 					</tr>
 					<tr>
 						<td>우편번호</td>
-						<td><input type="text"></td>
+						<td>${myinfo.userPostcode }</td>
 						<td>핸드폰번호</td>
-						<td><input type="text"></td>
+						<td>${myinfo.userPhone1 }-${myinfo.userPhone2 }-${myinfo.userPhone3 }</td>
 					</tr>
 					<tr>
 						<td>주소</td>
-						<td><input type="text"></td>
-						<td colspan="2"><input type="text"></td>
+						<td>${myinfo.userAddress1 }&nbsp;${myinfo.userAddress2 }</td>
+						
 					</tr>
 					<tr>
 						<td>email</td>
-						<td colspan="3"><input type="text"></td>
+						<td>${myinfo.userEmail }</td>
 					</tr>
 					<tr>
 						<td><br> <br></td>
@@ -122,6 +122,7 @@ function checkId(){
 					</tr>
 				</table>
 				<input type="submit" value="결제하기">
+				<input type="button" value="취소하기">
 
 			</form>
 

@@ -34,11 +34,17 @@ public class PurchaseController {
 
 		List<CartVo> cartVo = this.shopService.getCartList(userEmail);
 
+		MemberVo user = this.shopService.memberInfo(userEmail);
+
 		Map<String, Object> model = new HashMap<String, Object>();
+		Map<String, Object> model2 = new HashMap<String, Object>();
+
 		model.put("purchaseLine", cartVo);
+		model2.put("myinfo", user);
 
 		ModelAndView modelAndView = new ModelAndView("purchase/purchase");
 		modelAndView.addAllObjects(model);
+		modelAndView.addAllObjects(model2);
 
 		return modelAndView;
 
@@ -47,6 +53,13 @@ public class PurchaseController {
 	@RequestMapping(value = "/purchase/purchaseDirect")
 	public ModelAndView purchasedirect(Integer itemNo, Integer price,
 			Integer cartNumOfProduct, HttpSession session) {
+
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
+		MemberVo user = this.shopService.memberInfo(userEmail);
+		Map<String, Object> model2 = new HashMap<String, Object>();
+		model2.put("myinfo", user);
 		ItemVo item = this.shopService.getItemByItemNo(itemNo);
 
 		PurchaseListVo purchaseList = new PurchaseListVo();
@@ -57,7 +70,7 @@ public class PurchaseController {
 
 		ModelAndView modelAndView = new ModelAndView("purchase/purchaseDirect");
 		modelAndView.addObject("purchaseLine", purchaseList);
-
+		modelAndView.addAllObjects(model2);
 		return modelAndView;
 	}
 
