@@ -37,6 +37,9 @@ public class MemberDaoImpl implements MemberDao {
 	
 //	별명 중복 체크용
 	private static final String CHECK_USER_ALIAS = "SELECT count(*) from member where user_alias=?";
+	
+//	가입 회원 지역 정보
+//	private static final String MEMBER_LOCATION_MAP = "SELECT user_address1 from member";
 
 	private SimpleJdbcTemplate template;
 	private JdbcTemplate jdbcTemplate;
@@ -95,6 +98,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	// 어드민용 회원 목록
 	private static final StringBuffer SELECT_ALL = new StringBuffer("select * from (select rownum rnum, user_email userEmail, user_alias userAlias, user_phone1 userPhone1,user_phone2 userPhone2,user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2, user_level userLevel, user_point userPoint, user_num_of_article userNumOfArticle, user_num_of_comments userNumOfReply, user_num_of_practice userNumOfPractice, join_date userJoinDate from (select * from member )) where rnum>=? and rnum<=?");
+	
 	@Override
 	public List<MemberVo> findAllMemberList(HttpServletRequest request,
 			Integer pageNo) {
