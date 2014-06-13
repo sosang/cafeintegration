@@ -13,7 +13,7 @@ import dao.BoardReviewsDao;
 @Service
 @Transactional
 public class BoardReviewsServiceImpl implements BoardReviewsService {
-	
+
 	@Autowired
 	BoardReviewsDao boardReviewsDao;
 
@@ -35,12 +35,12 @@ public class BoardReviewsServiceImpl implements BoardReviewsService {
 	public void countUpForBdNoRev(Integer bdNoRev) {
 		this.boardReviewsDao.countUp(bdNoRev);
 	}
-	
+
 	// 후기 쓰기
 	@Override
 	public void boardRevWrite(BoardReviews boardRev, MemberVo userKey,
-			String userIp, String forDb) {
-		this.boardReviewsDao.write(boardRev, userKey, userIp, forDb);
+			String userIp) {
+		this.boardReviewsDao.write(boardRev, userKey, userIp);
 	}
 
 	// 게시물 수정
@@ -49,7 +49,7 @@ public class BoardReviewsServiceImpl implements BoardReviewsService {
 		// TODO Auto-generated method stub
 		this.boardReviewsDao.update(boardRev, userIp);
 	}
-	
+
 	// 후기 답글
 	@Override
 	public void setBoardReviewsReplyByBdNoRev(BoardReviews boardRev,
@@ -89,7 +89,7 @@ public class BoardReviewsServiceImpl implements BoardReviewsService {
 		// TODO Auto-generated method stub
 		this.boardReviewsDao.setFilePathForNew(newBdNoRev, forDb);
 	}
-	
-	
+
+
 
 }

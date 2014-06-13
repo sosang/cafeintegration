@@ -2,8 +2,8 @@ package logic;
 
 public class SaveFilePathTo {
 	private Integer saveFilePathNo;
-	private Integer fileSize;
 	private String filePath;
+	private Integer fileSize;
 	private Integer bdNoRev;
 	private Integer itemNo;
 

@@ -416,10 +416,16 @@ public class BoardController {
 
 	// 후기게시판 파일 저장을 위한 페이지 생성
 	@RequestMapping("boardReviewsWrite")
-	public ModelAndView boardReviewsWrite(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request, @RequestParam("filePath")MultipartFile filePath) throws Exception{
-		String originFileName = filePath.getOriginalFilename();
-		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
-		
+	public ModelAndView boardReviewsWrite(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request) throws Exception{
+//		String originFileName = filePath.getOriginalFilename();
+//		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
+//		  System.out.println("file의 확장자 : " + extention);
+//		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")){
+//		}else{
+//			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
+			// 여기까지 바인딩 에러 내용보기!
+//			return modelAndView;
+//		}
 //		GregorianCalendar today = new GregorianCalendar ( );
 //		int year = today.get ( today.YEAR ); 
 //		int month = today.get ( today.MONTH ) + 1; 
@@ -428,16 +434,16 @@ public class BoardController {
 
 		// WAR파일로 뿌렷을 때
 //		String uploadPath = "C:/Tomcat7/webapps/cafe/"+todayForDir+"userImage";
-		String uploadPath = "C:/Tomcat 7/webapps/cafeintegration/img/";
+//		String uploadPath = "C:/Tomcat7/webapps/cafe/images/userImage";
 		// TEst용
 //		String uploadPath = "E:/springtest/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/cafe/userImage";
 		// DB저장하기
 //		String forDb = "../"+todayForDir+"userImage/"+originFileName;
-		String forDb = "../img/"+originFileName;
+//		String forDb = "../images/userImage/"+originFileName;
 
 		// 시작
-		File saveDir = new File(uploadPath);
-		if(!saveDir.exists()) saveDir.mkdirs();
+//		File saveDir = new File(uploadPath);
+//		if(!saveDir.exists()) saveDir.mkdirs();
 	 	// 그럼 게시물 작성
 		// 로그인된 USER_KEY를 이용해 userEmail을 추출한다
 		// 접속된 IP를 얻어온다.
@@ -460,14 +466,8 @@ public class BoardController {
 			// 여기까지 바인딩 에러 내용보기!
 			return modelAndView;
 		}
-		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
-			// 내용을 사빕한다.
-			this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp, forDb);
-		}else{
-			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
-			// 여기까지 바인딩 에러 내용보기!
-			return modelAndView;
-		}
+		// 내용을 사빕한다.
+		this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp);
 		// 업로드 파일 저장
 //		writeFile(filePath, uploadPath, originFileName);
 		// 파일경로 쓰기
@@ -530,9 +530,9 @@ public class BoardController {
 	public ModelAndView boardReviewsReplyBefore(Integer pageNo, Integer bdNoRev, HttpServletRequest request){
 		ModelAndView modelAndView = new ModelAndView("board/boardReviewsReply");
 		// 여기는 실험정신
-//		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
-//		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
-//		request.setAttribute("boardRevContent", boardRev.getContentRev());
+		BoardReviews boardRev = this.boardReviewsService.getBoardReviewsByBdNoRev(bdNoRev);
+		request.setAttribute("boardRevTitle", boardRev.getTitleRev());
+		request.setAttribute("boardRevContent", boardRev.getContentRev());
 		// 여기까지 실험정신
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("bdNoRev", bdNoRev);

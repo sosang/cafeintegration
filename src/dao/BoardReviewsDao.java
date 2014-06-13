@@ -14,7 +14,7 @@ public interface BoardReviewsDao {
 	Integer getTotalCount();	// 자유게시판의 총 게시물 수
 	BoardReviews findByPrimaryKey(Integer bdNoRev); // 해당 게시물 읽기
 	void countUp(Integer bdNoRev);	// 조회수 올리기
-	void write(BoardReviews boardRev, MemberVo userKey, String userIp, String forDb);	// 후기 쓰기
+	void write(BoardReviews boardRev, MemberVo userKey, String userIp);	// 후기 쓰기
 	void update(BoardReviews boardRev, String userIp);	// 후기 수정
 	void reply(BoardReviews boardRev, Integer bdNoRev, MemberVo userKey,
 			String userIp);	// 후기 답글

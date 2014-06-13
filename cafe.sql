@@ -1,3 +1,13 @@
+SELECT * FROM save_file_path WHERE bd_no_rev = 30
+
+SELECT  DBMS_LOB.SUBSTR(content_rev, 1000, 1) AS CONT_SUB   -- 1000 개까지 출력(문자열) 
+        , DBMS_LOB.INSTR(content_rev, 'test', 1, 1) AS CONT_INS   -- 검색 문구의 위치 출력(숫자)
+  FROM board_reviews
+  where bd_no_rev = 2;
+  WHERE DBMS_LOB.INSTR(content_rev, 'test', 1, 1) > 0             -- 검색 문구가 존재할때
+;
+
+select * from board_reviews
 create table member(
 	user_email varchar2(50) primary key,
 	user_passwd varchar2(30),
@@ -58,7 +68,7 @@ create table board_qa_comments(
 create sequence board_qa_comments_seq
 increment by 1
 start with 1;
-
+drop table board_reviews cascade constraint
 create table board_reviews(
 	bd_no_rev number(4) primary key,
 	user_email varchar2(50) not null,
@@ -297,6 +307,9 @@ select * from purchase;
 select * from purchase_seq;
 select * from purchase_line;
 select * from member;
+select * from postcode where eupmyeondong like '반송%';
+
+delete POSTCODE;
 
 
 drop table adminstrator;
@@ -338,9 +351,13 @@ drop sequence reservation_seq;
 --member테이블 test명 
 
 --새로 생성시 기본 테스트용 추가 테이블 꼭 추가 시킬것!
-
-INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, ‘facebook’ ,sysdate);insert into ITEM values(item_seq.nextval,'루티나','에티오피아',2,'연하게',sysdate,'시나몬','연하고 시나몬 맛 나는 커피','bean.jpg',4000,10,0,0);
+select * from member
+update member user_email set sdf
+INSERT INTO member VALUES('sdf','sdf','gee','010','7777','7777','123-456','가산디지털단지', '4층',0,0,0,0,0, 'fu' ,sysdate);
 insert into ITEM values(item_seq.nextval,'시다모','에티오피아',2,'연하게',sysdate,'과일향','연한 꽃내음 나는 커피','bean.jpg',7000,10,0,0);
 
 ********************************************************************************************************
 
+SELECT bd_no_rev bdNoRev, user_email userEmail, user_alias userAlias, title_rev titleRev, DBMS_LOB.SUBSTR(content_rev, 1000, 1) AS contentRev, count_rev countRev, recommend_rev recommendRev, ref_rev refRev, re_step reStep, re_level reLevel, date_rev dateRev, user_ip userIp FROM board_reviews WHERE bd_no_rev = 2;
+select * from board_reviews where bd_no_rev = 2;
+SELECT * FROM board_reviews_comments WHERE bd_no_rev = 2 ORDER BY bd_no_rev_comments
