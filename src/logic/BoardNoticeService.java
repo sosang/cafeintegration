@@ -12,4 +12,5 @@ public interface BoardNoticeService {
 	BoardNotice getBoardNoticeByBdNoNtc(Integer bdNoNtc);		// 선택된 게시물 가져오기
 	void countUp(Integer bdNoNtc);								// 조회수 올리기
 	Integer getLastBdNoNtc();
+	void boardNoticeWrite(BoardNotice boardNotice);	// 공지사항 쓰기
 }

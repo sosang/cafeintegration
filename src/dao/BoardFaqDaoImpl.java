@@ -76,4 +76,12 @@ public class BoardFaqDaoImpl implements BoardFaqDao {
 		return faqList;
 	}
 
+	// Faq쓰기(어드민)
+	private static final StringBuffer WRITE_FAQ = new StringBuffer("INSERT INTO board_faq values(board_faq_seq.nextval, ?, ?)");
+	@Override
+	public void writeFaq(BoardFaq boardFaq) {
+		// TODO Auto-generated method stub
+		this.template.update(BoardFaqDaoImpl.WRITE_FAQ.toString(), boardFaq.getTitleFaq(), boardFaq.getContentFaq());
+	}
+
 }

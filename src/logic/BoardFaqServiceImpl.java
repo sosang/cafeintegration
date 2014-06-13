@@ -24,4 +24,11 @@ public class BoardFaqServiceImpl implements BoardFaqService {
 		return this.boardFaqDao.findAll(request, pageNo);
 	}
 
+	@Override
+	public void boardFaqWrite(BoardFaq boardFaq) {
+		// TODO Auto-generated method stub
+		this.boardFaqDao.writeFaq(boardFaq);
+	}
+
+	
 }
