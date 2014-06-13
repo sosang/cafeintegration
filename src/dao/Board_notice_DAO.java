@@ -15,6 +15,7 @@ public interface Board_notice_DAO {
 	BoardNotice findByPrimaryKey(Integer bdNoNtc);
 	void countUp(Integer bdNoNtc);
 	Integer getLastBdNoNtc();
+	void Write(BoardNotice boardNotice);	// 공지사항 쓰기
 	
 	
 

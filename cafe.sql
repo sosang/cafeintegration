@@ -1,3 +1,5 @@
+select * from board_notice
+select * from BOARD_FAQ
 create table member(
 	user_email varchar2(50) primary key,
 	user_passwd varchar2(30),
@@ -22,7 +24,7 @@ create table board_qa(
 	user_email varchar2(50) not null,
 	user_alias varchar2(30) not null,
 	title_qa varchar2(300) not null,
-	content_qa varchar2(4000) not null,
+	content_qa clob not null,
 	count_qa number(4) default 0,
 	ref_qa number(4) default 0,
 	re_step number(4) default 0,
@@ -118,7 +120,7 @@ start with 1;
 create table board_faq(
 	bd_no_faq number(4) primary key,
 	title_faq varchar2(300) not null,
-	content_faq varchar2(4000) not null
+	content_faq clob not null
 );
 
 create sequence board_faq_seq
@@ -128,7 +130,7 @@ start with 1;
 create table board_notice(
 	bd_no_ntc number(4) primary key,
 	title_ntc varchar2(300) not null,
-	content_ntc varchar2(300) not null,
+	content_ntc clob not null,
 	date_ntc date default sysdate not null,
 	count_ntc number(4) default 0
 );

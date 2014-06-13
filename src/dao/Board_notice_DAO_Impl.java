@@ -107,5 +107,14 @@ public class Board_notice_DAO_Impl implements Board_notice_DAO {
 		return this.template.queryForInt(SELECT_LAST_IDX_NO.toString());
 	}
 	
+	// 공지사항 쓰기
+	private static final StringBuffer WRITE_NOTICE = new StringBuffer("INSERT INTO board_notice values(board_notice_seq.nextval, ?,?,sysdate,0)");
+	
+	@Override
+	public void Write(BoardNotice boardNotice) {
+		// TODO Auto-generated method stub
+		this.template.update(Board_notice_DAO_Impl.WRITE_NOTICE.toString(), boardNotice.getTitleNtc(), boardNotice.getContentNtc());
+	}
+	
 
 }

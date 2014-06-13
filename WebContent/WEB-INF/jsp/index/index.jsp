@@ -97,9 +97,15 @@
 
 		</div>
 </header>
+
 	<section>
-	<div class="right-banner"><h1>오른쪽 배너</h1></div>
+<aside>공지사항</aside>
+<aside>right banner</aside>	
+
 	</section>
+	<footer>
+	
+	</footer>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>
