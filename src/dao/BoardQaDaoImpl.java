@@ -12,11 +12,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import logic.BoardQa;
 import logic.MemberVo;
 
 @Repository
+@Transactional
 public class BoardQaDaoImpl implements BoardQaDao {
 	
 	private SimpleJdbcTemplate template;
@@ -109,10 +111,8 @@ public class BoardQaDaoImpl implements BoardQaDao {
 	@Override
 	public void write(BoardQa boardQa, MemberVo userKey, String userIp) {
 		// TODO Auto-generated method stub
+		this.template.update(BoardQaDaoImpl.BOARD_QA_WRITE.toString(), userKey.getUserEmail(), userKey.getUserAlias(), boardQa.getTitleQa(), boardQa.getContentQa(), userIp);
 		articlePointUp(userKey.getUserEmail());
-//		SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(userKey);
-//		this.template.update(BoardQaDaoImpl.BOARD_QA_WRITE.toString(), parameterSource);
-		this.jdbcTemplate.update(BoardQaDaoImpl.BOARD_QA_WRITE.toString(), userKey.getUserEmail(), userKey.getUserAlias(), boardQa.getTitleQa(), boardQa.getContentQa(), userIp);
 	}
 	
 	// 글쓴이에게 포인트를!

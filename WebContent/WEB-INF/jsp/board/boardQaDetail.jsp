@@ -54,6 +54,84 @@
 
 <%-- 여기까지 댓글관련 --%>
 		<a href="boardQa.html?pageNo=${pageNo}">목록으로</a>
+		
+<%-- 여기부터 질답목록 --%>
+<c:if test="${!empty boardQaList}">
+		<table border="1" class="tableType">
+			<tr>
+				<th align="center" width="5%">번호</th>
+				<th align="center" width="60%">제 목</th>
+				<th align="center" width="10%">글쓴이</th>
+				<th align="center" width="15%">글쓴날</th>
+				<th align="center" width="10%">조회수</th>
+			</tr>
+
+			<c:forEach items="${boardQaList}" var="article">
+				<tr>
+					<td align="center" class="listtxt">
+						<c:out value="${article.bdNoQa}" />
+					</td>
+					
+					
+					<td align="left" class="listtxt title" >
+					<c:choose>
+						<c:when test="${article.reStep == 0}">
+							<a	href="<c:url value="boardQaDetail.html">
+											<c:param name="pageNo" value="${pageNo}"/>
+											<c:param name="bdNoQa" value="${article.bdNoQa}"/>
+										</c:url>">
+								<c:out value="${article.titleQa}" />
+							</a>
+						</c:when>
+						<c:otherwise>
+							<c:forEach begin="0" end="${article.reStep}" var="i">
+								&nbsp;&nbsp;
+							</c:forEach>
+							<a	href="<c:url value="boardQaDetail.html">
+											<c:param name="pageNo" value="${pageNo}"/>
+											<c:param name="bdNoQa" value="${article.bdNoQa}"/>
+										</c:url>">
+								<c:out value="▷답글 : ${article.titleQa}" />
+							</a>
+						</c:otherwise>
+					</c:choose>
+					</td>
+					
+					
+					<td align="center" class="listtxt">
+						<c:out value="${article.userAlias}" />
+					</td>
+					<td align="center" class="listtxt">
+						<font><c:out value="${article.dateQa}" /></font>
+					</td>
+					<td align="center" class="listtxt">
+						<c:out value="${article.countQa}" />
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<!-- 하단부 페이지 이동버튼 만들기 -->
+		<c:if test="${listCountQa>0 }">
+			<c:set var="maxPageQa" value="${requestScope.maxPageQa }" />
+			<c:set var="startPageQa" value="${requestScope.startPageQa }" />
+			<c:set var="endPageQa" value="${requestScope.endPageQa }" />
+			<c:if test="${startPageQa>10 }">
+				<a href="boardQa.html?pageNo=${startPageQa -10 }">이전</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPageQa }" end="${endPageQa }">
+				<a href="boardQa.html?pageNo=${i }">[${i }]</a>
+			</c:forEach>
+			<c:if test="${endPageQa<maxPageQa }">
+				<a href="boardQa.html?pageNo=${startPageQa+10 }">다음</a>
+			</c:if>
+		</c:if>
+		<input type="hidden" value="${pageNo }" name="pageNo">
+		<!-- 하단부 페이지 이동버튼 만들기 -->
+</c:if>
+
+<%-- 여기까지 질답목록 --%>	
+		
+		
 	</div>
 <%-- 삭제확인폼 --%>
 <script type="text/javascript">

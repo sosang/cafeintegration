@@ -69,8 +69,83 @@
 
 <%-- 여기까지 댓글관련 --%>
 		<a href="boardReviews.html?pageNo=${pageNo}">목록으로</a>
-	</div>
 	
+	<c:if test="${!empty boardReviewsList}">
+		<table class="tableType">
+			<tr>
+				<th align="center" width="5%">번호</th>
+				<th align="center" width="60%">제 목</th>
+				<th align="center" width="10%">글쓴이</th>
+				<th align="center" width="15%">글쓴날</th>
+				<th align="center" width="10%">조회/추천수</th>
+			</tr>
+
+			<c:forEach items="${boardReviewsList}" var="reviews">
+				<tr>
+					<td align="left" class="listtxt">
+						<c:out value="${reviews.bdNoRev}" />
+					</td>
+					
+					<!-- 게시판 타이틀 영역 -->
+					<td align="left" class="listtxt title">
+					<c:choose>
+					
+						<c:when test="${reviews.reStep == 0}">
+							<a	href="<c:url value="boardReviewsDetail.html">
+											<c:param name="pageNo" value="${pageNo}"/>
+											<c:param name="bdNoRev" value="${reviews.bdNoRev}"/>
+										</c:url>">
+								<c:out value="${reviews.titleRev}" />
+							</a>
+						</c:when>
+						
+						<c:otherwise>
+							<c:forEach begin="0" end="${reviews.reStep}" var="i">
+								&nbsp;&nbsp;
+							</c:forEach>
+							<a	href="<c:url value="boardReviewsDetail.html">
+											<c:param name="pageNo" value="${pageNo}"/>
+											<c:param name="bdNoRev" value="${reviews.bdNoRev}"/>
+										</c:url>">
+								<c:out value="▷답글 : ${reviews.titleRev}" />
+							</a>
+						</c:otherwise>
+					</c:choose>
+					</td>
+					
+					<td align="center" class="listtxt">
+						<c:out value="${reviews.userAlias}" />
+					</td>
+					<td align="center" class="listtxt">
+						<font size="0.1"><c:out value="${reviews.dateRev}" /></font>
+					</td>
+					<td align="center" class="listtxt">
+						<c:out value="${reviews.countRev}" />/
+						<c:out value="${reviews.recommendRev}" />
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<!-- 하단부 페이지 이동버튼 만들기 -->
+		<c:if test="${listCountRev>0 }">
+			<c:set var="maxPageRev" value="${requestScope.maxPageRev }" />
+			<c:set var="startPageRev" value="${requestScope.startPageRev }" />
+			<c:set var="endPageRev" value="${requestScope.endPageRev }" />
+			<c:if test="${startPageRev>10 }">
+				<a href="boardReviews.html?pageNo=${startPageRev -10 }">이전</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPageRev }" end="${endPageRev }">
+				<a href="boardReviews.html?pageNo=${i }">[${i }]</a>
+			</c:forEach>
+			<c:if test="${endPageRev<maxPageRev }">
+				<a href="boardReviews.html?pageNo=${startPageRev+10 }">다음</a>
+			</c:if>
+		</c:if>
+		<input type="hidden" value="${pageNo }" name="pageNo">
+		<!-- 하단부 페이지 이동버튼 만들기 -->
+	</c:if>
+
+</div>
 	
 <%-- 삭제확인폼 --%>
 

@@ -10,18 +10,19 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
-CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',language:'ko',
- 	
- 	toolbar:[['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-','Find','Replace','SelectAll','RemoveFormat','-','Image','Flash','Table','SpecialChar'],'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']]
- 
- });
+window.onload=function(){
+    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',language:'ko',
+    	toolbar:[['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-','Find','Replace','SelectAll','RemoveFormat','-','Image','Flash','Table','SpecialChar'],'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']]
+    
+    });
+};
 </script>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판 쓰기</h2>
-		<form name="form" method="post" action="boardQaWrite.html">
+		<form name="fileForm" method="post" enctype="multipart/form-data" action="boardQaWrite.html">
 			<table>
 				<tr height="40px">
 					<td>제  목</td>

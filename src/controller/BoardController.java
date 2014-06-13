@@ -112,18 +112,22 @@ public class BoardController {
 		// 글쓴이와 로그인 한 자가 같을 때 메뉴를 보이게 할려구 해봅 시도를 해봄... 해봄
 		model.put("writer", boardQa.getUserEmail());
 		this.boardQaService.countUpForBdNoQa(bdNoQa);
-		modelAndView.addAllObjects(model);
 
 		// 해당 게시물의 댓글들을 화면에 뿌려주고싶다.
-		// Q&A 목록 취득
+		// Q&A 리플목록 취득
 			List<BoardQaComments> boardQaCommentsList = null;
 			boardQaCommentsList = this.boardQaCommentsService.getBoardQaCommentsList(request, pageNo, bdNoQa);
 			// 모델 생성
 			model.put("boardQaCommentsList", boardQaCommentsList);
 			// 반환값인 ModelAndView 인스턴스 생성
 			modelAndView.addAllObjects(model);
-
-
+		// 게시물 목록을 화면에 뿌려주고싶다.
+			// Q&A 목록 취득
+			List<BoardQa> boardQaList = null;
+			boardQaList = this.boardQaService.getBoardQaList(request, pageNo);
+			// 모델 생성
+			model.put("boardQaList", boardQaList);
+			modelAndView.addAllObjects(model);
 //		System.out.println(boardQa.getUserEmail());
 //		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 //		System.out.println(userKey.getUserEmail());
@@ -348,6 +352,12 @@ public class BoardController {
 		// 파일경로 부르기
 //		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
 //		model.put("SFPT",sfpt);
+			// 아래쪽에 리스트 보여줄려구
+					List<BoardReviews> boardReviewsList = null;
+					boardReviewsList = this.boardReviewsService.getBoardReviewsList(request, pageNo);
+					// 모델 생성
+					model.put("boardReviewsList", boardReviewsList);
+			//아래쪽에 리스트 보여줄려구
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
