@@ -70,7 +70,6 @@ public class LoginController {
 			//유저 확인시 로그인 전 페이지로 돌아간다.
 			String url = "redirect:../"+goBack.substring(38, goBack.length());
 //			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
-			System.out.println(url);
 			modelAndView.setViewName(url);
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
