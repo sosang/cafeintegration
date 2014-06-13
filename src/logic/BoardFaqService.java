@@ -10,4 +10,6 @@ public interface BoardFaqService {
 
 	void boardFaqWrite(BoardFaq boardFaq);	// FAQ 쓰기
 
+	void deleteBoardFaqArticle(Integer bdNoFaq);	// FAQ 삭제
+
 }

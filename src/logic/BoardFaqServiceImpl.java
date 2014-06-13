@@ -30,5 +30,11 @@ public class BoardFaqServiceImpl implements BoardFaqService {
 		this.boardFaqDao.writeFaq(boardFaq);
 	}
 
+	@Override
+	public void deleteBoardFaqArticle(Integer bdNoFaq) {
+		// TODO Auto-generated method stub
+		this.boardFaqDao.DeleteFaq(bdNoFaq);
+	}
+
 	
 }

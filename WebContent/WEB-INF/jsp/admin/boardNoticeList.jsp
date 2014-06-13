@@ -38,10 +38,11 @@ a.listtxt:hover {
 		<table class="tableType"  border="1">
 			
 			<tr class="header">
-				<th align="center" width="15%">번호</th>
-				<th align="center" style="text-align: left;" width="60%">제 목</th>
+				<th align="center" width="10%">번호</th>
+				<th align="center" style="text-align: left;" width="55%">제 목</th>
 				<th align="center" width="15%">글쓴날</th>
 				<th align="center" width="10%">조회수</th>
+				<th align="center" width="10%">삭제</th>
 			</tr>
 
 			<c:forEach items="${articleList}" var="article">
@@ -50,7 +51,7 @@ a.listtxt:hover {
 						<c:out value="${article.bdNoNtc}" />
 					</td>
 					<td align="left" class="listtxt">
-						<a	href="<c:url value="admin/boardNoticeDetail.html">
+						<a	href="<c:url value="/admin/boardNoticeDetailAdmin.html">
 										<c:param name="pageNo" value="${pageNo}"/>
 										<c:param name="bdNoNtc" value="${article.bdNoNtc}"/>
 									</c:url>">
@@ -62,6 +63,11 @@ a.listtxt:hover {
 					</td>
 					<td align="center" class="listtxt">
 						<c:out value="${article.countNtc}" />
+					</td>
+					<td align="center" class="listtxt">
+						<form name="form" method="post" action="boardNoticeDeleteBefore.html?pageNo=${pageNo }&bdNoNtc=${article.bdNoNtc}">
+							<input class="btn " type="button" onclick="delConfirm()" value="삭제허기"> 
+						</form>
 					</td>
 				</tr>
 			</c:forEach>
@@ -89,6 +95,15 @@ a.listtxt:hover {
 </c:if>
 		
 	</div>
+<script type="text/javascript">
+function delConfirm(){
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+		    document.form.submit();
+	}else{   //취소
+		    return;
+	}
+}
+</script>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

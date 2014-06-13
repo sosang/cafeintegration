@@ -116,5 +116,14 @@ public class Board_notice_DAO_Impl implements Board_notice_DAO {
 		this.template.update(Board_notice_DAO_Impl.WRITE_NOTICE.toString(), boardNotice.getTitleNtc(), boardNotice.getContentNtc());
 	}
 	
+	//공지사항 삭제
+	private static final StringBuffer DELETE_NOTICE = new StringBuffer("DELETE board_notice where bd_no_ntc = ?");
+	
+	@Override
+	public void Delete(Integer bdNoNtc) {
+		// TODO Auto-generated method stub
+		this.template.update(Board_notice_DAO_Impl.DELETE_NOTICE.toString(), bdNoNtc);
+	}
+	
 
 }

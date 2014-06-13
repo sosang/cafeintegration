@@ -24,8 +24,20 @@
 			</tr>
 		</table>
 		<hr>
-		<a href="boardNotice.html?pageNo=${pageNo}">목록으로</a>
+		<form name="form" method="post" action="boardNoticeDeleteBefore.html?pageNo=${pageNo }&bdNoNtc=${boardNotice.bdNoNtc}">
+			<input class="btn " type="button" onclick="delConfirm()" value="삭제허기"> 
+		</form>
+		<a href="boardNoticeList.html?pageNo=${pageNo}">목록으로</a>
 	</div>
+<script type="text/javascript">
+function delConfirm(){
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+		    document.form.submit();
+	}else{   //취소
+		    return;
+	}
+}
+</script>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

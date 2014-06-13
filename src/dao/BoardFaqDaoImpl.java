@@ -83,5 +83,13 @@ public class BoardFaqDaoImpl implements BoardFaqDao {
 		// TODO Auto-generated method stub
 		this.template.update(BoardFaqDaoImpl.WRITE_FAQ.toString(), boardFaq.getTitleFaq(), boardFaq.getContentFaq());
 	}
+	
+	// faq 지우기
+	private static final StringBuffer DELETE_FAQ = new StringBuffer("DELETE board_faq where bd_no_faq = ?");
+	@Override
+	public void DeleteFaq(Integer bdNoFaq) {
+		// TODO Auto-generated method stub
+		this.template.update(BoardFaqDaoImpl.DELETE_FAQ.toString(), bdNoFaq);
+	}
 
 }

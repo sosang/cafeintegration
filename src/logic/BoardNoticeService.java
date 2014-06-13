@@ -13,4 +13,5 @@ public interface BoardNoticeService {
 	void countUp(Integer bdNoNtc);								// 조회수 올리기
 	Integer getLastBdNoNtc();
 	void boardNoticeWrite(BoardNotice boardNotice);	// 공지사항 쓰기
+	void deleteBoardNoticeArticle(Integer bdNoNtc);	// 공지사항 삭제
 }

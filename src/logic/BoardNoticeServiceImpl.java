@@ -6,6 +6,7 @@ import java.util.List;
 
 
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,12 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	public void boardNoticeWrite(BoardNotice boardNotice) {
 		// TODO Auto-generated method stub
 		this.boardNoticeDao.Write(boardNotice);
+	}
+
+	@Override
+	public void deleteBoardNoticeArticle(Integer bdNoNtc) {
+		// TODO Auto-generated method stub
+		this.boardNoticeDao.Delete(bdNoNtc);
 	}
 
 

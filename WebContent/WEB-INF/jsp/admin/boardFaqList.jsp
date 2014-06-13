@@ -21,9 +21,13 @@
 
 		<dl>
 				<c:forEach items="${faqList}" var="articles" varStatus="status">
-						<dt><a href="#bda${status.count }"><c:out value="${articles.titleFaq}" /></a></dt>
-						<dd><c:out value="${articles.contentFaq}" /></dd>
-					</li>
+						<dt>
+							<a href="#bda${status.count }"><c:out value="${articles.titleFaq}" /></a>
+						</dt>
+						<dd>
+							<c:out value="${articles.contentFaq}" />
+							<input method="post" class="btn" type="button" onclick="location.href='boardFaqDeleteBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="지우개">
+						</dd>
 				</c:forEach>
 		</dl>
 
@@ -52,6 +56,15 @@
 </c:if>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
 <script type="text/javascript" src="<%=request.getContextPath() %>/java_script/faq.js"></script>
+<script type="text/javascript">
+function delConfirm(){
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+		    document.form.submit();
+	}else{   //취소
+		    return;
+	}
+}
+</script>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>
