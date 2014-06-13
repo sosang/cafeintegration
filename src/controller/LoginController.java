@@ -33,6 +33,7 @@ public class LoginController {
 	
 	@Autowired
 	private AdminVoService adminVoService;
+	private String goBack="";
 
 	@ModelAttribute
 	public MemberVo setUpForm() { 
@@ -40,15 +41,16 @@ public class LoginController {
 
 	}
 	@RequestMapping(value="login/login", method=RequestMethod.GET)
-	public ModelAndView login(){
+	public ModelAndView login(HttpServletRequest request){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login/login");
+		this.goBack = request.getHeader("referer");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="login/login", method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member,
-			BindingResult bindingResult, HttpSession session) {
+			BindingResult bindingResult, HttpServletRequest request, HttpSession session) {
 
 		this.loginValidator.validate(member, bindingResult);
 
@@ -63,10 +65,13 @@ public class LoginController {
 			//유저 정보 검색
 			MemberVo loginMemberVo = this.shopService.getMemberByUserEmailAndUserPasswd(member.getUserEmail(), member.getUserPasswd());
 			session.setAttribute(WebConstants.USER_KEY, loginMemberVo);
-			
 		
-			//유저 확인시
-			modelAndView.setViewName("index/index");
+		
+			//유저 확인시 로그인 전 페이지로 돌아간다.
+			String url = "redirect:../"+goBack.substring(38, goBack.length());
+//			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
+			System.out.println(url);
+			modelAndView.setViewName(url);
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
 			//유저 미 확인시
