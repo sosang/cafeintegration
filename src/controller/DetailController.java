@@ -1,16 +1,19 @@
 package controller;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import logic.AdminVoService;
 import logic.ItemVo;
 import logic.MemberVo;
 import logic.Shop;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,10 +24,38 @@ public class DetailController {
 	@Autowired
 	private Shop shopService;
 
+	@Autowired
+	private Validator loginValidator;
 
+	@Autowired
+	private AdminVoService adminVoService;
 
 	@RequestMapping
 	public ModelAndView detailItem(HttpSession session, Integer itemNo) {
+
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail;
+		try {
+			userEmail = userKey.getUserEmail();
+		} catch (Exception e) {
+			userEmail = null;
+		}
+		ItemVo item = this.shopService.getItemByItemNo(itemNo);
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("item", item);
+		String filePathForJsp = this.shopService.getFilePathTo(itemNo);
+		model.put("toViewImage",filePathForJsp);
+		model.put("userEmail", userEmail);
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addAllObjects(model);
+		return modelAndView;
+	}
+
+	@RequestMapping("detail/detailon")
+	public ModelAndView detailItemon(HttpSession session, Integer itemNo) {
 
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
