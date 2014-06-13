@@ -41,23 +41,24 @@ public class PurchaseController {
 		modelAndView.addAllObjects(model);
 
 		return modelAndView;
+
 	}
 
 	@RequestMapping(value = "/purchase/purchaseDirect")
 	public ModelAndView purchasedirect(Integer itemNo, Integer price,
-			Integer cartNumOfProduct,  HttpSession session) {
+			Integer cartNumOfProduct, HttpSession session) {
 		ItemVo item = this.shopService.getItemByItemNo(itemNo);
 
 		PurchaseListVo purchaseList = new PurchaseListVo();
 		purchaseList.setItemName(item.getItemName());
 		purchaseList.setNumOfProduct(cartNumOfProduct);
 		purchaseList.setPrice(price);
+		purchaseList.setPhoto(item.getPhoto());
 
 		ModelAndView modelAndView = new ModelAndView("purchase/purchaseDirect");
 		modelAndView.addObject("purchaseLine", purchaseList);
 
 		return modelAndView;
 	}
-	
-	
+
 }

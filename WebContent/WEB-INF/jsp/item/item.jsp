@@ -19,23 +19,19 @@
 		<p>Coffee Bean</p>
 	</div>
 	<div align="center" id="rownew">
-		<c:forEach items="${toViewImage }" var="photo">
-			<img src="${photo.filePath }">
-		</c:forEach>
 		<c:forEach items="${itemList }" var="item">
 			<div class="block"
 				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"
 				style='cursor: pointer;'>
 				<ul>
-					<li><img src="${toViewImage }"></li>
+					<li><img src="${item.photo}" style="max-height: 400px; max-width: 600px"></li>
 					<li><p>${item.itemName }</p></li>
-					<li><p>${item.price }</p></li>
+					<li><p>${item.price }원</p></li>
 					<li><p>
 							<fmt:formatDate value="${item.roastingDate}" pattern="yyyy-MM-dd" /></li>
 				</ul>
 			</div>
 		</c:forEach>
 	</div>
-	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

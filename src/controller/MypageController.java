@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import utils.WebConstants;
-
 @Controller
 public class MypageController {
 
@@ -29,13 +28,15 @@ public class MypageController {
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
 		String userEmail = userKey.getUserEmail();
-		String userPasswd = userKey.getUserPasswd();
 
 		List<PurchaseListVo> myPurchase = this.shopService
 				.mypagePurchase(userEmail);
 
-		MemberVo user = this.shopService.getMemberByUserEmailAndUserPasswd(
-				userEmail, userPasswd);
+
+		MemberVo user = this.shopService.memberInfo(userEmail);
+
+
+
 
 		List<CartVo> myCart = this.shopService.getCartList(userEmail);
 
@@ -44,8 +45,7 @@ public class MypageController {
 		Map<String, Object> model2 = new HashMap<String, Object>();
 
 		Map<String, Object> model3 = new HashMap<String, Object>();
-	
-		
+
 		model3.put("user", user);
 
 		model.put("mycart", myCart);

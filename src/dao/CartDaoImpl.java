@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CartDaoImpl implements CartDao {
 
-	private static final String SELECT_CART_BY_USERID = "select a.user_email, a.item_no ,b.item_name, b.price , sum(a.cart_num_of_product) cart_num_of_product, sum(a.cart_sub_total) cart_sub_total from cart a, item b where a.user_email=? and a.item_no=b.item_no group by a.user_email,a.item_no,b.item_name,b.price ";
+	private static final String SELECT_CART_BY_USERID = "select a.user_email, a.item_no ,b.item_name, b.photo ,b.price , sum(a.cart_num_of_product) cart_num_of_product, sum(a.cart_sub_total) cart_sub_total from cart a, item b where a.user_email=? and a.item_no=b.item_no group by a.user_email,a.item_no,b.item_name,b.photo,b.price ";
 	private static final String INSERT = "INSERT INTO cart(cart_num,user_email,item_no,cart_num_of_product,cart_sub_total)values(cart_seq.nextval,?,?,?,?)";
 	private static final String DELETE = "DELETE FROM cart where user_email=?";
 	private static final String DELETE_MYPAGE = "DELETE from cart where item_no=?";

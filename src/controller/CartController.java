@@ -71,6 +71,7 @@ public class CartController {
 
 		ModelAndView modelAndView = new ModelAndView("cart/cartClear");
 
+
 		return modelAndView;
 	}
 

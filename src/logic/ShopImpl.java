@@ -25,7 +25,8 @@ public class ShopImpl implements Shop {
 	public MemberVo getMemberByUserEmailAndUserPasswd(String userEmail,
 			String userPasswd) {
 		// TODO Auto-generated method stub
-		return this.memberCatalog.getMemberByUserEmailAndUserPasswd(userEmail, userPasswd);
+		return this.memberCatalog.getMemberByUserEmailAndUserPasswd(userEmail,
+				userPasswd);
 	}
 
 	@Override
@@ -34,17 +35,17 @@ public class ShopImpl implements Shop {
 		this.memberCatalog.entryMember(member);
 
 	}
+
 	public void setItemCatalog(ItemCatalog itemCatalog) {
 		this.itemCatalog = itemCatalog;
 	}
 
-	
 	// 어드민에서 회원목록 불러오기
 	@Override
 	public List<MemberVo> getMemberList(HttpServletRequest request,
 			Integer pageNo) {
 		// TODO Auto-generated method stub
-		return this.memberCatalog.findAllMember(request,pageNo);
+		return this.memberCatalog.findAllMember(request, pageNo);
 	}
 
 	@Override
@@ -58,7 +59,6 @@ public class ShopImpl implements Shop {
 		// TODO Auto-generated method stub
 		return this.itemCatalog.getItemByItemNo(itemNo);
 	}
-
 
 	@Override
 	public void entryCart(CartVo cart) {
@@ -78,18 +78,17 @@ public class ShopImpl implements Shop {
 	}
 
 	@Override
-	public void checkout(String userEmail, String receiver,
-			String recpostcode, String recphone, String recaddr, String remarks) {
+	public void checkout(String userEmail, String receiver, String recpostcode,
+			String recphone, String recaddr, String remarks) {
 		// TODO Auto-generated method stub
-		PurchaseVo purchase = createPurchase(userEmail, receiver,
-				recpostcode, recphone, recaddr, remarks);
+		PurchaseVo purchase = createPurchase(userEmail, receiver, recpostcode,
+				recphone, recaddr, remarks);
 		entryPurchase(purchase);
 
 	}
 
-	private PurchaseVo createPurchase( String userEmail,
-			String receiver, String recphone, String recaddr,
-			String recpostcode, String remarks) {
+	private PurchaseVo createPurchase(String userEmail, String receiver,
+			String recphone, String recaddr, String recpostcode, String remarks) {
 		PurchaseVo purchase = new PurchaseVo();
 
 		purchase.setUserEmail(userEmail);
@@ -99,7 +98,7 @@ public class ShopImpl implements Shop {
 		purchase.setRecphone(recphone);
 		purchase.setRecpostcode(recpostcode);
 		purchase.setRemarks(remarks);
-		
+
 		List<CartVo> itemList = this.cartCatalog.getCartList(userEmail);
 		System.out.println(itemList.get(0).getItemNo());
 		for (int i = 0; i < itemList.size(); i++) {
@@ -142,7 +141,6 @@ public class ShopImpl implements Shop {
 		return this.purchaseCatalog.userPurchaseList(userEmail);
 	}
 
-	
 	@Override
 	public int getCheckedUserEmail(String userEmail) {
 		// TODO Auto-generated method stub
@@ -168,7 +166,7 @@ public class ShopImpl implements Shop {
 	public void setFilePath(int newItemNo, String forDb) {
 		// TODO Auto-generated method stub
 		this.itemCatalog.setFilePath(newItemNo, forDb);
-		
+
 	}
 
 	// 상품내용 수정
@@ -177,7 +175,7 @@ public class ShopImpl implements Shop {
 		// TODO Auto-generated method stub
 		this.itemCatalog.itemUpdate(itemVo, itemNo);
 	}
-	
+
 	// 수정된 상품 내용의 이미지파일 경로 갱신
 	@Override
 	public void updateFilePath(Integer itemNo, String forDb) {
@@ -200,22 +198,22 @@ public class ShopImpl implements Shop {
 	}
 
 	@Override
-	public MemberVo getMember(String userEmail) {
-		// TODO Auto-generated method stub
-		return this.memberCatalog.getMember(userEmail);
-	}
-
-	@Override
 	public List<SaveFilePathTo> getitemAll_photo() {
 		// TODO Auto-generated method stub
 		return this.itemCatalog.findAll_photo();
 	}
 
 	// userAlias 중복체크
-	 		@Override
-	 		public int getCheckedUserAlias(String userAlias) {
-	 			// TODO Auto-generated method stub
-	 			return this.memberCatalog.getCheckedUserAlias(userAlias);
-	 		}
-	
+	@Override
+	public int getCheckedUserAlias(String userAlias) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.getCheckedUserAlias(userAlias);
+	}
+
+	@Override
+	public MemberVo memberInfo(String userEmail) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.getfindMemberInfo(userEmail);
+	}
+
 }

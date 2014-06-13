@@ -25,7 +25,7 @@ public interface Shop {
 	
 	List<PurchaseListVo> mypagePurchase(String userEmail);
 	int getCheckedUserEmail(String userEmail);	//userEmail 중복체크용	
-	MemberVo getMember(String userEmail);
+
 	void itemReg(ItemVo itemVo, String forDb);	// 아이템 등록
 	int getNewItemNo();	// 최신상품번호 얻기
 	void setFilePath(int newItemNo, String forDb);	// 상품 이미지 등록
@@ -35,4 +35,6 @@ public interface Shop {
 	void deleteBoth(Integer itemNo);	// 상품 삭제
 	List<SaveFilePathTo> getitemAll_photo();
 	int getCheckedUserAlias(String userAlias);	//userAlias 중복체크용
+	
+	MemberVo memberInfo(String userEmail);
 }

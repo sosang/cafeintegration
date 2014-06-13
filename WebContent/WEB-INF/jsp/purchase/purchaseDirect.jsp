@@ -22,7 +22,7 @@
 								상품 목록</font></th>
 					</tr>
 					<tr>
-						
+
 						<th>번호</th>
 						<th width="300">상품명</th>
 						<th width="150">판매가</th>
@@ -34,10 +34,10 @@
 
 
 					<tr>
-					
+
 						<td id="centerid"><h5></h5></td>
 						<td><img width="80px" height="50px"
-							src="../img/${purchaseLine .photo }"> &nbsp;&nbsp;&nbsp;<c:out
+							src="${purchaseLine .photo }"> &nbsp;&nbsp;&nbsp;<c:out
 								value="${purchaseLine.itemName }" /></td>
 						<td id="centerid"><c:out value="${purchaseLine.price }" /></td>
 						<td id="centerid"><c:out
@@ -89,24 +89,26 @@
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="receiver"></td>
+						<td><input type="text" name="receiver" required="required"></td>
 					</tr>
 					<tr>
 						<td>우편번호</td>
-						<td><input type="text" name="recpostcode"></td>
+						<td><input type="text" name="recpostcode" required="required"></td>
 						<td>핸드폰번호</td>
-						<td><input type="text" name="recphone"></td>
+						<td><input type="text" name="recphone" required="required"></td>
 					</tr>
+
 					<tr>
 						<td>주소</td>
-						<td><input type="text" width="50pt" name="recaddr"></td>
+						<td><input type="text" width="50pt" name="recaddr" required="required"></td>
 						<td colspan="2"><input type="text" width="50pt"
-							name="recaddr2"></td>
+							name="recaddr2" required="required"></td>
 					</tr>
+
 					<tr>
 						<td>배송메시지</td>
 						<td colspan="3"><textarea rows="5" cols="50"
-								style="resize: none" name="remarks"></textarea></td>
+								style="resize: none" name="remarks" required="required"></textarea></td>
 					</tr>
 				</table>
 				<input type="submit" value="결제하기">

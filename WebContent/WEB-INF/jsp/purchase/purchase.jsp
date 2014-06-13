@@ -9,6 +9,11 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">
 </head>
+<script type="text/javascript">
+function checkId(){
+
+}
+</script>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
@@ -94,26 +99,26 @@
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="receiver"></td>
+						<td><input type="text" name="receiver" required="required"></td>
 					</tr>
 					<tr>
 						<td>우편번호</td>
-						<td><input type="text" name="recpostcode"></td>
+						<td><input type="text" name="recpostcode" required="required"></td>
 						<td>핸드폰번호</td>
-						<td><input type="text" name="recphone"></td>
+						<td><input type="text" name="recphone" required="required"></td>
 					</tr>
 
 					<tr>
 						<td>주소</td>
-						<td><input type="text" width="50pt" name="recaddr"></td>
+						<td><input type="text" width="50pt" name="recaddr" required="required"></td>
 						<td colspan="2"><input type="text" width="50pt"
-							name="recaddr2"></td>
+							name="recaddr2" required="required"></td>
 					</tr>
 
 					<tr>
 						<td>배송메시지</td>
 						<td colspan="3"><textarea rows="5" cols="50"
-								style="resize: none" name="remarks"></textarea></td>
+								style="resize: none" name="remarks" required="required"></textarea></td>
 					</tr>
 				</table>
 				<input type="submit" value="결제하기">

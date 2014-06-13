@@ -23,7 +23,7 @@ public class ItemDaoImpl implements ItemDao {
 
 	}
 
-	private static final String SELECT_ALL = "SELECT item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, price, total_product, def_exchange, def_refund FROM item";
+	private static final String SELECT_ALL = "SELECT item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, photo,price, total_product, def_exchange, def_refund FROM item";
 
 	@Override
 	public List<ItemVo> findAll() {

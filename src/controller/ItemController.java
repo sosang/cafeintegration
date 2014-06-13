@@ -53,23 +53,18 @@ public class ItemController  {
 		List<ItemVo> itemList = this.shopService.getItemList();
 
 		Map<String, Object> model = new HashMap<String,Object>();
-		
-		
-		
-		List<SaveFilePathTo> photo = this.shopService.getitemAll_photo();
-		
-		Map<String , Object>model2 = new HashMap<String,Object>();
+
+
+
+
 
 		model.put("itemList", itemList);
-		model2.put("toViewImage", photo);
-		
-		System.out.println(photo.get(0).getFilePath());
-		System.out.println(photo.get(0).getSaveFilePathNo());
-		
-		
+
+
+
 		ModelAndView modelAndView = new ModelAndView();
-		
-		modelAndView.addAllObjects(model2);
+
+
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
