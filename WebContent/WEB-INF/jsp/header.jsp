@@ -41,12 +41,12 @@
 						<li><a href="../board/boardReviews.html?pageNo=1">체험후기</a></li>
 					</ul></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search">
+			<!-- <form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
 				<button type="submit" class="btn btn-warning ">검색</button>
-</form>
+			</form> -->
 <form class="navbar-form navbar-right">
 				<c:choose>
 						<c:when test="${USER_KEY ne null}">
