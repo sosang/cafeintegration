@@ -35,7 +35,8 @@ a.listtxt:hover {
 	<div align="center" class="body">
 		<h2>공지사항 테스트</h2>
 		<br>
-		<input class="btn " type="button" onclick="location.href='boardNoticeWriteBefore.html'" value="공지쓰기">
+		<a style="text-align:right;" href="boardNoticeWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 공지쓰기</a>
+		<!-- <input class="btn " type="button" onclick="location.href='boardNoticeWriteBefore.html'" value="공지쓰기"> -->
 		<hr>
 <c:if test="${articleList ne null }">
 		<table class="tableType"  border="1">

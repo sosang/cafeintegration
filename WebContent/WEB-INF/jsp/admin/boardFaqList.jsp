@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ</title>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath() %>/css/faq.css">
 </head>
@@ -16,7 +21,8 @@
 	<div align="center" class="body">
 	<h1>FAQ</h1>
 		<br>
-		<input class="btn " type="button" onclick="location.href='boardFaqWriteBefore.html'" value="FAQ쓰기">
+		<a style="text-align:right;" href="boardFaqWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> FAQ쓰기</a>
+		<!-- <input class="btn " type="button" onclick="location.href='boardFaqWriteBefore.html'" value="FAQ쓰기"> -->
 		<hr>
 			<table width="960px">
 				<c:forEach items="${faqList}" var="articles" varStatus="status">

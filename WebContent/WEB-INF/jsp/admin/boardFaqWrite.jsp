@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>공지사항 쓰기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
@@ -35,11 +40,11 @@ window.onload=function(){
 			</table>
 			<br>
 			<input type="hidden" value="${pageNo }" name="pageNo">
-			<input type="submit" value="등록" /><input type="reset" value="리셋" /><br>
+			<input type="submit" value="등록" class="btn"/><br>
 			<br>
 		</form>
 		<hr>
-		<a href="boardNoticeList.html?pageNo=1">목록으로</a>
+		<a href="boardNoticeList.html?pageNo=1" class="btn" id="coco">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>

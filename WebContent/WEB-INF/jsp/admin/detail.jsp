@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 상세 화면</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
@@ -54,8 +59,8 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center" width="240">
-								<a href="../admin/itemList.html">ㅁ 상품목록으로 돌아가기</a>/
-								<a href="../admin/itemEdit.html?itemNo=${item.itemNo}">수정</a>
+								<a href="../admin/itemList.html" class="btn" id="coco">ㅁ 상품목록으로 돌아가기</a>/
+								<a href="../admin/itemEdit.html?itemNo=${item.itemNo}" class="btn" id="coco">수정</a>
 							</td>
 						</tr>
 					</table>
