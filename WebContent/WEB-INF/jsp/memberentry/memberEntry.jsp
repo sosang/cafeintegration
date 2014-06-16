@@ -29,7 +29,7 @@
 				<label>사용자 Email</label>
 				<form:input path="userEmail" type="email" cssClass="form-control"
 					id="userEmail" placeholder="email을 입력하세요." autofocus="true" />
-				<input type="button" class="button" value="중복확인" onclick="emailCheckAjax()" /> 
+				<input type="button" class="button button-doubleCheck" value="중복확인" onclick="emailCheckAjax()" /> 
 					<span id="emailCheckResult"></span>
 			</div>
 
@@ -44,6 +44,24 @@
 				<input type="password" class="form-control" id="confirmPasswd" onkeyup="checkPasswordMatch()" placeholder="Password를 한 번 더 입력하세요.">
 				<span id="validate"></span>
 			</div>
+			
+			<div class="control-group input-size">
+				<label>비밀번호 찾기용 질의/응답</label>
+				<div class="controls" id="passwdInquiryAndAnswer">
+					<form:select path="passwdInquiry" cssClass="selectpicker" 
+						height="40px" id="passwdInquiry">
+						<form:option value="" label="질문 선택" disabled="disabled"/>
+						<form:option value="태어난 고향(도시명만 입력)은?" label="태어난 고향(도시명만 입력)은?" />
+						<form:option value="어머니 성함은?" label="어머니 성함은?" />
+						<form:option value="아버지 성함은?" label="아버지 성함은?" />
+						<form:option value="좋아하는 동물은?" label="좋아하는 동물은?" />
+						<form:option value="좋아하는 책은?" label="좋아하는 책은?" />
+					</form:select>
+					
+					<form:input path="passwdAnswer"  cssClass="input-xlarge"
+						maxlength="25" size="30" id="passwdAnswer"/>
+				</div>
+			</div>
 
 			<div class="form-horizontal input-size">
 				<label for="userAlias">사용자 별명</label>
@@ -54,10 +72,10 @@
 				<font color="red"><form:errors path="userAlias" /></font>
 			</div>
 
-			<div class="form-horizontal input-size">
-				<label>전화번호</label>
+			<div class="control-group input-size">
+				<label class="controls">전화번호</label>
 				<div id="userPhone1">
-					<form:select path="userPhone1" cssClass="userPhone span12"
+					<form:select path="userPhone1" cssClass="selectpicker" data-sytle="btn-info"
 						height="40px">
 						<form:option value="010" label="010" />
 						<form:option value="011" label="011" />
@@ -65,10 +83,10 @@
 						<form:option value="019" lable="019" />
 					</form:select>
 					-
-					<form:input path="userPhone2" cssClass="userPhone span12"
+					<form:input path="userPhone2" type="phone" css="userPhone input-small"
 						maxlength="4" size="5" id="userPhone2" onkeyup="moveFocus" />
 					-
-					<form:input path="userPhone3" cssClass="userPhone span12"
+					<form:input path="userPhone3" type="phone" cssClass="userPhone input-small"
 						maxlength="4" size="5" />
 					<font color="red"><form:errors path="userPhone3" /></font>
 				</div>
@@ -77,7 +95,7 @@
 			<div class="form-horizontal input-size">
 				<label>우편번호</label>
 				<div id="userPostcode">
-					<form:input path="userPostcode" cssClass="userPostcode col-xs-2"
+					<form:input path="userPostcode" cssClass="userPostcode input-small"
 						maxlength="10" size="10" readonly="true" />
 					&nbsp;<input type="button" class="button" id="postcodeBtn"
 						value="우편번호 찾기" onclick="openwin()" /><font color="red"><form:errors
@@ -358,7 +376,7 @@
 			</div>
 			</div>
 
-			<button type="submit" id="EntryBtn" class="btn btn-primary" disabled="disabled">회원 가입</button>
+			<button type="submit" id="EntryBtn" class="btn btn-primary" disabled="disabled">가입 신청</button>
 			<button type="reset" class="btn btn-default">다시 입력</button>
 
 		</form:form>

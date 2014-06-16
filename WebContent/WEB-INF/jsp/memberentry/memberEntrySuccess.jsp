@@ -18,16 +18,18 @@
 
 			  <!-- 가입 회원 정보 -->
 			  <ul class="list-group">
-			    <li class="list-group-item"><label>회원 email: </label>&nbsp;<font class="memberSuccessFont">${member.userEmail }</font></li>
-			    <li class="list-group-item"><label>비밀번호: </label>&nbsp;<font class="memberSuccessFont">${member.userPasswd }</font></li>
-			    <li class="list-group-item"><label>별명: </label>&nbsp;<font class="memberSuccessFont">${member.userAlias }</font></li>
-			    <li class="list-group-item"><label>전화번호: </label>&nbsp;<font class="memberSuccessFont">${member.userPhone1 }-${member.userPhone2 }-${member.userPhone3 }</font></li>
-			    <li class="list-group-item"><label>우편번호: </label>&nbsp;<font class="memberSuccessFont">${member.userPostcode }</font></li>
-			    <li class="list-group-item"><label>주소: </label>&nbsp;<font class="memberSuccessFont">${member.userAddress1 }  ${member.userAddress2 }</font></li>
+			    <li class="list-group-item"><label>회원 email: </label>&nbsp;<h6 class="memberSuccessFont">${member.userEmail }</h6></li>
+			    <li class="list-group-item"><label>비밀번호: </label>&nbsp;<h6 class="memberSuccessFont">${member.userPasswd }</h6></li>
+			    <li class="list-group-item"><label>비밀번호 찾기용 질문: </label>&nbsp;<h6 class="memberSuccessFont">${member.passwdInquiry }</h6></li>
+			    <li class="list-group-item"><label>비밀번호 찾기용 답변: </label>&nbsp;<h6 class="memberSuccessFont">${member.passwdAnswer }</h6></li>
+			    <li class="list-group-item"><label>별명: </label>&nbsp;<h6 class="memberSuccessFont">${member.userAlias }</h6></li>
+			    <li class="list-group-item"><label>전화번호: </label>&nbsp;<h6 class="memberSuccessFont">${member.userPhone1 }-${member.userPhone2 }-${member.userPhone3 }</h6></li>
+			    <li class="list-group-item"><label>우편번호: </label>&nbsp;<h6 class="memberSuccessFont">${member.userPostcode }</h6></li>
+			    <li class="list-group-item"><label>주소: </label>&nbsp;<h6 class="memberSuccessFont">${member.userAddress1 }  ${member.userAddress2 }</h6></li>
 			  </ul>
 		</div>
 
-<a href="../index/index.html" class="btn btn-default btn-sm">홈으로</a><br>
+<a href="../index/index.html" class="btn btn-warning btn-lg align-center">홈으로</a><br>
 </div>
 
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
