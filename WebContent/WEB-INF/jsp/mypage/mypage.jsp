@@ -12,7 +12,7 @@
 	}
 	function submitForm2() {
 		var form = document.forms['test_form'];
-		form.action = '../purchase/purchaseDirect.html';
+		form.action = '../purchase/purchaseDirect2.html';
 		form.submit();
 	}
 </script>
@@ -47,44 +47,9 @@
 		<p style="text-align: center">------------------------------</p>
 
 		<p style="text-align: center">
-			<input type="button" value="정보 수정">
+			<input type="button" value="정보 수정" class="btn btn-primary">
 		</p>
 	</div>
-	<!-- 	회원정보 -->
-	<!-- 	<table> -->
-	<!-- 		<tr height="40px"> -->
-	<!-- 			<td>별명:</td> -->
-	<%-- 			<td><input type="text" value="${user.userAlias }"></td> --%>
-	<!-- 		</tr> -->
-	<!-- 		<tr height="40px"> -->
-	<!-- 			<td>전화번호</td> -->
-	<!-- 			<td><select name="userPhone"> -->
-	<!-- 					<option value="010">010</option> -->
-	<!-- 					<option value="011">011</option> -->
-	<!-- 					<option value="016">016</option> -->
-	<!-- 					<option value="019">019</option> -->
-	<!-- 			</select> - <input type="text" maxlength="5" size="5" -->
-	<%-- 				value="${user.userPhone2 }" /> - <input type="text" maxlength="5" --%>
-	<%-- 				size="5" value="${user.userPhone3 }" /></td> --%>
-	<!-- 		</tr> -->
-
-	<!-- 		<tr height="40px"> -->
-	<!-- 			<td>우편번호:</td> -->
-	<%-- 			<td><input type="text" value="${user.userPostcode }"></td> --%>
-	<!-- 		</tr> -->
-	<!-- 		<tr height="40px"> -->
-	<!-- 			<td>기본주소:</td> -->
-	<%-- 			<td><input type="text" value="${user.userAddress1 }"></td> --%>
-	<!-- 		</tr> -->
-	<!-- 		<tr height="40px"> -->
-	<!-- 			<td>상세주소:</td> -->
-	<%-- 			<td><input type="text" value="${user.userAddress2 }"></td> --%>
-	<!-- 		</tr> -->
-	<!-- 		<tr> -->
-	<!-- 			<td><input type="submit" value="정보변경"></td> -->
-	<!-- 		</tr> -->
-
-	<!-- 	</table> -->
 
 	<div align="center" class="body">
 		<div class="cart">

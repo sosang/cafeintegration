@@ -7,6 +7,8 @@ import logic.CartVo;
 
 public interface CartDao {
 	List<CartVo> findAll(String userEmail);
+	
+	CartVo findcart(String userEmail, Integer itemNo);
 
 	//
 	// void create(CartVo cart);

@@ -154,6 +154,10 @@ create table member(
 
 select * from member;
 
+select * from CART;
+
+select a.user_email, a.item_no ,b.item_name, b.photo ,b.price , sum(a.cart_num_of_product) cart_num_of_product, sum(a.cart_sub_total) cart_sub_total from cart a, item b where a.user_email='as@as.com' and a.item_no='8' and a.item_no=b.item_no group by a.user_email,a.item_no,b.item_name,b.photo,b.price 
+
 select user_email userEmail,user_passwd userPasswd, user_alias userAlias, user_phone1 userPhone1, user_phone2 userPhone2, user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2 from member where user_email = 'cafe4';
 
 select b.num_of_product, a.time_of_purchase, c.item_name, c.price from PURCHASE a , PURCHASE_LINE b , item c where a.user_email='cafe4' and b.item_no=c.item_no and a.pur_no=b.pur_no order by a.pur_no, b.pur_line_no;

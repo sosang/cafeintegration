@@ -213,5 +213,9 @@ public class ShopImpl implements Shop {
 	}
 
 
+	@Override
+	public CartVo myCartItem(String userEmail, Integer itemNo){
+		return this.cartCatalog.getCart(userEmail, itemNo);
+	}
 	
 }

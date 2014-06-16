@@ -36,4 +36,6 @@ public interface Shop {
 	void deleteBoth(Integer itemNo);	// 상품 삭제
 	List<SaveFilePathTo> getitemAll_photo();
 	MemberVo memberInfo(String userEmail);
+	
+	CartVo myCartItem(String userEmail, Integer itemNo);
 }
