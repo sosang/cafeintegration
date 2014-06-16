@@ -10,6 +10,8 @@ public class MemberVo  {
 
 	private String userEmail;
 	private String userPasswd;
+	private String passwdInquiry;
+	private String passwdAnswer;
 	private String userAlias;
 	private String userPhone1;
 	private String userPhone2;
@@ -40,6 +42,18 @@ public class MemberVo  {
 	}
 	public void setUserPasswd(String userPasswd) {
 		this.userPasswd = userPasswd;
+	}
+	public String getPasswdInquiry() {
+		return passwdInquiry;
+	}
+	public void setPasswdInquiry(String passwdInquiry) {
+		this.passwdInquiry = passwdInquiry;
+	}
+	public String getPasswdAnswer() {
+		return passwdAnswer;
+	}
+	public void setPasswdAnswer(String passwdAnswer) {
+		this.passwdAnswer = passwdAnswer;
 	}
 	public String getUserAlias() {
 		return userAlias;

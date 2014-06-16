@@ -1,3 +1,7 @@
+.align-center{
+	margin:0 auto;
+}
+
 .navbar {
 	padding: 0;
 	margin: 0;
@@ -51,6 +55,11 @@
 label{
 	padding-right:5px;
 	padding-bottom:5px;	
+}
+
+.button-doubleCheck{
+	display:block;
+	padding-top:3px;
 }
 
 /* === carousel fade 효과 ==== */
@@ -121,13 +130,15 @@ label{
 }
 
 .memberSuccessFont{
-	font-size:12px;
-	font-color:green;
+	font-size: 1em;
+	color:blue;
+	display:inline;
 }
 @media(max-width: 768px ) {
 	.memberSuccessFont{
-	font-size:12px;
-	font-color:green;
+	font-size: 1em;
+	color:green;
+	display:inline;
 	}
 }
  

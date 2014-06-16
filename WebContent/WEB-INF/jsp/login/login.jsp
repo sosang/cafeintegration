@@ -94,10 +94,7 @@
 
 
 	<footer>
-
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
-		${USER_KEY.userEmail } = ${USER_KEY.userEmail }
-
 	</footer>
 
 </body>

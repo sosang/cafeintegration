@@ -68,8 +68,9 @@ public class LoginController {
 		
 		
 			//유저 확인시 로그인 전 페이지로 돌아간다.
-			String url = "redirect:../"+goBack.substring(38, goBack.length());
-//			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
+//			String url = "redirect:../"+goBack.substring(33, goBack.length());
+			//war용
+			String url = "redirect:../"+goBack.substring(36, goBack.length());
 			modelAndView.setViewName(url);
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
