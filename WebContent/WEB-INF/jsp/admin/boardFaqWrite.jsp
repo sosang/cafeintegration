@@ -43,3 +43,4 @@ window.onload=function(){
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
+</html>

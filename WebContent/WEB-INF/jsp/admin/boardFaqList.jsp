@@ -18,19 +18,22 @@
 		<br>
 		<input class="btn " type="button" onclick="location.href='boardFaqWriteBefore.html'" value="FAQ쓰기">
 		<hr>
-
-		<dl>
+			<table width="960px">
 				<c:forEach items="${faqList}" var="articles" varStatus="status">
-						<dt>
+					<tr>
+						<td width="200px">
 							<a href="#bda${status.count }"><c:out value="${articles.titleFaq}" /></a>
-						</dt>
-						<dd>
+						</td>
+						<td width="460px">
 							<c:out value="${articles.contentFaq}" />
-							<input method="post" class="btn" type="button" onclick="location.href='boardFaqDeleteBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="지우개">
-						</dd>
+						</td>
+						<td width="300px">
+							<input class="btn" type="button" onclick="location.href='boardFaqUpdateBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="수정">
+							<input class="btn" type="button" onclick="location.href='boardFaqDeleteBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="지우개">
+						</td>
+					</tr>		
 				</c:forEach>
-		</dl>
-
+			</table>
 <br />
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 		<c:if test="${listCount>0 }">

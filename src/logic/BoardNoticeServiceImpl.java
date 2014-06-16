@@ -65,6 +65,12 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 		this.boardNoticeDao.Delete(bdNoNtc);
 	}
 
+	@Override
+	public void boardNoticeUpdate(BoardNotice boardNtc) {
+		// TODO Auto-generated method stub
+		this.boardNoticeDao.Update(boardNtc);
+	}
+
 
 
 }

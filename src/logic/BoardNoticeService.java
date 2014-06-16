@@ -14,4 +14,5 @@ public interface BoardNoticeService {
 	Integer getLastBdNoNtc();
 	void boardNoticeWrite(BoardNotice boardNotice);	// 공지사항 쓰기
 	void deleteBoardNoticeArticle(Integer bdNoNtc);	// 공지사항 삭제
+	void boardNoticeUpdate(BoardNotice boardNtc);	// 공지사항 수정
 }

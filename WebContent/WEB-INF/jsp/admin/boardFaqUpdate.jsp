@@ -6,8 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>후기게시판 쓰기</title>
+<title>FAQ 수정</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
@@ -21,33 +26,26 @@ window.onload=function(){
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<h2>후기게시판 쓰기</h2>
-		<form name="fileForm" method="post" enctype="multipart/form-data" action="../board/boardReviewsWrite.html"> 
+		<h2>FAQ 수정</h2>
+		<form name="form" method="post" action="boardFaqUpdate.html">
 			<table>
 				<tr height="40px">
 					<td>제  목</td>
-					<td><input type="text" name="titleRev" size="115"></td>
+					<td><input type="text" name="titleFaq" size="115" value=${boardFaq.titleFaq }></td>
 				</tr>
 				<tr height="40px">
 					<td>내  용</td>
-					<td><textarea id="contents" name="contentRev" rows="10" cols="100" ></textarea></td>
+					<td><textarea id="contents" name="contentFaq"  rows="10" cols="100">${boardFaq.contentFaq }</textarea></td>
 				</tr>
 			</table>
 			<br>
 			<input type="hidden" value="${pageNo }" name="pageNo">
-			<c:if test="${!empty USER_KEY && empty ADMIN_KEY }">
-				<input type="hidden" value="${USER_KEY.userEmail }" name="userEmail">
-				<input type="hidden" value="${USER_KEY.userAlias }" name="userAlias">
-			</c:if>
-			<c:if test="${empty USER_KEY && !empty ADMIN_KEY }">
-				<input type="hidden" value="${ADMIN_KEY.adminEmail }" name="userEmail">
-				<input type="hidden" value="영자" name="userAlias">
-			</c:if>
+			<input type="hidden" value="${boardFaq.bdNoFaq }" name="bdNoFaq">
 			<input type="submit" value="등록" /><input type="reset" value="리셋" /><br>
 			<br>
 		</form>
 		<hr>
-		<a href="boardReviews.html?pageNo=1">목록으로</a>
+		<a href="boardFaqList.html?pageNo=1" class="btn" id="coco">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>

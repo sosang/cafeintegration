@@ -35,8 +35,14 @@ window.onload=function(){
 			</table>
 			<br>
 			<input type="hidden" value="${pageNo }" name="pageNo">
-			<input type="hidden" value="${USER_KEY.userEmail }" name="userEmail">
-			<input type="hidden" value="${USER_KEY.userAlias }" name="userAlias">
+			<c:if test="${!empty USER_KEY && empty ADMIN_KEY }">
+				<input type="hidden" value="${USER_KEY.userEmail }" name="userEmail">
+				<input type="hidden" value="${USER_KEY.userAlias }" name="userAlias">
+			</c:if>
+			<c:if test="${empty USER_KEY && !empty ADMIN_KEY }">
+				<input type="hidden" value="${ADMIN_KEY.adminEmail }" name="userEmail">
+				<input type="hidden" value="영자" name="userAlias">
+			</c:if>
 			<input type="submit" value="등록" /><input type="reset" value="리셋" /><br>
 			<br>
 		</form>

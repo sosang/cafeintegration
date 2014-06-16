@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 읽기</title>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
@@ -24,10 +29,11 @@
 			</tr>
 		</table>
 		<hr>
+		<a href="../admin/boardNoticeUpdateBefore.html?pageNo=${pageNo }&bdNoNtc=${boardNotice.bdNoNtc}" class="btn" id="coco">수정</a>
 		<form name="form" method="post" action="boardNoticeDeleteBefore.html?pageNo=${pageNo }&bdNoNtc=${boardNotice.bdNoNtc}">
 			<input class="btn " type="button" onclick="delConfirm()" value="삭제허기"> 
 		</form>
-		<a href="boardNoticeList.html?pageNo=${pageNo}">목록으로</a>
+		<a href="boardNoticeList.html?pageNo=${pageNo}" class="btn" id="coco">목록으로</a>
 	</div>
 <script type="text/javascript">
 function delConfirm(){

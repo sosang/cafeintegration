@@ -1,7 +1,33 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+	<c:if test="${empty commentsListRev}">
+		No Comments!
+	</c:if>
+
+<table class="tableType">
+	<c:forEach items="${commentsListRev}"  var="comments">
+		<tr>
+			<td width="10%">${comments.userAlias}</td>
+			<td width="60%"><pre style="background-color:#fff; border: 0px" >${comments.bdRevCommentsContent}</pre></td>
+			<td width="10%">${comments.bdRevCommentsDate}</td>
+			<td width="10%">${comments.bdRevCommentsIp}</td>
+
+				<c:if test="${USER_KEY.userEmail == comments.userEmail || ADMIN_KEY.adminEmail == comments.userEmail}">
+				<td width="10%">
+					<input type="hidden" name="bdNoRevComments"
+						value="${comments.bdNoRevComments}" />
+						<a class="btn btn-danger" onclick="reallyRev(${comments.bdNoRevComments})"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+					<%-- <img id="checkPass"
+						src="<%=request.getContextPath() %>/images/icon/xIcon.png"
+						onclick="reallyRev(${comments.bdNoRevComments})" class="pointer"
+						width="20" height="20"> --%>
+						<%-- <button class="btn" onclick="reallyRev(${comments.bdNoRevComments})"><i class="fa fa-trash-o fa-fw"></i>Delete</button> --%>
+				</td></c:if>
+		</tr>
 
 
-	<c:if test="${!empty USER_KEY}">
+	</c:forEach>
+</table>
+<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
 		<form method="post"
 			action='boardRevWriCom.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'>
 			<table class="tableType">
@@ -23,31 +49,6 @@
 			</table>
 		</form>
 	</c:if>
-
-<table class="tableType">
-	<c:forEach items="${commentsListRev}"  var="comments">
-		<tr>
-			<td width="10%">${comments.userAlias}</td>
-			<td width="60%"><pre style="background-color:#fff; border: 0px" >${comments.bdRevCommentsContent}</pre></td>
-			<td width="10%">${comments.bdRevCommentsDate}</td>
-			<td width="10%">${comments.bdRevCommentsIp}</td>
-
-				<c:if test="${USER_KEY.userEmail == comments.userEmail }">
-				<td width="10%">
-					<input type="hidden" name="bdNoRevComments"
-						value="${comments.bdNoRevComments}" />
-					<%-- <img id="checkPass"
-						src="<%=request.getContextPath() %>/images/icon/xIcon.png"
-						onclick="reallyRev(${comments.bdNoRevComments})" class="pointer"
-						width="20" height="20"> --%>
-						<button class="btn" onclick="reallyRev(${comments.bdNoRevComments})">Delete</button>
-				</td></c:if>
-		</tr>
-
-
-	</c:forEach>
-</table>
-
 <c:if test="${empty USER_KEY}">
-	<b>To write --> <a href="../login/login.html">Login</a></b>
+	<b>To write --> <a href="../login/login.html" class="btn" id="coco">Login</a></b>
 </c:if>

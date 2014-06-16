@@ -12,4 +12,8 @@ public interface BoardFaqDao {
 	void writeFaq(BoardFaq boardFaq);	// Faq 쓰기
 
 	void DeleteFaq(Integer bdNoFaq);	// FAQ  wldnrl
+
+	BoardFaq getFaqByBdNoFaq(Integer bdNoFaq);	// 해당 FAQ 불러오기
+
+	void Update(BoardFaq boardFaq);		// FAQ 수정
 }

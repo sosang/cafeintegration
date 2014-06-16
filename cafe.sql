@@ -1,5 +1,5 @@
-SELECT * FROM save_file_path WHERE bd_no_rev = 30
-
+SELECT * FROM member
+insert into member values('admin', '123ad123min123', '글쓰기용어드민생성사용안함','asdf','영자','010','1313','3131','153704','서울시','4층',0,0,0,0,0,'ha',sysdate);
 SELECT  DBMS_LOB.SUBSTR(content_rev, 1000, 1) AS CONT_SUB   -- 1000 개까지 출력(문자열) 
         , DBMS_LOB.INSTR(content_rev, 'test', 1, 1) AS CONT_INS   -- 검색 문구의 위치 출력(숫자)
   FROM board_reviews

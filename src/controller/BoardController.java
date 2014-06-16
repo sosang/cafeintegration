@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import logic.AdminVo;
 import logic.BoardFaq;
 import logic.BoardFaqService;
 import logic.BoardNotice;
@@ -138,28 +139,55 @@ public class BoardController {
 	@RequestMapping("boardQaWriCom")
 	public ModelAndView boardQaWriCom(HttpServletRequest request, @Valid BoardQaComments bdQaCom, BindingResult bindingResult, Integer pageNo, Integer bdNoQa){
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");	// 글쓴사람을 잡아오기 위해서
-		// 아이피 알기
-		String userIp1 = (String)request.getRemoteAddr();
-		String userIp = userIp1.substring(0, 7)+"...";
-		// 아이피 알기 끝
-		if(bindingResult.hasErrors()){
-			ModelAndView modelAndView = new ModelAndView("board/boardQaWrite");
-			modelAndView.getModel().putAll(bindingResult.getModel());
-			// 여기부터 바인딩 에러 내용보기!
-			Map<String, Object> map = bindingResult.getModel();
-			Set<String> keys = map.keySet();
-			Iterator<String> it = keys.iterator();
-			while(it.hasNext()) {
-			Object key = it.next();
-			Object val = map.get(key);
-			System.out.println("에러내용 :: "+val);
+		if(userKey == null){
+			AdminVo admin = (AdminVo)request.getSession().getAttribute("ADMIN_KEY");
+			String userIp = "255.0.0.1";
+			MemberVo adminKey = new MemberVo();
+			adminKey.setUserEmail(admin.getAdminEmail());
+			adminKey.setUserAlias("운영자");
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardQaWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
 			}
-			// 여기까지 바인딩 에러 내용보기!
-			return modelAndView;
+			this.boardQaCommentsService.setCommentsAtBdNoQa(bdQaCom, adminKey, bdNoQa, userIp);
+			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
+			return new ModelAndView(url);	// 댓글을 쓰고 새로고침
+		}else{
+			// 아이피 알기
+			String userIp1 = (String)request.getRemoteAddr();
+			String userIp = userIp1.substring(0, 7)+"...";
+			// 아이피 알기 끝
+		
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardQaWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
+			}
+			this.boardQaCommentsService.setCommentsAtBdNoQa(bdQaCom, userKey, bdNoQa, userIp);
+			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
+			return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 		}
-		this.boardQaCommentsService.setCommentsAtBdNoQa(bdQaCom, userKey, bdNoQa, userIp);
-		String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
-		return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 	}
 
 	// 댓글삭제(게시물 읽기 아래쪽에 달린거)
@@ -195,31 +223,64 @@ public class BoardController {
 //		boardQa.setUserEmail(userKey.getUserEmail());
 //		String userEmail = (String) boardQa.getUserEmail();
 //		System.out.println(userEmail);
-		// 접속된 IP를 얻어온다.
-		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
-		String userIp1 = (String)request.getRemoteAddr();
-		String userIp = userIp1.substring(0, 7)+"...";
 
-		// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
-		// ip의 경우 request를 이용해 얻어온 것을 억지로 넘겨줬다. 뭔가 방법이 있을것 같다.
-		if(bindingResult.hasErrors()){
-			ModelAndView modelAndView = new ModelAndView("board/boardQaWrite");
-			modelAndView.getModel().putAll(bindingResult.getModel());
-			// 여기부터 바인딩 에러 내용보기!
-			Map<String, Object> map = bindingResult.getModel();
-			Set<String> keys = map.keySet();
-			Iterator<String> it = keys.iterator();
-			while(it.hasNext()) {
-			Object key = it.next();
-			Object val = map.get(key);
-			System.out.println("에러내용 :: "+val);
+		
+		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
+		if(userKey != null){
+			// 접속된 IP를 얻어온다.
+			String userIp1 = (String)request.getRemoteAddr();
+			String userIp = userIp1.substring(0, 7)+"...";
+	
+			// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
+			// ip의 경우 request를 이용해 얻어온 것을 억지로 넘겨줬다. 뭔가 방법이 있을것 같다.
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardQaWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
 			}
-			// 여기까지 바인딩 에러 내용보기!
-			return modelAndView;
+			// 내용을 사빕한다.
+			this.boardQaService.boardQaWrite(boardQa, userKey, userIp);
+			return new ModelAndView("redirect:boardQa.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
+		}else{
+			// 접속된 IP를 얻어온다.
+			String userIp = "255.0.0.1";
+			AdminVo admin = (AdminVo)request.getSession().getAttribute("ADMIN_KEY");
+			MemberVo adminKey = new MemberVo();
+			adminKey.setUserEmail(admin.getAdminEmail());
+			adminKey.setUserAlias("운영자");
+			
+	
+			// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
+			// ip의 경우 request를 이용해 얻어온 것을 억지로 넘겨줬다. 뭔가 방법이 있을것 같다.
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardQaWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
+			}
+			// 내용을 사빕한다.
+			this.boardQaService.boardQaWrite(boardQa, adminKey, userIp);
+			return new ModelAndView("redirect:boardQa.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 		}
-		// 내용을 사빕한다.
-		this.boardQaService.boardQaWrite(boardQa, userKey, userIp);
-		return new ModelAndView("redirect:boardQa.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
 
 
@@ -379,28 +440,55 @@ public class BoardController {
 	@RequestMapping("boardRevWriCom")
 	public ModelAndView boardRevWriCom(HttpServletRequest request, @Valid BoardReviewsComments bdRevCom, BindingResult bindingResult, Integer pageNo, Integer bdNoRev){
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");	// 글쓴사람을 잡아오기 위해서
-		// 아이피 알기
-		String userIp1 = (String)request.getRemoteAddr();
-		String userIp = userIp1.substring(0, 7)+"...";
-		// 아이피 알기 끝
-		if(bindingResult.hasErrors()){
-			ModelAndView modelAndView = new ModelAndView("board/boardRevWrite");
-			modelAndView.getModel().putAll(bindingResult.getModel());
-			// 여기부터 바인딩 에러 내용보기!
-			Map<String, Object> map = bindingResult.getModel();
-			Set<String> keys = map.keySet();
-			Iterator<String> it = keys.iterator();
-			while(it.hasNext()) {
-			Object key = it.next();
-			Object val = map.get(key);
-			System.out.println("에러내용 :: "+val);
+		
+		if(userKey != null){
+			// 아이피 알기
+			String userIp1 = (String)request.getRemoteAddr();
+			String userIp = userIp1.substring(0, 7)+"...";
+			// 아이피 알기 끝
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardRevWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
 			}
-			// 여기까지 바인딩 에러 내용보기!
-			return modelAndView;
+			this.boardReviewsCommentsService.setCommentsAtBdNoRev(bdRevCom, userKey, bdNoRev, userIp);
+			String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
+			return new ModelAndView(url);	// 댓글을 쓰고 새로고침
+		}else{
+			String userIp = "255.0.0.1";
+			AdminVo admin = (AdminVo)request.getSession().getAttribute("ADMIN_KEY");
+			MemberVo adminKey = new MemberVo();
+			adminKey.setUserEmail(admin.getAdminEmail());
+			adminKey.setUserAlias("운영자");
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardRevWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
+			}
+			this.boardReviewsCommentsService.setCommentsAtBdNoRev(bdRevCom, adminKey, bdNoRev, userIp);
+			String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
+			return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 		}
-		this.boardReviewsCommentsService.setCommentsAtBdNoRev(bdRevCom, userKey, bdNoRev, userIp);
-		String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
-		return new ModelAndView(url);	// 댓글을 쓰고 새로고침
 	}
 
 	// 댓글삭제(게시물 읽기 아래쪽에 달린거)
@@ -425,65 +513,58 @@ public class BoardController {
 	// 후기게시판 파일 저장을 위한 페이지 생성
 	@RequestMapping("boardReviewsWrite")
 	public ModelAndView boardReviewsWrite(@Valid BoardReviews boardRev, BindingResult bindingResult, HttpServletRequest request) throws Exception{
-//		String originFileName = filePath.getOriginalFilename();
-//		String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
-//		  System.out.println("file의 확장자 : " + extention);
-//		if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")){
-//		}else{
-//			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
-			// 여기까지 바인딩 에러 내용보기!
-//			return modelAndView;
-//		}
-//		GregorianCalendar today = new GregorianCalendar ( );
-//		int year = today.get ( today.YEAR ); 
-//		int month = today.get ( today.MONTH ) + 1; 
-//		int yoil = today.get ( today.DAY_OF_MONTH );
-//		String todayForDir = year+"-"+month+"-"+yoil+"-";
-
-		// WAR파일로 뿌렷을 때
-//		String uploadPath = "C:/Tomcat7/webapps/cafe/"+todayForDir+"userImage";
-//		String uploadPath = "C:/Tomcat7/webapps/cafe/images/userImage";
-		// TEst용
-//		String uploadPath = "E:/springtest/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/cafe/userImage";
-		// DB저장하기
-//		String forDb = "../"+todayForDir+"userImage/"+originFileName;
-//		String forDb = "../images/userImage/"+originFileName;
-
-		// 시작
-//		File saveDir = new File(uploadPath);
-//		if(!saveDir.exists()) saveDir.mkdirs();
 	 	// 그럼 게시물 작성
 		// 로그인된 USER_KEY를 이용해 userEmail을 추출한다
 		// 접속된 IP를 얻어온다.
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
-		String userIp1 = (String)request.getRemoteAddr();
-		String userIp = userIp1.substring(0, 7)+"...";
-		// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
-		if(bindingResult.hasErrors()){
-			ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
-			modelAndView.getModel().putAll(bindingResult.getModel());
-			// 여기부터 바인딩 에러 내용보기!
-			Map<String, Object> map = bindingResult.getModel();
-			Set<String> keys = map.keySet();
-			Iterator<String> it = keys.iterator();
-			while(it.hasNext()) {
-			Object key = it.next();
-			Object val = map.get(key);
-			System.out.println("에러내용 :: "+val);
+		if(userKey != null){
+			String userIp1 = (String)request.getRemoteAddr();
+			String userIp = userIp1.substring(0, 7)+"...";
+			// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
 			}
-			// 여기까지 바인딩 에러 내용보기!
-			return modelAndView;
+			// 내용을 사빕한다.
+			this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp);
+			return new ModelAndView("redirect:boardReviews.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
+		}else{
+			String userIp = "255.0.0.1";
+			AdminVo admin = (AdminVo)request.getSession().getAttribute("ADMIN_KEY");
+			MemberVo adminKey = new MemberVo();
+			adminKey.setUserEmail(admin.getAdminEmail());
+			adminKey.setUserAlias("운영자");
+			// @valid 때문인데. 글쓰는 곳에서 설정해줬으면 되는거였다.
+			if(bindingResult.hasErrors()){
+				ModelAndView modelAndView = new ModelAndView("board/boardReviewsWrite");
+				modelAndView.getModel().putAll(bindingResult.getModel());
+				// 여기부터 바인딩 에러 내용보기!
+				Map<String, Object> map = bindingResult.getModel();
+				Set<String> keys = map.keySet();
+				Iterator<String> it = keys.iterator();
+				while(it.hasNext()) {
+				Object key = it.next();
+				Object val = map.get(key);
+				System.out.println("에러내용 :: "+val);
+				}
+				// 여기까지 바인딩 에러 내용보기!
+				return modelAndView;
+			}
+			// 내용을 사빕한다.
+			this.boardReviewsService.boardRevWrite(boardRev, adminKey, userIp);
+			return new ModelAndView("redirect:boardReviews.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 		}
-		// 내용을 사빕한다.
-		this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp);
-		// 업로드 파일 저장
-//		writeFile(filePath, uploadPath, originFileName);
-		// 파일경로 쓰기
-//		int newBdNoRev = this.boardReviewsService.getRecentNo();
-//		this.boardReviewsService.setFilePath(newBdNoRev,forDb);
-//		sfpt.setBdNoRev(newBdNoRev);
-//		sfpt.setFilePath(forDb);
-		return new ModelAndView("redirect:boardReviews.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
 	}
 	// 파일을 쓰기위한 메소드
 	 public void writeFile(MultipartFile filePath, String path, String fileName){
@@ -653,8 +734,36 @@ public class BoardController {
  		this.boardNoticeService.boardNoticeWrite(boardNotice);
  		return new ModelAndView("redirect:boardNoticeList.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
  	}
+ 	
+ 	// 공지사항 수정(어드민)
+ 	@RequestMapping("/admin/boardNoticeUpdateBefore")
+	public ModelAndView boardNoticeUpdateBefore(Integer pageNo, Integer bdNoNtc){
+		ModelAndView modelAndView = new ModelAndView("admin/boardNoticeUpdate");
+		BoardNotice boardNtc = this.boardNoticeService.getBoardNoticeByBdNoNtc(bdNoNtc);
+		// 모델 생성
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("boardNtc", boardNtc);
+		model.put("pageNo", pageNo);
+		modelAndView.addAllObjects(model);
+		return modelAndView;
+	}
+
+	// 공지사항 수정(어드민) boardNoticeUpdateBefore(Integer pageNo, Integer bdNoNtc)에서 읽어온 공지사항을 수정한다.
+	@RequestMapping(value="admin/boardNoticeUpdate",method = RequestMethod.POST)
+	public ModelAndView boardNoticeUpdate(@Valid BoardNotice boardNtc, BindingResult bindingResult, HttpServletRequest request, Integer pageNo){
+		if(bindingResult.hasErrors()){
+			ModelAndView modelAndView = new ModelAndView("boardNoticeUpdateBefore");
+			modelAndView.getModel().putAll(bindingResult.getModel());
+			return modelAndView;
+		}
+		this.boardNoticeService.boardNoticeUpdate(boardNtc);
+		String url="redirect:boardNoticeList.html?pageNo="+pageNo;
+		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
+	}
+ 	
+ 	
  	// 공지사항 삭제 (어드민)
- 	@RequestMapping(value="admin/boardNoticeDeleteBefore", method = RequestMethod.POST)
+ 	@RequestMapping(value={"admin/boardNoticeDeleteBefore","boardNoticeDeleteBefore"}, method = RequestMethod.POST)
 	public ModelAndView boardNoticeDeleteBefore(HttpServletRequest request, Integer pageNo, Integer bdNoNtc){
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("bdNoNtc", bdNoNtc);
@@ -709,6 +818,32 @@ public class BoardController {
  		// 내용을 사빕한다.
  		this.boardFaqService.boardFaqWrite(boardFaq);
  		return new ModelAndView("redirect:boardFaqList.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
+ 	}
+ 	
+ 	// FAQ 수정(어드민)
+  	@RequestMapping("/admin/boardFaqUpdateBefore")
+ 	public ModelAndView boardFaqUpdateBefore(Integer pageNo, Integer bdNoFaq){
+ 		ModelAndView modelAndView = new ModelAndView("admin/boardFaqUpdate");
+ 		BoardFaq boardFaq = this.boardFaqService.getBoardFaqByBdNoFaq(bdNoFaq);
+ 		// 모델 생성
+ 		Map<String, Object> model = new HashMap<String, Object>();
+ 		model.put("boardFaq", boardFaq);
+ 		model.put("pageNo", pageNo);
+ 		modelAndView.addAllObjects(model);
+ 		return modelAndView;
+ 	}
+
+ 	// FAQ 수정(어드민) boardNoticeUpdateBefore(Integer pageNo, Integer bdNoNtc)에서 읽어온 공지사항을 수정한다.
+ 	@RequestMapping(value="admin/boardFaqUpdate",method = RequestMethod.POST)
+ 	public ModelAndView boardFaqUpdate(@Valid BoardFaq boardFaq, BindingResult bindingResult, HttpServletRequest request, Integer pageNo){
+ 		if(bindingResult.hasErrors()){
+ 			ModelAndView modelAndView = new ModelAndView("boardNoticeUpdateBefore");
+ 			modelAndView.getModel().putAll(bindingResult.getModel());
+ 			return modelAndView;
+ 		}
+ 		this.boardFaqService.boardFaqUpdate(boardFaq);
+ 		String url="redirect:boardFaqList.html?pageNo="+pageNo;
+ 		return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
  	}
  	
  	// FAQ 삭제 (어드민)

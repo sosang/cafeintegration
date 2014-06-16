@@ -6,11 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품목록화면</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center">
-		<h2>상품 목록 화면</h2><a href="itemRegBefore.html">상품등록</a>
+		<h2>상품 목록 화면</h2><a href="itemRegBefore.html" class="btn" id="coco">상품등록</a>
 		<table border="1">
 			<tr>
 				<th align="center" width="80">상품ID</th>
@@ -27,7 +32,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="itemRegBefore.html">상품등록</a><a href="itemRegBefore.html">상품등록</a>
 	</div>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>

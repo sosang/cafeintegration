@@ -7,6 +7,9 @@
 <title>후기게시판</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
 a.listtxt:link {
 	font-size: 12px;
 	color: #535353;
@@ -39,11 +42,12 @@ table.tableType  td title{
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>후기게시판</h2>
-		<c:if test="${!empty USER_KEY}">
-			<a href="boardReviewsWriteBefore.html">글쓰기</a>
+		
+		<c:if test="${empty USER_KEY && empty ADMIN_KEY}">
+			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn" id="coco">로그인</a>
 		</c:if>
-		<c:if test="${empty USER_KEY}">
-			<b>To write --> <a href="../login/login.html">로그인</a></b>
+		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
+			<a href="boardReviewsWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${!empty articleListRev}">
 		<table class="tableType">
@@ -119,13 +123,10 @@ table.tableType  td title{
 		<input type="hidden" value="${pageNo }" name="pageNo">
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 </c:if>
-<%-- <c:if test="${!empty USER_KEY}">
-	<div align="right"><a href="boardReviewsWriteBefore.html">글쓰기</a></div>
-</c:if>
-<c:if test="${empty USER_KEY}">
-	<br><b>글을 쓰시려면 --> <a href="../login/login.html">로그인</a></b>
-</c:if>
-		<hr> --%>
+		<hr>
+		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
+			<a href="boardReviewsWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+		</c:if>
 <c:if test="${empty articleListRev}">
 <h1>등록된 게시물이 없습니다.</h1>
 </c:if>
