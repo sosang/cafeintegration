@@ -18,6 +18,7 @@
 </script>
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
@@ -64,6 +65,7 @@
 				<td colspan="2"><font color="green">내 카트</font></td>
 			</tr>
 			<tr>
+				<td></td>
 				<td>상품명</td>
 				<td>가격</td>
 				<td>상품갯수</td>
@@ -80,22 +82,21 @@
 					<td><c:out value="${cartSet.cartSubTotal }" />원</td>
 				</tr>
 			</c:forEach>
-
-			
 			<tr>
 				<td><input type="button" value="선택삭제" class="btn btn-warning"
 					onclick="submitForm1()"> <input type="button"
 					class="btn btn-danger" value="바로구매" onclick="submitForm2()"></td>
 			</tr>
-			
 			<tr>
 				<td colspan="2"><font color="green">결제내역</font></td>
 			</tr>
+
 			<tr>
 				<td>상품명</td>
 				<td>가격</td>
 				<td>상품갯수</td>
 				<td>소계</td>
+				<td>주문일자</td>
 			</tr>
 			<c:forEach items="${mypurchase }" var="purchaseSet">
 				<tr>
@@ -105,6 +106,7 @@
 					<td><c:out value="${purchaseSet.numOfProduct }" /></td>
 					<td><c:out
 							value="${purchaseSet.price*purchaseSet.numOfProduct }" /></td>
+					<td><fmt:formatDate value="${purchaseSet.timeOfPurchase}" pattern="yyyy.MM.dd" /></td>
 				</tr>
 			</c:forEach>
 		</table>

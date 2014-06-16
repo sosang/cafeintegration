@@ -6,6 +6,7 @@ import java.util.List;
 
 
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,18 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	public Integer getLastBdNoNtc() {
 		// TODO Auto-generated method stub
 		return this.boardNoticeDao.getLastBdNoNtc();	// 게시물 마지막 번호 왜있는지 모름 ㅋ(똥)
+	}
+
+	@Override
+	public void boardNoticeWrite(BoardNotice boardNotice) {
+		// TODO Auto-generated method stub
+		this.boardNoticeDao.Write(boardNotice);
+	}
+
+	@Override
+	public void deleteBoardNoticeArticle(Integer bdNoNtc) {
+		// TODO Auto-generated method stub
+		this.boardNoticeDao.Delete(bdNoNtc);
 	}
 
 

@@ -1,11 +1,13 @@
 package controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
-import logic.AdminVo;
 import logic.AdminVoService;
-import logic.MemberVo; 
+import logic.ItemVo;
+import logic.MemberVo;
 import logic.Shop;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,39 +22,41 @@ import org.springframework.web.servlet.ModelAndView;
 
 import utils.WebConstants;
 
-
 @Controller
-public class LoginController {
-
+public class ItemloginController {
 	@Autowired
 	private Shop shopService;
-	
-	
+
+
 	@Autowired
 	private Validator loginValidator;
-	
+
 	@Autowired
 	private AdminVoService adminVoService;
-	private String goBack="";
 
 	@ModelAttribute
 	public MemberVo setUpForm() { 
 		return new MemberVo();
 
 	}
-	@RequestMapping(value="login/login", method=RequestMethod.GET)
-	public ModelAndView login(HttpServletRequest request){
+	@RequestMapping(value="itemlogin/itemlogin", method=RequestMethod.GET)
+	public ModelAndView login(Integer itemNo){
+		ItemVo item = this.shopService.getItemByItemNo(itemNo);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("item", item);
+
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login/login");
-		this.goBack = request.getHeader("referer");
+		modelAndView.addAllObjects(model);
+		modelAndView.setViewName("itemlogin/itemlogin");
 		return modelAndView;
 	}
-	
-	@RequestMapping(value="login/login", method=RequestMethod.POST)
+
+	@RequestMapping(value="itemlogin/itemlogin", method=RequestMethod.POST)
 	public ModelAndView onSubmit(MemberVo member,
-			BindingResult bindingResult, HttpServletRequest request, HttpSession session) {
+			BindingResult bindingResult, HttpSession session,Integer itemNo) {
 
 		this.loginValidator.validate(member, bindingResult);
+		ItemVo item = this.shopService.getItemByItemNo(itemNo);
 
 		ModelAndView modelAndView = new ModelAndView();
 		if (bindingResult.hasErrors()) {
@@ -65,42 +69,11 @@ public class LoginController {
 			//유저 정보 검색
 			MemberVo loginMemberVo = this.shopService.getMemberByUserEmailAndUserPasswd(member.getUserEmail(), member.getUserPasswd());
 			session.setAttribute(WebConstants.USER_KEY, loginMemberVo);
-		
-		
-			//유저 확인시 로그인 전 페이지로 돌아간다.
-//			String url = "redirect:../"+goBack.substring(33, goBack.length());
-			//war용
-			String url = "redirect:../"+goBack.substring(36, goBack.length());
-			modelAndView.setViewName(url);
-			return modelAndView;
-		} catch (EmptyResultDataAccessException e) {
-			//유저 미 확인시
-			bindingResult.reject("error.login.memberVo");
-			modelAndView.getModel().putAll(bindingResult.getModel());
-			return modelAndView;
-		}
-		
-	}
-	
-	
-	@RequestMapping("login/logout")
-	public String logout(HttpSession session){
-		session.invalidate();
-		return "login/logout";
-	}
-	
-	@RequestMapping("admin/loginSuccess")
-	public ModelAndView loginSuccess(HttpServletRequest request, AdminVo adminVo, BindingResult bindingResult){
-		String adminEmail = adminVo.getAdminEmail();
-		String adminPasswd = adminVo.getAdminPasswd();
-		ModelAndView modelAndView = new ModelAndView();
-		
-		try {
-			//유저 정보 검색
-			AdminVo loginAdminVo = adminVoService.getAdminInfo(adminEmail, adminPasswd);
-			request.getSession().setAttribute("ADMIN_KEY", loginAdminVo);
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("item", item);
+			modelAndView.addAllObjects(model);
 			//유저 확인시
-			modelAndView.setViewName("admin/index");
+			modelAndView.setViewName("detail/detailon");
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
 			//유저 미 확인시
@@ -108,7 +81,7 @@ public class LoginController {
 			modelAndView.getModel().putAll(bindingResult.getModel());
 			return modelAndView;
 		}
+
 	}
-	
 
 }

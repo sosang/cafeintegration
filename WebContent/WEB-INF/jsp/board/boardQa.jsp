@@ -25,11 +25,14 @@ a.listtxt:hover {
 
 .listtxt {
 	color: #535353;
-} /*text default*/
-table.tableType tr td {
+}
+table.tableType tr {
 	text-align: center;
 }
 table.tableType tr td title{
+	text-align: left;
+}
+table.leftType{
 	text-align: left;
 }
 
@@ -51,7 +54,7 @@ table.tableType tr td title{
 	<a style="text-align:right;" href="boardQaWriteBefore.html">글쓰기</a>
 </c:if>
 <c:if test="${!empty articleListQa}">
-		<table border="1" class="tableType">
+		<table border="1" class="tableType title">
 			<tr>
 				<th align="center" width="5%">번호</th>
 				<th align="center" width="60%">제 목</th>
@@ -67,7 +70,7 @@ table.tableType tr td title{
 					</td>
 					
 					
-					<td align="left" class="listtxt title" >
+					<td align="left" class="leftType" >
 					<c:choose>
 						<c:when test="${article.reStep == 0}">
 							<a	href="<c:url value="boardQaDetail.html">

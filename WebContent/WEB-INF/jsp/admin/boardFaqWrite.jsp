@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판 쓰기</title>
+<title>공지사항 쓰기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
@@ -21,28 +21,25 @@ window.onload=function(){
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<h2>자유게시판 쓰기</h2>
-		<form name="fileForm" method="post" enctype="multipart/form-data" action="boardQaWrite.html">
+		<h2>FAQ 쓰기</h2>
+		<form name="form" method="post" action="boardFaqWrite.html">
 			<table>
 				<tr height="40px">
 					<td>제  목</td>
-					<td><input type="text" name="titleQa" size="115"></td>
+					<td><input type="text" name="titleFaq" size="115"></td>
 				</tr>
 				<tr height="40px">
 					<td>내  용</td>
-					<td><textarea id="contents" name="contentQa"  rows="10" cols="100"></textarea></td>
+					<td><textarea id="contents" name="contentFaq"  rows="10" cols="100"></textarea></td>
 				</tr>
 			</table>
 			<br>
 			<input type="hidden" value="${pageNo }" name="pageNo">
-			<input type="hidden" value="${USER_KEY.userEmail }" name="userEmail">
-			<input type="hidden" value="${USER_KEY.userAlias }" name="userAlias">
 			<input type="submit" value="등록" /><input type="reset" value="리셋" /><br>
 			<br>
 		</form>
 		<hr>
-		<a href="boardQa.html?pageNo=1">목록으로</a>
+		<a href="boardNoticeList.html?pageNo=1">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
-</html>

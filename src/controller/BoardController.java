@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,7 +30,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -114,18 +112,22 @@ public class BoardController {
 		// 글쓴이와 로그인 한 자가 같을 때 메뉴를 보이게 할려구 해봅 시도를 해봄... 해봄
 		model.put("writer", boardQa.getUserEmail());
 		this.boardQaService.countUpForBdNoQa(bdNoQa);
-		modelAndView.addAllObjects(model);
 
 		// 해당 게시물의 댓글들을 화면에 뿌려주고싶다.
-		// Q&A 목록 취득
+		// Q&A 리플목록 취득
 			List<BoardQaComments> boardQaCommentsList = null;
 			boardQaCommentsList = this.boardQaCommentsService.getBoardQaCommentsList(request, pageNo, bdNoQa);
 			// 모델 생성
 			model.put("boardQaCommentsList", boardQaCommentsList);
 			// 반환값인 ModelAndView 인스턴스 생성
 			modelAndView.addAllObjects(model);
-
-
+		// 게시물 목록을 화면에 뿌려주고싶다.
+			// Q&A 목록 취득
+			List<BoardQa> boardQaList = null;
+			boardQaList = this.boardQaService.getBoardQaList(request, pageNo);
+			// 모델 생성
+			model.put("boardQaList", boardQaList);
+			modelAndView.addAllObjects(model);
 //		System.out.println(boardQa.getUserEmail());
 //		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 //		System.out.println(userKey.getUserEmail());
@@ -350,6 +352,12 @@ public class BoardController {
 		// 파일경로 부르기
 //		SaveFilePathTo sfpt = this.boardReviewsService.getFilePath(bdNoRev);
 //		model.put("SFPT",sfpt);
+			// 아래쪽에 리스트 보여줄려구
+					List<BoardReviews> boardReviewsList = null;
+					boardReviewsList = this.boardReviewsService.getBoardReviewsList(request, pageNo);
+					// 모델 생성
+					model.put("boardReviewsList", boardReviewsList);
+			//아래쪽에 리스트 보여줄려구
 		modelAndView.addAllObjects(model);
 		return modelAndView;
 	}
@@ -583,4 +591,134 @@ public class BoardController {
 		return modelAndView;
 	}
 
+	// 공지사항 목록 보기(어드민)
+ 	@RequestMapping("admin/boardNoticeList")
+ 	public ModelAndView boardNoticeAdmin(HttpServletRequest request, Integer pageNo) throws Throwable{
+ 		// 공지사항 목록 취득
+ 		List<BoardNotice> boardNoticeList = null;
+ 		boardNoticeList = this.boardNoticeService.getBoardNoticeList(request, pageNo);
+ 		// 모델 생성
+ 		Map<String, Object> model = new HashMap<String,Object>();
+ 		model.put("boardNoticeList", boardNoticeList);
+ 
+ 		// 반환값인 ModelAndView 인스턴스 생성
+ 		ModelAndView modelAndView = new ModelAndView("admin/boardNoticeList");
+ 		modelAndView.addAllObjects(model);
+ 
+ 		return modelAndView;
+ 	}
+	 	
+ 	// 공지사항 내용 보기(어드민)
+	@RequestMapping("/admin/boardNoticeDetailAdmin")
+	public ModelAndView boardNoticeDetailAdmin(Integer pageNo, Integer bdNoNtc){
+		//선택된 공지번호로 부터 공지 내용 취득
+		ModelAndView modelAndView = new ModelAndView("admin/boardNoticeDetailAdmin");
+ //			this.boardNoticeService.countUp(bdNoNtc); // 공지사항 내용을 볼 때 조회수를 올려줌
+		BoardNotice boardNotice = this.boardNoticeService.getBoardNoticeByBdNoNtc(bdNoNtc);
+		// 모델 생성
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("boardNotice", boardNotice);
+		model.put("pageNo", pageNo);
+		modelAndView.addAllObjects(model);
+		return modelAndView;
+	}
+ 	
+ 	// 공지사항 내용 쓰기 (어드민)
+ 	@RequestMapping("admin/boardNoticeWriteBefore")
+ 	public ModelAndView boardNoticeWriteBefore(){
+ 		ModelAndView modelAndView = new ModelAndView("admin/boardNoticeWrite");
+ 		modelAndView.addObject(new BoardNotice());
+ 		return modelAndView;
+ 	}
+ 	
+ 	// 공지사항 게시 (어드민)
+ 	@RequestMapping(value="admin/boardNoticeWrite",method = RequestMethod.POST)
+ 	public ModelAndView boardNoticeWrite(@Valid BoardNotice boardNotice, BindingResult bindingResult, HttpServletRequest request) throws Throwable{
+ 		if(bindingResult.hasErrors()){
+ 			ModelAndView modelAndView = new ModelAndView("admin/boardNoticeList");
+ 			modelAndView.getModel().putAll(bindingResult.getModel());
+ 			// 여기부터 바인딩 에러 내용보기!
+ 			Map<String, Object> map = bindingResult.getModel();
+ 			Set<String> keys = map.keySet();
+ 			Iterator<String> it = keys.iterator();
+ 			while(it.hasNext()) {
+ 			Object key = it.next();
+ 			Object val = map.get(key);
+ 			System.out.println("에러내용 :: "+val);
+ 			}
+ 			// 여기까지 바인딩 에러 내용보기!
+ 			return modelAndView;
+ 		}
+ 		// 내용을 사빕한다.
+ 		this.boardNoticeService.boardNoticeWrite(boardNotice);
+ 		return new ModelAndView("redirect:boardNoticeList.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
+ 	}
+ 	// 공지사항 삭제 (어드민)
+ 	@RequestMapping(value="admin/boardNoticeDeleteBefore", method = RequestMethod.POST)
+	public ModelAndView boardNoticeDeleteBefore(HttpServletRequest request, Integer pageNo, Integer bdNoNtc){
+		request.setAttribute("pageNo", pageNo);
+		request.setAttribute("bdNoNtc", bdNoNtc);
+		this.boardNoticeService.deleteBoardNoticeArticle(bdNoNtc);
+		String url="redirect:boardNoticeList.html?pageNo="+pageNo;
+		return new ModelAndView(url);	// 글을 쓰고 목록 해당 페이지로 돌아감
+	}
+ 	
+ 	 // FAQ 목록 싸그리 불러오기 (어드민)
+ 	@RequestMapping("admin/boardFaqList")
+ 	public ModelAndView boardFaqList(HttpServletRequest request, Integer pageNo) throws Throwable{
+ 		// 공지사항 목록 취득
+ 		List<BoardFaq> boardFaqList = null;
+ 		boardFaqList = this.boardFaqService.getBoardFaqList(request, pageNo);
+ 		// 모델 생성
+ 		Map<String, Object> model = new HashMap<String,Object>();
+ 		model.put("boardFaqList", boardFaqList);
+ 
+ 		// 반환값인 ModelAndView 인스턴스 생성
+ 		ModelAndView modelAndView = new ModelAndView("admin/boardFaqList");
+ 		modelAndView.addAllObjects(model);
+ 
+ 		return modelAndView;
+ 	}
+ 	
+ 	// FAQ 내용 쓰기 (어드민)
+ 	@RequestMapping("admin/boardFaqWriteBefore")
+ 	public ModelAndView boardFaqWriteBefore(){
+ 		ModelAndView modelAndView = new ModelAndView("admin/boardFaqWrite");
+ 		modelAndView.addObject(new BoardFaq());
+ 		return modelAndView;
+ 	}
+ 	
+ 	// FAQ 게시 (어드민)
+ 	@RequestMapping(value="admin/boardFaqWrite",method = RequestMethod.POST)
+ 	public ModelAndView boardFaqWrite(@Valid BoardFaq boardFaq, BindingResult bindingResult, HttpServletRequest request) throws Throwable{
+ 		if(bindingResult.hasErrors()){
+ 			ModelAndView modelAndView = new ModelAndView("admin/boardFaqList");
+ 			modelAndView.getModel().putAll(bindingResult.getModel());
+ 			// 여기부터 바인딩 에러 내용보기!
+ 			Map<String, Object> map = bindingResult.getModel();
+ 			Set<String> keys = map.keySet();
+ 			Iterator<String> it = keys.iterator();
+ 			while(it.hasNext()) {
+ 			Object key = it.next();
+ 			Object val = map.get(key);
+ 			System.out.println("에러내용 :: "+val);
+ 			}
+ 			// 여기까지 바인딩 에러 내용보기!
+ 			return modelAndView;
+ 		}
+ 		// 내용을 사빕한다.
+ 		this.boardFaqService.boardFaqWrite(boardFaq);
+ 		return new ModelAndView("redirect:boardFaqList.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
+ 	}
+ 	
+ 	// FAQ 삭제 (어드민)
+  	@RequestMapping(value="admin/boardFaqDeleteBefore", method = RequestMethod.GET)
+ 	public ModelAndView boardFaqDeleteBefore(HttpServletRequest request, Integer pageNo, Integer bdNoFaq){
+ 		request.setAttribute("pageNo", pageNo);
+ 		request.setAttribute("bdNoFaq", bdNoFaq);
+ 		this.boardFaqService.deleteBoardFaqArticle(bdNoFaq);
+ 		String url="redirect:boardFaqList.html?pageNo="+pageNo;
+ 		return new ModelAndView(url);	// 글을 쓰고 목록 해당 페이지로 돌아감
+ 	}
+ 	
 }

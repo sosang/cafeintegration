@@ -25,10 +25,10 @@
 
 		<c:when test="${loginMemberVo.userEmail == null }">
 
-			<div style="margin-top: 150px" align="center" class="body">
+			<div align="center" class="body">
 				<form:form modelAttribute="memberVo" class="signin" method="post"
-					action="../login/login.html">
-					<spring:hasBindErrors name="memberVo" >
+					action="../itemlogin/itemlogin.html?itemNo=${item.itemNo }">
+					<spring:hasBindErrors name="memberVo">
 						<font color="red"> <c:forEach
 								items="${errors.globalErrors }" var="error">
 								<spring:message code="${error.code}" />
@@ -36,7 +36,7 @@
 						</font>
 					</spring:hasBindErrors>
 
-					<table >
+					<table style="margin-top: 150px">
 
 						<tr height="40px">
 
@@ -44,18 +44,18 @@
 									class="form-control" placeholder="Email address" /> <font
 								color="red"><form:errors path="userEmail" /></font></td>
 						</tr>
-						
+
 						<tr>
 							<td><form:password path="userPasswd" class="form-control"
 									placeholder="Password" /> <font color="red"><form:errors
 										path="userPasswd" /></font></td>
 						</tr>
-						
+
 						<tr>
 							<td width="150px"><input type="submit" value="Login"
 								class="btn btn-primary login-button form-control"></td>
 						</tr>
-						
+
 						<tr>
 							<td width="150px"><a href="../memberentry/memberEntry.html"
 								class="btn btn-info member-button form-control">SignUp</a></td>
@@ -94,9 +94,11 @@
 
 
 	<footer>
+
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		${USER_KEY.userEmail } = ${USER_KEY.userEmail }
+
 	</footer>
 
 </body>
 </html>
-

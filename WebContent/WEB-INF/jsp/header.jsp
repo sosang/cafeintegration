@@ -58,10 +58,11 @@
 
 					</c:when>
 					 <c:when test = "${ADMIN_KEY ne null}">
-				        ${ADMIN_KEY.adminEmail }님! 환영합니다.&nbsp;&nbsp;&nbsp; 
 						<a href="../admin/member.html?pageNo=1" class="btn btn-primary login-button">회원현황</a>
 						<a href="../admin/itemList.html" class="btn btn-primary login-button">상품현황</a>
-						<a href="../mypage/mypage.html" class="btn btn-primary login-button">통계</a>
+						<a href="../admin/boardNoticeList.html?pageNo=1" class="btn btn-primary login-button">공지쓰기</a>
+						<a href="../admin/boardFaqList.html?pageNo=1" class="btn btn-primary login-button">FAQ쓰기</a>
+						<a href="#" class="btn btn-primary login-button">통계</a>
 						<a href="../login/logout.html" class="btn btn-info member-button">로그아웃</a>
 				    </c:when>
 				    <c:otherwise >

@@ -8,4 +8,8 @@ public interface BoardFaqService {
 
 	List<BoardFaq> getBoardFaqList(HttpServletRequest request, Integer pageNo) throws Throwable;	// FAQ불러오기
 
+	void boardFaqWrite(BoardFaq boardFaq);	// FAQ 쓰기
+
+	void deleteBoardFaqArticle(Integer bdNoFaq);	// FAQ 삭제
+
 }

@@ -10,18 +10,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class BoardNotice implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@NotNull
 	private Integer bdNoNtc;
 	
-	@NotEmpty
 	private String titleNtc;
 	
-	@NotEmpty
 	private String contentNtc;
 	
 	private Date dateNtc;
 	
-	@NotNull
 	private Integer countNtc;
 
 	public Integer getBdNoNtc() {
