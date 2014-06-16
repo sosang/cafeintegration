@@ -152,6 +152,8 @@ create table member(
 	join_date date default sysdate
 );
 
+select * from member;
+
 select user_email userEmail,user_passwd userPasswd, user_alias userAlias, user_phone1 userPhone1, user_phone2 userPhone2, user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2 from member where user_email = 'cafe4';
 
 select b.num_of_product, a.time_of_purchase, c.item_name, c.price from PURCHASE a , PURCHASE_LINE b , item c where a.user_email='cafe4' and b.item_no=c.item_no and a.pur_no=b.pur_no order by a.pur_no, b.pur_line_no;

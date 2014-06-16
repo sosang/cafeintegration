@@ -79,6 +79,9 @@ public class ItemloginController {
 			//유저 미 확인시
 			bindingResult.reject("error.login.memberVo");
 			modelAndView.getModel().putAll(bindingResult.getModel());
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("item", item);
+			modelAndView.addAllObjects(model);
 			return modelAndView;
 		}
 		

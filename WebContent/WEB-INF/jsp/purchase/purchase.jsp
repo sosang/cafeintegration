@@ -10,9 +10,19 @@
 	href="<%=request.getContextPath()%>/css/CSScart.css">
 </head>
 <script type="text/javascript">
-function checkId(){
-	
-}
+	function sameaddress() {
+		document.getElementById("receivername").value = document
+				.getElementById("receiver").value;
+		document.getElementById("recpostcode").value = document
+				.getElementById("userPostcode").value;
+		document.getElementById("recphone").value = document
+				.getElementById("userPhone").value;
+		document.getElementById("recaddr").value = document
+				.getElementById("userAddress").value;
+	}
+	function changeText(){
+		document.getElementById("remarksarea").value=document.getElementById("recmarks").value;
+	}
 </script>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
@@ -66,18 +76,22 @@ function checkId(){
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text"></td>
+						<td><input type="text" id="receiver"></td>
 					</tr>
 					<tr>
 						<td>우편번호</td>
-						<td>${myinfo.userPostcode }</td>
+						<td><input type="text" id="userPostcode"
+							value="${myinfo.userPostcode }"></td>
 						<td>핸드폰번호</td>
-						<td>${myinfo.userPhone1 }-${myinfo.userPhone2 }-${myinfo.userPhone3 }</td>
+						<td><input type="text" id="userPhone"
+							value="${myinfo.userPhone1 }-${myinfo.userPhone2 }-${myinfo.userPhone3 }"></td>
 					</tr>
 					<tr>
 						<td>주소</td>
-						<td>${myinfo.userAddress1 }&nbsp;${myinfo.userAddress2 }</td>
-						
+						<td colspan="3"><input type="text" id="userAddress"
+							size="77px"
+							value="${myinfo.userAddress1 }&nbsp;${myinfo.userAddress2 }"></td>
+
 					</tr>
 					<tr>
 						<td>email</td>
@@ -92,37 +106,48 @@ function checkId(){
 					</tr>
 					<tr>
 						<td>배송지 선택</td>
-						<td><input type="radio" value="newAddress"
-							name="Addresscheck">아래주소로 신규등록&nbsp;&nbsp;<input
-							type="radio" value="sameAddress" name="Addresscheck">주문자와
-							동일</td>
+						<td><input type="radio" value="newAddress" id="newAddress"
+							name="Addresscheck" onclick="newaddress()">아래주소로
+							신규등록&nbsp;&nbsp;<input type="radio" value="sameAddress"
+							name="Addresscheck" onclick="sameaddress()">주문자와 동일</td>
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="receiver" required="required"></td>
+						<td><input type="text" name="receiver" id="receivername"
+							required="required"></td>
 					</tr>
 					<tr>
 						<td>우편번호</td>
-						<td><input type="text" name="recpostcode" required="required"></td>
+						<td><input type="text" name="recpostcode" id="recpostcode"
+							required="required"></td>
 						<td>핸드폰번호</td>
-						<td><input type="text" name="recphone" required="required"></td>
+						<td><input type="text" name="recphone" id="recphone"
+							required="required"></td>
 					</tr>
 
 					<tr>
 						<td>주소</td>
-						<td><input type="text" width="50pt" name="recaddr" required="required"></td>
-						<td colspan="2"><input type="text" width="50pt"
-							name="recaddr2" required="required"></td>
+						<td colspan="3"><input type="text" size="77px" name="recaddr"
+							id="recaddr" required="required"></td>
+
 					</tr>
 
 					<tr>
 						<td>배송메시지</td>
-						<td colspan="3"><textarea rows="5" cols="50"
+						<td><select name="recmarks" id="recmarks" onchange="changeText()"><option
+									value="배송 전에 연락 주세요">배송 전에 연락주세요</option>
+								<option value="경비실에 맡겨주세요">경비실에 맡겨주세요</select>
+						<td>
+					</tr>
+
+					<tr>
+						<td></td>
+						<td colspan="3"><textarea rows="5" cols="50" id="remarksarea"
 								style="resize: none" name="remarks" required="required"></textarea></td>
 					</tr>
 				</table>
-				<input type="submit" value="결제하기">
-				<input type="button" value="취소하기">
+				<input type="submit" value="결제하기"> <a
+					class="btn btn-warning" href="../index/index.html">홈</a>
 
 			</form>
 

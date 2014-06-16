@@ -22,7 +22,7 @@
 								상품 목록</font></th>
 					</tr>
 					<tr>
-						
+
 						<th>번호</th>
 						<th width="300">상품명</th>
 						<th width="150">판매가</th>
@@ -34,7 +34,7 @@
 
 
 					<tr>
-					
+
 						<td id="centerid"><h5></h5></td>
 						<td><img width="80px" height="50px"
 							src="${purchaseLine .photo }"> &nbsp;&nbsp;&nbsp;<c:out
@@ -67,7 +67,7 @@
 					<tr>
 						<td>주소</td>
 						<td>${myinfo.userAddress1 }${myinfo.userAddress2 }</td>
-						
+
 					</tr>
 					<tr>
 						<td>email</td>
@@ -100,7 +100,8 @@
 
 					<tr>
 						<td>주소</td>
-						<td><input type="text" width="50pt" name="recaddr" required="required"></td>
+						<td><input type="text" width="50pt" name="recaddr"
+							required="required"></td>
 						<td colspan="2"><input type="text" width="50pt"
 							name="recaddr2" required="required"></td>
 					</tr>
@@ -111,7 +112,8 @@
 								style="resize: none" name="remarks" required="required"></textarea></td>
 					</tr>
 				</table>
-				<input type="submit" value="결제하기">
+				<input class="btn" type="submit" value="결제하기"> <a
+					class="btn btn-warning" href="../index/index.html">홈</a>
 
 			</form>
 
