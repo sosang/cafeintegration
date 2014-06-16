@@ -65,8 +65,8 @@ public class LoginController {
 			session.setAttribute(WebConstants.USER_KEY, loginMemberVo);
 			
 		
-			//유저 확인시
-			modelAndView.setViewName("index/index");
+			//유저 확인시 String referer = request.getHeader("Referer");
+			modelAndView.setViewName("request.");
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
 			//유저 미 확인시

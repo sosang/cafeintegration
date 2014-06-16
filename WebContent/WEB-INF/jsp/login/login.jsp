@@ -91,8 +91,6 @@
 		</c:when>
 
 	</c:choose>
-
-
 	<footer>
 
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
