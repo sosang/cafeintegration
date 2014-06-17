@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 </head>
-
-<div class="navbar-fixed-bottom">
+<br>
+<footer id="fixedBottom" >
 	<div id="footer">
 		<div class="footerContainer">
 			<h3 ><i class="fa fa-coffee"></i> 카페 4.0은</h3>
@@ -20,5 +20,17 @@
 			
 		</div>
 	</div>
-</div>
+</footer>
+
+<!-- footer 맨 밑에 위치 시키는 쿼리 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+   	$(document).ready(function() {
+   	  var bodyHeight = $("body").height();
+   	  var vwptHeight = $(window).height();
+   	  if (vwptHeight > bodyHeight) {
+   	    $("footer#fixedBottom").css("position","absolute").css("bottom",0);
+   	  }
+   	});
+   	</script>
 </html>
