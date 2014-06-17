@@ -155,5 +155,6 @@ function really(bdNoQaComments){
 <%--삭제 확인폼 --%>
 </script>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

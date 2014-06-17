@@ -12,5 +12,6 @@
 	response.sendRedirect("../index/index.html");
 %>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

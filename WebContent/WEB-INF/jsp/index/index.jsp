@@ -98,8 +98,9 @@
 		</div>
 </header>
 	<section>
-	<div class="right-banner"><h1>오른쪽 배너</h1></div>
+
 	</section>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

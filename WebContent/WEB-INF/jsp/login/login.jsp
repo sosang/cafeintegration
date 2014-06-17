@@ -94,9 +94,9 @@
 	</c:choose>
 
 
-	<footer>
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
-	</footer>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
 
 </body>
 </html>
