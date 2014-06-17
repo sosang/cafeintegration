@@ -160,7 +160,7 @@
 															<option value="9">9</option>
 													</select>&nbsp;개</td>
 													<td width="150px"><input type="button" value="로그인"
-														class="btn btn-warning" onclick="location.href='../itemlogin/itemlogin.html?itemNo=${item.itemNo}'"> </td>
+														class="btn btn-warning" onclick="location.href='../login/login.html'"> </td>
 												</tr>
 											</table>
 										</form>
@@ -174,5 +174,6 @@
 			<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		</c:when>
 	</c:choose>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

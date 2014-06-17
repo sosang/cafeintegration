@@ -48,5 +48,6 @@ window.onload=function(){
 		<a href="boardNoticeList.html?pageNo=1">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

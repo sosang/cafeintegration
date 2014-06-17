@@ -45,5 +45,6 @@ window.onload=function(){
 		<a href="boardQa.html?pageNo=${pageNo}">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

@@ -13,5 +13,6 @@
 <img style="margin-left:150px; padding: 250px;"  src="../img/TypeOfCoffee.jpg">
 
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

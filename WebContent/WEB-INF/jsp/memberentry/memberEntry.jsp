@@ -380,7 +380,10 @@
 			<button type="reset" class="btn btn-default">다시 입력</button>
 
 		</form:form>
+		<br>
+		<br>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

@@ -31,7 +31,7 @@
 				class="logo img-responsive" width="70" height="70"></a></li>
 				<li><a href="../aboutUs/aboutUs.html">카페 4.0 소개</a></li>
 				<li><a href="../item/item.html">구매</a></li>
-				<li><a href="#">체험</a></li>
+		<!--	<li><a href="#">체험</a></li> -->
 				<li class="dropdown"><a href="" class="dropdown-toggle"
 					data-toggle="dropdown">게시판 <b class="caret"></b></a>
 					<ul class="dropdown-menu">
