@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>후기게시판 읽기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+.myColor{
+	background-color: #1fa67a;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>

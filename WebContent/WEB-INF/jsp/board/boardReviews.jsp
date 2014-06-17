@@ -44,19 +44,19 @@ table.tableType  td title{
 		<h2>후기게시판</h2>
 		
 		<c:if test="${empty USER_KEY && empty ADMIN_KEY}">
-			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn" id="coco">로그인</a>
+			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn btn-primary" >로그인</a>
 		</c:if>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
 			<a href="boardReviewsWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${!empty articleListRev}">
-		<table class="tableType title table-striped">
-			<tr class="active" >
-				<th class="active" align="center" width="5%">번호</th>
-				<th class="active" align="center" width="60%">제 목</th>
-				<th class="active" align="center" width="10%">글쓴이</th>
-				<th class="active" align="center" width="15%">글쓴날</th>
-				<th class="active" align="center" width="10%">조회/추천수</th>
+		<table class="tableType">
+			<tr>
+				<th align="center" width="5%">번호</th>
+				<th align="center" width="60%">제 목</th>
+				<th align="center" width="10%">글쓴이</th>
+				<th align="center" width="15%">글쓴날</th>
+				<th align="center" width="10%">조회/추천수</th>
 			</tr>
 
 			<c:forEach items="${articleListRev}" var="reviews">
