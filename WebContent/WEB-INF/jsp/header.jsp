@@ -66,7 +66,7 @@
 						<a href="../login/logout.html" class="btn btn-info member-button">로그아웃</a>
 				    </c:when>
 				    <c:otherwise >
-							<a href="../login/login.html" class="btn btn-primary login-button">로그 인</a>
+							<a href="../login/login.html" class="btn btn-primary login-button">로그인</a>
 							<a href="../memberentry/memberEntry.html"
 								class="btn btn-info member-button">회원가입</a>
 					</c:otherwise>

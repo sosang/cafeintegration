@@ -6,27 +6,19 @@
 <meta charset="UTF-8">
 <title>상품등록</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<%// CLEditor 적용 %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/cleditor/jquery.cleditor.css" >
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery.cleditor.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquerytable.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#content1").cleditor({
-		width:960,//에디타 넓이
-		height:400,//에디타 높이
-	});
-});
-function resets(){
-	var editor = $("#content1").cleditor()[0];
-	var f = document.form;
-	f.titleRev.value="";
-	f.contentRev.value="";
-	editor.focus().clear();
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
 }
-window.onload = function(){
-	document.form.titleRev.focus();
+</style>
+<script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
+<script type="text/javascript">
+window.onload=function(){
+    CKEDITOR.replace('content1',{enterMode:'2',shiftEnterMode:'3',language:'ko',
+    	toolbar:[['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-','Find','Replace','SelectAll','RemoveFormat','-','Table','SpecialChar'],'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']]
+    
+    });
+	document.form.itemName.focus();
 };
 </script>
 </head>
@@ -34,7 +26,7 @@ window.onload = function(){
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>상품 등록 화면</h2>
-<form name="fileForm" method="post" enctype="multipart/form-data" action="../admin/itemReg.html"> 
+<form id="form" name="fileForm" method="post" enctype="multipart/form-data" action="../admin/itemReg.html"> 
 		<table>
 			<tr>
 				<td>사진 : <input type="file" name="filePath"></td>
@@ -42,7 +34,7 @@ window.onload = function(){
 					<table>
 						<tr height="50">
 							<td width="80">상품명</td>
-							<td width="160"><input type="text" name="itemName" size="115"></td>
+							<td width="160"><input type="text" name="itemName" id="itemName" size="115"></td>
 						</tr>
 						<tr height="50">
 							<td width="80">원산지</td>

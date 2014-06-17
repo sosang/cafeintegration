@@ -59,8 +59,9 @@
 						<tr>
 							<td width="150px"><a href="../memberentry/memberEntry.html"
 								class="btn btn-info member-button form-control">SignUp</a></td>
-
-
+						</tr>
+						<tr>
+							<td width="150px" align="right"><a href="findPassword.html"><font size="2"><i class="fa fa-key"></i> 비밀번호 찾기</font></a></td>
 						</tr>
 
 					</table>

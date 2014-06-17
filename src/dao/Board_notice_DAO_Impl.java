@@ -124,6 +124,15 @@ public class Board_notice_DAO_Impl implements Board_notice_DAO {
 		// TODO Auto-generated method stub
 		this.template.update(Board_notice_DAO_Impl.DELETE_NOTICE.toString(), bdNoNtc);
 	}
-	
 
+	// 공지사항 수정
+	private static final StringBuffer UPDATE_TO_THE_ARTICLE = new StringBuffer("UPDATE board_notice SET title_Ntc=?, content_Ntc=?, date_ntc=sysdate WHERE bd_no_ntc = ?");
+	@Override
+	public void Update(BoardNotice boardNtc) {
+		// TODO Auto-generated method stub
+//		System.out.println(boardNtc.getTitleNtc()+"<"+boardNtc.getContentNtc()+">"+boardNtc.getBdNoNtc());
+		this.jdbcTemplate.update(Board_notice_DAO_Impl.UPDATE_TO_THE_ARTICLE.toString(), boardNtc.getTitleNtc(), boardNtc.getContentNtc(), boardNtc.getBdNoNtc());
+	}
+
+	
 }

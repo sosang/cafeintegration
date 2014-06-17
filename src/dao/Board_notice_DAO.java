@@ -18,6 +18,7 @@ public interface Board_notice_DAO {
 	Integer getLastBdNoNtc();
 	void Write(BoardNotice boardNotice);	// 공지사항 쓰기
 	void Delete(Integer bdNoNtc);	// 공지 삭제
+	void Update(BoardNotice boardNtc);	// 공지 수정
 	
 	
 

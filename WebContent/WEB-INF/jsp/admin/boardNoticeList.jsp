@@ -7,6 +7,9 @@
 <title>공지사항</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
 a.listtxt:link {
 	font-size: 12px;
 	color: #535353;
@@ -32,7 +35,8 @@ a.listtxt:hover {
 	<div align="center" class="body">
 		<h2>공지사항 테스트</h2>
 		<br>
-		<input class="btn " type="button" onclick="location.href='boardNoticeWriteBefore.html'" value="공지쓰기">
+		<a style="text-align:right;" href="boardNoticeWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 공지쓰기</a>
+		<!-- <input class="btn " type="button" onclick="location.href='boardNoticeWriteBefore.html'" value="공지쓰기"> -->
 		<hr>
 <c:if test="${articleList ne null }">
 		<table class="tableType"  border="1">
@@ -42,7 +46,7 @@ a.listtxt:hover {
 				<th align="center" style="text-align: left;" width="55%">제 목</th>
 				<th align="center" width="15%">글쓴날</th>
 				<th align="center" width="10%">조회수</th>
-				<th align="center" width="10%">삭제</th>
+				<th align="center" width="10%">E/D</th>
 			</tr>
 
 			<c:forEach items="${articleList}" var="article">
@@ -65,9 +69,7 @@ a.listtxt:hover {
 						<c:out value="${article.countNtc}" />
 					</td>
 					<td align="center" class="listtxt">
-						<form name="form" method="post" action="boardNoticeDeleteBefore.html?pageNo=${pageNo }&bdNoNtc=${article.bdNoNtc}">
-							<input class="btn " type="button" onclick="delConfirm()" value="삭제허기"> 
-						</form>
+						<a href="../admin/boardNoticeUpdateBefore.html?pageNo=${pageNo }&bdNoNtc=${article.bdNoNtc}" class="btn" id="coco">수정</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -95,15 +97,6 @@ a.listtxt:hover {
 </c:if>
 		
 	</div>
-<script type="text/javascript">
-function delConfirm(){
-	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-		    document.form.submit();
-	}else{   //취소
-		    return;
-	}
-}
-</script>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 </body>
 </html>

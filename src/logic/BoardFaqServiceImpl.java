@@ -36,5 +36,18 @@ public class BoardFaqServiceImpl implements BoardFaqService {
 		this.boardFaqDao.DeleteFaq(bdNoFaq);
 	}
 
+	@Override
+	public BoardFaq getBoardFaqByBdNoFaq(Integer bdNoFaq) {
+		// TODO Auto-generated method stub
+		return this.boardFaqDao.getFaqByBdNoFaq(bdNoFaq);
+	}
+
+	@Override
+	public void boardFaqUpdate(BoardFaq boardFaq) {
+		// TODO Auto-generated method stub
+		this.boardFaqDao.Update(boardFaq);
+	}
+
+	
 	
 }

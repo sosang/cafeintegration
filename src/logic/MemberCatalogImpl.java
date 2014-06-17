@@ -53,10 +53,19 @@ public class MemberCatalogImpl implements MemberCatalog {
 
 
 	// userAlias 중복체크
-	 		@Override
-	 		public int getCheckedUserAlias(String userAlias) {
-	 			// TODO Auto-generated method stub
-	 			return this.memberDao.checkUserAlias(userAlias);
-	 		}
+	@Override
+	public int getCheckedUserAlias(String userAlias) {
+		// TODO Auto-generated method stub
+		return this.memberDao.checkUserAlias(userAlias);
+	}
+	
+	
+	// 비번찾긔
+	@Override
+	public MemberVo lookingForPwdByInquiry(String userEmail,
+			String passwdInquiry, String passwdAnswer) {
+		// TODO Auto-generated method stub
+		return this.memberDao.lookingForPwd(userEmail, passwdInquiry, passwdAnswer);
+	}
 
 }

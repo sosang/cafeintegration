@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ</title>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath() %>/css/faq.css">
 </head>
@@ -16,21 +21,25 @@
 	<div align="center" class="body">
 	<h1>FAQ</h1>
 		<br>
-		<input class="btn " type="button" onclick="location.href='boardFaqWriteBefore.html'" value="FAQ쓰기">
+		<a style="text-align:right;" href="boardFaqWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> FAQ쓰기</a>
+		<!-- <input class="btn " type="button" onclick="location.href='boardFaqWriteBefore.html'" value="FAQ쓰기"> -->
 		<hr>
-
-		<dl>
+			<table width="960px">
 				<c:forEach items="${faqList}" var="articles" varStatus="status">
-						<dt>
+					<tr>
+						<td width="200px">
 							<a href="#bda${status.count }"><c:out value="${articles.titleFaq}" /></a>
-						</dt>
-						<dd>
+						</td>
+						<td width="460px">
 							<c:out value="${articles.contentFaq}" />
-							<input method="post" class="btn" type="button" onclick="location.href='boardFaqDeleteBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="지우개">
-						</dd>
+						</td>
+						<td width="300px">
+							<input class="btn" type="button" onclick="location.href='boardFaqUpdateBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="수정">
+							<input class="btn" type="button" onclick="location.href='boardFaqDeleteBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="지우개">
+						</td>
+					</tr>		
 				</c:forEach>
-		</dl>
-
+			</table>
 <br />
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 		<c:if test="${listCount>0 }">

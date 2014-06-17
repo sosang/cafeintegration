@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>자유게시판 읽기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
+</style>
 </head>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
@@ -33,7 +38,7 @@
 				<td colspan="4" style="text-align: right;">글쓴이IP : ${boardQa.userIp }</td>
 			</tr>
 		</table><p>
-		<c:if test="${writer == USER_KEY.userEmail }">
+		<c:if test="${writer == USER_KEY.userEmail || writer == ADMIN_KEY.adminEmail}">
 			<form name="form" method="post" action="boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}">
 				<input type="hidden" value="${boardQa }" name="boardQa">
 				<input type="hidden" value="${pageNo }" name="pageNo">
@@ -45,7 +50,6 @@
 				<input class="btn" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
 				<input class="btn" type="button" onclick="delConfirm()" value="삭제허기"> 
 			</form>
-			<%-- <input type="button" onclick="location.href='boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="삭제하긔"> --%>
 		</c:if>
 <%-- 여기부터 댓글관련 --%>
 <hr>
@@ -53,7 +57,7 @@
 <hr>
 
 <%-- 여기까지 댓글관련 --%>
-		<a href="boardQa.html?pageNo=${pageNo}">목록으로</a>
+		<a href="boardQa.html?pageNo=${pageNo}" id="coco" class="btn">목록으로</a>
 		
 <%-- 여기부터 질답목록 --%>
 <c:if test="${!empty boardQaList}">
@@ -130,7 +134,6 @@
 </c:if>
 
 <%-- 여기까지 질답목록 --%>	
-		
 		
 	</div>
 <%-- 삭제확인폼 --%>

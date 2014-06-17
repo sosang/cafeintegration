@@ -8,6 +8,9 @@
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 
 <style type="text/css">
+a#coco{
+	background-color: buttonface;
+}
 a.listtxt:link {
 	font-size: 12px;
 	color: #535353;
@@ -47,12 +50,12 @@ table.leftType{
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판</h2>
-		<c:if test="${empty USER_KEY}">
-	<b>To write --> <a href="../login/login.html">로그인</a></b>
-</c:if>
-		<c:if test="${!empty USER_KEY}">
-	<a style="text-align:right;" href="boardQaWriteBefore.html">글쓰기</a>
-</c:if>
+		<c:if test="${empty USER_KEY && empty ADMIN_KEY}">
+			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn" id="coco">로그인</a>
+		</c:if>
+		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
+			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+		</c:if>
 <c:if test="${!empty articleListQa}">
 		<table border="1" class="tableType title">
 			<tr>
@@ -128,6 +131,9 @@ table.leftType{
 
 
 		<hr>
+		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
+			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+		</c:if>
 <c:if test="${empty articleListQa}">
 <h1>등록된 게시물이 없습니다.</h1>
 </c:if>

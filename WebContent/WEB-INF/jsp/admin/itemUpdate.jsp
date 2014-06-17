@@ -6,27 +6,18 @@
 <meta charset="UTF-8">
 <title>상품수정</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<%// CLEditor 적용 %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/cleditor/jquery.cleditor.css" >
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquery.cleditor.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/cleditor/jquerytable.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#content1").cleditor({
-		width:960,//에디타 넓이
-		height:400,//에디타 높이
-	});
-});
-function resets(){
-	var editor = $("#content1").cleditor()[0];
-	var f = document.form;
-	f.titleRev.value="";
-	f.contentRev.value="";
-	editor.focus().clear();
+<style type="text/css">
+a#coco{
+	background-color: buttonface;
 }
-window.onload = function(){
-	document.form.titleRev.focus();
+</style>
+<script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
+<script type="text/javascript">
+window.onload=function(){
+    CKEDITOR.replace('content1',{enterMode:'2',shiftEnterMode:'3',language:'ko',
+    	toolbar:[['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-','Find','Replace','SelectAll','RemoveFormat','-','Table','SpecialChar'],'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']]
+    
+    });
 };
 </script>
 </head>
@@ -73,7 +64,7 @@ window.onload = function(){
 							<td width="160"><input type="text" name="totalProduct" size="115" value="${item.totalProduct}"></td>
 						</tr>
 						<tr height="50">
-							<td width="80" colspan="2" align="center"><input type="submit" value="등록하기"/></td>
+							<td width="80" colspan="2" align="center"><input type="submit" value="등록하기" class="btn" id="coco"/></td>
 						</tr>
 					</table>
 				</td>

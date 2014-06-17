@@ -91,5 +91,25 @@ public class BoardFaqDaoImpl implements BoardFaqDao {
 		// TODO Auto-generated method stub
 		this.template.update(BoardFaqDaoImpl.DELETE_FAQ.toString(), bdNoFaq);
 	}
+	
+	// 해당 FAQ 불러오기
+	private static final StringBuffer GET_FAQ_BY_BDNOFAQ = new StringBuffer("SELECT * FROM board_faq WHERE bd_no_faq=?");
+	@Override
+	public BoardFaq getFaqByBdNoFaq(Integer bdNoFaq) {
+		// TODO Auto-generated method stub
+		RowMapper<BoardFaq> mapper = new BeanPropertyRowMapper<BoardFaq>(BoardFaq.class);
+		return this.template.queryForObject(BoardFaqDaoImpl.GET_FAQ_BY_BDNOFAQ.toString(), mapper, bdNoFaq);
+	}
+	
+	
+	// FAQ 수정하기
+	private static final StringBuffer UPDATE_TO_THE_ARTICLE = new StringBuffer("UPDATE board_faq SET title_faq=?, content_faq=? WHERE bd_no_faq = ?");
+	@Override
+	public void Update(BoardFaq boardFaq) {
+		// TODO Auto-generated method stub
+		this.template.update(BoardFaqDaoImpl.UPDATE_TO_THE_ARTICLE.toString(), boardFaq.getTitleFaq(), boardFaq.getContentFaq(), boardFaq.getBdNoFaq());
+	}
+	
+	
 
 }

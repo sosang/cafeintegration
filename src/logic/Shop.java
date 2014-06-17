@@ -37,4 +37,6 @@ public interface Shop {
 	int getCheckedUserAlias(String userAlias);	//userAlias 중복체크용
 	
 	MemberVo memberInfo(String userEmail);
+	MemberVo lookingForPwdByInquiry(String userEmail, String passwdInquiry,
+			String passwdAnswer);// 비번찾긔
 }

@@ -53,7 +53,8 @@
 		</tx:attributes>
 	</tx:advice>
 
-	<bean id="loginValidator" class="utils.LoginValidator" /> 
+	<bean id="loginValidator" class="utils.LoginValidator" />
+	<bean id="findPwdValidator" class="utils.LoginValidator" />  
 	<bean id="memberEntryValidator" class="utils.MemberEntryValidator" />
 
 </beans>

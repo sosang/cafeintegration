@@ -12,4 +12,8 @@ public interface BoardFaqService {
 
 	void deleteBoardFaqArticle(Integer bdNoFaq);	// FAQ 삭제
 
+	BoardFaq getBoardFaqByBdNoFaq(Integer bdNoFaq);	// 해당 FAQ 읽어오기
+
+	void boardFaqUpdate(BoardFaq boardFaq);	// FAQ 수정
+
 }
