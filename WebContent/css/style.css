@@ -1,3 +1,8 @@
+@media(min-width: 768px;){
+	body{
+	height:950px;
+	}
+}
 .align-center{
 	margin:0 auto;
 }
@@ -189,7 +194,9 @@ label{
 	background-color: #1fa67a;
 	border-top: 1px solid #1b926c;
 	color: #a5d8c7;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+	text-shadow: 0 2px 1px rgba(0, 0, 0, 0.15);
+	position: relative;
+	display: block;
 }
 
 .footerContainer{
@@ -197,10 +204,11 @@ label{
 	margin-left: auto;
 	padding-left: 15px;
 	padding-right: 15px;
+	text-align: center;
 }
 
 #footer .footerContainer {
-	padding-top: 40px;
+	padding-top: 10px;
 }
 
 @media (min-width: 1200px){

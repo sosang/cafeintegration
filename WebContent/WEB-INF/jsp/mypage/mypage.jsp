@@ -36,11 +36,11 @@
 				cafe4.0에 오신것을 환영합니다.</font>
 		</p>
 		<p>
-			<img src="../img/phone.png" style="float: left; margin: 2px"><font
+			<i class="fa fa-mobile"></i> <font
 				size="2">${user.userPhone1 }-${user.userPhone2 }-${user.userPhone3 }</font>
 		</p>
 		<p>
-			<img src="../img/email.png" style="float: left; margin: 2px"><font
+			<i class="fa fa-envelope-o"></i><font
 				size="2">${user.userEmail }</font>
 		</p>
 		<br>
