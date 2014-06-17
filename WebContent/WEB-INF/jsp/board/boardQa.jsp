@@ -57,7 +57,7 @@ table.leftType{
 			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${!empty articleListQa}">
-		<table border="1" class="tableType">
+		<table border="1" class="tableType table-striped">
 			<tr>
 				<th align="center" width="5%">번호</th>
 				<th align="center" width="60%">제 목</th>

@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 	<c:if test="${empty commentsListRev}">
-		No Comments!
+		댓글이 없습니다.
 	</c:if>
 
 <table class="tableType table-striped">
@@ -15,7 +17,7 @@
 				<td width="10%">
 					<input type="hidden" name="bdNoRevComments"
 						value="${comments.bdNoRevComments}" />
-						<a class="btn btn-danger" onclick="reallyRev(${comments.bdNoRevComments})"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+						<a class="btn btn-danger" onclick="reallyRev(${comments.bdNoRevComments})"><i class="fa fa-trash-o fa-lg"></i> 삭제하기</a>
 					<%-- <img id="checkPass"
 						src="<%=request.getContextPath() %>/images/icon/xIcon.png"
 						onclick="reallyRev(${comments.bdNoRevComments})" class="pointer"
@@ -50,5 +52,5 @@
 		</form>
 	</c:if>
 <c:if test="${empty USER_KEY}">
-	<b>To write --> <a href="../login/login.html" class="btn" id="coco">Login</a></b>
+	<b>글을 쓰시려면... <a href="../login/login.html">로그인</a></b><br>
 </c:if>
