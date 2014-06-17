@@ -41,24 +41,24 @@
 						<tr height="40px">
 
 							<td width="255px"><form:input path="userEmail"
-									class="form-control" placeholder="Email address" /> <font
+									class="form-control" placeholder="Email을 입력해주세요." /> <font
 								color="red"><form:errors path="userEmail" /></font></td>
 						</tr>
 						
 						<tr>
 							<td><form:password path="userPasswd" class="form-control"
-									placeholder="Password" /> <font color="red"><form:errors
+									placeholder="Password가 필요합니다." /> <font color="red"><form:errors
 										path="userPasswd" /></font></td>
 						</tr>
 						
 						<tr>
-							<td width="150px"><input type="submit" value="Login"
+							<td width="150px"><input type="submit" value="로그인"
 								class="btn btn-primary login-button form-control"></td>
 						</tr>
 						
 						<tr>
 							<td width="150px"><a href="../memberentry/memberEntry.html"
-								class="btn btn-info member-button form-control">SignUp</a></td>
+								class="btn btn-info member-button form-control">회원가입</a></td>
 						</tr>
 						<tr>
 							<td width="150px" align="right"><a href="findPassword.html"><font size="2"><i class="fa fa-key"></i> 비밀번호 찾기</font></a></td>
