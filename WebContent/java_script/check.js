@@ -85,6 +85,7 @@ function emailCheckAjax() {
 	}
 }
 
+
 function displayEmailResult() {
 	if (httpRequest.readyState == 4) {
 		if (httpRequest.status == 200) {
@@ -143,12 +144,50 @@ function displayAliasResult() {
 }
 
 /*회원가입시 약관 동의한 경우 submit 버튼 활성화*/
-	$("#terms_check").change(function () {
-	   $("#EntryBtn").attr("disabled", !this.checked);
-	});
+$("#terms_check").change(function () {
+   $("#EntryBtn").attr("disabled", !this.checked);
+});
 
 /*회원 가입시 약관보기 modal*/
+$("#terms_modal").clicked(function(){
+   	    $( "#dialog" ).dialog();
+});
+   	
+/*비밀번호 찾기 시 아이디 확인하기*/
+   	function myEmailCheckAjax() {
+   		var lastKeywordEmail = '';
+   		var keywordEmail = document.getElementById("userEmail").value;
+   		var listView = document.getElementById('emailCheckResult');
 
-   	$("#terms_modal").clicked(function(){
-	   	    $( "#dialog" ).dialog();
-   	});
+   		if (keywordEmail == '') {
+   			lastKeywordEmail = '';
+   			listView.innerHTML = "이메일을 입력해주세요.";
+   			listView.style.color = "red";
+   		} else if (keywordEmail != lastKeywordEmail) {
+   			lastKeywordEmail = keywordEmail;
+   			if (keywordEmail != '' ) {
+   				var params = "userEmail=" + encodeURIComponent(keywordEmail);
+   				sendRequest("../memberentry/emailCheck.html", params,
+   						displayMyEmailResult, 'POST');
+   			} else {
+   			}
+   		}
+   	}
+
+   	function displayMyEmailResult() {
+   		if (httpRequest.readyState == 4) {
+   			if (httpRequest.status == 200) {
+   				var resultText = httpRequest.responseText;
+   				var listView = document.getElementById('emailCheckResult');
+   				if (resultText == 0) {
+   					listView.innerHTML = "등록되지 않은 이메일입니다.";
+   					listView.style.color = "red";
+   				} else {
+   					listView.innerHTML = "등록된 이메일입니다. 계속 진행하세요!";
+   					listView.style.color = "blue";
+   				}
+   			} else {
+   				alert("에러 발생: " + httpRequest.status);
+   			}
+   		}
+   	}

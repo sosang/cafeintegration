@@ -216,4 +216,12 @@ public class ShopImpl implements Shop {
 		return this.memberCatalog.getfindMemberInfo(userEmail);
 	}
 
+	@Override
+	public MemberVo lookingForPwdByInquiry(String userEmail,
+			String passwdInquiry, String passwdAnswer) {
+		// TODO Auto-generated method stub
+		return this.memberCatalog.lookingForPwdByInquiry(userEmail, passwdInquiry, passwdAnswer);
+	}
+
+	
 }

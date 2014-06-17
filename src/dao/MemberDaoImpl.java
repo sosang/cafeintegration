@@ -158,4 +158,17 @@ public class MemberDaoImpl implements MemberDao {
 		return memberList;
 	}
 
+	// 비번찾긔
+	private static final StringBuffer LOOKING_FOR_PWD = new StringBuffer("SELECT * from member where user_email=? and passwd_inquiry=? and passwd_answer=?");
+	@Override
+	public MemberVo lookingForPwd(String userEmail, String passwdInquiry,
+			String passwdAnswer) {
+		RowMapper<MemberVo> mapper = new BeanPropertyRowMapper<MemberVo>(
+				MemberVo.class);
+		return this.template.queryForObject(LOOKING_FOR_PWD.toString(), mapper,
+				userEmail, passwdInquiry, passwdAnswer);
+		
+	}
+
+	
 }
