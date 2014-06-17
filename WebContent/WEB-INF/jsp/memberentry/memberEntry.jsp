@@ -50,7 +50,6 @@
 				<div class="controls" id="passwdInquiryAndAnswer">
 					<form:select path="passwdInquiry" cssClass="selectpicker" 
 						height="40px" id="passwdInquiry">
-						<form:option value="" label="질문 선택" disabled="disabled"/>
 						<form:option value="태어난 고향(도시명만 입력)은?" label="태어난 고향(도시명만 입력)은?" />
 						<form:option value="어머니 성함은?" label="어머니 성함은?" />
 						<form:option value="아버지 성함은?" label="아버지 성함은?" />
