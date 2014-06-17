@@ -8,6 +8,7 @@ public interface Shop {
 	MemberVo getMemberByUserEmailAndUserPasswd(String userEmail, String userPasswd);
 	void entryMember(MemberVo member);
 	List<MemberVo> getMemberList(HttpServletRequest request, Integer pageNo);
+
 	List<ItemVo> getItemList();
 
 	ItemVo getItemByItemNo(Integer itemNo);

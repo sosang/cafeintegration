@@ -15,7 +15,7 @@
 		<form action="postcode.html" method="post">
 			<div class="form-group">
 				<input type="text" class="form-control" name="eupmyeondong"
-					placeholder="동을 제외한 지역명으로 검색: " required autofocus>
+					placeholder="지역명으로 입력: " required autofocus>
 			</div>
 			<button type="submit" class="btn btn-warning">찾기</button>
 		</form><br>
@@ -46,7 +46,7 @@
 					<div class="alert alert-danger">
 						<h4>앗, 별에서 오신 고갱님???</h4>
 						</div>
-						<p>찾으시는 <kbd>"<c:out value="${param.eupmyeondong}"/>동"</kbd>은 죄송스럽게도 우리 데이터베이스에는 없습니다. <br/>확인해보시고 다시 한 번 도전~!</p>
+						<p>찾으시는 <mark><strong>"<c:out value="${param.eupmyeondong}"/>동"</strong></mark>은 죄송스럽게도 우리 데이터베이스에는 없습니다. <br/>확인해보시고 다시 한 번 도전~!</p>
 
 				</c:otherwise>
 			</c:choose>

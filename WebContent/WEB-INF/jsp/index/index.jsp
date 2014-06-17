@@ -76,7 +76,7 @@
 					</div>
 				</div>
 
-				<!-- ======= Indicators(이미지 아랫 위치한 페이지 넘김 클릭하는 부분)  ======= -->
+			 <!-- ======= Indicators(이미지 아랫 위치한 페이지 넘김 클릭하는 부분)  ======= --> 
 				<div id="carousel-indicators">
 					<ol class="carousel-indicators cafeCarousel-indicator">
 						<li data-target="#cafeCarousel" data-slide-to="0" class="active"></li>
@@ -85,7 +85,7 @@
 						<li data-target="#cafeCarousel" data-slide-to="3"></li>
 					</ol>
 				</div>
-				<!-- ============== Controls(좌,우 넘김 클릭하는 부분) ============= -->
+			<!-- 	============== Controls(좌,우 넘김 클릭하는 부분) =============  -->
 				<a class="left carousel-control" href="#cafeCarousel"
 					data-slide="prev"> <span
 					class="glyphicon glyphicon-chevron-left"></span>
@@ -93,7 +93,7 @@
 					data-slide="next"> <span
 					class="glyphicon glyphicon-chevron-right"></span>
 				</a>
-			</div>
+			</div> 
 
 		</div>
 </header>

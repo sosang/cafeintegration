@@ -107,7 +107,7 @@ public class MemberEntryController {
 		}
 	} 
 
-	// 어드민에서 가입자 목록 보기
+	// ======== 어드민에서 가입자 목록 보기
 	// 가입자 목록 보기
 	@RequestMapping("admin/member")
 	public ModelAndView member(HttpServletRequest request, Integer pageNo) throws Throwable{
@@ -124,6 +124,25 @@ public class MemberEntryController {
 
 		return modelAndView;
 	}
+	
+	// 가입자 목록 보기
+		@RequestMapping("admin/monthlyMember")
+		public ModelAndView monthlyMember(HttpServletRequest request, Integer pageNo) throws Throwable{
+			// 가입자 목록 취득
+			List<MemberVo> memberList = null;
+			memberList = this.shopService.getMemberList(request, pageNo);
+			// 모델 생성
+			Map<String, Object> model = new HashMap<String,Object>();
+			model.put("memberList", memberList);
+
+			// 반환값인 ModelAndView 인스턴스 생성
+			ModelAndView modelAndView = new ModelAndView("admin/monthlyMember");
+			modelAndView.addAllObjects(model);
+
+			return modelAndView;
+		}
+		
+
 	
 	
 }

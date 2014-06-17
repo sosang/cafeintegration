@@ -141,10 +141,13 @@ public class MemberDaoImpl implements MemberDao {
 
 		return memberList;
 	}
-
+	
 	private static final StringBuffer SELECT_ALL_BY_USEREMAIL = new StringBuffer(
 			"select user_email userEmail,user_passwd userPasswd, user_alias userAlias, user_phone1 userPhone1, user_phone2 userPhone2, user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2 from member where user_email=?");
 
+	//가입일(년월까지 substring으로) query문 작성
+	private static final String SELECT_JOIN_DATE_BY_MONTHLY = "SELECT SUBSTR(TO_CHAR(JOIN_DATE, 'YYYYMMDD'), 1, 6)";
+	
 
 	@Override
 	public MemberVo findmemberinfo(String userEmail) {
