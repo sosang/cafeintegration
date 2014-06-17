@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ</title>
+<script>document.createElement('footer');</script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/faq.css">
 </head>
@@ -56,6 +57,7 @@
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/java_script/faq.js"></script>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
-		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+			<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
+
 </html>

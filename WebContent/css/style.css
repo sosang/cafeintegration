@@ -90,7 +90,7 @@ label{
       margin: 0 auto;
     }
 
-    @media (max-width: 768)
+    @media (max-width: 768px)
     {
        .terms
        {
@@ -184,37 +184,46 @@ label{
 }
 
 /* ==========* footer *=========== */
+#fixedBottom{
+	margin-right: auto;
+	margin-left: auto;
+	width:100%;
+}
+
 #footer {
 	background-color: #1fa67a;
 	border-top: 1px solid #1b926c;
 	color: #a5d8c7;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+	text-shadow: 0 2px 1px rgba(0, 0, 0, 0.15);
+	position: relative;
+	display: block;
 }
 
 .footerContainer{
+	width:100%;
 	margin-right: auto;
 	margin-left: auto;
-	padding-left: 15px;
-	padding-right: 15px;
+	text-align: center;
+	font-size:1em;
 }
 
 #footer .footerContainer {
-	padding-top: 40px;
+	padding-top: 10px;
 }
 
-@media (min-width: 1200px){
+@media (max-width: 992px){
 	.footerContainer {
-	width: 1170px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	width: 100%;
+	font-size:0.8em;
 	}
 }
-@media (min-width: 992px){
+@media (max-width: 768px){
 	.footerContainer {
-	width: 970px;
-	}
-}
-@media (min-width: 768px){
-	.footerContainer {
-	width: 750px;
+	width: 100%;
+	font-size:0.8em;
 	}
 }
 
@@ -242,6 +251,13 @@ color: -webkit-link;
 cursor: auto;
 }
 
-h2{
-		color: -webkit-link;
+/* ==================aboutUs===================== */
+.aboutUs_bg{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+@media (max-width: 768px){
+	.aboutUs_bg {
+	margin:0;
+	}
 }
