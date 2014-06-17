@@ -11,6 +11,8 @@ select * from board_reviews
 create table member(
 	user_email varchar2(50) primary key,
 	user_passwd varchar2(30),
+	passwd_inquiry varchar2(45),
+	passwd_answer varchar2(30),
 	user_alias varchar2(30)  unique,
 	user_phone1 varchar2(6) ,
 	user_phone2 varchar2(8),
@@ -288,16 +290,9 @@ create table adminstrator(
 --테스트용 
 insert into adminstrator values('admin','1','admin');
 
-INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123-456','가산디지털단지', '4층',1,500,3,7,12, ‘facebook’ ,sysdate);
+INSERT INTO member VALUES('cafe4','cafe4','cafe4.0','010','7777','7777','123456','가산디지털단지', '4층',1,500,3,7,12, ‘facebook’ ,sysdate);
 insert into ITEM values(item_seq.nextval,'루티나','에티오피아',2,'연하게',sysdate,'시나몬','연하고 시나몬 맛 나는 커피','bean.jpg',4000,10,0,0);
 insert into ITEM values(item_seq.nextval,'시다모','에티오피아',2,'연하게',sysdate,'과일향','연한 꽃내음 나는 커피','bean.jpg',7000,10,0,0);
-
-
-
-
-
-
-
 
 
 
@@ -308,8 +303,6 @@ select * from purchase_seq;
 select * from purchase_line;
 select * from member;
 select * from postcode where eupmyeondong like '반송%';
-
-delete POSTCODE;
 
 
 drop table adminstrator;
@@ -327,7 +320,7 @@ drop table board_qa;
 drop table recommend_recorder;
 drop table reservation;
 drop table experience;
-drop table member;
+drop table member cascade constraint;
 
 
 
@@ -346,14 +339,15 @@ drop sequence experience_seq;
 drop sequence pur_line_seq;
 drop sequence reservation_seq;
 
-
-
 --member테이블 test명 
 
 --새로 생성시 기본 테스트용 추가 테이블 꼭 추가 시킬것!
-select * from member
-update member user_email set sdf
-INSERT INTO member VALUES('sdf','sdf','gee','010','7777','7777','123-456','가산디지털단지', '4층',0,0,0,0,0, 'fu' ,sysdate);
+select * from member;
+update member user_email set sdf;
+INSERT INTO member VALUES('sdf@sdf.com','sdfa','어머니 성함은?','김여사','솔솔이', '010','7788','7788','123456','서울특별시 중랑구 면목동', '면목사거리 공공칠빵집',0,0,0,0,0, null , sysdate);
+INSERT INTO member VALUES('gg@gmail.com','gdav00','아버지 성함은?','김알지','뱀발', '010','7766','7734','625456','경상북도 경주시 알동', '계림 알탕',0,0,0,0,0, null , sysdate);
+INSERT INTO member VALUES('nn@naver.com','sasa00','아버지 성함은?','박혁거세','똬리', '010','7711','7734','625446','경상북도 경주시 천막동', '사로6촌',0,0,0,0,0, null , sysdate);
+
 insert into ITEM values(item_seq.nextval,'시다모','에티오피아',2,'연하게',sysdate,'과일향','연한 꽃내음 나는 커피','bean.jpg',7000,10,0,0);
 
 ********************************************************************************************************
@@ -361,3 +355,12 @@ insert into ITEM values(item_seq.nextval,'시다모','에티오피아',2,'연하
 SELECT bd_no_rev bdNoRev, user_email userEmail, user_alias userAlias, title_rev titleRev, DBMS_LOB.SUBSTR(content_rev, 1000, 1) AS contentRev, count_rev countRev, recommend_rev recommendRev, ref_rev refRev, re_step reStep, re_level reLevel, date_rev dateRev, user_ip userIp FROM board_reviews WHERE bd_no_rev = 2;
 select * from board_reviews where bd_no_rev = 2;
 SELECT * FROM board_reviews_comments WHERE bd_no_rev = 2 ORDER BY bd_no_rev_comments
+
+delete member where user_email = 'sdf3@sdf.com';
+
+
+==================  월별 가입자 수 확인용 View 생성 ===================
+GRANT CREATE VIEW TO scott;
+
+
+					
