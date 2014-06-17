@@ -216,4 +216,6 @@ public class ShopImpl implements Shop {
 		return this.memberCatalog.getfindMemberInfo(userEmail);
 	}
 
+	
+
 }

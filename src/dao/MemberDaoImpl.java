@@ -32,7 +32,11 @@ public class MemberDaoImpl implements MemberDao {
 
 	// 별명 중복 체크용
 	private static final String CHECK_USER_ALIAS = "SELECT count(*) from member where user_alias=?";
+	
+	//질문과답으로 비밀번호 찾기용
+	private static final String SEARCH_USER_PW = "SELECT * from member where user_email=? AND user_passwd=? AND passwd_inquiry=? AND passwd_answer= ? ";
 
+			
 	private SimpleJdbcTemplate template;
 	private JdbcTemplate jdbcTemplate;
 
@@ -156,6 +160,17 @@ public class MemberDaoImpl implements MemberDao {
 				userEmail);
 
 		return memberList;
+	}
+
+	@Override
+	public MemberVo searchPwByQandA(String userEmail, String userPasswd,
+			String passwdInquiry, String passwdAnswer) {
+		// TODO Auto-generated method stub
+		RowMapper<MemberVo> mapper = new BeanPropertyRowMapper<MemberVo>(
+				MemberVo.class);
+		return this.template.queryForObject(SEARCH_USER_PW, mapper,
+				userEmail, userPasswd, passwdInquiry, passwdAnswer);
+	
 	}
 
 }

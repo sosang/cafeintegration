@@ -59,8 +59,11 @@
 						<tr>
 							<td width="150px"><a href="../memberentry/memberEntry.html"
 								class="btn btn-info member-button form-control">SignUp</a></td>
-
-
+						</tr>
+						
+						<tr>
+						<td width="150px"><a href="../searchpw/searchpw.html"
+								class="btn form-control ">SearchPw</a></td>
 						</tr>
 
 					</table>

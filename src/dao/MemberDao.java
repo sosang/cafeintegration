@@ -14,4 +14,6 @@ public interface MemberDao {
 
 	int checkUserAlias(String UserAlias);
 	MemberVo findmemberinfo(String userEmail);
+	MemberVo searchPwByQandA(String userEmail, String userPasswd,
+			String passwdInquiry, String passwdAnswer);
 }

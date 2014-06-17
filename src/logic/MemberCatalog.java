@@ -11,4 +11,6 @@ public interface MemberCatalog {
 	List<MemberVo> findAllMember(HttpServletRequest request, Integer pageNo);
 	MemberVo getfindMemberInfo(String userEmail);
 	int getCheckedUserAlias(String userAlias);
+	MemberVo searchPwByQandA(String userEmail, String userPasswd, String passwdInquiry, String passwdAnswer);
 }
+

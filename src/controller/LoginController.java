@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 
 import logic.AdminVo;
 import logic.AdminVoService;
+import logic.MemberCatalog;
+import logic.MemberCatalogImpl;
 import logic.MemberVo; 
 import logic.Shop;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.MemberDao;
 import utils.WebConstants;
 
 
@@ -27,6 +30,8 @@ public class LoginController {
 	@Autowired
 	private Shop shopService;
 	
+	@Autowired
+	private MemberDao member;
 	
 	@Autowired
 	private Validator loginValidator;
@@ -68,9 +73,9 @@ public class LoginController {
 		
 		
 			//유저 확인시 로그인 전 페이지로 돌아간다.
-//			String url = "redirect:../"+goBack.substring(33, goBack.length());
+			String url = "redirect:../"+goBack.substring(33, goBack.length());
 			//war용
-			String url = "redirect:../"+goBack.substring(36, goBack.length());
+//			String url = "redirect:../"+goBack.substring(36, goBack.length());
 			modelAndView.setViewName(url);
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
@@ -109,6 +114,34 @@ public class LoginController {
 			return modelAndView;
 		}
 	}
+	
+	@RequestMapping("searchpw/searchpw")
+	public ModelAndView searchpw(MemberVo member,
+			BindingResult bindingResult, HttpServletRequest request, HttpSession session){
+			String userEmail = member.getUserEmail();
+			String userPasswd = member.getUserPasswd();
+			String passwdInquiry = member.getPasswdInquiry();
+			String passwdAnswer = member.getPasswdAnswer();
+			ModelAndView modelAndView = new ModelAndView();
+			
+			try{
+				//유저 정보(이메일,비번,질문,답) 검색
+				MemberVo loginMember = this.member.searchPwByQandA(userEmail, userPasswd, passwdInquiry, passwdAnswer);
+				request.getSession().setAttribute("USER_KEY", loginMember);
+				//질문과 답이 맞을경우
+				modelAndView.setViewName("searchpw/searchSuccess");
+				return modelAndView;
+			}catch(EmptyResultDataAccessException e){
+				//질문과 답이 맞지않을경우
+				System.out.println("질문/답이 틀렸습니다.");
+				modelAndView.setViewName("searchpw/searchpw");
+			}
+			
+			return null;
+		
+		
+	}
+	
 	
 
 }

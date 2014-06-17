@@ -23,7 +23,8 @@ public class MemberCatalogImpl implements MemberCatalog {
 	public MemberVo getMemberByUserEmailAndUserPasswd(String userEmail,
 			String userPasswd) {
 		// TODO Auto-generated method stub
-		return this.memberDao.findByUserEmailAndUserPasswd(userEmail, userPasswd);
+		return this.memberDao.findByUserEmailAndUserPasswd(userEmail,
+				userPasswd);
 	}
 
 	@Override
@@ -51,12 +52,18 @@ public class MemberCatalogImpl implements MemberCatalog {
 		return this.memberDao.findmemberinfo(userEmail);
 	}
 
-
 	// userAlias 중복체크
-	 		@Override
-	 		public int getCheckedUserAlias(String userAlias) {
-	 			// TODO Auto-generated method stub
-	 			return this.memberDao.checkUserAlias(userAlias);
-	 		}
+	@Override
+	public int getCheckedUserAlias(String userAlias) {
+		// TODO Auto-generated method stub
+		return this.memberDao.checkUserAlias(userAlias);
+	}
+
+	@Override
+	public MemberVo searchPwByQandA(String userEmail, String userPasswd,
+			String passwdInquiry, String passwdAnswer) {
+		// TODO Auto-generated method stub
+		return this.memberDao.searchPwByQandA(userEmail, userPasswd, passwdInquiry, passwdAnswer);
+	}
 
 }
