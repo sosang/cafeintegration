@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">
 </head>
-
 <script type="text/javascript">
 	function sameaddress() {
 		document.getElementById("receivername").value = document
@@ -30,8 +29,6 @@
 	<div align="center" class="body">
 		<div class="purchase">
 			<form action="../end/end.html">
-
-
 				<table class="carttable" style="font: 30px;">
 					<tr>
 						<th colspan="7"><font color="green" size="14px">장바구니
@@ -48,21 +45,20 @@
 					</tr>
 
 
+					<c:forEach items="${mycartitem }" var="itemSet">
+						<tr>
 
-					<tr>
-
-						<td id="centerid"><h5></h5></td>
-						<td><img width="80px" height="50px"
-							src="${purchaseLine .photo }"> &nbsp;&nbsp;&nbsp;<c:out
-								value="${purchaseLine.itemName }" /></td>
-						<td id="centerid"><c:out value="${purchaseLine.price }" /></td>
-						<td id="centerid"><c:out
-								value="${purchaseLine.numOfProduct }" /></td>
-						<td id="centerid"><c:out
-								value="${purchaseLine.price*purchaseLine.numOfProduct}" />원</td>
-						<td></td>
-					</tr>
-
+							<td id="centerid"><h5></h5></td>
+							<td><img width="80px" height="50px"
+								src="../img/${itemSet.photo }"> &nbsp;&nbsp;&nbsp;<c:out
+									value="${itemSet.itemName }" /></td>
+							<td id="centerid"><c:out value="${itemSet.price }" /></td>
+							<td id="centerid"><c:out
+									value="${itemSet.cartNumOfProduct }" /></td>
+							<td id="centerid"><c:out value="${itemSet.cartSubTotal}" />원</td>
+							<td></td>
+						</tr>
+					</c:forEach>
 
 
 					<tr>
@@ -150,7 +146,7 @@
 								style="resize: none" name="remarks" required="required"></textarea></td>
 					</tr>
 				</table>
-				<input class="btn" type="submit" value="결제하기"> <a
+				<input type="submit" value="결제하기"> <a
 					class="btn btn-warning" href="../index/index.html">홈</a>
 
 			</form>
@@ -158,6 +154,5 @@
 		</div>
 		<br> <br>
 	</div>
-		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

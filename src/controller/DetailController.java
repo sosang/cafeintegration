@@ -54,29 +54,6 @@ public class DetailController {
 		return modelAndView;
 	}
 
-	@RequestMapping("detail/detailon")
-	public ModelAndView detailItemon(HttpSession session, Integer itemNo) {
-
-		MemberVo userKey = (MemberVo) session
-				.getAttribute(WebConstants.USER_KEY);
-		String userEmail;
-		try {
-			userEmail = userKey.getUserEmail();
-		} catch (Exception e) {
-			userEmail = null;
-		}
-		ItemVo item = this.shopService.getItemByItemNo(itemNo);
-
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("item", item);
-		String filePathForJsp = this.shopService.getFilePathTo(itemNo);
-		model.put("toViewImage",filePathForJsp);
-		model.put("userEmail", userEmail);
-		ModelAndView modelAndView = new ModelAndView();
-
-		modelAndView.addAllObjects(model);
-		return modelAndView;
-	}
 
 	@RequestMapping("admin/detail")
 	public ModelAndView adminDetailItem(Integer itemNo) {

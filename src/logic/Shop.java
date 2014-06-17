@@ -9,7 +9,7 @@ public interface Shop {
 	void entryMember(MemberVo member);
 	List<MemberVo> getMemberList(HttpServletRequest request, Integer pageNo);
 	List<ItemVo> getItemList();
-
+	CartVo myCartItem(String userEmail, Integer itemNo);
 	ItemVo getItemByItemNo(Integer itemNo);
 
 	void entryCart(CartVo cart);

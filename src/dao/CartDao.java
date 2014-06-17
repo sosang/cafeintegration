@@ -18,5 +18,5 @@ public interface CartDao {
 	void delete(String userEmail);
 
 	void mypagedelete(Integer itemNo);
-
+	CartVo findcart(String userEmail, Integer itemNo);
 }

@@ -53,5 +53,12 @@ public class CartCatalogImpl implements CartCatalog{
 		this.cartDao.mypagedelete(itemNo);
 		
 	}
+	
+	
+	@Override
+	 	public CartVo getCart(String userEmail, Integer itemNo) {
+	 
+	 		return this.cartDao.findcart(userEmail, itemNo);
+	  	}
 
 }
