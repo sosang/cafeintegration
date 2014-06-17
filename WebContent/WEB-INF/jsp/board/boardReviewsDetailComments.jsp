@@ -3,7 +3,7 @@
 		No Comments!
 	</c:if>
 
-<table class="tableType">
+<table class="tableType table-striped">
 	<c:forEach items="${commentsListRev}"  var="comments">
 		<tr>
 			<td width="10%">${comments.userAlias}</td>
@@ -40,7 +40,7 @@
 					<textarea rows="3" style="width: 100%" name="bdRevCommentsContent" draggable="false"></textarea>
 					</td>
 
-					<td width="10%"><input class="btn " type="submit" value="reply"
+					<td width="10%"><input class="btn btn-info" type="submit" value="reply"
 						style="height: 100%; padding-left: 10px; padding-right: 10px" />
 					</td>
 

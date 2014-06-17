@@ -2,7 +2,7 @@
 	<c:if test="${empty commentsListQa }">
 		No Comments!
 	</c:if>
-<table class="tableType">
+<table class="tableType table-striped">
 	<c:forEach items="${commentsListQa}" var="comments">
 		<tr style="height: 65px">
 			<td width="10%">${comments.userAlias}</td>
@@ -30,7 +30,7 @@
 					<input type="hidden" name="bdNoQa" value="${boardQa.bdNoQa }"/>
 					<input type="hidden" name="pageNo" value="${pageNo }"/>
 					<textarea  rows="3" cols="100" name="bdQaCommentsContent" draggable="false"></textarea>
-					<input type="submit" value="comments" />
+					<input class="btn btn-info" type="submit" value="comments" />
 				</form>
 				</td>
 			</tr>

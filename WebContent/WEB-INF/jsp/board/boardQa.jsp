@@ -54,16 +54,16 @@ table.leftType{
 			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn" id="coco">로그인</a>
 		</c:if>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${!empty articleListQa}">
-		<table border="1" class="tableType title">
-			<tr>
-				<th align="center" width="5%">번호</th>
-				<th align="center" width="60%">제 목</th>
-				<th align="center" width="10%">글쓴이</th>
-				<th align="center" width="15%">글쓴날</th>
-				<th align="center" width="10%">조회수</th>
+		<table border="1" class="tableType title table-striped">
+			<tr class="active">
+				<th class="active" align="center" width="5%">번호</th>
+				<th class="active" align="center" width="60%">제 목</th>
+				<th class="active" align="center" width="10%">글쓴이</th>
+				<th class="active" align="center" width="15%">글쓴날</th>
+				<th class="active" align="center" width="10%">조회수</th>
 			</tr>
 
 			<c:forEach items="${articleListQa}" var="article">
@@ -132,7 +132,7 @@ table.leftType{
 
 		<hr>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${empty articleListQa}">
 <h1>등록된 게시물이 없습니다.</h1>
