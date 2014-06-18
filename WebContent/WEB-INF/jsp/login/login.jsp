@@ -4,17 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,  initial-scale=1">
 <%@page import="utils.WebConstants"%>
 <title>로그인</title>
-
-
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 
@@ -25,7 +16,7 @@
 
 		<c:when test="${loginMemberVo.userEmail == null }">
 
-			<div style="margin-top: 150px" align="center" class="body">
+			<div style="margin-top: 150px" align="center" >
 				<form:form modelAttribute="memberVo" class="signin" method="post"
 					action="../login/login.html">
 					<spring:hasBindErrors name="memberVo" >
@@ -96,7 +87,6 @@
 
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
-
 
 </body>
 </html>
