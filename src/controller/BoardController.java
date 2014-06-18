@@ -170,14 +170,14 @@ public class BoardController {
 				return modelAndView;
 			}
 			// 테그 방지
-						String ret1 = bdQaCom.getBdQaCommentsContent();
-						try { 
-							ret1 = replace(ret1, "<", "&lt;"); 
-							ret1 = replace(ret1, "&lt;br", "<br");
-						} catch (NullPointerException e) { 
-							e.printStackTrace(); 
-						}  
-						bdQaCom.setBdQaCommentsContent(ret1);
+//						String ret1 = bdQaCom.getBdQaCommentsContent();
+//						try { 
+//							ret1 = replace(ret1, "<", "&lt;"); 
+//							ret1 = replace(ret1, "&lt;br", "<br");
+//						} catch (NullPointerException e) { 
+//							e.printStackTrace(); 
+//						}  
+//						bdQaCom.setBdQaCommentsContent(ret1);
 			// 테그 방지
 			this.boardQaCommentsService.setCommentsAtBdNoQa(bdQaCom, adminKey, bdNoQa, userIp);
 			String url="redirect:boardQaDetail.html?pageNo="+pageNo+"&bdNoQa="+bdNoQa;
@@ -307,16 +307,16 @@ public class BoardController {
 			// 내용을 사빕한다.
 			// 테그 방지
 				String ret1 = boardQa.getTitleQa();
-				String ret2 = boardQa.getContentQa();
+//				String ret2 = boardQa.getContentQa();
 				try { 
 					ret1 = replace(ret1, "<", "&lt;");
-					ret2 = replace(ret2, "<", "&lt;"); 
-					ret2 = replace(ret2, "&lt;br", "<br");
+//					ret2 = replace(ret2, "<", "&lt;"); 
+//					ret2 = replace(ret2, "&lt;br", "<br");
 				} catch (NullPointerException e) { 
 					e.printStackTrace(); 
 				}  
 				boardQa.setTitleQa(ret1);
-				boardQa.setContentQa(ret2);
+//				boardQa.setContentQa(ret2);
 			// 테그 방지
 			this.boardQaService.boardQaWrite(boardQa, userKey, userIp);
 			return new ModelAndView("redirect:boardQa.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
@@ -379,16 +379,16 @@ public class BoardController {
 		
 		// 테그 방지
 		String ret1 = boardQa.getTitleQa();
-		String ret2 = boardQa.getContentQa();
+//		String ret2 = boardQa.getContentQa();
 		try { 
 			ret1 = replace(ret1, "<", "&lt;");
-			ret2 = replace(ret2, "<", "&lt;"); 
-			ret2 = replace(ret2, "&lt;br", "<br");
+//			ret2 = replace(ret2, "<", "&lt;"); 
+//			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
 		boardQa.setTitleQa(ret1);
-		boardQa.setContentQa(ret2);
+//		boardQa.setContentQa(ret2);
 		// 테그 방지
 		
 		this.boardQaService.boardQaWriteUpdate(boardQa, userIp);
@@ -441,16 +441,16 @@ public class BoardController {
 //		System.out.println(boardQa.getReStepQa());
 		// 테그 방지
 		String ret1 = boardQa.getTitleQa();
-		String ret2 = boardQa.getContentQa();
+//		String ret2 = boardQa.getContentQa();
 		try { 
 			ret1 = replace(ret1, "<", "&lt;");
-			ret2 = replace(ret2, "<", "&lt;"); 
-			ret2 = replace(ret2, "&lt;br", "<br");
+//			ret2 = replace(ret2, "<", "&lt;"); 
+//			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
 		boardQa.setTitleQa(ret1);
-		boardQa.setContentQa(ret2);
+//		boardQa.setContentQa(ret2);
 		// 테그 방지
 		this.boardQaService.setBoardQaReplyByBdNoQa(boardQa, bdNoQa, userKey, userIp);
 		String url="redirect:boardQa.html?pageNo="+pageNo;
@@ -571,14 +571,14 @@ public class BoardController {
 				return modelAndView;
 			}
 			// 테그 방지
-			String ret1 = bdRevCom.getBdRevCommentsContent();
-			try { 
-				ret1 = replace(ret1, "<", "&lt;"); 
-				ret1 = replace(ret1, "&lt;br", "<br");
-			} catch (NullPointerException e) { 
-				e.printStackTrace(); 
-			}  
-			bdRevCom.setBdRevCommentsContent(ret1);
+//			String ret1 = bdRevCom.getBdRevCommentsContent();
+//			try { 
+//				ret1 = replace(ret1, "<", "&lt;"); 
+//				ret1 = replace(ret1, "&lt;br", "<br");
+//			} catch (NullPointerException e) { 
+//				e.printStackTrace(); 
+//			}  
+//			bdRevCom.setBdRevCommentsContent(ret1);
 			// 테그 방지
 			this.boardReviewsCommentsService.setCommentsAtBdNoRev(bdRevCom, userKey, bdNoRev, userIp);
 			String url="redirect:boardReviewsDetail.html?pageNo="+pageNo+"&bdNoRev="+bdNoRev;
@@ -658,16 +658,16 @@ public class BoardController {
 			// 내용을 사빕한다.
 			// 테그 방지
 			String ret1 = boardRev.getTitleRev();
-			String ret2 = boardRev.getContentRev();
+//			String ret2 = boardRev.getContentRev();
 			try { 
 				ret1 = replace(ret1, "<", "&lt;"); 
-				ret2 = replace(ret2, "<", "&lt;");
-				ret2 = replace(ret2, "&lt;br", "<br");
+//				ret2 = replace(ret2, "<", "&lt;");
+//				ret2 = replace(ret2, "&lt;br", "<br");
 			} catch (NullPointerException e) { 
 				e.printStackTrace(); 
 			}  
 			boardRev.setTitleRev(ret1);
-			boardRev.setContentRev(ret2);
+//			boardRev.setContentRev(ret2);
 			// 테그 방지
 			this.boardReviewsService.boardRevWrite(boardRev, userKey, userIp);
 			return new ModelAndView("redirect:boardReviews.html?pageNo=1");	// 글을 쓰고 목록 첫 페이지로 돌아감
@@ -742,16 +742,16 @@ public class BoardController {
 		String userIp = userIp1.substring(0, 7)+"...";
 		// 테그 방지
 		String ret1 = boardRev.getTitleRev();
-		String ret2 = boardRev.getContentRev();
+//		String ret2 = boardRev.getContentRev();
 		try { 
 			ret1 = replace(ret1, "<", "&lt;"); 
-			ret2 = replace(ret2, "<", "&lt;");
-			ret2 = replace(ret2, "&lt;br", "<br");
+//			ret2 = replace(ret2, "<", "&lt;");
+//			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
 		boardRev.setTitleRev(ret1);
-		boardRev.setContentRev(ret2);
+//		boardRev.setContentRev(ret2);
 		// 테그 방지
 		this.boardReviewsService.boardReviewsWriteUpdate(boardRev, userIp);
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
@@ -787,16 +787,16 @@ public class BoardController {
 		MemberVo userKey = (MemberVo)request.getSession().getAttribute("USER_KEY");
 		// 테그 방지
 		String ret1 = boardRev.getTitleRev();
-		String ret2 = boardRev.getContentRev();
+//		String ret2 = boardRev.getContentRev();
 		try { 
 			ret1 = replace(ret1, "<", "&lt;"); 
-			ret2 = replace(ret2, "<", "&lt;");
-			ret2 = replace(ret2, "&lt;br", "<br");
+//			ret2 = replace(ret2, "<", "&lt;");
+//			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
 		boardRev.setTitleRev(ret1);
-		boardRev.setContentRev(ret2);
+//		boardRev.setContentRev(ret2);
 		// 테그 방지
 		this.boardReviewsService.setBoardReviewsReplyByBdNoRev(boardRev, bdNoRev, userKey, userIp);
 		String url="redirect:boardReviews.html?pageNo="+pageNo;
