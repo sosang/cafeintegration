@@ -32,9 +32,9 @@ a.listtxt:hover {
 	<div align="center" class="body">
 		<h2>공지사항</h2>
 <c:if test="${articleList ne null }">
-		<table class="tableType"  border="1">
+		<table class="tableType table-striped" >
 			
-			<tr class="table-striped">
+			<tr >
 				<th align="center" width="15%">번호</th>
 				<th align="center" width="60%">제 목</th>
 				<th align="center" width="15%">글쓴날</th>
@@ -80,7 +80,7 @@ a.listtxt:hover {
 		</c:if>
 		<!-- 하단부 페이지 이동버튼 만들기 -->
 </c:if>
-<hr>
+
 <c:if test="${empty articleList}">
 <h1>등록된 게시물이 없습니다.</h1>
 </c:if>
