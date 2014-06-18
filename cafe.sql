@@ -7,7 +7,7 @@ SELECT  DBMS_LOB.SUBSTR(content_rev, 1000, 1) AS CONT_SUB   -- 1000 개까지 �
   where bd_no_rev = 2;
   WHERE DBMS_LOB.INSTR(content_rev, 'test', 1, 1) > 0             -- 검색 문구가 존재할때
 ;
-
+select * from item
 select * from board_reviews
 create table member(
 	user_email varchar2(50) primary key,
