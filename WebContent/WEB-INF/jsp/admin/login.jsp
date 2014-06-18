@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>관리자 로그인</title>
 <style type="text/css">
 .form-group{

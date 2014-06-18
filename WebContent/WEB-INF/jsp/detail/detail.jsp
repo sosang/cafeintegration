@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>상품 상세 화면</title>
 
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>

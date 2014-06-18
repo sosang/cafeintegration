@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>로그아웃</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 </head>

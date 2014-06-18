@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>우편번호 검색</title>
 <%@ include file="../../jsp/jsp_header.jsp"%>
 <link href="<%=request.getContextPath()%>/css/post.css"

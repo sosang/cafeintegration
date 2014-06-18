@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>상품등록</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <style type="text/css">
@@ -22,6 +23,7 @@ window.onload=function(){
 };
 </script>
 </head>
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">

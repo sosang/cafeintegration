@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>구매하기</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">

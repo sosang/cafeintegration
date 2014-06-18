@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>FAQ</title>
 <script>document.createElement('footer');</script>
 <link rel="stylesheet" type="text/css"

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>가입자 현황</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <style type="text/css">

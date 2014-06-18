@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>공지사항 쓰기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
