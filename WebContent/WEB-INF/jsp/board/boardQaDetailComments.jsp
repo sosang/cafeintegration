@@ -20,9 +20,6 @@
 				</c:if>
 			</td>
 		</tr>
-		<tr height="1">
-			<td colspan="5"><hr></td>
-		</tr>
 	</c:forEach>
 	<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
 		<table class="tableType" width="960" border="0">
