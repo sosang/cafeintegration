@@ -173,6 +173,7 @@ public class BoardController {
 						String ret1 = bdQaCom.getBdQaCommentsContent();
 						try { 
 							ret1 = replace(ret1, "<", "&lt;"); 
+							ret1 = replace(ret1, "&lt;br", "<br");
 						} catch (NullPointerException e) { 
 							e.printStackTrace(); 
 						}  
@@ -310,6 +311,7 @@ public class BoardController {
 				try { 
 					ret1 = replace(ret1, "<", "&lt;");
 					ret2 = replace(ret2, "<", "&lt;"); 
+					ret2 = replace(ret2, "&lt;br", "<br");
 				} catch (NullPointerException e) { 
 					e.printStackTrace(); 
 				}  
@@ -381,6 +383,7 @@ public class BoardController {
 		try { 
 			ret1 = replace(ret1, "<", "&lt;");
 			ret2 = replace(ret2, "<", "&lt;"); 
+			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
@@ -442,6 +445,7 @@ public class BoardController {
 		try { 
 			ret1 = replace(ret1, "<", "&lt;");
 			ret2 = replace(ret2, "<", "&lt;"); 
+			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
@@ -570,6 +574,7 @@ public class BoardController {
 			String ret1 = bdRevCom.getBdRevCommentsContent();
 			try { 
 				ret1 = replace(ret1, "<", "&lt;"); 
+				ret1 = replace(ret1, "&lt;br", "<br");
 			} catch (NullPointerException e) { 
 				e.printStackTrace(); 
 			}  
@@ -657,6 +662,7 @@ public class BoardController {
 			try { 
 				ret1 = replace(ret1, "<", "&lt;"); 
 				ret2 = replace(ret2, "<", "&lt;");
+				ret2 = replace(ret2, "&lt;br", "<br");
 			} catch (NullPointerException e) { 
 				e.printStackTrace(); 
 			}  
@@ -740,6 +746,7 @@ public class BoardController {
 		try { 
 			ret1 = replace(ret1, "<", "&lt;"); 
 			ret2 = replace(ret2, "<", "&lt;");
+			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
@@ -784,6 +791,7 @@ public class BoardController {
 		try { 
 			ret1 = replace(ret1, "<", "&lt;"); 
 			ret2 = replace(ret2, "<", "&lt;");
+			ret2 = replace(ret2, "&lt;br", "<br");
 		} catch (NullPointerException e) { 
 			e.printStackTrace(); 
 		}  
