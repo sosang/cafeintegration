@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,  initial-scale=1">
-</head>
 <title>카페테스트</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 
@@ -14,6 +13,7 @@
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
 <!--[if gt IE 8]><!-->
+</head>
 <body id="top">
 <header>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>

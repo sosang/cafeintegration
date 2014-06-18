@@ -14,7 +14,7 @@
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<c:if test="${faqList ne null }">
-		<div align="center" class="body">
+		<div align="center" class="body faqWidth">
 			<h1>FAQ</h1>
 
 			<dl>

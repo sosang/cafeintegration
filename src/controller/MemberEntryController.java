@@ -125,5 +125,18 @@ public class MemberEntryController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("memberentry/memberOut")
+	public ModelAndView memberOut(HttpSession session) throws Throwable{
+
+		MemberVo userKey = (MemberVo) session
+				.getAttribute(WebConstants.USER_KEY);
+		String userEmail = userKey.getUserEmail();
+		this.shopService.getoutMycafe(userEmail);
+		session.invalidate();
+		ModelAndView modelAndView = new ModelAndView("index/index");
+
+		return modelAndView;
+	}
+	
 	
 }

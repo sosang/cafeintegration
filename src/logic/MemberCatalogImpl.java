@@ -67,5 +67,10 @@ public class MemberCatalogImpl implements MemberCatalog {
 		// TODO Auto-generated method stub
 		return this.memberDao.lookingForPwd(userEmail, passwdInquiry, passwdAnswer);
 	}
+	@Override
+ 	public void getoutMember(String userEmail) {
+ 		this.memberDao.outMember(userEmail);
+ 		
+ 	}
 
 }

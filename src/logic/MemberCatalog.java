@@ -13,4 +13,5 @@ public interface MemberCatalog {
 	int getCheckedUserAlias(String userAlias);
 	MemberVo lookingForPwdByInquiry(String userEmail, String passwdInquiry,
 			String passwdAnswer);
+	void getoutMember(String userEmail);
 }

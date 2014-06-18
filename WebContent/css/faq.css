@@ -6,3 +6,4 @@ dl dt{margin:0;border-top:1px solid #ddd}
 dl dt{display:block;padding:.5em 1em;text-align:center;font-weight:bold;background:#fafafa;color:#000;text-decoration:none !important}
 dl dt:hover, dl dt:active, dl dt:focus{background:#f8f8f8}
 dl dd{margin:0;padding:1em;line-height:1.5}
+.faqWidth{margin:0 auto; width: 70%}

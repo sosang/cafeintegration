@@ -24,7 +24,7 @@
 				<p >이 사이트는 <font class="tFooter">Apache 2.0</font> 규약에 따라 공개된 <a class="aFooter" href="http://getbootstrap.com">Bootstrap</a>, <a class="aFooter" href="https://github.com">github</a>, <a class="aFooter" href="jquery.com">jQuery</a> 등의 소스 코드를 참조하였습니다.
 				</p>
 				<font size="0.5em">© 2014 cafe 4.0. All rights reserved.</font>
-				
+
 			</div>
 		</div>
 </footer>
