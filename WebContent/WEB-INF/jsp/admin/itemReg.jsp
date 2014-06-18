@@ -48,7 +48,7 @@ window.onload=function(){
 						</tr>
 						<tr height="50">
 							<td width="80">비고</td>
-							<td width="160"><input type="text" id="content1" name="itemInfo" size="115"></td>
+							<td width="160"><textarea id="content1" name="itemInfo"  rows="10" cols="100"></textarea></td>
 						</tr>
 						<tr height="50">
 							<td width="80">로스팅정도</td>
@@ -76,6 +76,5 @@ window.onload=function(){
 </form>
 	</div>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
-	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

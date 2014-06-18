@@ -49,7 +49,6 @@ window.onload=function(){
 		<a href="boardFaqList.html?pageNo=1" class="btn" id="coco">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
-	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 	
 </body>
 </html>

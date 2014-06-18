@@ -1,3 +1,5 @@
+INSERT INTO item(item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, photo, price, total_product, def_exchange, def_refund) VALUES(item_seq.nextval,'s','s',1,'s',sysdate,'s','s','s',123,123,0,0);
+
 SELECT * FROM member
 SELECT user_passwd from member where user_email='gg@gmail.com' and passwd_inquiry='아버지 성함은?' and passwd_answer='김알지';
 insert into member values('admin', '123ad123min123', '글쓰기용어드민생성사용안함','asdf','영자','010','1313','3131','153704','서울시','4층',0,0,0,0,0,'ha',sysdate);

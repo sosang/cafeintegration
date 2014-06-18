@@ -48,7 +48,7 @@ public class ItemDaoImpl implements ItemDao {
 	
 	
 	// 새로운 아이템 등록
-	private static final StringBuffer REG_NEW_ITEM = new StringBuffer("INSERT INTO item(item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info itemInfo, photo, price, total_product, def_exchange, def_refund) VALUES(item_seq.nextval,?,?,?,?,sysdate,?,?,?,?,?,?,?)");
+	private static final StringBuffer REG_NEW_ITEM = new StringBuffer("INSERT INTO item(item_no, item_name, origin, grade, processing, roasting_date, roasting_level, item_info, photo, price, total_product, def_exchange, def_refund) VALUES(item_seq.nextval,?,?,?,?,sysdate,?,?,?,?,?,?,?)");
 	@Override
 	public void regNewItem(ItemVo itemVo, String forDb) {
 		// TODO Auto-generated method stub
