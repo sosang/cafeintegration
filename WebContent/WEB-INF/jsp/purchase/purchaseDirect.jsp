@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>구매하기</title>
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">
 
@@ -163,6 +163,7 @@
 		</div>
 		<br> <br>
 	</div>
+	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

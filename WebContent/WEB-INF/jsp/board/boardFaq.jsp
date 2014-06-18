@@ -51,7 +51,9 @@
 	</c:if>
 	<hr>
 	<c:if test="${empty faqList}">
+	<div class="faqWidth">
 		<h1>등록된 게시물이 없습니다.</h1>
+	</div>
 	</c:if>
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-latest.js"></script>
