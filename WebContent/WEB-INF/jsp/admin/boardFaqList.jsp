@@ -32,7 +32,7 @@ a#coco{
 							<a href="#bda${status.count }"><c:out value="${articles.titleFaq}" /></a>
 						</td>
 						<td width="460px">
-							<c:out value="${articles.contentFaq}" />
+							${articles.contentFaq}
 						</td>
 						<td width="300px">
 							<input class="btn" type="button" onclick="location.href='boardFaqUpdateBefore.html?pageNo=${pageNo }&bdNoFaq=${articles.bdNoFaq}'" value="수정">

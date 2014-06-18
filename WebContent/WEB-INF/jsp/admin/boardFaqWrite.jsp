@@ -9,11 +9,6 @@
 <meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>공지사항 쓰기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<style type="text/css">
-a#coco{
-	background-color: buttonface;
-}
-</style>
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
@@ -28,8 +23,8 @@ window.onload=function(){
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>FAQ 쓰기</h2>
-		<form name="form" method="post" action="boardFaqWrite.html">
-			<table>
+		<form name="fileForm" method="post" enctype="multipart/form-data" action="boardFaqWrite.html">
+			<table class="table-striped">
 				<tr height="40px">
 					<td>제  목</td>
 					<td><input type="text" name="titleFaq" size="115"></td>

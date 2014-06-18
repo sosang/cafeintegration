@@ -92,7 +92,7 @@ public class BoardQaDaoImpl implements BoardQaDao {
 	@Override
 	public BoardQa findByPrimaryKey(Integer bdNoQa) {
 		// TODO Auto-generated method stub
-//		countUp(bdNoQa); // 조회수 증가
+		countUp(bdNoQa); // 조회수 증가
 		RowMapper<BoardQa> mapper = new BeanPropertyRowMapper<BoardQa>(BoardQa.class);
 		return this.template.queryForObject(SELECT_BY_PRIMARY_KEY.toString(), mapper, bdNoQa);
 	}

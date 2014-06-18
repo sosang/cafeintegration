@@ -25,7 +25,7 @@
 								value="${articles.titleFaq}" /></a>
 					</dt>
 					<dd>
-						<c:out value="${articles.contentFaq}" />
+						${articles.contentFaq}
 					</dd>
 				</c:forEach>
 			</dl>

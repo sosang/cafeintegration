@@ -98,7 +98,8 @@ public class BoardFaqDaoImpl implements BoardFaqDao {
 	public BoardFaq getFaqByBdNoFaq(Integer bdNoFaq) {
 		// TODO Auto-generated method stub
 		RowMapper<BoardFaq> mapper = new BeanPropertyRowMapper<BoardFaq>(BoardFaq.class);
-		return this.template.queryForObject(BoardFaqDaoImpl.GET_FAQ_BY_BDNOFAQ.toString(), mapper, bdNoFaq);
+		BoardFaq boardFaq = this.template.queryForObject(BoardFaqDaoImpl.GET_FAQ_BY_BDNOFAQ.toString(), mapper, bdNoFaq);
+		return boardFaq;
 	}
 	
 	
