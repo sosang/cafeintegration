@@ -149,7 +149,7 @@
 								style="resize: none" name="remarks" required="required"></textarea></td>
 					</tr>
 				</table>
-				<input type="submit" value="결제하기"> <a
+				<input type="submit" class="btn btn-primary" value="결제하기"> <a
 					class="btn btn-warning" href="../index/index.html">홈</a>
 
 			</form>
