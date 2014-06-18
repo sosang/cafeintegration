@@ -48,7 +48,6 @@ table.tableType  td title{
 			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn btn-primary" >로그인</a><br>
 		</c:if>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-			<a href="boardReviewsWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a><br>
 		</c:if>
 <c:if test="${!empty articleListRev}">
 		<table class="tableType table-striped">

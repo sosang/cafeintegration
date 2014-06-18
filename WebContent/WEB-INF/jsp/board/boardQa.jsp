@@ -55,7 +55,6 @@ table.leftType{
 			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn btn-primary">로그인</a>
 		</c:if>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${!empty articleListQa}">
 		<table border="1" class="tableType table-striped">
