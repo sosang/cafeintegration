@@ -7,13 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ</title>
+<script>document.createElement('footer');</script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/faq.css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<c:if test="${faqList ne null }">
-		<div align="center" class="body">
+		<div align="center" class="body faqWidth">
 			<h1>FAQ</h1>
 
 			<dl>
@@ -25,7 +26,6 @@
 					<dd>
 						<c:out value="${articles.contentFaq}" />
 					</dd>
-					</li>
 				</c:forEach>
 			</dl>
 
@@ -57,5 +57,7 @@
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/java_script/faq.js"></script>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+			<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
+
 </html>

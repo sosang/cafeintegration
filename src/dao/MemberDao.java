@@ -16,4 +16,8 @@ public interface MemberDao {
 	MemberVo findmemberinfo(String userEmail);
 	MemberVo lookingForPwd(String userEmail, String passwdInquiry,
 			String passwdAnswer);	// 비번찾긔
+	
+	void changeInfo(MemberVo memberVo, String userEmail);
+	
+	void outMember(String userEmail);
 }

@@ -21,12 +21,14 @@ import org.springframework.stereotype.Repository;
 public class MemberDaoImpl implements MemberDao {
 
 	// 사용자 이메일 및 비밀번호 체크
-	private static final String SELECT_BY_USEREMAIL_PASSWD = "SELECT * from member where user_email=? AND user_passwd=?";
+	private static final String SELECT_BY_USEREMAIL_PASSWD = "SELECT * from member where user_email=? AND user_passwd=? and user_level=0";
 
 	// 신규 사용자 계정 생성
 	private static final String INSERT = "INSERT INTO member (user_email, user_passwd, passwd_inquiry, passwd_answer, user_alias, user_phone1,user_phone2,user_phone3, user_postcode, user_address1, user_address2)"
 			+ " VALUES(:userEmail, :userPasswd, :passwdInquiry, :passwdAnswer, :userAlias, :userPhone1,:userPhone2,:userPhone3, :userPostcode, :userAddress1, :userAddress2)";
 
+	private static final String CHANGE_INFO = "UPDATE member set  user_passwd=?, user_phone1=?, user_phone2=?, user_phone3=?, user_postcode=?, user_address1=?, user_address2=? WHERE user_email = ? ";
+	private static final String OUT_MEMBER = "UPDATE member set  user_level=1 WHERE user_email = ? ";
 	// 이메일 중복 체크용
 	private static final String CHECK_USER_EMAIL = "SELECT count(*) from member where user_email=?";
 
@@ -42,7 +44,7 @@ public class MemberDaoImpl implements MemberDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	//email과 비밀번호로 유저 클래스 생성
+	// email과 비밀번호로 유저 클래스 생성
 	@Override
 	public MemberVo findByUserEmailAndUserPasswd(String userEmail,
 			String userPasswd) {
@@ -52,15 +54,15 @@ public class MemberDaoImpl implements MemberDao {
 				userEmail, userPasswd);
 	}
 
-	//회원가입
+	// 회원가입
 	@Override
 	public void create(MemberVo member) {
 		SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(
 				member);
 		this.template.update(MemberDaoImpl.INSERT, parameterSource);
 	}
-	
-	//회원 email 중복 체크
+
+	// 회원 email 중복 체크
 	@Override
 	public int checkUserEmail(String userEmail) {
 
@@ -145,7 +147,6 @@ public class MemberDaoImpl implements MemberDao {
 	private static final StringBuffer SELECT_ALL_BY_USEREMAIL = new StringBuffer(
 			"select user_email userEmail,user_passwd userPasswd, user_alias userAlias, user_phone1 userPhone1, user_phone2 userPhone2, user_phone3 userPhone3, user_postcode userPostcode, user_address1 userAddress1, user_address2 userAddress2 from member where user_email=?");
 
-
 	@Override
 	public MemberVo findmemberinfo(String userEmail) {
 		RowMapper<MemberVo> mapper = new BeanPropertyRowMapper<MemberVo>(
@@ -159,7 +160,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	// 비번찾긔
-	private static final StringBuffer LOOKING_FOR_PWD = new StringBuffer("SELECT * from member where user_email=? and passwd_inquiry=? and passwd_answer=?");
+	private static final StringBuffer LOOKING_FOR_PWD = new StringBuffer(
+			"SELECT * from member where user_email=? and passwd_inquiry=? and passwd_answer=?");
+
 	@Override
 	public MemberVo lookingForPwd(String userEmail, String passwdInquiry,
 			String passwdAnswer) {
@@ -167,8 +170,23 @@ public class MemberDaoImpl implements MemberDao {
 				MemberVo.class);
 		return this.template.queryForObject(LOOKING_FOR_PWD.toString(), mapper,
 				userEmail, passwdInquiry, passwdAnswer);
+
+	}
+
+	@Override
+	public void changeInfo(MemberVo memberVo, String userEmail) {
+		// TODO Auto-generated method stub
+		this.template.update(CHANGE_INFO, memberVo.getUserPasswd(),
+				memberVo.getUserPhone1(), memberVo.getUserPhone2(),
+				memberVo.getUserPhone3(), memberVo.getUserPostcode(),
+				memberVo.getUserAddress1(), memberVo.getUserAddress2(),
+				userEmail);
+	}
+
+	@Override
+	public void outMember(String userEmail) {
+		this.template.update(OUT_MEMBER, userEmail);
 		
 	}
 
-	
 }

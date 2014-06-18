@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+
+<title>상품 목록</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSSitem.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>구매목록</title>
 </head>
+
+
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 
@@ -34,5 +34,6 @@
 		</c:forEach>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

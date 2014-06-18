@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>구매하기</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">
-</head>
+
 
 <script type="text/javascript">
 	function sameaddress() {
@@ -21,10 +21,13 @@
 		document.getElementById("recaddr").value = document
 				.getElementById("userAddress").value;
 	}
-	function changeText(){
-		document.getElementById("remarksarea").value=document.getElementById("recmarks").value;
+	function changeText() {
+		document.getElementById("remarksarea").value = document
+				.getElementById("recmarks").value;
 	}
 </script>
+
+</head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
@@ -138,8 +141,9 @@
 
 					<tr>
 						<td>배송메시지</td>
-						<td><select name="recmarks" id="recmarks" onchange="changeText()"><option
-									value="배송 전에 연락 주세요">배송 전에 연락주세요</option>
+						<td><select name="recmarks" id="recmarks"
+							onchange="changeText()"><option value="배송 전에 연락 주세요">배송
+									전에 연락주세요</option>
 								<option value="경비실에 맡겨주세요">경비실에 맡겨주세요</select>
 						<td>
 					</tr>
@@ -158,5 +162,6 @@
 		</div>
 		<br> <br>
 	</div>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

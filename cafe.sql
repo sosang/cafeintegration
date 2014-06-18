@@ -303,6 +303,7 @@ select * from purchase;
 select * from purchase_seq;
 select * from purchase_line;
 select * from member;
+select * from item;
 select * from postcode where eupmyeondong like '반송%';
 
 

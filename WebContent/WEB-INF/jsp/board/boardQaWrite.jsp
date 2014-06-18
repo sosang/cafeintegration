@@ -23,7 +23,7 @@ window.onload=function(){
 	<div align="center" class="body">
 		<h2>자유게시판 쓰기</h2>
 		<form name="fileForm" method="post" enctype="multipart/form-data" action="boardQaWrite.html">
-			<table>
+			<table class="table-striped">
 				<tr height="40px">
 					<td>제  목</td>
 					<td><input type="text" name="titleQa" size="115"></td>
@@ -50,5 +50,6 @@ window.onload=function(){
 		<a href="boardQa.html?pageNo=1">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

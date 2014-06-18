@@ -51,13 +51,13 @@ table.leftType{
 	<div align="center" class="body">
 		<h2>자유게시판</h2>
 		<c:if test="${empty USER_KEY && empty ADMIN_KEY}">
-			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn" id="coco">로그인</a>
+			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn btn-primary">로그인</a>
 		</c:if>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${!empty articleListQa}">
-		<table border="1" class="tableType title">
+		<table border="1" class="tableType table-striped">
 			<tr>
 				<th align="center" width="5%">번호</th>
 				<th align="center" width="60%">제 목</th>
@@ -132,12 +132,13 @@ table.leftType{
 
 		<hr>
 		<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 글쓰기</a>
+			<a style="text-align:right;" href="boardQaWriteBefore.html" class="btn btn-primary"><i class="fa fa-pencil"></i> 글쓰기</a>
 		</c:if>
 <c:if test="${empty articleListQa}">
 <h1>등록된 게시물이 없습니다.</h1>
 </c:if>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

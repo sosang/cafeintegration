@@ -226,5 +226,19 @@ public class ShopImpl implements Shop {
  	public CartVo myCartItem(String userEmail, Integer itemNo){
  		return this.cartCatalog.getCart(userEmail, itemNo);
  	}
+
+	@Override
+	public void updateMember(MemberVo memberVo, String userEmail) {
+		// TODO Auto-generated method stub
+		this.memberCatalog.updateMember(memberVo, userEmail);
+		
+	}
+
+	@Override
+	public void getoutMycafe(String userEmail) {
+		// TODO Auto-generated method stub
+		this.memberCatalog.getoutMember(userEmail);
+		
+	}
 	
 }

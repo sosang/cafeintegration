@@ -11,7 +11,10 @@
 <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <script type="text/javascript">
 window.onload=function(){
-    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',customConfig: '/cafeintegration/ckeditor/ckwriter.js'});
+    CKEDITOR.replace('contents',{enterMode:'2',shiftEnterMode:'3',language:'ko',
+    	toolbar:[['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-','Find','Replace','SelectAll','RemoveFormat','-','Image','Flash','Table','SpecialChar'],'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']]
+    
+    });
 };
 </script>
 </head>
@@ -21,7 +24,7 @@ window.onload=function(){
 	
 		<h2>후기게시판 답글</h2>
 		<form name="form" method="post" action="boardReviewsReplyForm.html?pageNo=${pageNo }&bdNoRev=${bdNoRev }">
-			<table>
+			<table class="tableType table-striped">
 				<tr height="40px">
 					<td>제  목</td>
 					<td><input type="text" name="titleRev" size="115" value="${boardRevTitle}"></td>
@@ -45,5 +48,6 @@ window.onload=function(){
 		<a href="boardReviews.html?pageNo=${pageNo}">목록으로</a>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

@@ -4,6 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<title>마이 페이지</title>
+
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/CSScart.css">
 <script type="text/javascript">
 	function submitForm1() {
 		var form = document.forms['test_form'];
@@ -15,12 +22,16 @@
 		form.action = '../purchase/purchaseDirect2.html';
 		form.submit();
 	}
+	function OutCafe() {
+		var form = document.forms['out_form'];
+		if (confirm("정말 탈퇴하시겠습니까??") == true) { //확인
+			form.action = '../memberentry/memberOut.html';
+			form.submit();
+		} else { //취소
+			return;
+		}
+	}
 </script>
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/CSScart.css">
-
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 
 </head>
 <body>
@@ -28,30 +39,33 @@
 
 	<div id="myInfo"
 		style="width: 280px; height: 210px; border: solid 2px; margin: 50px; padding: 5px; float: left">
-		<p>
-			<img
-				src="http://th06.deviantart.net/fs71/PRE/f/2011/310/5/a/giant_nyan_cat_by_daieny-d4fc8u1.png"
-				width="40px" height="30px" style="float: left; margin: 5px"> <font
-				size="2">${user.userAlias }님</font><br> <font size="2">
-				cafe4.0에 오신것을 환영합니다.</font>
-		</p>
-		<p>
-			<img src="../img/phone.png" style="float: left; margin: 2px"><font
-				size="2">${user.userPhone1 }-${user.userPhone2 }-${user.userPhone3 }</font>
-		</p>
-		<p>
-			<img src="../img/email.png" style="float: left; margin: 2px"><font
-				size="2">${user.userEmail }</font>
-		</p>
-		<br>
-		<p style="text-align: center">------------------------------</p>
+		<form name="out_form">
+			<p>
+				<img
+					src="http://th06.deviantart.net/fs71/PRE/f/2011/310/5/a/giant_nyan_cat_by_daieny-d4fc8u1.png"
+					width="40px" height="30px" style="float: left; margin: 5px">
+				<font size="2">${user.userAlias }님</font><br> <font size="2">
+					cafe4.0에 오신것을 환영합니다.</font>
+			</p>
+			<p>
+				<i class="fa fa-mobile"></i> <font size="2">${user.userPhone1 }-${user.userPhone2 }-${user.userPhone3 }</font>
+			</p>
+			<p>
+				<i class="fa fa-envelope-o"></i><font size="2">${user.userEmail }</font>
+			</p>
+			<br>
+			<p style="text-align: center">------------------------------</p>
 
-		<p style="text-align: center">
-			<input type="button" value="정보 수정" class="btn btn-primary">
-		</p>
+			<p style="text-align: center">
+				<input type="button" value="정보 수정" class="btn btn-primary"
+					onclick="location.href='../memberentrychange/memberEntryChange.html'">
+				<input type="button" value="회원 탈퇴" class="btn btn-warning"
+					onclick="OutCafe()">
+			</p>
+		</form>
 	</div>
 
-	<div align="center" class="body">
+	<div align="center" class="body" style="width: 80%">
 		<div class="cart">
 			<form name="test_form">
 
@@ -96,7 +110,7 @@
 					<th width="300">상품명</th>
 					<th width="150">가격</th>
 					<th>상품갯수</th>
-					<th width="150"	>소계</th>
+					<th width="150">소계</th>
 					<th>주문일자</th>
 				</tr>
 				<c:forEach items="${mypurchase }" var="purchaseSet">
@@ -116,5 +130,6 @@
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

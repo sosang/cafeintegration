@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>구매하기</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSScart.css">
-</head>
+
 <script type="text/javascript">
 	function sameaddress() {
 		document.getElementById("receivername").value = document
@@ -24,6 +24,8 @@
 		document.getElementById("remarksarea").value=document.getElementById("recmarks").value;
 	}
 </script>
+
+</head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
@@ -154,5 +156,6 @@
 		</div>
 		<br> <br>
 	</div>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

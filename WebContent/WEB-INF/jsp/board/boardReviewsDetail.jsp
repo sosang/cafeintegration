@@ -6,12 +6,17 @@
 <meta charset="UTF-8">
 <title>후기게시판 읽기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+.myColor{
+	background-color: #1fa67a;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>후기게시판 읽기</h2>
-		<table class="tableType">
+		<table class="tableType table-striped">
 		
 			<tr>
 				<th height="40px" width="10%">제목</th>
@@ -36,31 +41,31 @@
 			<tr>
 				<td colspan="6" align="center" style="text-align: right;">글쓴이IP : ${boardReviews.userIp }</td>
 			</tr>
-			
+			<tr>
+				<td colspan="3">
+					<c:if test="${writer == USER_KEY.userEmail }">
+						<form class="pull-right" name="form" method="post" action="boardReviewsDeleteBefore.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}">
+							<input type="hidden" value="${boardReviews }" name="boardQa">
+							<input type="hidden" value="${pageNo }" name="pageNo">
+							<input type="hidden" value="${boardReviews.bdNoRev }" name="bdNoRev">
+							<input type="hidden" value="${boardReviews.refRev }" name="refRev">
+							<input type="hidden" value="${boardReviews.reStep }" name="reStepRev">
+							<input type="hidden" value="${boardReviews.reLevel }" name="reLevelRev">
+							<input class="btn btn-info" type="button" onclick="location.href='boardReviewsEdit.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="수정하긔">
+							<input class="btn btn-danger" type="button" onclick="delConfirm()" value="삭제허기"> 
+						</form>
+						<%-- <input type="button" onclick="location.href='boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="삭제하긔"> --%>
+					</c:if>
+				</td>
+				<td colspan="3">
+					<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
+						<input class="btn btn-info" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
+						<input class="btn btn-success pull-right" type="button" onclick="location.href='boardReviewsRecommend.html?pageNo=${pageNo}&bdNoRev=${boardReviews.bdNoRev}'" value="추천하긔">
+					</c:if>
+				</td>
+			</tr>
+		
 		</table>
-		
-		
-		<c:if test="${writer == USER_KEY.userEmail }">
-			<input type="hidden" value="${boardReviews }" name="boardQa">
-			<input type="hidden" value="${pageNo }" name="pageNo">
-			<input type="hidden" value="${boardReviews.bdNoRev }" name="bdNoRev">
-			<input type="hidden" value="${boardReviews.refRev }" name="refRev">
-			<input type="hidden" value="${boardReviews.reStep }" name="reStepRev">
-			<input type="hidden" value="${boardReviews.reLevel }" name="reLevelRev">
-			
-			<input  class="btn " type="button" onclick="location.href='boardReviewsEdit.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="수정하긔">
-			<input class="btn " type="button" onclick="location.href='boardReviewsReplyBefore.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'" value="답글달긔">
-			
-			<form name="form" method="post" action="boardReviewsDeleteBefore.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}">
-				<input class="btn " type="button" onclick="delConfirm()" value="삭제허기"> 
-			</form>
-			<%-- <input type="button" onclick="location.href='boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="삭제하긔"> --%>
-		</c:if>
-		
-		<c:if test="${!empty USER_KEY}">
-			<input class="btn " type="button" onclick="location.href='boardReviewsRecommend.html?pageNo=${pageNo}&bdNoRev=${boardReviews.bdNoRev}'" value="추천하긔">
-		</c:if>
-		
 <%-- 여기부터 댓글관련 --%>
 
 <hr style="visibility: hidden;">
@@ -68,16 +73,16 @@
 <hr style="visibility: hidden;">
 
 <%-- 여기까지 댓글관련 --%>
-		<a href="boardReviews.html?pageNo=${pageNo}">목록으로</a>
+		<a href="boardReviews.html?pageNo=${pageNo}" class="btn btn-info">목록으로</a>
 	
 	<c:if test="${!empty boardReviewsList}">
-		<table class="tableType">
-			<tr>
-				<th align="center" width="5%">번호</th>
-				<th align="center" width="60%">제 목</th>
-				<th align="center" width="10%">글쓴이</th>
-				<th align="center" width="15%">글쓴날</th>
-				<th align="center" width="10%">조회/추천수</th>
+		<table class="tableType table-striped">
+			<tr class="active" >
+				<th class="active" align="center" width="5%">번호</th>
+				<th class="active" align="center" width="60%">제 목</th>
+				<th class="active" align="center" width="10%">글쓴이</th>
+				<th class="active" align="center" width="15%">글쓴날</th>
+				<th class="active" align="center" width="10%">조회/추천수</th>
 			</tr>
 
 			<c:forEach items="${boardReviewsList}" var="reviews">
@@ -168,5 +173,6 @@ function reallyRev(bdNoRevComments){
 <%--삭제 확인폼 --%>
 </script>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

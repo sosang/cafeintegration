@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<title>상품 상세 화면</title>
+
+<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/CSSdetail.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <script type="text/javascript">
 	function submitForm1() {
 		var form = document.forms['test_form'];
@@ -19,8 +22,7 @@
 		form.submit();
 	}
 </script>
-<title>상품 상세 화면</title>
-<%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+
 </head>
 <body>
 	<c:choose>
@@ -101,8 +103,8 @@
 			</div>
 			<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		</c:when>
-		<c:when  test="${userEmail == null }">
-		<%@ include file="/WEB-INF/jsp/header.jsp"%>
+		<c:when test="${userEmail == null }">
+			<%@ include file="/WEB-INF/jsp/header.jsp"%>
 			<div class="body">
 
 				<table class="tblock">
@@ -160,7 +162,8 @@
 															<option value="9">9</option>
 													</select>&nbsp;개</td>
 													<td width="150px"><input type="button" value="로그인"
-														class="btn btn-warning" onclick="location.href='../login/login.html'"> </td>
+														class="btn btn-warning"
+														onclick="location.href='../login/login.html'"></td>
 												</tr>
 											</table>
 										</form>
@@ -174,5 +177,6 @@
 			<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		</c:when>
 	</c:choose>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

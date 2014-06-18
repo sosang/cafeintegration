@@ -10,54 +10,65 @@
 a#coco{
 	background-color: buttonface;
 }
+#lleft{
+	align : left;
+}
 </style>
 </head>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>자유게시판 읽기</h2>
-		<table class="tableType">
+		<table class="tableType table-striped">
 			<tr>
 			
-				<th height="40px"  width="10%">제목</th>
+				<th height="40px"  width="10%" class="active" >제목</th>
 				<td width="60%">${boardQa.titleQa}</td>
-				<th align="right" width="10%">조회수</th>
+				<th align="right" width="10%" class="active" >조회수</th>
 				<td width="20%">${boardQa.countQa }</td>
 			</tr>
 			<tr>
-				<th height="40px">글쓴이</th>
+				<th height="40px" class="active" >글쓴이</th>
 				<td>${boardQa.userEmail}</td>
-				<th>작성일</th>
+				<th class="active" >작성일</th>
 				<td>${boardQa.dateQa }</td>
 			</tr>
 	
 			<tr style="border-top: 1px solid #F5CB43; ">
-				<th height="40px" width="80">내용</th>
+				<th height="40px" width="80" class="active" >내용</th>
 				<td width="30%" colspan="3"><pre style="background-color: #fff; border: 0px">${boardQa.contentQa}</pre></td>
 			</tr>
 			<tr>
 				<td colspan="4" style="text-align: right;">글쓴이IP : ${boardQa.userIp }</td>
 			</tr>
-		</table><p>
-		<c:if test="${writer == USER_KEY.userEmail || writer == ADMIN_KEY.adminEmail}">
-			<form name="form" method="post" action="boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}">
-				<input type="hidden" value="${boardQa }" name="boardQa">
-				<input type="hidden" value="${pageNo }" name="pageNo">
-				<input type="hidden" value="${boardQa.bdNoQa }" name="bdNoQa">
-				<input type="hidden" value="${boardQa.refQa }" name="refQa">
-				<input type="hidden" value="${boardQa.reStep }" name="reStepQa">
-				<input type="hidden" value="${boardQa.reLevel }" name="reLevelQa">
-				<input class="btn" type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하긔">
-				<input class="btn" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
-				<input class="btn" type="button" onclick="delConfirm()" value="삭제허기"> 
-			</form>
-		</c:if>
+			<tr>
+				<td colspan="3">
+					<c:if test="${writer == USER_KEY.userEmail || writer == ADMIN_KEY.adminEmail}">
+						<form class="pull-right " name="form" method="post" action="boardQaDeleteBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}">
+							<input type="hidden" value="${boardQa }" name="boardQa">
+							<input type="hidden" value="${pageNo }" name="pageNo">
+							<input type="hidden" value="${boardQa.bdNoQa }" name="bdNoQa">
+							<input type="hidden" value="${boardQa.refQa }" name="refQa">
+							<input type="hidden" value="${boardQa.reStep }" name="reStepQa">
+							<input type="hidden" value="${boardQa.reLevel }" name="reLevelQa">
+							<input class="btn btn-info" type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하기">
+							<input class="btn btn-danger" type="button" onclick="delConfirm()" value="삭제하기"> 
+						</form>
+					</c:if>
+				</td>
+				<td>
+					<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
+						<input class="btn btn-info pull-right" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달기">
+					</c:if>
+				</td>
+			</tr>
+		</table>
 <%-- 여기부터 댓글관련 --%>
 <hr>
 <%@ include file="/WEB-INF/jsp/board/boardQaDetailComments.jsp"%>
 <hr>
 
 <%-- 여기까지 댓글관련 --%>
-		<a href="boardQa.html?pageNo=${pageNo}" id="coco" class="btn">목록으로</a>
+		<a href="boardQa.html?pageNo=${pageNo}" class="btn btn-info">목록으로</a>
 		
 <%-- 여기부터 질답목록 --%>
 <c:if test="${!empty boardQaList}">
@@ -155,5 +166,6 @@ function really(bdNoQaComments){
 <%--삭제 확인폼 --%>
 </script>
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>

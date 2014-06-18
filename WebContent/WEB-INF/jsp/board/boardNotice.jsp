@@ -30,11 +30,11 @@ a.listtxt:hover {
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<h2>공지사항 테스트</h2>
+		<h2>공지사항</h2>
 <c:if test="${articleList ne null }">
 		<table class="tableType"  border="1">
 			
-			<tr class="header">
+			<tr class="table-striped">
 				<th align="center" width="15%">번호</th>
 				<th align="center" width="60%">제 목</th>
 				<th align="center" width="15%">글쓴날</th>
@@ -87,5 +87,6 @@ a.listtxt:hover {
 		
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
+		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>
