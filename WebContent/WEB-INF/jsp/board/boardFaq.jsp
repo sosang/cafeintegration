@@ -26,7 +26,6 @@
 					<dd>
 						<c:out value="${articles.contentFaq}" />
 					</dd>
-					</li>
 				</c:forEach>
 			</dl>
 

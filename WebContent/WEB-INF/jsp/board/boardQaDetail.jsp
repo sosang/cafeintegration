@@ -50,14 +50,14 @@ a#coco{
 							<input type="hidden" value="${boardQa.refQa }" name="refQa">
 							<input type="hidden" value="${boardQa.reStep }" name="reStepQa">
 							<input type="hidden" value="${boardQa.reLevel }" name="reLevelQa">
-							<input class="btn btn-info" type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하긔">
-							<input class="btn btn-danger" type="button" onclick="delConfirm()" value="삭제허기"> 
+							<input class="btn btn-info" type="button" onclick="location.href='boardQaEdit.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="수정하기">
+							<input class="btn btn-danger" type="button" onclick="delConfirm()" value="삭제하기"> 
 						</form>
 					</c:if>
 				</td>
 				<td>
 					<c:if test="${!empty USER_KEY || !empty ADMIN_KEY}">
-						<input class="btn btn-info pull-right" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달긔">
+						<input class="btn btn-info pull-right" type="button" onclick="location.href='boardQaReplyBefore.html?pageNo=${pageNo }&bdNoQa=${boardQa.bdNoQa}'" value="답글달기">
 					</c:if>
 				</td>
 			</tr>

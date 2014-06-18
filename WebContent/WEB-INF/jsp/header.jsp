@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../css/basic.css" />
 </head>
 
-<body id="top" class="fluid">
+<div id="top" class="fluid">
 	<div class=" navbar-inverse " role="navigation">
 
 		<div class="navbar-header">
@@ -80,9 +80,5 @@
 
 	</div>
 
-	<footer>
-
-	</footer>
-
-</body>
+</div>
 </html>

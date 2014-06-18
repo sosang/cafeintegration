@@ -6,12 +6,17 @@
 <meta charset="UTF-8">
 <title>후기게시판 읽기</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
+<style type="text/css">
+.myColor{
+	background-color: #1fa67a;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
 		<h2>후기게시판 읽기</h2>
-		<table class="tableType">
+		<table class="tableType table-striped">
 		
 			<tr>
 				<th height="40px" width="10%">제목</th>

@@ -23,7 +23,7 @@ window.onload=function(){
 	<div align="center" class="body">
 		<h2>후기게시판 쓰기</h2>
 		<form name="fileForm" method="post" enctype="multipart/form-data" action="../board/boardReviewsWrite.html"> 
-			<table>
+			<table class="tableType table-striped">
 				<tr height="40px">
 					<td>제  목</td>
 					<td><input type="text" name="titleRev" size="115"></td>

@@ -143,7 +143,7 @@ label{
 }
  
  
- /**********************테이블*****************/
+/**********************테이블*****************/
 .tableType,.tableType th,.tableType td {
 	border: 0
 }
@@ -172,7 +172,6 @@ label{
 	/* border-top: solid 1px #999;*/
 		border-bottom: solid 1px #d2d2d2; 
 	text-align : center;
-	background-color: #e1e1e1;             /* #e1e1e1; 회색 */
 	font-weight: bold;
 								/* 	line-height: 5px; 높이  : 이걸 널경우 반응형 특히 모바일로 갈수록 글자가 겹치는 현상이 나타남 */
 	vertical-align: middle;
@@ -190,7 +189,6 @@ label{
 	margin-left: auto;
 	width:100%;
 }
-
 #footer {
 	background-color: #1fa67a;
 	border-top: 1px solid #1b926c;
@@ -261,4 +259,8 @@ cursor: auto;
 	.aboutUs_bg {
 	margin:0;
 	}
+}
+
+h2{
+		color: -webkit-link;
 }

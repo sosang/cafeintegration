@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -25,7 +25,7 @@
 
 		<c:when test="${loginMemberVo.userEmail == null }">
 
-			<div style="margin-top: 150px" align="center" class="body">
+			<div style="margin-top: 50px" align="center" class="body">
 				<form:form modelAttribute="memberVo" class="signin" method="post"
 					action="../login/login.html">
 					<spring:hasBindErrors name="memberVo" >
@@ -70,33 +70,11 @@
 			</div>
 		</c:when>
 
-
-
-		<c:when test="${loginMemberVo.userEmail != null }">
-
-
-			<table>
-
-				<tr height="40px">
-					<td align="center">${loginMemberVo.userEmail }님이접속됨</td>
-					<td><a href="../userentryform/member.html">SignUp</a></td>
-					<td><a href="../login/logout.html">Logout</a></td>
-				</tr>
-
-				<tr height="40px">
-
-				</tr>
-
-			</table>
-
-		</c:when>
-
 	</c:choose>
 
 
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
-
 
 </body>
 </html>
