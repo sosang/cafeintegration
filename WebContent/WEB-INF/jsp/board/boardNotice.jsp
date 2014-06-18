@@ -30,7 +30,9 @@ a.listtxt:hover {
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<h2>공지사항</h2>
+		<div class="topblock">
+		<p>공지사항</p>
+	</div>
 <c:if test="${articleList ne null }">
 		<table class="tableType table-striped" >
 			

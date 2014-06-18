@@ -42,7 +42,9 @@ table.tableType  td title{
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<h2>후기게시판</h2>
+		<div class="topblock">
+		<p>후기게시판</p>
+	</div>
 		
 		<c:if test="${empty USER_KEY && empty ADMIN_KEY}">
 			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn btn-primary" >로그인</a><br>

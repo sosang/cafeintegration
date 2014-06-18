@@ -34,7 +34,7 @@
 			action='boardRevWriCom.html?pageNo=${pageNo }&bdNoRev=${boardReviews.bdNoRev}'>
 			<table class="tableType">
 				<tr style="height: 65px">
-					<td width="10%">${USER_KEY.userEmail }</td>
+					<td width="10%">${USER_KEY.userAlias }</td>
 
 					<td width="80%">
 					<input type="hidden" name="bdNoRev"	value="${boardReviews.bdNoRev }" /> 

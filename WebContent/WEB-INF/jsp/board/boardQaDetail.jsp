@@ -64,9 +64,9 @@ a#coco{
 			</tr>
 		</table>
 <%-- 여기부터 댓글관련 --%>
-<hr>
+<hr style="visibility: hidden;">
 <%@ include file="/WEB-INF/jsp/board/boardQaDetailComments.jsp"%>
-<hr>
+<hr style="visibility: hidden;">
 
 <%-- 여기까지 댓글관련 --%>
 		<a href="boardQa.html?pageNo=${pageNo}" class="btn btn-info">목록으로</a>

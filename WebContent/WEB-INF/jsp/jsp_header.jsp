@@ -14,5 +14,9 @@
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css">
+	<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/faq.css">
 <!-- FontAwesome -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/CSSitem.css">

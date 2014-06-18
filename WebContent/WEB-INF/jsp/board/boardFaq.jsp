@@ -14,9 +14,13 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	
 	<c:if test="${faqList ne null }">
+	<div class="topblock">
+		<p>FAQ</p>
+	</div>
 		<div align="center" class="body faqWidth">
-			<h1>FAQ</h1>
+			
 
 			<dl>
 				<c:forEach items="${faqList}" var="articles" varStatus="status">

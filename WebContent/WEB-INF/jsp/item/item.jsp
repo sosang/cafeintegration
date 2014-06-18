@@ -7,14 +7,9 @@
 <meta name="viewport" content="width=device-width,  initial-scale=1">
 <title>상품 목록</title>
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/CSSitem.css">
 </head>
-
-
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-
 	<div class="topblock">
 		<p>Coffee Bean</p>
 	</div>
