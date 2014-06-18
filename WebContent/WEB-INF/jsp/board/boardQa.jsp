@@ -74,7 +74,7 @@ table.leftType{
 					</td>
 					
 					
-					<td align="left" class="leftType" >
+					<td align="left" class="leftType">
 					<c:choose>
 						<c:when test="${article.reStep == 0}">
 							<a	href="<c:url value="boardQaDetail.html">

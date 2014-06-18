@@ -48,6 +48,13 @@
 	width:40%;
 	margin:0 auto;
 }
+@media(max-width: 768px ) {
+	#memberEntryBox{
+	width:98%;
+	margin:0 auto;
+	}
+}
+
 .input-size{
 	padding-bottom:10px;
 }
@@ -121,7 +128,7 @@ label{
 }
 @media(max-width: 768px ) {
 	.memberResult{
-	width: 100%;
+	width: 98%;
 	margin: 0 auto;
 	padding-top: 5px;
 	font-size: smaller;
@@ -155,34 +162,38 @@ label{
 
 .tableType {
 	font-family: "맑은 고딕";
-	width: 70%;
+	width: 50%;
 	/* border-bottom: 1px solid #999; */
 	color: #666;
 
 	font-size: 12px;
 	table-layout: fixed
 }
+@media (max-width: 763px){
+    .tableType{
+        margin:0 auto; width: 98%
+    }
+}
 
 .tableType .frm label {
 	display: none
 }
 
-.tableType th {
+/* .tableType th {
 	padding: 5px 0 4px;
-	/* border-top: solid 1px #999;*/
-		border-bottom: solid 1px #d2d2d2; 
+	border-top: solid 1px #999;
+	border-bottom: solid 1px #d2d2d2; 
 	text-align : center;
 	font-weight: bold;
-								/* 	line-height: 5px; 높이  : 이걸 널경우 반응형 특히 모바일로 갈수록 글자가 겹치는 현상이 나타남 */
+									line-height: 5px; 높이  : 이걸 널경우 반응형 특히 모바일로 갈수록 글자가 겹치는 현상이 나타남
 	vertical-align: middle;
 }
 
 .tableType td {
 	padding: 8px 10px 5px;
-	border-bottom: solid 1px #d2d2d2;         /* #d2d2d2; 회색 */
-	text-align:  center;
+	border-bottom: solid 1px #d2d2d2;         #d2d2d2; 회색
 }
-
+ */
 /* ==========* footer *=========== */
 #fixedBottom{
 	margin-right: auto;
