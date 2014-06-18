@@ -95,7 +95,7 @@ public class ItemController  {
 		return modelAndView;
 	}
 
-//	// 후기게시판 파일 저장을 위한 페이지 생성
+	// 아이템 추가
 	@RequestMapping("/admin/itemReg")
 	public ModelAndView boardReviewsWrite(@Valid ItemVo itemVo, BindingResult bindingResult, 
 			HttpServletRequest request, @RequestParam("filePath")MultipartFile filePath) throws Exception{

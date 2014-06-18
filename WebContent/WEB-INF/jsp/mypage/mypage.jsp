@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -95,9 +95,9 @@
 					</c:forEach>
 					<tr style="text-align: center">
 						<td colspan="5"><input type="button" value="선택삭제"
-							class="btn btn-warning" onclick="submitForm1()"> <input
+							class="btn btn-warning" onclick="submitForm1()"> <c:if test="${!empty mycart }"> <input
 							type="button" class="btn btn-danger" value="바로구매"
-							onclick="submitForm2()"></td>
+							onclick="submitForm2()"></c:if><c:if test="${empty mycart }"></c:if></td>
 					</tr>
 				</table>
 			</form>
