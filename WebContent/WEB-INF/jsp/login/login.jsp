@@ -9,8 +9,6 @@
 <title>로그인</title>
 </head>
 <body>
-
-
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 <div class="loginForm">
 	<c:choose>

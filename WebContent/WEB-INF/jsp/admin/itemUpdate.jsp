@@ -46,7 +46,7 @@ window.onload=function(){
 						</tr>
 						<tr height="50">
 							<td width="80">비고</td>
-							<td width="160"><input type="text" id="content1" name="itemInfo" size="115" value="${item.itemInfo}"></td>
+							<td width="160"><textarea type="text" id="content1" name="itemInfo">${item.itemInfo}</textarea></td>
 						</tr>
 						<tr height="50">
 							<td width="80">로스팅정도</td>

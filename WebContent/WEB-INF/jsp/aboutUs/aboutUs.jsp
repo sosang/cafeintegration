@@ -11,7 +11,7 @@
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
-<div class="aboutUs_bg"><center><img src="../img/TypeOfCoffee.jpg" class="img-responsive"></center></div>
+<div class="aboutUs_bg"><img src="../img/TypeOfCoffee.jpg" class="img-responsive"></div>
 
 <%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 <%@ include file="/WEB-INF/jsp/footer.jsp"%>

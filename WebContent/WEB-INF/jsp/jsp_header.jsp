@@ -18,5 +18,3 @@
 	href="<%=request.getContextPath()%>/css/faq.css">
 <!-- FontAwesome -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/CSSitem.css">
