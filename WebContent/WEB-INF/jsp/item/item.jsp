@@ -28,7 +28,7 @@
 				
 					<li>
 					
-					<img src="${item.photo}" style="max-height: 300px; max-width: 600px"></li>
+					<img src="${item.photo}"  width=150 height=200></li>
 					<li><p>${item.itemName }</p></li>
 					<li><p>${item.price }원</p></li>
 					<li><p>
