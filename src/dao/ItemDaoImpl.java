@@ -87,7 +87,6 @@ public class ItemDaoImpl implements ItemDao {
 	@Override
 	public void updateFilePath(Integer itemNo, String forDb) {
 		// TODO Auto-generated method stub
-		System.out.println(forDb);
 		this.template.update(ItemDaoImpl.UPDATE_THE_FILE_PATH.toString(), forDb, itemNo);
 	}
 	
