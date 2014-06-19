@@ -11,6 +11,7 @@ import java.util.List;
 
 
 
+
 import logic.ItemVo;
 import logic.SaveFilePathTo;
 
@@ -25,7 +26,7 @@ public interface ItemDao {
 
 	void setItemImageFilePath(int newItemNo, String forDb);	// 상품 이미지 경로 저장
 
-	void itemUpdate(ItemVo itemVo, Integer itemNo);	// 상품 내용 수정 
+	void itemUpdate(ItemVo itemVo, Integer itemNo, String forDb);	// 상품 내용 수정 
 
 	void updateFilePath(Integer itemNo, String forDb);	// 수정된 상품 이미지 파일 경로 갱신
 

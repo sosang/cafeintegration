@@ -41,10 +41,13 @@ table.tableType  td title{
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<div align="center" class="body">
-		<div class="topblock">
+<div class="faqWidth">
+<div class="topblock">
 		<p>후기게시판</p>
 	</div>
+</div>
+	<div align="center" class="body">
+		
 		
 		<c:if test="${empty USER_KEY && empty ADMIN_KEY}">
 			<font color="blue">글을 쓰시려면 ☞</font> <a href="../login/login.html" class="btn btn-primary" >로그인</a><br>

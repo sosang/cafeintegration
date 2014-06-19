@@ -13,7 +13,7 @@ public interface ItemCatalog {
 
 	void setFilePath(int newItemNo, String forDb); // 아이템 이미지 경로 저장
 
-	void itemUpdate(ItemVo itemVo, Integer itemNo); // 상품내용 수정
+	void itemUpdate(ItemVo itemVo, Integer itemNo, String forDb); // 상품내용 수정
 
 	void updateFilePath(Integer itemNo, String forDb); // 수정된 상품 내용의 이미지파일 경로 갱신
 

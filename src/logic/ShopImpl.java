@@ -171,9 +171,9 @@ public class ShopImpl implements Shop {
 
 	// 상품내용 수정
 	@Override
-	public void itemUpdate(ItemVo itemVo, Integer itemNo) {
+	public void itemUpdate(ItemVo itemVo, Integer itemNo, String forDb) {
 		// TODO Auto-generated method stub
-		this.itemCatalog.itemUpdate(itemVo, itemNo);
+		this.itemCatalog.itemUpdate(itemVo, itemNo, forDb);
 	}
 
 	// 수정된 상품 내용의 이미지파일 경로 갱신

@@ -11,11 +11,11 @@
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	
 	<c:if test="${faqList ne null }">
-	<div class="topblock">
+	
+		<div align="center" class="body faqWidth">
+			<div class="topblock">
 		<p>FAQ</p>
 	</div>
-		<div align="center" class="body faqWidth">
-			
 
 			<dl>
 				<c:forEach items="${faqList}" var="articles" varStatus="status">

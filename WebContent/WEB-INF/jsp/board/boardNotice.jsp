@@ -30,10 +30,15 @@ a.listtxt:hover {
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<div class="topblock">
+		
+<c:if test="${articleList ne null }">
+<div class="faqWidth">
+<div class="topblock">
 		<p>공지사항</p>
 	</div>
-<c:if test="${articleList ne null }">
+</div>
+<div align="center" class="body">
+
 		<table class="tableType table-striped" >
 			
 			<tr >
@@ -81,12 +86,13 @@ a.listtxt:hover {
 			</c:if>
 		</c:if>
 		<!-- 하단부 페이지 이동버튼 만들기 -->
+		</div>
 </c:if>
 
 <c:if test="${empty articleList}">
 <h1>등록된 게시물이 없습니다.</h1>
 </c:if>
-		
+	
 	</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		<%@ include file="/WEB-INF/jsp/footer.jsp"%>

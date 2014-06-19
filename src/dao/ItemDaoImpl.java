@@ -75,11 +75,11 @@ public class ItemDaoImpl implements ItemDao {
 	}
 	
 	// 상품 내용 수정
-	private static final StringBuffer UPDATE_THE_ITEM = new StringBuffer("UPDATE item set item_name=?, origin=?, grade=?, processing=?, roasting_level=?, item_info=?, price=?, total_product=? WHERE item_no = ?");
+	private static final StringBuffer UPDATE_THE_ITEM = new StringBuffer("UPDATE item set item_name=?, origin=?, grade=?, processing=?, roasting_level=?, item_info=?, photo=?, price=?, total_product=? WHERE item_no = ?");
 	@Override
-	public void itemUpdate(ItemVo itemVo, Integer itemNo) {
+	public void itemUpdate(ItemVo itemVo, Integer itemNo, String forDb) {
 		// TODO Auto-generated method stub
-		this.template.update(ItemDaoImpl.UPDATE_THE_ITEM.toString(), itemVo.getItemName(), itemVo.getOrigin(), itemVo.getGrade(), itemVo.getProcessing(), itemVo.getRoastingLevel(), itemVo.getItemInfo(), itemVo.getPrice(), itemVo.getTotalProduct(), itemNo);
+		this.template.update(ItemDaoImpl.UPDATE_THE_ITEM.toString(), itemVo.getItemName(), itemVo.getOrigin(), itemVo.getGrade(), itemVo.getProcessing(), itemVo.getRoastingLevel(), itemVo.getItemInfo(), forDb, itemVo.getPrice(), itemVo.getTotalProduct(), itemNo);
 	}
 	
 	// 수정된 상품 이미지 파일 경로 갱신

@@ -1,9 +1,14 @@
+ul {
+	list-style: none;
+}
+
+li {
+	list-style: none;
+}
+
 .topblock{
-	height: 100px;
 	margin-bottom: 10px;
 	border-bottom: 4px dashed black;
-	padding-top: 50px;
-	padding-left: 20px;
 }
 .topblock p{
 	font-size: 30px;
@@ -14,6 +19,11 @@
 	padding-top : 100px;
 	margin:0 auto;
 	width:40%;
+	
+}
+.itemForm{
+	margin:0 auto;
+	width:60%;
 	
 }
 #loginTable{
@@ -84,6 +94,10 @@
 	#loginTable{
 	margin : 0 auto;
 	width : 98%;
+	}
+	.itemForm{
+		margin:0 auto;
+		width:98%;
 	}
 }
 

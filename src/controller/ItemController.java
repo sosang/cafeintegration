@@ -186,13 +186,15 @@ public class ItemController  {
 		// 새로 파일을 업로드 한경우 경로를 갱신
 		// 그렇지 않을 경우 기존 경로를 사용
 		if(filePath.isEmpty()){
-			this.shopService.itemUpdate(itemVo, itemNo);
+			this.shopService.itemUpdate(itemVo, itemNo, itemVo.getPhoto());
 			String url="redirect:itemList.html";
 			return new ModelAndView(url);	// 글을 쓰고 목록 첫 페이지로 돌아감
 		}else{
 			String originFileName = filePath.getOriginalFilename();
 			String extention = originFileName.substring(originFileName.lastIndexOf(".")+1, originFileName.length());
+			String forDb = "";
 			if(extention.equals("jpg")||extention.equals("gif")||extention.equals("bmp")||extention.equals("png")||extention.equals("tif")||extention.equals("tiff")||extention.equals("jpeg")||extention.equals("jpe")||extention.equals("jfif")||extention.equals("dib")||extention == ""){
+				forDb = "../img/"+originFileName;
 			}else{
 				ModelAndView modelAndView = new ModelAndView("admin/itemList");
 				return modelAndView;
@@ -201,7 +203,6 @@ public class ItemController  {
 			// WAR파일로 뿌렷을 때
 			String uploadPath = "C:/Tomcat 7/webapps/cafeintegration/img";
 			// DB저장하기
-			String forDb = "../img/"+originFileName;
 
 			// 시작
 			File saveDir = new File(uploadPath);
@@ -223,7 +224,7 @@ public class ItemController  {
 				return modelAndView;
 			}
 			// 내용을 사빕한다.
-			this.shopService.itemUpdate(itemVo, itemNo);
+			this.shopService.itemUpdate(itemVo, itemNo, forDb);
 			// 업로드 파일 저장
 			writeFile(filePath, uploadPath, originFileName);
 			// 파일경로 쓰기

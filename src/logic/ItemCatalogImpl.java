@@ -61,9 +61,9 @@ public class ItemCatalogImpl implements ItemCatalog {
 	// 상품 내용 수정
 
 	@Override
-	public void itemUpdate(ItemVo itemVo, Integer itemNo) {
+	public void itemUpdate(ItemVo itemVo, Integer itemNo, String forDb) {
 		// TODO Auto-generated method stub
-		this.itemDao.itemUpdate(itemVo, itemNo);
+		this.itemDao.itemUpdate(itemVo, itemNo, forDb);
 	}
 
 	// 수정된 상품의 이미지파일 경로 수정
