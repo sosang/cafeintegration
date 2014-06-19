@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/jsp/jsp_header.jsp"%>
-<link rel="stylesheet" href="../css/basic.css" />
 </head>
 
 <body id="top" class="fluid">

@@ -12,13 +12,13 @@
 
 
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<div class="loginForm">
 	<c:choose>
 
 		<c:when test="${loginMemberVo.userEmail == null }">
 
-			<div style="margin-top: 150px" align="center" >
-				<form:form modelAttribute="memberVo" class="signin" method="post"
+			
+				<form:form modelAttribute="memberVo" method="post" cssClass="form-horizontal"
 					action="../login/login.html">
 					<spring:hasBindErrors name="memberVo" >
 						<font color="red"> <c:forEach
@@ -28,11 +28,11 @@
 						</font>
 					</spring:hasBindErrors>
 
-					<table >
+					<table id="loginTable">
 
-						<tr height="40px">
+						<tr >
 
-							<td width="255px"><form:input path="userEmail"
+							<td ><form:input path="userEmail"
 									class="form-control" placeholder="Email을 입력해주세요." /> <font
 								color="red"><form:errors path="userEmail" /></font></td>
 						</tr>
@@ -44,12 +44,12 @@
 						</tr>
 						
 						<tr>
-							<td width="150px"><input type="submit" value="로그인"
+							<td ><input type="submit" value="로그인"
 								class="btn btn-primary login-button form-control"></td>
 						</tr>
 						
 						<tr>
-							<td width="150px"><a href="../memberentry/memberEntry.html"
+							<td ><a href="../memberentry/memberEntry.html"
 								class="btn btn-info member-button form-control">회원가입</a></td>
 						</tr>
 						<tr>
@@ -59,18 +59,18 @@
 					</table>
 
 				</form:form>
-			</div>
+			
 		</c:when>
 
 
 
-		<c:when test="${loginMemberVo.userEmail != null }">
+		<c:when test="${!empty USER_KEY}">
 
 
 			<table>
 
 				<tr height="40px">
-					<td align="center">${loginMemberVo.userEmail }님이접속됨</td>
+					<td>${loginMemberVo.userEmail }님이접속됨</td>
 					<td><a href="../userentryform/member.html">SignUp</a></td>
 					<td><a href="../login/logout.html">Logout</a></td>
 				</tr>
@@ -84,7 +84,7 @@
 		</c:when>
 
 	</c:choose>
-
+</div>
 
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		<%@ include file="/WEB-INF/jsp/footer.jsp"%>

@@ -1,3 +1,14 @@
+.loginForm{
+	padding-top : 100px;
+	margin:0 auto;
+	width:40%;
+	
+}
+#loginTable{
+	margin : 0 auto;
+	width : 30%;
+}
+
 .align-center{
 	margin:0 auto;
 }
@@ -52,6 +63,15 @@
 	#memberEntryBox{
 	width:98%;
 	margin:0 auto;
+	}
+	.loginForm{
+	margin:0 auto;
+	width:98%;
+	
+	}
+	#loginTable{
+	margin : 0 auto;
+	width : 98%;
 	}
 }
 

@@ -32,7 +32,7 @@ a.listtxt:hover {
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 <div align="center">
-	<h2>회원목록 테스트</h2>
+	<h2>가입자 현황</h2>
 	<h4>이달의 가입자는 총 ${thisMonth} 명 입니다.</h4>
 	<c:if test="${memberList ne null }">
 			<table border="1">

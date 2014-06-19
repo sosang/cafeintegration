@@ -33,7 +33,7 @@ a.listtxt:hover {
 <body>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div align="center" class="body">
-		<h2>공지사항 테스트</h2>
+		<h2>공지사항</h2>
 		<br>
 		<a style="text-align:right;" href="boardNoticeWriteBefore.html" class="btn" id="coco"><i class="fa fa-pencil"></i> 공지쓰기</a>
 		<!-- <input class="btn " type="button" onclick="location.href='boardNoticeWriteBefore.html'" value="공지쓰기"> -->
