@@ -36,7 +36,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<div class="purchase">
 	<div id="myInfo"
 		style="width: 280px; height: 210px; border: solid 2px; margin: 50px; padding: 5px; float: left">
 		<form name="out_form">
@@ -129,6 +129,7 @@
 
 		</div>
 	</div>
+</div>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>

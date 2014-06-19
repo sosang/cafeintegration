@@ -29,7 +29,9 @@ public class EndController {
 		MemberVo userKey = (MemberVo) session
 				.getAttribute(WebConstants.USER_KEY);
 		String userEmail = userKey.getUserEmail();
-
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		
 		this.shopService.checkout(userEmail, receiver, recphone, recaddr,
 				recpostcode, remarks);
 		PrintWriter writer = response.getWriter();

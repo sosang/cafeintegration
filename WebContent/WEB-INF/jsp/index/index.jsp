@@ -35,8 +35,8 @@
 			<ul class="nav navbar-nav">
 				<li ><a href="../index/index.html" style="padding: 5px"><img  src="../images/cafe_logo.png"
 				class="logo img-responsive" width="70" height="70"></a></li>
-				<li><a href="../aboutUs/aboutUs.html">카페 4.0 소개</a></li>
-				<li><a href="../item/item.html">구매</a></li>
+				<li><a href="#aboutUs">카페 4.0 소개</a></li>
+				<li><a href="#itemForIndex">구매</a></li>
 		<!--	<li><a href="#">체험</a></li> -->
 				<li class="dropdown"><a href="" class="dropdown-toggle"
 					data-toggle="dropdown">게시판 <b class="caret"></b></a>
@@ -171,6 +171,37 @@
 </div>
 	<section id="aboutUs">
  		<div class="aboutUs_bg"><img src="../img/TypeOfCoffee.jpg" class="img-responsive"></div>
+	</section>
+	<section id="itemForIndex">
+		<div class="itemForm">
+	<div class="topblock">
+		<p>Coffee Bean</p>
+	</div>
+	<div align="center" class="row" >
+	
+	
+				
+		<c:forEach items="${itemList }" var="item">
+		<div class="col-lg-4"
+	
+				onclick="location.href='../detail/detail.html?itemNo=${item.itemNo}'"
+				style='cursor: pointer;'>
+			<div class="thumbnail">
+				<ul>
+				
+					<li>
+					
+					<img src="${item.photo}"  width=150 height=200></li>
+					<li><p>${item.itemName }</p></li>
+					<li><p>${item.price }원</p></li>
+					<li><p>
+							<fmt:formatDate value="${item.roastingDate}" pattern="yyyy-MM-dd" /></li>
+				</ul>
+				</div>
+			</div>
+		</c:forEach>
+		</div>
+</div>
 	</section>
 		<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
 		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
