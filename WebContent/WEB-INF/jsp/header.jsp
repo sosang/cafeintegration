@@ -25,13 +25,13 @@
 		<nav class="collapse navbar-collapse bs-navbar-collapse"
 			role="navigation">
 
-			<ul class="nav navbar-nav">
+			<ul id="toptop" class="nav navbar-nav">
 				<li ><a href="../index/index.html" style="padding: 5px"><img  src="../images/cafe_logo.png"
-				class="logo img-responsive" width="70" height="70"></a></li>
-				<li><a href="../aboutUs/aboutUs.html">카페 4.0 소개</a></li>
-				<li><a href="../item/item.html">구매</a></li>
+				class="logo img-responsive"></a></li>
+				<li><a class="menu-top" href="../aboutUs/aboutUs.html">카페 4.0 소개</a></li>
+				<li><a class="menu-top" href="../item/item.html">구매</a></li>
 		<!--	<li><a href="#">체험</a></li> -->
-				<li class="dropdown"><a href="" class="dropdown-toggle"
+				<li class="dropdown"><a href="" class="dropdown-toggle menu-top"
 					data-toggle="dropdown">게시판 <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="../board/boardNotice.html?pageNo=1">공지</a></li>

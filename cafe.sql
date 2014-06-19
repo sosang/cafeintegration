@@ -22,6 +22,8 @@ insert into board_faq values(board_faq_seq.nextval,'FAQ게시판','내용');
 insert into board_faq values(board_faq_seq.nextval,'FAQ게시판','내용<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>');
 
 
+
+select * from me
 select * from board_reviews
 create table member(
 	user_email varchar2(50) primary key,
@@ -360,6 +362,9 @@ drop sequence reservation_seq;
 --새로 생성시 기본 테스트용 추가 테이블 꼭 추가 시킬것!
 select * from member;
 update member user_email set sdf;
+update member
+set user_passwd='1234'
+where user_email='chldongsun@google.com';
 INSERT INTO member VALUES('sdf@sdf.com','sdfa','어머니 성함은?','김여사','솔솔이', '010','7788','7788','123456','서울특별시 중랑구 면목동', '면목사거리 공공칠빵집',0,0,0,0,0, null , sysdate);
 INSERT INTO member VALUES('gg@gmail.com','gdav00','아버지 성함은?','김알지','뱀발', '010','7766','7734','625456','경상북도 경주시 알동', '계림 알탕',0,0,0,0,0, null , sysdate);
 INSERT INTO member VALUES('nn@naver.com','sasa00','아버지 성함은?','박혁거세','똬리', '010','7711','7734','625446','경상북도 경주시 천막동', '사로6촌',0,0,0,0,0, null , sysdate);
