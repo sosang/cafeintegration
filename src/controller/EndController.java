@@ -32,6 +32,8 @@ public class EndController {
 
 		this.shopService.checkout(userEmail, receiver, recphone, recaddr,
 				recpostcode, remarks);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		writer.println("<script type='text/javascript'>");
 		writer.println("alert('상품 구매를 완료하셨습니다.');");
