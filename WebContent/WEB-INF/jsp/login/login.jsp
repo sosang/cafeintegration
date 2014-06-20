@@ -19,7 +19,7 @@
 				<form:form modelAttribute="memberVo" method="post" cssClass="form-horizontal"
 					action="../login/login.html">
 					<spring:hasBindErrors name="memberVo" >
-						<font color="red"> <c:forEach
+						<font style="margin-left: 269px;" color="red"> <c:forEach
 								items="${errors.globalErrors }" var="error">
 								<spring:message code="${error.code}" />
 							</c:forEach>
@@ -28,7 +28,7 @@
 
 					<table id="loginTable">
 
-						<tr >
+						<tr>
 
 							<td ><form:input path="userEmail"
 									class="form-control" placeholder="Email을 입력해주세요." /> <font

@@ -123,27 +123,26 @@ public class LoginController {
 	
 	@RequestMapping(value="findPassword", method = RequestMethod.POST)
 	public ModelAndView findPasswordSubmit(MemberVo memberVo, BindingResult bindingResult, HttpServletRequest request) {
-		
 		this.findPwdValidator.validate(memberVo, bindingResult);
 		
 		ModelAndView modelAndView = new ModelAndView();
-		if (bindingResult.hasErrors()) {
-			modelAndView.getModel().putAll(bindingResult.getModel());
-			return modelAndView;
-
-		}
+//		if (bindingResult.hasErrors()) {
+//			modelAndView.getModel().putAll(bindingResult.getModel());
+//			return modelAndView;
+//
+//		}
 
 		try {
 			//유저 정보 검색
 			MemberVo findMemberVo = this.shopService.lookingForPwdByInquiry(memberVo.getUserEmail(), memberVo.getPasswdInquiry(), memberVo.getPasswdAnswer());
 			request.getSession().setAttribute(WebConstants.USER_KEY, findMemberVo);
-		
+			request.setAttribute("yourPwd", findMemberVo.getUserPasswd());
 		
 			//유저 확인시 로그인 전 페이지로 돌아간다.
 //			String url = "redirect:../"+goBack.substring(33, goBack.length());
 			//war용
-			String url = "redirect:../"+goBack.substring(38, goBack.length());
-			modelAndView.setViewName(url);
+//			String url = "redirect:../"+goBack.substring(38, goBack.length());
+			modelAndView.setViewName("login/findPassword");
 			return modelAndView;
 		} catch (EmptyResultDataAccessException e) {
 			//유저 미 확인시

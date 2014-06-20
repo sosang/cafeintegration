@@ -10,6 +10,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<c:if test="${empty yourPwd }">
 		<div id="memberEntryBox">
 			<h2 class="bg-primary text-center">비밀번호 찾기</h2>
 
@@ -52,11 +53,12 @@
 			<input type="submit" class="btn btn-primary login-button form-control" value="비밀번호 찾기!">
 		</form:form>
 	</div>
+	</c:if>
 	<c:if test="${!empty yourPwd }">
-		<div class="form-horizontal input-size">
-			<label>사용자 Email</label>
-			<input type="button" class="button button-doubleCheck" value="${yourPwd }" /> 
-				<span id="emailCheckResult"></span>
+		<div id="memberEntryBox">
+			<h2 class="bg-primary text-center">비밀번호 찾기</h2>
+			<p>이메일 : ${USER_KEY.userEmail }</p>
+			<p>비밀번호 : ${yourPwd }<p>
 		</div>
 	</c:if>
 	<%@ include file="/WEB-INF/jsp/js_footer.jsp"%>
