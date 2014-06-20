@@ -56,7 +56,7 @@
 						onclick="location.href='../purchase/purchaseCart.html?indirect=indirect'">
 					<input type="button" value="장바구니비우기" class="btn btn-default"
 						onclick="location.href='../cart/cartClear.html'">
-					<input type="button" value="상품목록" class="btn btn-link"
+					<input type="button" value="상품목록" class="btn btn-primary"
 						onclick="location.href='../item/item.html'">
 
 				</div>

@@ -44,7 +44,7 @@
 						<li><a href="../board/boardNotice.html?pageNo=1">공지</a></li>
 						<li><a href="../board/boardFaq.html?pageNo=1">FAQ</a></li>
 						<li><a href="../board/boardQa.html?pageNo=1">자유게시판</a></li>
-						<li><a href="../board/boardReviews.html?pageNo=1">체험후기</a></li>
+						<li><a href="../board/boardReviews.html?pageNo=1">구매후기</a></li>
 					</ul></li>
 			</ul>
 			<!-- <form class="navbar-form navbar-left" role="search">

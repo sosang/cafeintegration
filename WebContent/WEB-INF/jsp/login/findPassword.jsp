@@ -11,7 +11,7 @@
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 		<div id="memberEntryBox">
-			<h2 class="bg-primary text-center">회원 가입</h2>
+			<h2 class="bg-primary text-center">비밀번호 찾기</h2>
 
 		<form:form modelAttribute="memberVo" method="post"
 			action="findPassword.html" name="memberVo"
